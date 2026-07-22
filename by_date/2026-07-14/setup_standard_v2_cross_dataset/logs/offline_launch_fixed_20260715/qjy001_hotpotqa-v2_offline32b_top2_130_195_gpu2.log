@@ -1,0 +1,1197 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=hotpotqa-v2 method=offline32b_top2 rate=0.15 start=130 end=195
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/offline32b_top2/hotpotqa-v2/rate_0p15/seg_130_195
+[setup-v2] offline_fixed_set_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/fixed_sets_hotpotqa_32b/chunk_fixed_sets_npz
+[setup-v2] offline_fixed_set_method=offline32b_mean_score_global
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:14,  1.46s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:09,  1.10s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:07,  1.02it/s]Inference Embeddings:  36%|███▋      | 4/11 [00:03<00:06,  1.08it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.11it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.13it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.17it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.17it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.17it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.13it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.19it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 10.093644142150879
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  41%|████      | 7/17 [00:00<00:00, 62.93it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 81.58it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195]
+storage_time: 0.14049666794016957
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    259 token(s)
+prompt eval duration: 1.2084399941377342s
+prompt eval rate:     214.3259088216506 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5539097785949707s
+eval rate:            3.8612280343747747 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Did Skin and Laura Stoica both sing?
+batch: 131 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.09259132901206613
+use_sparse_attention: True
+<think>
+
+</think>
+
+Akershus
+prompt eval count:    305 token(s)
+prompt eval duration: 0.9770353212952614s
+prompt eval rate:     312.16885751444454 tokens/s
+eval count:           8 token(s)
+eval duration:        2.167823553085327s
+eval rate:            3.69033724567394 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The birthplace of Bernhard Cathrinus Pauss is the capital of which county in Norway?
+batch: 132 preprocess: True reprocess_method: FusionRAG
+real answer: Buskerud
+answer: Akershus
+storage_time: 0.11908281175419688
+use_sparse_attention: True
+<think>
+
+</think>
+
+Robert Greenwald
+prompt eval count:    266 token(s)
+prompt eval duration: 1.0273277265951037s
+prompt eval rate:     258.92419051280746 tokens/s
+eval count:           8 token(s)
+eval duration:        2.174023389816284s
+eval rate:            3.679813215200063 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Was Brave New Films founded by Robert Greenwald or Alexander Kluge, a German author and film director?
+batch: 133 preprocess: True reprocess_method: FusionRAG
+real answer: Robert Greenwald
+answer: Robert Greenwald
+storage_time: 0.08793109701946378
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    278 token(s)
+prompt eval duration: 0.9689967879094183s
+prompt eval rate:     286.894655863387 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5519750118255615s
+eval rate:            3.866041627140828 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Do the bands Peter Bjorn and John and Shihad both play indie pop?
+batch: 134 preprocess: True reprocess_method: FusionRAG
+real answer: no
+answer: yes
+storage_time: 0.08466872060671449
+use_sparse_attention: True
+<think>
+
+</think>
+
+co-host of the official podcast of the UFC, UFC Unfiltered
+prompt eval count:    344 token(s)
+prompt eval duration: 1.0119482995942235s
+prompt eval rate:     339.93831516683116 tokens/s
+eval count:           18 token(s)
+eval duration:        5.2791748046875s
+eval rate:            3.4096237889333363 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Benjamin Saunders (born April 13, 1983), is an American mixed martial artist who currently fights in the Welterweight division of the UFC he was on fighting on Team Serra, Matthew John Serra (born June 2, 1974) is an American former professional mixed martial artist, Brazilian Jiu-Jitsu practitioner who competed for the Ultimate Fighting Championship and which occupation?
+batch: 135 preprocess: True reprocess_method: FusionRAG
+real answer: stand up comic
+answer: co-host of the official podcast of the UFC, UFC Unfiltered
+storage_time: 0.09052752098068595
+use_sparse_attention: True
+<think>
+
+</think>
+
+Gil Junger
+prompt eval count:    291 token(s)
+prompt eval duration: 0.9782625557854772s
+prompt eval rate:     297.4661539266901 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1742098331451416s
+eval rate:            3.679497663032578 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who directed Julia Stiles in the role that won the  MTV Movie Award for Best Breakthrough Performance?
+batch: 136 preprocess: True reprocess_method: FusionRAG
+real answer: Gil Junger
+answer: Gil Junger
+storage_time: 0.08229821175336838
+use_sparse_attention: True
+<think>
+
+</think>
+
+Flubber
+prompt eval count:    253 token(s)
+prompt eval duration: 0.80495919380337s
+prompt eval rate:     314.3016465276886 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8629605770111084s
+eval rate:            3.7574600806800973 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Was Flubber or The Sorcerer's Apprentice released first?
+batch: 137 preprocess: True reprocess_method: FusionRAG
+real answer: Flubber
+answer: Flubber
+storage_time: 0.07635657768696547
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dieffenbachia
+prompt eval count:    222 token(s)
+prompt eval duration: 0.7953263097442687s
+prompt eval rate:     279.1307131174656 tokens/s
+eval count:           9 token(s)
+eval duration:        2.484349489212036s
+eval rate:            3.6226787088858985 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which is a type of flowering plant, Dieffenbachia or Encephalartos?
+batch: 138 preprocess: True reprocess_method: FusionRAG
+real answer: Dieffenbachia
+answer: Dieffenbachia
+storage_time: 0.08550254814326763
+use_sparse_attention: True
+<think>
+
+</think>
+
+Once Upon a Time in Shaolin
+prompt eval count:    278 token(s)
+prompt eval duration: 0.9674337832257152s
+prompt eval rate:     287.3581684041097 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4156978130340576s
+eval rate:            3.513191346789772 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Tarik Azzougarh conceptualized this album for which only one copy was made in 2015.
+batch: 139 preprocess: True reprocess_method: FusionRAG
+real answer: Once Upon a Time in Shaolin
+answer: Once Upon a Time in Shaolin
+storage_time: 0.08326505310833454
+use_sparse_attention: True
+<think>
+
+</think>
+
+John Lafia
+prompt eval count:    274 token(s)
+prompt eval duration: 0.9638828681781888s
+prompt eval rate:     284.2669052909724 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1739609241485596s
+eval rate:            3.679918949386467 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Bride of Chucky is a sequel to a movie directed by who?
+batch: 140 preprocess: True reprocess_method: FusionRAG
+real answer: Jack Bender
+answer: John Lafia
+storage_time: 0.0781780849210918
+use_sparse_attention: True
+<think>
+
+</think>
+
+Jon Fratelli
+prompt eval count:    247 token(s)
+prompt eval duration: 0.7971538808196783s
+prompt eval rate:     309.85234588084893 tokens/s
+eval count:           9 token(s)
+eval duration:        2.484330654144287s
+eval rate:            3.6227061743920705 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who is younger, Max Cavalera or Jon Fratelli?
+batch: 141 preprocess: True reprocess_method: FusionRAG
+real answer: Jon Fratelli
+answer: Jon Fratelli
+storage_time: 0.08747432613745332
+use_sparse_attention: True
+<think>
+
+</think>
+
+Partisan Review
+prompt eval count:    307 token(s)
+prompt eval duration: 0.9779901029542089s
+prompt eval rate:     313.90910712966 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173015594482422s
+eval rate:            3.681519829085936 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which magazine, launched in 1934 by the Communist Party, was known to publish work by Emil Draitser?
+batch: 142 preprocess: True reprocess_method: FusionRAG
+real answer: Partisan Review
+answer: Partisan Review
+storage_time: 0.14300977485254407
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    285 token(s)
+prompt eval duration: 1.0278198630549014s
+prompt eval rate:     277.28594303764356 tokens/s
+eval count:           6 token(s)
+eval duration:        1.551729679107666s
+eval rate:            3.866652858924723 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Are Meg Myers and a founding member of American rock band Wavves considered singer-songwriters?
+batch: 143 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.08605990093201399
+use_sparse_attention: True
+<think>
+
+</think>
+
+Derrick Mason
+prompt eval count:    268 token(s)
+prompt eval duration: 0.9628461790271103s
+prompt eval rate:     278.3414483409962 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1745753288269043s
+eval rate:            3.6788792248073916 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What Baltimore Ravens retiree scored 8 touchdowns for the Tennessee Titans in 2003?
+batch: 144 preprocess: True reprocess_method: FusionRAG
+real answer: Derrick Mason
+answer: Derrick Mason
+storage_time: 0.08678786875680089
+use_sparse_attention: True
+<think>
+
+</think>
+
+MedStar National Rehabilitation Hospital
+prompt eval count:    277 token(s)
+prompt eval duration: 0.9682699637487531s
+prompt eval rate:     286.07724123504465 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7956154346466064s
+eval rate:            3.577029900489192 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which hospital located in Washington D.C. specializes in treating persons with physical disabilities,George Washington University Hospital or MedStar National Rehabilitation Hospital?
+batch: 145 preprocess: True reprocess_method: FusionRAG
+real answer: MedStar National Rehabilitation Network
+answer: MedStar National Rehabilitation Hospital
+storage_time: 0.08674112195149064
+use_sparse_attention: True
+<think>
+
+</think>
+
+New York City
+prompt eval count:    286 token(s)
+prompt eval duration: 0.9724935330450535s
+prompt eval rate:     294.0893592417856 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173752546310425s
+eval rate:            3.6802717096656834 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In which city do maritime pilots operating along the Hudson River and Long Island Sound, one of the wealthiest being Joseph Henderson, function?
+batch: 146 preprocess: True reprocess_method: FusionRAG
+real answer: New York
+answer: New York City
+storage_time: 0.08504976704716682
+use_sparse_attention: True
+<think>
+
+</think>
+
+musician
+prompt eval count:    253 token(s)
+prompt eval duration: 0.8083705431781709s
+prompt eval rate:     312.9752835937231 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8630950450897217s
+eval rate:            3.7571888876248387 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Jon Fratelli and Morten Harket, have which occupation in common?
+batch: 147 preprocess: True reprocess_method: FusionRAG
+real answer: musician
+answer: musician
+storage_time: 0.0885887430049479
+use_sparse_attention: True
+<think>
+
+</think>
+
+106
+prompt eval count:    243 token(s)
+prompt eval duration: 0.8087278422899544s
+prompt eval rate:     300.4719106886849 tokens/s
+eval count:           8 token(s)
+eval duration:        2.172708034515381s
+eval rate:            3.682040970490721 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: How many rooms does the second most famous hotel in Las Vegas have?
+batch: 148 preprocess: True reprocess_method: FusionRAG
+real answer: 106
+answer: 106
+storage_time: 0.07219972601160407
+use_sparse_attention: True
+<think>
+
+</think>
+
+Yoona
+prompt eval count:    223 token(s)
+prompt eval duration: 0.7933965567499399s
+prompt eval rate:     281.0700375528406 tokens/s
+eval count:           7 token(s)
+eval duration:        1.861931562423706s
+eval rate:            3.759536677539312 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actress from Love Rain was also known by the mononym Yoona?
+batch: 149 preprocess: True reprocess_method: FusionRAG
+real answer: Im Yoon-ah
+answer: Yoona
+storage_time: 0.09043743601068854
+use_sparse_attention: True
+<think>
+
+</think>
+
+Adventure Time
+prompt eval count:    336 token(s)
+prompt eval duration: 1.026351269800216s
+prompt eval rate:     327.3732979016082 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8634326457977295s
+eval rate:            3.7565081924403674 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The season of what follows the adventures of Finn, a human boy, and his best friend and adoptive brother Jake, the season also includes guest stars Miguel Ferrer as Death; Ferrer would later reprise his role in the fourth season episode "Sons of Mars"?
+batch: 150 preprocess: True reprocess_method: FusionRAG
+real answer: Adventure Time
+answer: Adventure Time
+storage_time: 0.08228911319747567
+use_sparse_attention: True
+<think>
+
+</think>
+
+Warpaint
+prompt eval count:    272 token(s)
+prompt eval duration: 0.9616145491600037s
+prompt eval rate:     282.8576171581424 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1730659008026123s
+eval rate:            3.6814346021651874 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which of the two bands Kill Hannah and Warpaint is from California?
+batch: 151 preprocess: True reprocess_method: FusionRAG
+real answer: Warpaint
+answer: Warpaint
+storage_time: 0.08432502578943968
+use_sparse_attention: True
+<think>
+
+</think>
+
+Austrian
+prompt eval count:    276 token(s)
+prompt eval duration: 0.9661853746511042s
+prompt eval rate:     285.6594678838576 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1727404594421387s
+eval rate:            3.681986021493813 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Red Bull Stratos was a project involving the skydiver of what nationality?
+batch: 152 preprocess: True reprocess_method: FusionRAG
+real answer: Austrian
+answer: Austrian
+storage_time: 0.07672660797834396
+use_sparse_attention: True
+<think>
+
+</think>
+
+Tom Ripley
+prompt eval count:    268 token(s)
+prompt eval duration: 0.954882332123816s
+prompt eval rate:     280.66285340511405 tokens/s
+eval count:           8 token(s)
+eval duration:        2.172898530960083s
+eval rate:            3.6817181686184144 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The Talented Mr. Ripley is a 1999 film about what fictional character in a series of crime novels by American novelist Patricia Highsmith, as well as several film adaptations?
+batch: 153 preprocess: True reprocess_method: FusionRAG
+real answer: Tom Ripley
+answer: Tom Ripley
+storage_time: 0.13985609775409102
+use_sparse_attention: True
+<think>
+
+</think>
+
+Erin Andrews
+prompt eval count:    265 token(s)
+prompt eval duration: 1.0190388085320592s
+prompt eval rate:     260.04897731199907 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173311471939087s
+eval rate:            3.681018622177605 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: On season eighteen of a show that premiered on March 17, 2014 Brooke Burke-Charvet was replaced as co-host by an American sportscaster who is a sideline reporter for who?
+batch: 154 preprocess: True reprocess_method: FusionRAG
+real answer: Fox NFL
+answer: Erin Andrews
+storage_time: 0.09245553007349372
+use_sparse_attention: True
+<think>
+
+</think>
+
+film director and producer
+prompt eval count:    268 token(s)
+prompt eval duration: 0.9712402550503612s
+prompt eval rate:     275.9358445105877 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4832353591918945s
+eval rate:            3.6243040623136182 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What two occupations do  Alberto Cavalcanti and Oscar Apfel have in common?
+batch: 155 preprocess: True reprocess_method: FusionRAG
+real answer: film director and producer
+answer: film director and producer
+storage_time: 0.077443758957088
+use_sparse_attention: True
+<think>
+
+</think>
+
+Walt Disney Productions
+prompt eval count:    239 token(s)
+prompt eval duration: 0.7973618018440902s
+prompt eval rate:     299.738461821541 tokens/s
+eval count:           9 token(s)
+eval duration:        2.482962131500244s
+eval rate:            3.6247028844382982 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What company produced both The Barefoot Executive and The Last Flight of Noah's Ark?
+batch: 156 preprocess: True reprocess_method: FusionRAG
+real answer: Walt Disney
+answer: Walt Disney Productions
+storage_time: 0.0855640978552401
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    285 token(s)
+prompt eval duration: 0.9715076149441302s
+prompt eval rate:     293.35848285284914 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5518803596496582s
+eval rate:            3.8662774244752467 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Can both Robert Hayden and Chitra Banerjee Divakaruni be classed as members of American minorities?
+batch: 157 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.15231212135404348
+use_sparse_attention: True
+<think>
+
+</think>
+
+Adam Sandler
+prompt eval count:    305 token(s)
+prompt eval duration: 1.0476086782291532s
+prompt eval rate:     291.13924534833274 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1730051040649414s
+eval rate:            3.681537602021627 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What American actor starred in the 2006 movie Click?
+batch: 158 preprocess: True reprocess_method: FusionRAG
+real answer: Adam Sandler
+answer: Adam Sandler
+storage_time: 0.08645489998161793
+use_sparse_attention: True
+<think>
+
+</think>
+
+World of Motion
+prompt eval count:    277 token(s)
+prompt eval duration: 0.9752404149621725s
+prompt eval rate:     284.032527518606 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1731057167053223s
+eval rate:            3.6813671504803356 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: what opening day attraction at EPCOT Center in 1982 was closed down for refurbishment in 1995
+batch: 159 preprocess: True reprocess_method: FusionRAG
+real answer: World of Motion
+answer: World of Motion
+storage_time: 0.0905691827647388
+use_sparse_attention: True
+<think>
+
+</think>
+
+Pour It Up
+prompt eval count:    302 token(s)
+prompt eval duration: 0.9810652853921056s
+prompt eval rate:     307.82864759025557 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173720359802246s
+eval rate:            3.680326203839669 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: WHICH MIKE WILL MADE IT SONG WAS CO-WRITTEN BY ROCK CITY?
+batch: 160 preprocess: True reprocess_method: FusionRAG
+real answer: Pour It Up
+answer: Pour It Up
+storage_time: 0.08398258127272129
+use_sparse_attention: True
+<think>
+
+</think>
+
+Jake Gyllenhaal, Chris Cooper, Chris Owen, and Laura Dern
+prompt eval count:    260 token(s)
+prompt eval duration: 0.9598508500494063s
+prompt eval rate:     270.8754177658092 tokens/s
+eval count:           21 token(s)
+eval duration:        6.208794832229614s
+eval rate:            3.382298911052723 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who starred in a 1999 film based on the memoir "Rocket Boys"?
+batch: 161 preprocess: True reprocess_method: FusionRAG
+real answer: Jake Gyllenhaal, Chris Cooper, Chris Owen, and Laura Dern
+answer: Jake Gyllenhaal, Chris Cooper, Chris Owen, and Laura Dern
+storage_time: 0.07866574497893453
+use_sparse_attention: True
+<think>
+
+</think>
+
+lei
+prompt eval count:    256 token(s)
+prompt eval duration: 0.8002144289202988s
+prompt eval rate:     319.9142514156009 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5534348487854004s
+eval rate:            3.862408523081145 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What garland or wreath is used in the statewide celebration of Hawaii?
+batch: 162 preprocess: True reprocess_method: FusionRAG
+real answer: Lei
+answer: lei
+storage_time: 0.08755163289606571
+use_sparse_attention: True
+<think>
+
+</think>
+
+Circuit Gilles Villeneuve
+prompt eval count:    300 token(s)
+prompt eval duration: 0.977271637879312s
+prompt eval rate:     306.97708638204483 tokens/s
+eval count:           11 token(s)
+eval duration:        3.104269504547119s
+eval rate:            3.54350676830322 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What motor racing circuit in Montreal, Quebec, Canada that is the venue for the FIA Formula One Canadian Grand Prix did the 2005 Canadian Grand Prix, Formula One motor race, held on 12 June 2005 get held at?
+batch: 163 preprocess: True reprocess_method: FusionRAG
+real answer: Circuit Gilles Villeneuve
+answer: Circuit Gilles Villeneuve
+storage_time: 0.07753065973520279
+use_sparse_attention: True
+<think>
+
+</think>
+
+Astron-6
+prompt eval count:    260 token(s)
+prompt eval duration: 0.9527981607243419s
+prompt eval rate:     272.8804595952843 tokens/s
+eval count:           10 token(s)
+eval duration:        2.793933868408203s
+eval rate:            3.579182783484182 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The Editor is a 2014 Canadian horror comedy-mystery film by who, and starring Paz de la Huerta, is an American actress and model?
+batch: 164 preprocess: True reprocess_method: FusionRAG
+real answer: Astron-6
+answer: Astron-6
+storage_time: 0.11333632888272405
+use_sparse_attention: True
+<think>
+
+</think>
+
+2010
+prompt eval count:    264 token(s)
+prompt eval duration: 0.9986069658771157s
+prompt eval rate:     264.36827402672725 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4828152656555176s
+eval rate:            3.624917296303075 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what year did the field where the 2016 TaxSlayer Bowl was held assumed its name?
+batch: 165 preprocess: True reprocess_method: FusionRAG
+real answer: 2010
+answer: 2010
+storage_time: 0.09493523184210062
+use_sparse_attention: True
+<think>
+
+</think>
+
+Cameron Mooney
+prompt eval count:    327 token(s)
+prompt eval duration: 1.0263291168957949s
+prompt eval rate:     318.6112472274339 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4726827144622803s
+eval rate:            3.6397714706220112 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Bounce is currently hosted by what former Australian football player born in 1979
+batch: 166 preprocess: True reprocess_method: FusionRAG
+real answer: Cameron Mooney
+answer: Cameron Mooney
+storage_time: 0.08131608879193664
+use_sparse_attention: True
+<think>
+
+</think>
+
+Doris Wishman
+prompt eval count:    278 token(s)
+prompt eval duration: 0.9569483017548919s
+prompt eval rate:     290.5068115907536 tokens/s
+eval count:           9 token(s)
+eval duration:        2.473167657852173s
+eval rate:            3.639057777351038 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which American film director is known for the sexploitation film genre, Wes Anderson or Doris Wishman?
+batch: 167 preprocess: True reprocess_method: FusionRAG
+real answer: Doris Wishman
+answer: Doris Wishman
+storage_time: 0.07616722723469138
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dagorhir
+prompt eval count:    242 token(s)
+prompt eval duration: 0.7922960366122425s
+prompt eval rate:     305.44138657409087 tokens/s
+eval count:           9 token(s)
+eval duration:        2.474029541015625s
+eval rate:            3.6377900307145765 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: A foam weapon, a padded mock weapon used for simulated handheld combat, is used in a North American medieval combat sport, begun in 1977 with the creation of what?
+batch: 168 preprocess: True reprocess_method: FusionRAG
+real answer: Dagorhir
+answer: Dagorhir
+storage_time: 0.08750826213508844
+use_sparse_attention: True
+<think>
+
+</think>
+
+Andrew Jackson
+prompt eval count:    315 token(s)
+prompt eval duration: 0.9742261026985943s
+prompt eval rate:     323.33356612746655 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8540349006652832s
+eval rate:            3.775549207562485 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which president signed this act that led to Choctaw tribe of Native Americans being forced to move out of Choctaw County by federal troops in 1830?
+batch: 169 preprocess: True reprocess_method: FusionRAG
+real answer: President Andrew Jackson
+answer: Andrew Jackson
+storage_time: 0.0808842470869422
+use_sparse_attention: True
+<think>
+
+</think>
+
+Torn
+prompt eval count:    275 token(s)
+prompt eval duration: 0.9562511048279703s
+prompt eval rate:     287.5813670818948 tokens/s
+eval count:           7 token(s)
+eval duration:        1.854168176651001s
+eval rate:            3.7752778243899114 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Anne Preven co-wrote which song with Scott Cutler and Phil Thornalley in 1993?
+batch: 170 preprocess: True reprocess_method: FusionRAG
+real answer: Torn
+answer: Torn
+storage_time: 0.08588336873799562
+use_sparse_attention: True
+<think>
+
+</think>
+
+Scrubs
+prompt eval count:    328 token(s)
+prompt eval duration: 1.013769471552223s
+prompt eval rate:     323.54495691982726 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8559291362762451s
+eval rate:            3.7716957308213126 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Garden State is a 2004 American romantic comedy-drama film, written and directed by an American actor best known for his role as J. D. on what television series?
+batch: 171 preprocess: True reprocess_method: FusionRAG
+real answer: Scrubs
+answer: Scrubs
+storage_time: 0.07610424188897014
+use_sparse_attention: True
+<think>
+
+</think>
+
+Vice
+prompt eval count:    243 token(s)
+prompt eval duration: 0.7916634669527411s
+prompt eval rate:     306.9486090287226 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8531010150909424s
+eval rate:            3.777451926794433 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which print magazine company did Terry Richardson work for while he was in Montreal?
+batch: 172 preprocess: True reprocess_method: FusionRAG
+real answer: Vice Media
+answer: Vice
+storage_time: 0.09141200128942728
+use_sparse_attention: True
+<think>
+
+</think>
+
+Vince Clarke
+prompt eval count:    307 token(s)
+prompt eval duration: 0.9767401735298336s
+prompt eval rate:     314.3108150149442 tokens/s
+eval count:           8 token(s)
+eval duration:        2.163179636001587s
+eval rate:            3.6982596668611256 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Named after producer Radcliffe's Blackwing Studios where the album was recorded, "Upstairs at Eric's" was preceded by two top three UK singles, including the ballad "Only You", a song written by what English musician? 
+batch: 173 preprocess: True reprocess_method: FusionRAG
+real answer: Vince Clarke
+answer: Vince Clarke
+storage_time: 0.09352261573076248
+use_sparse_attention: True
+<think>
+
+</think>
+
+South Africa
+prompt eval count:    319 token(s)
+prompt eval duration: 0.9817548394203186s
+prompt eval rate:     324.9283702928879 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8562908172607422s
+eval rate:            3.7709608510209804 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Nukie is a 1987 South African film directed by Sias Odendaal, and Michael Pakleppa, the film stars include Glynis Johns, a retired Welsh stage, television and film actress, dancer, pianist, and singer, and was born in which country?
+batch: 174 preprocess: True reprocess_method: FusionRAG
+real answer: South Africa
+answer: South Africa
+storage_time: 0.1642737709917128
+use_sparse_attention: True
+<think>
+
+</think>
+
+Ray Milland
+prompt eval count:    233 token(s)
+prompt eval duration: 0.8876138962805271s
+prompt eval rate:     262.5015234398282 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1659040451049805s
+eval rate:            3.6936077653487382 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What star of "The Thing with Two Heads" also played football?
+batch: 175 preprocess: True reprocess_method: FusionRAG
+real answer: Rosey Grier
+answer: Ray Milland
+storage_time: 0.10332531528547406
+use_sparse_attention: True
+<think>
+
+</think>
+
+Macbeth
+prompt eval count:    324 token(s)
+prompt eval duration: 1.0331011610105634s
+prompt eval rate:     313.6188518877167 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8563554286956787s
+eval rate:            3.7708296007291953 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Jeff Rona's credits include a 2016 Indian epic historical drama film that was written and directed by Jayaraj, and was adapted from What William Shakespeare play?
+batch: 176 preprocess: True reprocess_method: FusionRAG
+real answer: Macbeth
+answer: Macbeth
+storage_time: 0.086665456648916
+use_sparse_attention: True
+<think>
+
+</think>
+
+rock bands
+prompt eval count:    284 token(s)
+prompt eval duration: 0.96493333671242s
+prompt eval rate:     294.3208501507507 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8561112880706787s
+eval rate:            3.7713255907602927 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Autolux and Polvo are both types of what?
+batch: 177 preprocess: True reprocess_method: FusionRAG
+real answer: rock band
+answer: rock bands
+storage_time: 0.11143895192071795
+use_sparse_attention: True
+<think>
+
+</think>
+
+James Norman Hall
+prompt eval count:    255 token(s)
+prompt eval duration: 0.8301789192482829s
+prompt eval rate:     307.1627020244015 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166924476623535s
+eval rate:            3.6918683998001924 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who was the American author best known for the novel "Mutiny on the Bounty", James Norman Hall or Harold Lamb?
+batch: 178 preprocess: True reprocess_method: FusionRAG
+real answer: James Norman Hall
+answer: James Norman Hall
+storage_time: 0.08507463103160262
+use_sparse_attention: True
+<think>
+
+</think>
+
+Walt Mink
+prompt eval count:    274 token(s)
+prompt eval duration: 0.9595025130547583s
+prompt eval rate:     285.5646507143259 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4745194911956787s
+eval rate:            3.6370697551673894 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which band was formed first Walt Mink or Sunrise Avenue?
+batch: 179 preprocess: True reprocess_method: FusionRAG
+real answer: Walt Mink
+answer: Walt Mink
+storage_time: 0.08262036927044392
+use_sparse_attention: True
+<think>
+
+</think>
+
+Edwin Arlington Robinson
+prompt eval count:    261 token(s)
+prompt eval duration: 0.953398376237601s
+prompt eval rate:     273.75754616866993 tokens/s
+eval count:           9 token(s)
+eval duration:        2.473759651184082s
+eval rate:            3.63818691750918 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which one was an American poet, Frank O'Connor or Edwin Arlington Robinson?
+batch: 180 preprocess: True reprocess_method: FusionRAG
+real answer: Edwin Arlington Robinson
+answer: Edwin Arlington Robinson
+storage_time: 0.08584752911701798
+use_sparse_attention: True
+<think>
+
+</think>
+
+United States
+prompt eval count:    270 token(s)
+prompt eval duration: 0.9597792993299663s
+prompt eval rate:     281.3146732675838 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8549821376800537s
+eval rate:            3.7736212429272222 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What country does Games and Official Xbox Magazine have in common?
+batch: 181 preprocess: True reprocess_method: FusionRAG
+real answer: United States
+answer: United States
+storage_time: 0.07925562979653478
+use_sparse_attention: True
+<think>
+
+</think>
+
+Anthony Mann
+prompt eval count:    236 token(s)
+prompt eval duration: 0.7938780491240323s
+prompt eval rate:     297.2748777477891 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8560609817504883s
+eval rate:            3.77142780804441 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actor is known for being in westerns, Anthony Mann or Luis Valdez?
+batch: 182 preprocess: True reprocess_method: FusionRAG
+real answer: Anthony Mann
+answer: Anthony Mann
+storage_time: 0.09907255508005619
+use_sparse_attention: True
+<think>
+
+</think>
+
+George Kennedy
+prompt eval count:    350 token(s)
+prompt eval duration: 0.9864501277916133s
+prompt eval rate:     354.80759760612773 tokens/s
+eval count:           7 token(s)
+eval duration:        1.855696439743042s
+eval rate:            3.772168685611796 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What actor, who starred in The Flight of the Phoenix, also starred in Cool Hand Luke?
+batch: 183 preprocess: True reprocess_method: FusionRAG
+real answer: George Kennedy
+answer: George Kennedy
+storage_time: 0.07687225192785263
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    243 token(s)
+prompt eval duration: 0.7931429338641465s
+prompt eval rate:     306.3760510556629 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5469920635223389s
+eval rate:            3.8784943643076155 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Did both Wickard v. Filburn and Strickland v. Washington reach the Supreme Court of the United States?
+batch: 184 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.0867563420906663
+use_sparse_attention: True
+<think>
+
+</think>
+
+Tizer
+prompt eval count:    241 token(s)
+prompt eval duration: 0.8031538147479296s
+prompt eval rate:     300.06705512024246 tokens/s
+eval count:           7 token(s)
+eval duration:        1.856971025466919s
+eval rate:            3.7695795486307664 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which soda, Shasta or Tizer, was sold in the United Kingdom?
+batch: 185 preprocess: True reprocess_method: FusionRAG
+real answer: Tizer
+answer: Tizer
+storage_time: 0.08933284692466259
+use_sparse_attention: True
+<think>
+
+</think>
+
+Nestlé Smarties Book Prize
+prompt eval count:    309 token(s)
+prompt eval duration: 0.9742398667149246s
+prompt eval rate:     317.1703505030322 tokens/s
+eval count:           12 token(s)
+eval duration:        3.40366530418396s
+eval rate:            3.5256110479632015 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What prize was won for a book by a British author and illustrator from Dartmoor, focusing on futuristic steampunk London?
+batch: 186 preprocess: True reprocess_method: FusionRAG
+real answer: Nestlé Smarties Book Prize
+answer: Nestlé Smarties Book Prize
+storage_time: 0.08155762404203415
+use_sparse_attention: True
+<think>
+
+</think>
+
+Prince George's County
+prompt eval count:    277 token(s)
+prompt eval duration: 0.9567191987298429s
+prompt eval rate:     289.5311397197318 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4745564460754395s
+eval rate:            3.6370154393825556 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The 1987–88 Georgetown Hoyas play their game in the community that is in what Maryland county?
+batch: 187 preprocess: True reprocess_method: FusionRAG
+real answer: Prince George's County
+answer: Prince George's County
+storage_time: 0.0735168787650764
+use_sparse_attention: True
+<think>
+
+</think>
+
+Vermont Republic
+prompt eval count:    219 token(s)
+prompt eval duration: 0.7878570575267076s
+prompt eval rate:     277.9692050833423 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4755635261535645s
+eval rate:            3.63553587089072 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What republic was started because of a dispute in the area The Green Mountain Boys were a militia?
+batch: 188 preprocess: True reprocess_method: FusionRAG
+real answer: Vermont Republic
+answer: Vermont Republic
+storage_time: 0.1323233712464571
+use_sparse_attention: True
+<think>
+
+</think>
+
+July 20, 1910
+prompt eval count:    280 token(s)
+prompt eval duration: 1.008625594433397s
+prompt eval rate:     277.60548765103675 tokens/s
+eval count:           15 token(s)
+eval duration:        4.331143379211426s
+eval rate:            3.463288717708316 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What day was the book published that was illustarted alongside Dorothy and the Wizard in Oz?
+batch: 189 preprocess: True reprocess_method: FusionRAG
+real answer: July 20, 1910
+answer: July 20, 1910
+storage_time: 0.08746933378279209
+use_sparse_attention: True
+<think>
+
+</think>
+
+Fedor Tokarev
+prompt eval count:    291 token(s)
+prompt eval duration: 0.968400017824024s
+prompt eval rate:     300.495657418379 tokens/s
+eval count:           10 token(s)
+eval duration:        2.783802032470703s
+eval rate:            3.5922094615056794 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The TT-30 pistol was developed in the early 1930's as a replacement to a revolver designed by who?
+batch: 190 preprocess: True reprocess_method: FusionRAG
+real answer: Léon Nagant
+answer: Fedor Tokarev
+storage_time: 0.08935355907306075
+use_sparse_attention: True
+<think>
+
+</think>
+
+Leakin Park.
+prompt eval count:    304 token(s)
+prompt eval duration: 0.9734823987819254s
+prompt eval rate:     312.28094147401276 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4732096195220947s
+eval rate:            3.6389960353377147 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Hae Min Lee's body was found in a park that covers how many acres ?
+batch: 191 preprocess: True reprocess_method: FusionRAG
+real answer: 1216 acre
+answer: Leakin Park.
+storage_time: 0.07883735420182347
+use_sparse_attention: True
+<think>
+
+</think>
+
+Being John Malkovich
+prompt eval count:    251 token(s)
+prompt eval duration: 0.7971698343753815s
+prompt eval rate:     314.86389621939196 tokens/s
+eval count:           9 token(s)
+eval duration:        2.473919153213501s
+eval rate:            3.637952351154821 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Charlie Kaufman wrote which acclaimed fantasy film in 1999 journeying into an actor's mind?
+batch: 192 preprocess: True reprocess_method: FusionRAG
+real answer: Being John Malkovich
+answer: Being John Malkovich
+storage_time: 0.08097659423947334
+use_sparse_attention: True
+<think>
+
+</think>
+
+Iowa
+prompt eval count:    254 token(s)
+prompt eval duration: 0.7985270852223039s
+prompt eval rate:     318.08564130205843 tokens/s
+eval count:           7 token(s)
+eval duration:        1.855818510055542s
+eval rate:            3.771920563390921 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Daniel Shaw is played by an actor who grew up in what state?
+batch: 193 preprocess: True reprocess_method: FusionRAG
+real answer: Iowa
+answer: Iowa
+storage_time: 0.09264548169448972
+use_sparse_attention: True
+<think>
+
+</think>
+
+Ishtar Gate
+prompt eval count:    288 token(s)
+prompt eval duration: 0.9724078327417374s
+prompt eval rate:     296.17202813759127 tokens/s
+eval count:           8 token(s)
+eval duration:        2.164051055908203s
+eval rate:            3.6967704519534 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What is the name of the eighth gate to the city of Babylon, currently housed at Pergamon Museum?
+batch: 194 preprocess: True reprocess_method: FusionRAG
+real answer: Ishtar Gate
+answer: Ishtar Gate
+storage_time: 0.13159064296633005
+use_sparse_attention: True
+<think>
+
+</think>
+
+war zones and social issues
+prompt eval count:    241 token(s)
+prompt eval duration: 0.8473976408131421s
+prompt eval rate:     284.400130933504 tokens/s
+eval count:           10 token(s)
+eval duration:        2.782890558242798s
+eval rate:            3.593386010233297 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Gentleman's Intermission included a cameo appearance by the photojournalist who has specialized in reportage on what two topics?
+batch: 195 preprocess: True reprocess_method: FusionRAG
+real answer: human suffering in war zones and natural disasters
+answer: war zones and social issues
+
+--- Quality Metrics ---
+EM Score: 0.1885
+ROUGE Score: 0.2068

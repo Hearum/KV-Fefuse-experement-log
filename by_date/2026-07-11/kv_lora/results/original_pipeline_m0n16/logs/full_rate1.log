@@ -1,0 +1,1452 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: nopreprocess
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_m0n16/Qwen3-32B/musique/nopreprocess
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 257.42it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 50 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/50: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+ National Cycle Network
+prompt eval count:    2139 token(s)
+prompt eval duration: 1.6010680198669434s
+prompt eval rate:     1335.9832146155547 tokens/s
+eval count:           4 token(s)
+eval duration:        0.23794841766357422s
+eval rate:            16.8103660418345 tokens/s
+Predicted: National Cycle Network
+F1: 0.2353, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What network is National Cycle Route 57 part of?...
+
+✓ Main question 1: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 2/50: What district is the headquarter of Julia's House located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Julia's House located?
+Ground Truth: Corfe Mullen, Dorset, England
+ Corfe Mullen, Dorset, England.
+prompt eval count:    2119 token(s)
+prompt eval duration: 1.0861265659332275s
+prompt eval rate:     1950.969681124871 tokens/s
+eval count:           11 token(s)
+eval duration:        0.7727551460266113s
+eval rate:            14.234780650197305 tokens/s
+Predicted: Corfe Mullen, Dorset, England.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is the headquarters of Julia's House located...
+
+✓ Main question 2: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 3/50: What body of water includes the terrain feature where Coffee Swamp is located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Coffee Swamp located?
+Ground Truth: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+ Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+prompt eval count:    2261 token(s)
+prompt eval duration: 1.1563117504119873s
+prompt eval rate:     1955.3550322345325 tokens/s
+eval count:           19 token(s)
+eval duration:        1.4005012512207031s
+eval rate:            13.566571242574216 tokens/s
+Predicted: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Coffee Swamp located?...
+
+✓ Main question 3: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 4/50: Who is the spouse of the child of Peter Andreas Heiberg?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Peter Andreas Heiberg?
+Ground Truth: Johan Ludvig Heiberg is the child of Peter Andreas Heiberg.
+ Johan Ludvig Heiberg
+prompt eval count:    1979 token(s)
+prompt eval duration: 1.0629746913909912s
+prompt eval rate:     1861.7564613982606 tokens/s
+eval count:           7 token(s)
+eval duration:        0.45453858375549316s
+eval rate:            15.400232785882622 tokens/s
+Predicted: Johan Ludvig Heiberg
+F1: 0.5714, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the spouse of Johan Ludvig Heiberg?
+Ground Truth: Johanne Luise Heiberg
+ Johanne Luise Heiberg
+prompt eval count:    2179 token(s)
+prompt eval duration: 1.1411662101745605s
+prompt eval rate:     1909.4501577177662 tokens/s
+eval count:           8 token(s)
+eval duration:        0.5382885932922363s
+eval rate:            14.861916265160032 tokens/s
+Predicted: Johanne Luise Heiberg
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the child of Peter Andreas Heiberg?...
+Sub-Q 2: ✓ CORRECT - Who is the spouse of Johan Ludvig Heiberg?...
+
+✓ Main question 4: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 5/50: When was the sibling of Alice de Lusignan, Countess of Surrey crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the siblings of Alice de Lusignan, Countess of Surrey?
+Ground Truth: Alice de Lusignan had a uterine half-brother, King Henry III of England.
+1. King Henry III of England (uterine half-brother)  
+2. Isabella of Angoulême (sister-in-law through Henry III's marriage)  
+3. Joan de Geneville (cousin or distant relative, as both were part of the Lusignan family)  
+4. Adeliza of Normandy (distant relative, as both were from the Lusignan/Plantagenet lineage)  
+5. Eleanor of England (distant relative, as part of the Plantagenet family)  
+6. Joan Beaufort (distant relative, as part of the broader Plantagenet and Lancaster lineage)  
+7. Alice of Armenia (distant relative, as part of the Lusignan family connections)
+prompt eval count:    2009 token(s)
+prompt eval duration: 1.0063941478729248s
+prompt eval rate:     1996.235773276448 tokens/s
+eval count:           158 token(s)
+eval duration:        11.978200197219849s
+eval rate:            13.190629426670624 tokens/s
+Predicted: 1. King Henry III of England (uterine half-brother)  
+2. Isabella of Angoulême (sister-in-law through Henry III's marriage)  
+3. Joan de Geneville (cousin or distant relative, as both were part of the Lusignan family)  
+4. Adeliza of Normandy (distant relative, as both were from the Lusignan/Plantagenet lineage)  
+5. Eleanor of England (distant relative, as part of the Plantagenet family)  
+6. Joan Beaufort (distant relative, as part of the broader Plantagenet and Lancaster lineage)  
+7. Alice of Armenia (distant relative, as part of the Lusignan family connections)
+F1: 0.8125, EM: 0.0000
+
+Sub-question 2/2
+Question: When was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral and had a second coronation on 17 May 1220 at Westminster Abbey.
+1216 and 1220
+prompt eval count:    2898 token(s)
+prompt eval duration: 1.53110933303833s
+prompt eval rate:     1892.7453039876748 tokens/s
+eval count:           11 token(s)
+eval duration:        0.8262155055999756s
+eval rate:            13.313717698885467 tokens/s
+Predicted: 1216 and 1220
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who were the siblings of Alice de Lusignan, Counte...
+Sub-Q 2: ✓ CORRECT - When was King Henry III of England crowned?...
+
+✗ Main question 5: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 6/50: What company merged in 2002 with the CEMM developer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 7/50: Which university employed the person that Mach bands are named after?
+================================================================================
+
+Sub-question 1/1
+Question: Which university employed Ernst Mach?
+Ground Truth: Ernst Mach was employed at Charles University in Prague.
+ The University of Vienna employed Ernst Mach.
+prompt eval count:    2310 token(s)
+prompt eval duration: 1.207021713256836s
+prompt eval rate:     1913.8015286958364 tokens/s
+eval count:           9 token(s)
+eval duration:        0.6244485378265381s
+eval rate:            14.4127169091075 tokens/s
+Predicted: The University of Vienna employed Ernst Mach.
+F1: 0.3158, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Which university employed Ernst Mach?...
+
+✗ Main question 7: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 8/50: Who is the employer of the physicist who Mach number is named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the physicist that the Mach number is named after?
+Ground Truth: The Mach number is named after the Austrian physicist and philosopher Ernst Mach.
+ Ernst Mach
+prompt eval count:    2413 token(s)
+prompt eval duration: 1.2304694652557373s
+prompt eval rate:     1961.040129913739 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15799856185913086s
+eval rate:            18.98751459949841 tokens/s
+Predicted: Ernst Mach
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was Ernst Mach's employer or academic institution during his career?
+Ground Truth: Ernst Mach was a professor at Charles University in Prague.
+1. Charles University in Prague (as an assistant and professor)  
+2. University of Vienna (as a professor)  
+3. University of Graz (as a professor)
+prompt eval count:    2293 token(s)
+prompt eval duration: 1.1583116054534912s
+prompt eval rate:     1979.6054785294725 tokens/s
+eval count:           36 token(s)
+eval duration:        2.7264931201934814s
+eval rate:            13.203774377191648 tokens/s
+Predicted: 1. Charles University in Prague (as an assistant and professor)  
+2. University of Vienna (as a professor)  
+3. University of Graz (as a professor)
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the physicist that the Mach number is named...
+Sub-Q 2: ✓ CORRECT - Who was Ernst Mach's employer or academic institut...
+
+✓ Main question 8: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 9/50: What record label did the performer of The Place and the Time belong to?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 10/50: When did a storm disperse the fleet led by the English king who trusted William de Longchamp?
+================================================================================
+
+Sub-question 1/2
+Question: Which English king trusted William de Longchamp?
+Ground Truth: King Richard I of England
+ Richard I
+prompt eval count:    2822 token(s)
+prompt eval duration: 1.5095164775848389s
+prompt eval rate:     1869.4728026520638 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1640758514404297s
+eval rate:            18.284226311567835 tokens/s
+Predicted: Richard I
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: What specific naval expedition or fleet did King Richard I lead that was dispersed by a storm?
+Ground Truth: King Richard I led a large fleet from Messina to Acre in April 1191, which was dispersed by a storm.
+ Richard the Lion-hearted led a large fleet from Messina in April 1191 to reach Acre, which was dispersed by a storm.
+prompt eval count:    3554 token(s)
+prompt eval duration: 1.919996738433838s
+prompt eval rate:     1851.0448110964169 tokens/s
+eval count:           31 token(s)
+eval duration:        2.6321654319763184s
+eval rate:            11.777375245264944 tokens/s
+Predicted: Richard the Lion-hearted led a large fleet from Messina in April 1191 to reach Acre, which was dispersed by a storm.
+F1: 0.8750, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which English king trusted William de Longchamp?...
+Sub-Q 2: ✓ CORRECT - What specific naval expedition or fleet did King R...
+
+✓ Main question 10: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 11/50: The Unwinding author volunteered for which organisation?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Unwinding?
+Ground Truth: George Packer
+ George Packer
+prompt eval count:    2329 token(s)
+prompt eval duration: 1.2172718048095703s
+prompt eval rate:     1913.294952530629 tokens/s
+eval count:           4 token(s)
+eval duration:        0.23629093170166016s
+eval rate:            16.92828400647377 tokens/s
+Predicted: George Packer
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which organization did George Packer volunteer for?
+Ground Truth: Peace Corps
+ Peace Corps
+prompt eval count:    2561 token(s)
+prompt eval duration: 1.4042654037475586s
+prompt eval rate:     1823.7293272094203 tokens/s
+eval count:           3 token(s)
+eval duration:        0.16034626960754395s
+eval rate:            18.70950916003634 tokens/s
+Predicted: Peace Corps
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Unwinding?...
+Sub-Q 2: ✓ CORRECT - Which organization did George Packer volunteer for...
+
+✓ Main question 11: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 12/50: Who is the lead singer of the band performing Bang Bang Rock & Roll?
+================================================================================
+
+Sub-question 1/2
+Question: Which band performed the song 'Bang Bang Rock & Roll'?
+Ground Truth: The song 'Bang Bang Rock & Roll' was performed by the British rock band Art Brut.
+ Art Brut
+prompt eval count:    2057 token(s)
+prompt eval duration: 1.0741629600524902s
+prompt eval rate:     1914.9794551652408 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15231704711914062s
+eval rate:            19.695759973953766 tokens/s
+Predicted: Art Brut
+F1: 0.1538, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the lead singer of the band Art Brut?
+Ground Truth: Eddie Argos
+ Eddie Argos
+prompt eval count:    2030 token(s)
+prompt eval duration: 1.007627010345459s
+prompt eval rate:     2014.6343628720576 tokens/s
+eval count:           4 token(s)
+eval duration:        0.23459458351135254s
+eval rate:            17.050692049786527 tokens/s
+Predicted: Eddie Argos
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which band performed the song 'Bang Bang Rock & Ro...
+Sub-Q 2: ✓ CORRECT - Who is the lead singer of the band Art Brut?...
+
+✓ Main question 12: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 13/50: What company did the company that initiated a successful price war among PC manufacturers in 1994 merge with in 2002?
+================================================================================
+
+Sub-question 1/2
+Question: Which company initiated a successful price war among PC manufacturers in 1994?
+Ground Truth: Compaq initiated a successful price war among PC manufacturers in 1994.
+ Compaq
+prompt eval count:    2842 token(s)
+prompt eval duration: 1.5196337699890137s
+prompt eval rate:     1870.1874465586181 tokens/s
+eval count:           4 token(s)
+eval duration:        0.24702143669128418s
+eval rate:            16.192926628465095 tokens/s
+Predicted: Compaq
+F1: 0.1333, EM: 0.0000
+
+Sub-question 2/2
+Question: Which company did Compaq merge with in 2002?
+Ground Truth: Hewlett Packard
+2002, when Compaq merged with Hewlett Packard.
+prompt eval count:    2930 token(s)
+prompt eval duration: 1.5327959060668945s
+prompt eval rate:     1911.539552267129 tokens/s
+eval count:           17 token(s)
+eval duration:        1.3237659931182861s
+eval rate:            12.842148905755243 tokens/s
+Predicted: 2002, when Compaq merged with Hewlett Packard.
+F1: 0.4706, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which company initiated a successful price war amo...
+Sub-Q 2: ✓ CORRECT - Which company did Compaq merge with in 2002?...
+
+✓ Main question 13: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 14/50: What year was the father of Katherine of England crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Katherine of England?
+Ground Truth: Katherine of England was the fifth child of King Henry III and Eleanor of Provence. She was born on 25 November 1253, was either deaf-mute or deaf and mentally challenged, was very sickly, possibly had a degenerative disease, and died at Windsor on 3 May 1257 before reaching her fourth year.
+ Katherine of England (Old English: "Katerine"; 25 November 1253 – 3 May 1257) was the fifth child of Henry III and his wife, Eleanor of Provence. She was born either a deaf-mute or just deaf and mentally challenged and was very sickly. She possibly had a degenerative disease, did not survive her fourth year and died at Windsor.
+prompt eval count:    1962 token(s)
+prompt eval duration: 0.9977149963378906s
+prompt eval rate:     1966.4934447227054 tokens/s
+eval count:           87 token(s)
+eval duration:        6.502232551574707s
+eval rate:            13.38001975628054 tokens/s
+Predicted: Katherine of England (Old English: "Katerine"; 25 November 1253 – 3 May 1257) was the fifth child of Henry III and his wife, Eleanor of Provence. She was born either a deaf-mute or just deaf and mentally challenged and was very sickly. She possibly had a degenerative disease, did not survive her fourth year and died at Windsor.
+F1: 0.8611, EM: 0.0000
+
+Sub-question 2/2
+Question: What year was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 and had a second coronation in 1220.
+1216 and 1220
+prompt eval count:    2907 token(s)
+prompt eval duration: 1.531900405883789s
+prompt eval rate:     1897.6429465222864 tokens/s
+eval count:           11 token(s)
+eval duration:        0.8272216320037842s
+eval rate:            13.297524598522202 tokens/s
+Predicted: 1216 and 1220
+F1: 0.5806, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Katherine of England?...
+Sub-Q 2: ✓ CORRECT - What year was King Henry III of England crowned?...
+
+✓ Main question 14: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 15/50: Who is the sibling of the actress that played the little girl in Miracle on 34th street 1947?
+================================================================================
+
+Sub-question 1/2
+Question: Who played the little girl in the 1947 film Miracle on 34th Street?
+Ground Truth: Natalie Wood played the little girl, Susan Walker, in the 1947 film Miracle on 34th Street.
+1994 version: Natalie Wood; 1947 version: not specified in the documents provided.
+prompt eval count:    1892 token(s)
+prompt eval duration: 0.9253346920013428s
+prompt eval rate:     2044.6655857113963 tokens/s
+eval count:           24 token(s)
+eval duration:        1.7149617671966553s
+eval rate:            13.994481077692685 tokens/s
+Predicted: 1994 version: Natalie Wood; 1947 version: not specified in the documents provided.
+F1: 0.4390, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the sibling of actress Natalie Wood?
+Ground Truth: Lana Wood is the sibling of actress Natalie Wood.
+ Lana Wood
+prompt eval count:    2504 token(s)
+prompt eval duration: 1.310007095336914s
+prompt eval rate:     1911.4400287702326 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1596682071685791s
+eval rate:            18.78896276973019 tokens/s
+Predicted: Lana Wood
+F1: 0.3333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who played the little girl in the 1947 film Miracl...
+Sub-Q 2: ✓ CORRECT - Who is the sibling of actress Natalie Wood?...
+
+✗ Main question 15: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 16/50: What is the capital of the county that Pine Springs is located in?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Pine Springs located?
+Ground Truth: Culberson County, Texas
+ Culberson County
+prompt eval count:    1500 token(s)
+prompt eval duration: 0.7295761108398438s
+prompt eval rate:     2055.9883714850407 tokens/s
+eval count:           5 token(s)
+eval duration:        0.2858424186706543s
+eval rate:            17.49215537446514 tokens/s
+Predicted: Culberson County
+F1: 0.8571, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the county seat of Culberson County, Texas?
+Ground Truth: Van Horn
+ Van Horn
+prompt eval count:    1948 token(s)
+prompt eval duration: 0.9900245666503906s
+prompt eval rate:     1967.6279413861264 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15057158470153809s
+eval rate:            19.924078012106857 tokens/s
+Predicted: Van Horn
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which county is Pine Springs located?...
+Sub-Q 2: ✓ CORRECT - What is the county seat of Culberson County, Texas...
+
+✓ Main question 16: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 17/50: In 2002, what company merged with the top PC manufacturer from 1994?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the top PC manufacturer in 1994?
+Ground Truth: Compaq was the top PC manufacturer in 1994.
+1994: Compaq became the top PC manufacturer in 1994, overtaking a struggling IBM and relegating Apple to third place.
+prompt eval count:    2342 token(s)
+prompt eval duration: 1.2178256511688232s
+prompt eval rate:     1923.0995814156456 tokens/s
+eval count:           34 token(s)
+eval duration:        2.591702461242676s
+eval rate:            13.118789872081843 tokens/s
+Predicted: 1994: Compaq became the top PC manufacturer in 1994, overtaking a struggling IBM and relegating Apple to third place.
+F1: 0.5263, EM: 0.0000
+
+Sub-question 2/2
+Question: What company did Compaq merge with in 2002?
+Ground Truth: Compaq merged with Hewlett Packard (HP) in 2002.
+2002, when Compaq merged with Hewlett Packard.
+prompt eval count:    3018 token(s)
+prompt eval duration: 1.6017427444458008s
+prompt eval rate:     1884.1977030738608 tokens/s
+eval count:           17 token(s)
+eval duration:        1.338329553604126s
+eval rate:            12.702402001225291 tokens/s
+Predicted: 2002, when Compaq merged with Hewlett Packard.
+F1: 0.7857, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the top PC manufacturer in 1994?...
+Sub-Q 2: ✓ CORRECT - What company did Compaq merge with in 2002?...
+
+✓ Main question 17: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 18/50: In the King's Speech, who played the person who was the King of England in 1950?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the King of England in 1950?
+Ground Truth: George VI was the King of the United Kingdom in 1950.
+ George VI
+prompt eval count:    2242 token(s)
+prompt eval duration: 1.154439926147461s
+prompt eval rate:     1942.0672736795323 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1552138328552246s
+eval rate:            19.328174202090892 tokens/s
+Predicted: George VI
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+ Colin Firth
+prompt eval count:    2766 token(s)
+prompt eval duration: 1.4658572673797607s
+prompt eval rate:     1886.9504293172156 tokens/s
+eval count:           4 token(s)
+eval duration:        0.24492502212524414s
+eval rate:            16.3315285849176 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the King of England in 1950?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 18: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 19/50: Whose sister played Susie in miracle on 34th street?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Susie in Miracle on 34th Street?
+Ground Truth: Natalie Wood played Susan Walker in Miracle on 34th Street.
+ Natalie Wood
+prompt eval count:    1847 token(s)
+prompt eval duration: 0.9222428798675537s
+prompt eval rate:     2002.726223557566 tokens/s
+eval count:           3 token(s)
+eval duration:        0.14946699142456055s
+eval rate:            20.07132124228358 tokens/s
+Predicted: Natalie Wood
+F1: 0.2500, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is Natalie Wood's brother?
+Ground Truth: Natalie Wood's sister is Lana Wood. The documents do not mention a brother.
+ Lana Wood
+prompt eval count:    2027 token(s)
+prompt eval duration: 1.0074963569641113s
+prompt eval rate:     2011.9179449025096 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15204906463623047s
+eval rate:            19.730473233606173 tokens/s
+Predicted: Lana Wood
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Susie in Miracle on 34th Street?...
+Sub-Q 2: ✗ INCORRECT - Who is Natalie Wood's brother?...
+
+✗ Main question 19: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 20/50: What team was Anna Benson's husband on?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Anna Benson's husband?
+Ground Truth: Kris Benson, a former Major League Baseball pitcher.
+ Kris Benson
+prompt eval count:    1855 token(s)
+prompt eval duration: 0.9210498332977295s
+prompt eval rate:     2014.0061188202517 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1495990753173828s
+eval rate:            20.053599887802328 tokens/s
+Predicted: Kris Benson
+F1: 0.5455, EM: 0.0000
+
+Sub-question 2/2
+Question: What team did Kris Benson play for in Major League Baseball?
+Ground Truth: Kris Benson played for the Pittsburgh Pirates, New York Mets, and Baltimore Orioles.
+1. Pittsburgh Pirates, 2. New York Mets, 3. Baltimore Orioles
+prompt eval count:    2406 token(s)
+prompt eval duration: 1.2279436588287354s
+prompt eval rate:     1959.3732845161192 tokens/s
+eval count:           18 token(s)
+eval duration:        1.3395788669586182s
+eval rate:            13.437058798088705 tokens/s
+Predicted: 1. Pittsburgh Pirates, 2. New York Mets, 3. Baltimore Orioles
+F1: 0.7222, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Anna Benson's husband?...
+Sub-Q 2: ✓ CORRECT - What team did Kris Benson play for in Major League...
+
+✓ Main question 20: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 21/50: What is the record label for the singer who originally sang You Belong To Me.
+================================================================================
+
+Sub-question 1/2
+Question: Who originally sang the song You Belong To Me?
+Ground Truth: Joni James
+ Joni James
+prompt eval count:    2344 token(s)
+prompt eval duration: 1.2179555892944336s
+prompt eval rate:     1924.5365106932088 tokens/s
+eval count:           4 token(s)
+eval duration:        0.246351957321167s
+eval rate:            16.236932084875757 tokens/s
+Predicted: Joni James
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What record label was Joni James signed to when she released 'You Belong To Me' in 1952?
+Ground Truth: MGM Records
+ M-G-M Records
+prompt eval count:    3105 token(s)
+prompt eval duration: 1.715433120727539s
+prompt eval rate:     1810.0385042601522 tokens/s
+eval count:           5 token(s)
+eval duration:        0.339310884475708s
+eval rate:            14.735748921599834 tokens/s
+Predicted: M-G-M Records
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who originally sang the song You Belong To Me?...
+Sub-Q 2: ✓ CORRECT - What record label was Joni James signed to when sh...
+
+✓ Main question 21: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 22/50: When did the crowning of the person under whom the Chapter House was built happen?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the person under whom the Chapter House was built?
+Ground Truth: Henry III
+ Henry III
+prompt eval count:    2575 token(s)
+prompt eval duration: 1.3769996166229248s
+prompt eval rate:     1870.007782801826 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1610581874847412s
+eval rate:            18.62680840292098 tokens/s
+Predicted: Henry III
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: When was Henry III crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral, and then again at Westminster Abbey in 1220.
+1216 and 1220
+prompt eval count:    2938 token(s)
+prompt eval duration: 1.5331580638885498s
+prompt eval rate:     1916.3060021015372 tokens/s
+eval count:           11 token(s)
+eval duration:        0.8279614448547363s
+eval rate:            13.28564278971942 tokens/s
+Predicted: 1216 and 1220
+F1: 0.4615, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the person under whom the Chapter House wa...
+Sub-Q 2: ✓ CORRECT - When was Henry III crowned?...
+
+✓ Main question 22: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 23/50: What group was the performer of Be the One a member of?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 24/50: What month did the person who retained trust in Longchamp go away to the Holy Land?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 25/50: What record label does the artist who sang you belong to me belong to?
+================================================================================
+
+Sub-question 1/2
+Question: Who sang the song 'You Belong to Me'?
+Ground Truth: Joni James sang the song 'You Belong to Me'.
+ Sue Thompson
+prompt eval count:    2382 token(s)
+prompt eval duration: 1.2273783683776855s
+prompt eval rate:     1940.7218355562686 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15743231773376465s
+eval rate:            19.055807874678752 tokens/s
+Predicted: Sue Thompson
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label is Joni James signed to?
+Ground Truth: Joni James was signed to MGM Records.
+ M-G-M Records
+prompt eval count:    2821 token(s)
+prompt eval duration: 1.509880781173706s
+prompt eval rate:     1868.3594328600534 tokens/s
+eval count:           5 token(s)
+eval duration:        0.32730698585510254s
+eval rate:            15.276178682643454 tokens/s
+Predicted: M-G-M Records
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who sang the song 'You Belong to Me'?...
+Sub-Q 2: ✓ CORRECT - What record label is Joni James signed to?...
+
+✗ Main question 25: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 26/50: What place does the administrative territorial entity that Juba is located in share a border with?
+================================================================================
+
+Sub-question 1/2
+Question: What is the administrative territorial entity that contains Juba?
+Ground Truth: Central Equatoria
+ Central Equatoria
+prompt eval count:    1614 token(s)
+prompt eval duration: 0.8273379802703857s
+prompt eval rate:     1950.8351344785622 tokens/s
+eval count:           4 token(s)
+eval duration:        0.21865320205688477s
+eval rate:            18.293809385692697 tokens/s
+Predicted: Central Equatoria
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What places share a border with Central Equatoria?
+Ground Truth: Eastern Equatoria shares a border with Central Equatoria.
+1. Eastern Equatoria  
+2. Terekeka  
+3. Lafon
+prompt eval count:    1951 token(s)
+prompt eval duration: 1.061999797821045s
+prompt eval rate:     1837.1001614152458 tokens/s
+eval count:           18 token(s)
+eval duration:        1.2840280532836914s
+eval rate:            14.018385310171338 tokens/s
+Predicted: 1. Eastern Equatoria  
+2. Terekeka  
+3. Lafon
+F1: 0.3333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the administrative territorial entity that...
+Sub-Q 2: ✗ INCORRECT - What places share a border with Central Equatoria?...
+
+✗ Main question 26: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 27/50: Who played the monarch at the end of WW2 in The King's Speech?
+================================================================================
+
+Sub-question 1/1
+Question: Who played King George VI in The King's Speech?
+Ground Truth: Colin Firth
+ Colin Firth
+prompt eval count:    2359 token(s)
+prompt eval duration: 1.2197692394256592s
+prompt eval rate:     1933.972364404565 tokens/s
+eval count:           4 token(s)
+eval duration:        0.23586535453796387s
+eval rate:            16.95882809001598 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played King George VI in The King's Speech?...
+
+✓ Main question 27: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 28/50: Who is the spouse of a cast member from King of the Mountain?
+================================================================================
+
+Sub-question 1/2
+Question: Who are the cast members of King of the Mountain?
+Ground Truth: The cast includes Harry Hamlin as Steve and Deborah Van Valkenburgh as Tina.
+1. Harry Hamlin as Steve 2. Deborah Van Valkenburgh as Tina
+prompt eval count:    2162 token(s)
+prompt eval duration: 1.0887629985809326s
+prompt eval rate:     1985.739782503537 tokens/s
+eval count:           18 token(s)
+eval duration:        1.3053476810455322s
+eval rate:            13.789429637307592 tokens/s
+Predicted: 1. Harry Hamlin as Steve 2. Deborah Van Valkenburgh as Tina
+F1: 0.8947, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is Harry Hamlin's spouse?
+Ground Truth: Lisa Rinna
+ Lisa Rinna
+prompt eval count:    2266 token(s)
+prompt eval duration: 1.1559858322143555s
+prompt eval rate:     1960.23163680073 tokens/s
+eval count:           4 token(s)
+eval duration:        0.23363208770751953s
+eval rate:            17.120935909315417 tokens/s
+Predicted: Lisa Rinna
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who are the cast members of King of the Mountain?...
+Sub-Q 2: ✓ CORRECT - Who is Harry Hamlin's spouse?...
+
+✓ Main question 28: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 29/50: Who is the spouse of the actress who played the fairy god mother in Shrek 2?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 30/50: Who has played for both West Ham Ajax and the team that Adam Hammill is on?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 31/50: Who is the spouse of Young Man Luther's author?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 32/50: When did the military instruction start in the university that Paulo Manalo attended?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 33/50: Who played king whose regal Name did Albert Adopt in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: What was the regnal name adopted by King George VI?
+Ground Truth: Albert assumed the regnal name 'George VI'.
+ George VI
+prompt eval count:    2265 token(s)
+prompt eval duration: 1.1566846370697021s
+prompt eval rate:     1958.182833428184 tokens/s
+eval count:           3 token(s)
+eval duration:        0.16574501991271973s
+eval rate:            18.10009134259226 tokens/s
+Predicted: George VI
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+ Colin Firth
+prompt eval count:    2551 token(s)
+prompt eval duration: 1.314460039138794s
+prompt eval rate:     1940.7208466157408 tokens/s
+eval count:           4 token(s)
+eval duration:        0.24033188819885254s
+eval rate:            16.64365070310756 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What was the regnal name adopted by King George VI...
+Sub-Q 2: ✓ CORRECT - Who played King George VI in the film 'The King's ...
+
+✓ Main question 33: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 34/50: What administrative territorial entity contains the place where KPRM is licensed to broadcast to?
+================================================================================
+
+Sub-question 1/1
+Question: Where is KPRM licensed to broadcast?
+Ground Truth: Park Rapids, Minnesota
+ Park Rapids, Minnesota
+prompt eval count:    1598 token(s)
+prompt eval duration: 0.8216385841369629s
+prompt eval rate:     1944.8940578642807 tokens/s
+eval count:           5 token(s)
+eval duration:        0.28999805450439453s
+eval rate:            17.241494976733478 tokens/s
+Predicted: Park Rapids, Minnesota
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is KPRM licensed to broadcast?...
+
+✓ Main question 34: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 35/50: Who is the child of the person who followed Tihomir of Serbia?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 36/50: What year did the author of Prince Prigio die?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of Prince Prigio?
+Ground Truth: The author of Prince Prigio is Andrew Lang.
+ Andrew Lang
+prompt eval count:    1998 token(s)
+prompt eval duration: 1.0056164264678955s
+prompt eval rate:     1986.8410533206286 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15151286125183105s
+eval rate:            19.8002992961348 tokens/s
+Predicted: Andrew Lang
+F1: 0.3636, EM: 0.0000
+
+Sub-question 2/2
+Question: What year did Andrew Lang die?
+Ground Truth: Andrew Lang died in 1912.
+1912
+prompt eval count:    2036 token(s)
+prompt eval duration: 1.0014443397521973s
+prompt eval rate:     2033.0635654736425 tokens/s
+eval count:           5 token(s)
+eval duration:        0.30231618881225586s
+eval rate:            16.53897536762444 tokens/s
+Predicted: 1912
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of Prince Prigio?...
+Sub-Q 2: ✓ CORRECT - What year did Andrew Lang die?...
+
+✓ Main question 36: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 37/50: In which county is Mark Dismore's birthplace located?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Mark Dismore born?
+Ground Truth: Greenfield, Indiana
+ Greenfield, Indiana
+prompt eval count:    2285 token(s)
+prompt eval duration: 1.1582469940185547s
+prompt eval rate:     1972.808918823229 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3122875690460205s
+eval rate:            16.010883863466148 tokens/s
+Predicted: Greenfield, Indiana
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which county is Greenfield, Indiana located in?
+Ground Truth: Greenfield, Indiana is located in Hancock County.
+ Hancock County
+prompt eval count:    2644 token(s)
+prompt eval duration: 1.3776960372924805s
+prompt eval rate:     1919.1461167269708 tokens/s
+eval count:           3 token(s)
+eval duration:        0.16097545623779297s
+eval rate:            18.636381409401938 tokens/s
+Predicted: Hancock County
+F1: 0.1818, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Mark Dismore born?...
+Sub-Q 2: ✓ CORRECT - Which county is Greenfield, Indiana located in?...
+
+✓ Main question 37: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 38/50: Who was the sibling of Nannina de' Medici?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the parents of Nannina de' Medici?
+Ground Truth: Nannina de' Medici's parents were Piero di Cosimo de' Medici and Lucrezia Tornabuoni.
+ Piero di Cosimo de' Medici and Lucrezia Tornabuoni
+prompt eval count:    1899 token(s)
+prompt eval duration: 0.9296250343322754s
+prompt eval rate:     2042.7591016457518 tokens/s
+eval count:           19 token(s)
+eval duration:        1.3489034175872803s
+eval rate:            14.085515502647626 tokens/s
+Predicted: Piero di Cosimo de' Medici and Lucrezia Tornabuoni
+F1: 0.7368, EM: 0.0000
+
+Sub-question 2/2
+Question: Based on Nannina de' Medici's parents Piero di Cosimo de' Medici and Lucrezia Tornabuoni, who were her siblings?
+Ground Truth: Nannina de' Medici's siblings were Lorenzo de' Medici and Giuliano de' Medici.
+1. Lorenzo de' Medici.
+prompt eval count:    2140 token(s)
+prompt eval duration: 1.0832412242889404s
+prompt eval rate:     1975.5525842406298 tokens/s
+eval count:           9 token(s)
+eval duration:        0.6105344295501709s
+eval rate:            14.74118340325379 tokens/s
+Predicted: 1. Lorenzo de' Medici.
+F1: 0.4615, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who were the parents of Nannina de' Medici?...
+Sub-Q 2: ✗ INCORRECT - Based on Nannina de' Medici's parents Piero di Cos...
+
+✗ Main question 38: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 39/50: What county is the NRHEG High School located in?
+================================================================================
+
+Sub-question 1/2
+Question: Where is NRHEG High School located?
+Ground Truth: NRHEG High School is located in New Richland, Minnesota.
+ New Richland, Minnesota
+prompt eval count:    1632 token(s)
+prompt eval duration: 0.8282701969146729s
+prompt eval rate:     1970.3715117110826 tokens/s
+eval count:           6 token(s)
+eval duration:        0.36463427543640137s
+eval rate:            16.454843672661006 tokens/s
+Predicted: New Richland, Minnesota
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is New Richland, Minnesota located in?
+Ground Truth: New Richland is located in Waseca County, Minnesota.
+ Waseca County
+prompt eval count:    1817 token(s)
+prompt eval duration: 0.9190359115600586s
+prompt eval rate:     1977.0718174827925 tokens/s
+eval count:           5 token(s)
+eval duration:        0.29750800132751465s
+eval rate:            16.806270680752885 tokens/s
+Predicted: Waseca County
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is NRHEG High School located?...
+Sub-Q 2: ✓ CORRECT - Which county is New Richland, Minnesota located in...
+
+✓ Main question 39: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 40/50: Who founded the political party of Dimuthu Bandara Abayakoon?
+================================================================================
+
+Sub-question 1/2
+Question: What is the name of the political party of Dimuthu Bandara Abayakoon?
+Ground Truth: Janatha Vimukthi Peramuna
+ Janatha Vimukthi Peramuna
+prompt eval count:    1798 token(s)
+prompt eval duration: 0.9115214347839355s
+prompt eval rate:     1972.5262965716136 tokens/s
+eval count:           10 token(s)
+eval duration:        0.6651649475097656s
+eval rate:            15.033864964529245 tokens/s
+Predicted: Janatha Vimukthi Peramuna
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who founded the Janatha Vimukthi Peramuna political party?
+Ground Truth: The Janatha Vimukthi Peramuna was founded by Rohana Wijeweera.
+ Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+prompt eval count:    2184 token(s)
+prompt eval duration: 1.1419012546539307s
+prompt eval rate:     1912.5997025564982 tokens/s
+eval count:           39 token(s)
+eval duration:        2.9678826332092285s
+eval rate:            13.140681361051179 tokens/s
+Predicted: Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+F1: 0.5833, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the name of the political party of Dimuthu...
+Sub-Q 2: ✓ CORRECT - Who founded the Janatha Vimukthi Peramuna politica...
+
+✓ Main question 40: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 41/50: When did military instruction start at the place where Larry Alcala was educated?
+================================================================================
+
+Sub-question 1/2
+Question: Where did Larry Alcala study?
+Ground Truth: Larry Alcala estudió en la Universidad de Filipinas, donde obtuvo un título de Licenciado en Bellas Artes en Pintura.
+ University of the Philippines
+prompt eval count:    1910 token(s)
+prompt eval duration: 0.9300065040588379s
+prompt eval rate:     2053.749077736731 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3034799098968506s
+eval rate:            16.4755551749684 tokens/s
+Predicted: University of the Philippines
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: When did military instruction begin at the University of the Philippines?
+Ground Truth: Military instruction began at the University of the Philippines in 1912.
+1912
+prompt eval count:    2341 token(s)
+prompt eval duration: 1.218472957611084s
+prompt eval rate:     1921.25724693121 tokens/s
+eval count:           5 token(s)
+eval duration:        0.31386709213256836s
+eval rate:            15.930309756360648 tokens/s
+Predicted: 1912
+F1: 0.3750, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where did Larry Alcala study?...
+Sub-Q 2: ✓ CORRECT - When did military instruction begin at the Univers...
+
+✓ Main question 41: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 42/50: Who has played for West Ham Ajax and the team that David Currie plays for?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 43/50: Who is the spouse of the creator of Absolutely Fabulous?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 44/50: What county shares a border with Cedar Springs?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Cedar Springs located?
+Ground Truth: Cedar Springs is an unincorporated community in west Falls County, Texas, United States, located on Farm-to-market road #2027.
+1. The question asks about the location of Cedar Springs.  
+2. Referring to the document titled "Cedar Springs, Texas," it states that Cedar Springs is an unincorporated community in west Falls County, Texas, United States.  
+3. Therefore, the location of Cedar Springs is in west Falls County, Texas.  
+
+Answer: Cedar Springs is located in west Falls County, Texas, United States.
+prompt eval count:    1658 token(s)
+prompt eval duration: 0.8298816680908203s
+prompt eval rate:     1997.8751956460283 tokens/s
+eval count:           86 token(s)
+eval duration:        6.191208362579346s
+eval rate:            13.890664788443846 tokens/s
+Predicted: 1. The question asks about the location of Cedar Springs.  
+2. Referring to the document titled "Cedar Springs, Texas," it states that Cedar Springs is an unincorporated community in west Falls County, Texas, United States.  
+3. Therefore, the location of Cedar Springs is in west Falls County, Texas.  
+
+Answer: Cedar Springs is located in west Falls County, Texas, United States.
+F1: 0.0606, EM: 0.0000
+
+Sub-question 2/2
+Question: Which counties share a border with Falls County, Texas?
+Ground Truth: Bell County shares a border with Falls County.
+ Bell County and Knox County share a border with Falls County, Texas.
+prompt eval count:    1816 token(s)
+prompt eval duration: 0.9183318614959717s
+prompt eval rate:     1977.4986321847944 tokens/s
+eval count:           15 token(s)
+eval duration:        1.0423076152801514s
+eval rate:            14.39114497495857 tokens/s
+Predicted: Bell County and Knox County share a border with Falls County, Texas.
+F1: 0.5882, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Cedar Springs located?...
+Sub-Q 2: ✗ INCORRECT - Which counties share a border with Falls County, T...
+
+✗ Main question 44: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 45/50: Bancroft's county borders what county?
+================================================================================
+
+Sub-question 1/3
+Question: Where is Bancroft located?
+Ground Truth: Bancroft is located in Ontario, Canada.
+ Bancroft is located in Ontario, Canada.
+prompt eval count:    1819 token(s)
+prompt eval duration: 0.919273853302002s
+prompt eval rate:     1978.7357091319532 tokens/s
+eval count:           11 token(s)
+eval duration:        0.7461204528808594s
+eval rate:            14.742927844328216 tokens/s
+Predicted: Bancroft is located in Ontario, Canada.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/3
+Question: Which county is Bancroft, Ontario located in?
+Ground Truth: Bancroft, Ontario is located in Hastings County.
+ Hastings County
+prompt eval count:    1932 token(s)
+prompt eval duration: 0.9828135967254639s
+prompt eval rate:     1965.7847698048065 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1497020721435547s
+eval rate:            20.03980276988546 tokens/s
+Predicted: Hastings County
+F1: 0.2857, EM: 0.0000
+
+Sub-question 3/3
+Question: Which counties border Hastings County in Ontario?
+Ground Truth: Renfrew County and Haliburton County border Hastings County in Ontario.
+ Renfrew County, Haliburton County, and Prince Edward County.
+prompt eval count:    2425 token(s)
+prompt eval duration: 1.202660083770752s
+prompt eval rate:     2016.3635866227414 tokens/s
+eval count:           16 token(s)
+eval duration:        1.1825287342071533s
+eval rate:            13.530326610395202 tokens/s
+Predicted: Renfrew County, Haliburton County, and Prince Edward County.
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Bancroft located?...
+Sub-Q 2: ✓ CORRECT - Which county is Bancroft, Ontario located in?...
+Sub-Q 3: ✗ INCORRECT - Which counties border Hastings County in Ontario?...
+
+✗ Main question 45: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 46/50: Who is the father of Empress Wang's husband?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Empress Wang's husband?
+Ground Truth: Empress Wang's husband was Yang Pu (Emperor Rui), the final ruler of the Chinese state Wu during the Five Dynasties and Ten Kingdoms period.
+1. The question asks for the husband of Empress Wang.  
+2. From the document titled "Empress Wang (Yang Pu)," it is stated that Empress Wang was the wife of Yang Pu (Emperor Rui).  
+3. Therefore, the husband of Empress Wang is Yang Pu.  
+
+Answer: Yang Pu
+prompt eval count:    2360 token(s)
+prompt eval duration: 1.219224452972412s
+prompt eval rate:     1935.656715419733 tokens/s
+eval count:           68 token(s)
+eval duration:        5.264575958251953s
+eval rate:            12.916519875340288 tokens/s
+Predicted: 1. The question asks for the husband of Empress Wang.  
+2. From the document titled "Empress Wang (Yang Pu)," it is stated that Empress Wang was the wife of Yang Pu (Emperor Rui).  
+3. Therefore, the husband of Empress Wang is Yang Pu.  
+
+Answer: Yang Pu
+F1: 0.1765, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the father of Yang Pu (Emperor Rui of Wu)?
+Ground Truth: Yang Pu's father was Yang Xingmi, a late-Tang Dynasty warlord and military governor of Huainan Circuit.
+1. Yang Pu was the final ruler of the Wu state.  
+2. Empress Dowager Wang was the mother of Yang Pu.  
+3. Empress Dowager Wang was a concubine of Yang Xingmi.  
+4. Therefore, Yang Xingmi was the father of Yang Pu.  
+Answer: Yang Xingmi
+prompt eval count:    2649 token(s)
+prompt eval duration: 1.3897464275360107s
+prompt eval rate:     1906.1031188953064 tokens/s
+eval count:           71 token(s)
+eval duration:        5.704150676727295s
+eval rate:            12.44707652791802 tokens/s
+Predicted: 1. Yang Pu was the final ruler of the Wu state.  
+2. Empress Dowager Wang was the mother of Yang Pu.  
+3. Empress Dowager Wang was a concubine of Yang Xingmi.  
+4. Therefore, Yang Xingmi was the father of Yang Pu.  
+Answer: Yang Xingmi
+F1: 0.2000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Empress Wang's husband?...
+Sub-Q 2: ✓ CORRECT - Who was the father of Yang Pu (Emperor Rui of Wu)?...
+
+✓ Main question 46: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 47/50: Who played the king that was king of england in 1951 in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the king of England in 1951?
+Ground Truth: George VI was the King of the United Kingdom in 1951.
+ George VI
+prompt eval count:    2347 token(s)
+prompt eval duration: 1.218515157699585s
+prompt eval rate:     1926.11473494582 tokens/s
+eval count:           3 token(s)
+eval duration:        0.15796923637390137s
+eval rate:            18.9910394508664 tokens/s
+Predicted: George VI
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+ Colin Firth
+prompt eval count:    2766 token(s)
+prompt eval duration: 1.465919017791748s
+prompt eval rate:     1886.8709433667668 tokens/s
+eval count:           4 token(s)
+eval duration:        0.24522042274475098s
+eval rate:            16.31185508624453 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the king of England in 1951?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 47: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 48/50: Who is the spouse of the person who sang holding out for a hero in shrek 2?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 49/50: Who is the employer of the person Mach's principle was named after?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 50/50: Who has played for West Ham Ajax and the team from the city where Malcolm Graham died?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 27/36 (75.00%)
+Sub Questions: 58/67 (86.57%)
+Average F1: 0.6080
+Average EM: 0.2985
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_m0n16/Qwen3-32B/musique/nopreprocess

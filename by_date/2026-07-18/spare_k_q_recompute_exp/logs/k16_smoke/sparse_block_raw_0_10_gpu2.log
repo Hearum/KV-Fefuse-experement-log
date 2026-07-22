@@ -1,0 +1,213 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_block_raw rate=0.15 start=0 end=10
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_k16/sparse_block_raw/musique-v2/rate_0p15/seg_0_10
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:00<00:00, 139.60it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 144.92it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+storage_time: 1.2749693067744374
+select_time: 1.4973526410758495
+use_sparse_attention: True
+<think>
+
+</think>
+
+Maria Bello
+prompt eval count:    2543 token(s)
+prompt eval duration: 7.575678311754018s
+prompt eval rate:     335.67951216387013 tokens/s
+eval count:           8 token(s)
+eval duration:        2.193052291870117s
+eval rate:            3.6478838328009178 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who plays the wife of the producer of Here Comes the Boom in Grown Ups?
+batch: 1 preprocess: False reprocess_method: FusionRAG
+real answer: Maria Bello
+answer: Maria Bello
+storage_time: 0.6565416413359344
+select_time: 0.6041098283603787
+use_sparse_attention: True
+<think>
+
+</think>
+
+Manhattan Project
+prompt eval count:    2581 token(s)
+prompt eval duration: 6.247168878559023s
+prompt eval rate:     413.14714715945627 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1823904514312744s
+eval rate:            3.6657051879755844 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What was the person who provided evidence to suggest the existence of the neutron a participant of?
+batch: 2 preprocess: False reprocess_method: FusionRAG
+real answer: Manhattan Project
+answer: Manhattan Project
+storage_time: 0.6694298121146858
+select_time: 0.6034785420633852
+use_sparse_attention: True
+<think>
+
+</think>
+
+Merseyside
+prompt eval count:    2569 token(s)
+prompt eval duration: 6.307425707112998s
+prompt eval rate:     407.2977026273797 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1813607215881348s
+eval rate:            3.667435615222602 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In which borough was Callum McManaman born?
+batch: 3 preprocess: False reprocess_method: FusionRAG
+real answer: Knowsley
+answer: Merseyside
+storage_time: 0.6662397161126137
+select_time: 0.6087120100855827
+use_sparse_attention: True
+<think>
+
+</think>
+
+Sebastian Cabot
+prompt eval count:    2632 token(s)
+prompt eval duration: 6.363960970193148s
+prompt eval rate:     413.57890350482745 tokens/s
+eval count:           9 token(s)
+eval duration:        2.493307113647461s
+eval rate:            3.6096636273715568 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the child of the Italian navigator who sailed for England and explored the eastern coast of the continent Francisco Bojado's birthplace is located?
+batch: 4 preprocess: False reprocess_method: FusionRAG
+real answer: Sebastian Cabot
+answer: Sebastian Cabot
+storage_time: 0.6776346839033067
+select_time: 0.6085416949354112
+use_sparse_attention: True
+<think>
+
+</think>
+
+Larry Smith
+prompt eval count:    2646 token(s)
+prompt eval duration: 6.3778064786456525s
+prompt eval rate:     414.8761817812143 tokens/s
+eval count:           7 token(s)
+eval duration:        1.870131492614746s
+eval rate:            3.743052308163031 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the spouse of the actor who played hannibal smith in the a team?
+batch: 5 preprocess: False reprocess_method: FusionRAG
+real answer: Sherry Boucher
+answer: Larry Smith
+storage_time: 0.6914152032695711
+select_time: 0.6184415910393
+use_sparse_attention: True
+<think>
+
+</think>
+
+1984–85
+prompt eval count:    2731 token(s)
+prompt eval duration: 6.562761761248112s
+prompt eval rate:     416.13578236620555 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4291419982910156s
+eval rate:            3.4994176403253205 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When was the last time Peter Till's sports team beat the winner of the 1894-95 FA Cup?
+batch: 6 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 1984–85
+storage_time: 0.8214663066901267
+select_time: 0.5994656989350915
+use_sparse_attention: True
+<think>
+
+</think>
+
+Answer: The child of the cast member of Green Ice is not mentioned in the provided information.
+prompt eval count:    2569 token(s)
+prompt eval duration: 6.456182568334043s
+prompt eval rate:     397.9131588688804 tokens/s
+eval count:           24 token(s)
+eval duration:        7.17294716835022s
+eval rate:            3.345905028535155 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the child of the cast member of Green Ice?
+batch: 7 preprocess: False reprocess_method: FusionRAG
+real answer: Tatum O'Neal
+answer: Answer: The child of the cast member of Green Ice is not mentioned in the provided information.
+storage_time: 0.6728960238397121
+select_time: 0.6088174618780613
+use_sparse_attention: True
+<think>
+
+</think>
+
+3
+prompt eval count:    2623 token(s)
+prompt eval duration: 6.281754164490849s
+prompt eval rate:     417.55852446871427 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5611214637756348s
+eval rate:            3.8433908822755916 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: How many times did plague occur in the birthplace of La Silvia's composer?
+batch: 8 preprocess: False reprocess_method: FusionRAG
+real answer: 22
+answer: 3
+storage_time: 0.63598439283669
+select_time: 0.5974957658909261
+use_sparse_attention: True
+<think>
+
+</think>
+
+1922
+prompt eval count:    2435 token(s)
+prompt eval duration: 5.940436189994216s
+prompt eval rate:     409.90255969778724 tokens/s
+eval count:           9 token(s)
+eval duration:        2.492231607437134s
+eval rate:            3.611221354043847 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did military instruction start at the place where Larry Alcala was educated?
+batch: 9 preprocess: False reprocess_method: FusionRAG
+real answer: 1912
+answer: 1922
+storage_time: 0.7242928161285818
+select_time: 0.6011753780767322
+use_sparse_attention: True
+<think>
+
+</think>
+
+ATS-6
+prompt eval count:    2589 token(s)
+prompt eval duration: 6.316215136088431s
+prompt eval rate:     409.89737433220836 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1822354793548584s
+eval rate:            3.665965509077447 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the experimental satellite being forerunner to communication satellite of INSAT-4CR's manufacturer called?
+batch: 10 preprocess: False reprocess_method: FusionRAG
+real answer: ATS - 6 (Applications Technology Satellite - 6)
+answer: ATS-6
+
+--- Quality Metrics ---
+EM Score: 0.0200
+ROUGE Score: 0.0200

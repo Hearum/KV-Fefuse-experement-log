@@ -1,0 +1,1825 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=triviaqa-v2 method=preprocess_rate0 rate=0.0 start=170 end=270
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/preprocess_rate0/triviaqa-v2/rate_0p0/seg_170_270
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:15,  1.59s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:09,  1.07s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:07,  1.04it/s]Inference Embeddings:  36%|███▋      | 4/11 [00:03<00:06,  1.08it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.10it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.11it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.13it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.14it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.14it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.20it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.39it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.15it/s]
+embedding time: 10.337154388427734
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 202.70it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270]
+storage_time: 0.21025414112955332
+use_sparse_attention: True
+<think>
+
+</think>
+
+Mark Labbett
+prompt eval count:    59 token(s)
+prompt eval duration: 0.7509458330459893s
+prompt eval rate:     78.56758424330552 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1825008392333984s
+eval rate:            3.6655197817976526 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In the UK television quiz show ‘The Chase’ which chaser is is known as ‘The Beast’?
+batch: 171 preprocess: True reprocess_method: FusionRAG
+real answer: Mark Labbett
+answer: Mark Labbett
+storage_time: 0.07744270004332066
+use_sparse_attention: True
+<think>
+
+</think>
+
+1
+prompt eval count:    53 token(s)
+prompt eval duration: 0.4019435462541878s
+prompt eval rate:     131.85931331382287 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5502216815948486s
+eval rate:            3.870414193812123 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In the game of English billiards, how many points does a cannon score?
+batch: 172 preprocess: True reprocess_method: FusionRAG
+real answer: 2
+answer: 1
+storage_time: 0.09216857980936766
+use_sparse_attention: True
+<think>
+
+</think>
+
+Turkey
+prompt eval count:    53 token(s)
+prompt eval duration: 0.41627569776028395s
+prompt eval rate:     127.31946708673952 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5517635345458984s
+eval rate:            3.8665684986313424 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Tansu Ciller was the first woman Prime Minister of which European country?
+batch: 173 preprocess: True reprocess_method: FusionRAG
+real answer: Turkey
+answer: Turkey
+storage_time: 0.0807366999797523
+use_sparse_attention: True
+<think>
+
+</think>
+
+Tripper's Day
+prompt eval count:    51 token(s)
+prompt eval duration: 0.4050407647155225s
+prompt eval rate:     125.91325230145534 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480890989303589s
+eval rate:            3.6277289243274615 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which sitcom starred Leonard Rossiter in the role of a supermarket manager?
+batch: 174 preprocess: True reprocess_method: FusionRAG
+real answer: Tripper's Day
+answer: Tripper's Day
+storage_time: 0.09772782819345593
+use_sparse_attention: True
+<think>
+
+</think>
+
+St Barnabus
+prompt eval count:    53 token(s)
+prompt eval duration: 0.4222906120121479s
+prompt eval rate:     125.50598685455827 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1725263595581055s
+eval rate:            3.6823488768289145 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the name of the church in The Vicar of Dibley?
+batch: 175 preprocess: True reprocess_method: FusionRAG
+real answer: St Barnabus
+answer: St Barnabus
+storage_time: 0.14303725073114038
+use_sparse_attention: True
+<think>
+
+</think>
+
+32
+prompt eval count:    46 token(s)
+prompt eval duration: 0.4807940134778619s
+prompt eval rate:     95.67506813833917 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8611335754394531s
+eval rate:            3.761148631337303 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many points of the compass are there?
+batch: 176 preprocess: True reprocess_method: FusionRAG
+real answer: 32
+answer: 32
+storage_time: 0.08473610691726208
+use_sparse_attention: True
+<think>
+
+</think>
+
+Humber
+prompt eval count:    49 token(s)
+prompt eval duration: 0.40863139275461435s
+prompt eval rate:     119.91247091831929 tokens/s
+eval count:           7 token(s)
+eval duration:        1.86069655418396s
+eval rate:            3.762032011216342 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: At the mouth of which English river is Spurn Head?
+batch: 177 preprocess: True reprocess_method: FusionRAG
+real answer: Humber Estuary
+answer: Humber
+storage_time: 0.07986099878326058
+use_sparse_attention: True
+<think>
+
+</think>
+
+mathematics
+prompt eval count:    48 token(s)
+prompt eval duration: 0.40413162345066667s
+prompt eval rate:     118.77318481081319 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8620555400848389s
+eval rate:            3.759286363542661 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: For achievement in what field is the Fields Medal awarded?
+batch: 178 preprocess: True reprocess_method: FusionRAG
+real answer: Mathematic
+answer: mathematics
+storage_time: 0.08277412783354521
+use_sparse_attention: True
+<think>
+
+</think>
+
+Barrow-in-Furness
+prompt eval count:    55 token(s)
+prompt eval duration: 0.4078092980198562s
+prompt eval rate:     134.8669593044003 tokens/s
+eval count:           11 token(s)
+eval duration:        3.101407051086426s
+eval rate:            3.5467772590981537 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which Cumbrian town’s boundaries incorporate the 11-mile-long Walney Island?
+batch: 179 preprocess: True reprocess_method: FusionRAG
+real answer: History of Barrow-in-Furness
+answer: Barrow-in-Furness
+storage_time: 0.08146852999925613
+use_sparse_attention: True
+<think>
+
+</think>
+
+Edward Heath
+prompt eval count:    50 token(s)
+prompt eval duration: 0.40564326709136367s
+prompt eval rate:     123.26101295485923 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8609745502471924s
+eval rate:            3.761470031425305 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was Prime Minister during the Queen's Silver Jubilee celebrations?
+batch: 180 preprocess: True reprocess_method: FusionRAG
+real answer: Callaghan
+answer: Edward Heath
+storage_time: 0.08172130677849054
+use_sparse_attention: True
+<think>
+
+</think>
+
+Michael Faraday
+prompt eval count:    50 token(s)
+prompt eval duration: 0.40581788402050734s
+prompt eval rate:     123.20797571718977 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1712687015533447s
+eval rate:            3.6844817936521306 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who discovered electromagnetic induction, so facilitating the transformer and dynamo?
+batch: 181 preprocess: True reprocess_method: FusionRAG
+real answer: Michael Faraday
+answer: Michael Faraday
+storage_time: 0.0898756105452776
+use_sparse_attention: True
+<think>
+
+</think>
+
+Polly James starred alongside Nerys Hughes in the first series of The Liver Birds.
+prompt eval count:    51 token(s)
+prompt eval duration: 0.41414035065099597s
+prompt eval rate:     123.14665769667704 tokens/s
+eval count:           23 token(s)
+eval duration:        6.824733734130859s
+eval rate:            3.3700948485324442 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who starred alongside Polly James in the first series of The Liver Birds?
+batch: 182 preprocess: True reprocess_method: FusionRAG
+real answer: Pauline Collins
+answer: Polly James starred alongside Nerys Hughes in the first series of The Liver Birds.
+storage_time: 0.1601529000326991
+use_sparse_attention: True
+<think>
+
+</think>
+
+Ralph Vaughan Williams
+prompt eval count:    65 token(s)
+prompt eval duration: 0.5966556840576231s
+prompt eval rate:     108.9405527120102 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4808528423309326s
+eval rate:            3.627784706304417 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Winner in a poll of Classic FM's most popular piece of music in 2016, which composer also wrote A London Symphony
+batch: 183 preprocess: True reprocess_method: FusionRAG
+real answer: Ralph Vaughan Williams
+answer: Ralph Vaughan Williams
+storage_time: 0.07251713704317808
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Lord Mayor of London
+prompt eval count:    43 token(s)
+prompt eval duration: 0.39518282376229763s
+prompt eval rate:     108.81039714890161 tokens/s
+eval count:           10 token(s)
+eval duration:        2.791916847229004s
+eval rate:            3.581768565179535 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who resides in Mansion House?
+batch: 184 preprocess: True reprocess_method: FusionRAG
+real answer: Lord Mayor of London
+answer: The Lord Mayor of London
+storage_time: 0.09340156335383654
+use_sparse_attention: True
+<think>
+
+</think>
+
+Polonius
+prompt eval count:    46 token(s)
+prompt eval duration: 0.4163504424504936s
+prompt eval rate:     110.4838504055863 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1711721420288086s
+eval rate:            3.6846456552839513 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the father of Ophelia?
+batch: 185 preprocess: True reprocess_method: FusionRAG
+real answer: Polonius
+answer: Polonius
+storage_time: 0.0907221739180386
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Lady Vanishes
+prompt eval count:    56 token(s)
+prompt eval duration: 0.41592092206701636s
+prompt eval rate:     134.64097867857885 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4821648597717285s
+eval rate:            3.6258671395532054 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In which film does Iris Henderson search for Miss Froy on a train in fictional Bandrika?
+batch: 186 preprocess: True reprocess_method: FusionRAG
+real answer: Lady Vanishes
+answer: The Lady Vanishes
+storage_time: 0.08815721701830626
+use_sparse_attention: True
+<think>
+
+</think>
+
+The French ‘Appellation d’Origine Controlee’ (AOC) laws regulate the production of wine, including the geographical origin of the grapes, the types of grapes that may be used, maximum grape yields, 
+prompt eval count:    55 token(s)
+prompt eval duration: 0.41338555607944727s
+prompt eval rate:     133.0477061695637 tokens/s
+eval count:           50 token(s)
+eval duration:        15.195916414260864s
+eval rate:            3.290357661685784 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What do the French ‘Appellation d’Origine Controlee’ laws regulate?
+batch: 187 preprocess: True reprocess_method: FusionRAG
+real answer: Wines
+answer: The French ‘Appellation d’Origine Controlee’ (AOC) laws regulate the production of wine, including the geographical origin of the grapes, the types of grapes that may be used, maximum grape yields,
+storage_time: 0.07823598710820079
+use_sparse_attention: True
+<think>
+
+</think>
+
+Golda Meir
+prompt eval count:    55 token(s)
+prompt eval duration: 0.41885761823505163s
+prompt eval rate:     131.309537192506 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4806060791015625s
+eval rate:            3.6281455874121145 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was Israeli Prime Minister from 1969 to 1974?
+batch: 188 preprocess: True reprocess_method: FusionRAG
+real answer: Golda Meir
+answer: Golda Meir
+storage_time: 0.09010219620540738
+use_sparse_attention: True
+<think>
+
+</think>
+
+Battle of Camlann
+prompt eval count:    54 token(s)
+prompt eval duration: 0.41470175608992577s
+prompt eval rate:     130.21406156835855 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7920851707458496s
+eval rate:            3.581552634846272 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which was King Arthur’s last battle, where he either died or was fatally wounded?
+batch: 189 preprocess: True reprocess_method: FusionRAG
+real answer: Camlan
+answer: Battle of Camlann
+storage_time: 0.07860580086708069
+use_sparse_attention: True
+<think>
+
+</think>
+
+Fortuna
+prompt eval count:    56 token(s)
+prompt eval duration: 0.4035430527292192s
+prompt eval rate:     138.7708191759566 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8603782653808594s
+eval rate:            3.7626756505709604 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Also known as Annonaria; in Roman mythology, who was the personification of luck?
+batch: 190 preprocess: True reprocess_method: FusionRAG
+real answer: Fortuna
+answer: Fortuna
+storage_time: 0.08373659802600741
+use_sparse_attention: True
+<think>
+
+</think>
+
+Vera Brittain
+prompt eval count:    47 token(s)
+prompt eval duration: 0.40731479646638036s
+prompt eval rate:     115.38986653012338 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4818685054779053s
+eval rate:            3.6263000961313914 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the famous mother of politician Shirley Williams?
+batch: 191 preprocess: True reprocess_method: FusionRAG
+real answer: Vera Brittain
+answer: Vera Brittain
+storage_time: 0.07992715714499354
+use_sparse_attention: True
+<think>
+
+</think>
+
+Conkers
+prompt eval count:    58 token(s)
+prompt eval duration: 0.4058027225546539s
+prompt eval rate:     142.92659160804055 tokens/s
+eval count:           7 token(s)
+eval duration:        1.86027193069458s
+eval rate:            3.7628907282315285 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Cheeser, Six-er and Laggies are all terms used in which children’s game?
+batch: 192 preprocess: True reprocess_method: FusionRAG
+real answer: Conkers
+answer: Conkers
+storage_time: 0.08573094569146633
+use_sparse_attention: True
+<think>
+
+</think>
+
+13
+prompt eval count:    51 token(s)
+prompt eval duration: 0.40984846372157335s
+prompt eval rate:     124.43623561962737 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8614833354949951s
+eval rate:            3.760441937095612 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Triskaidekaphobia is the irrational fear of which number?
+batch: 193 preprocess: True reprocess_method: FusionRAG
+real answer: 13
+answer: 13
+storage_time: 0.08495249506086111
+use_sparse_attention: True
+<think>
+
+</think>
+
+Barbara Flynn
+prompt eval count:    49 token(s)
+prompt eval duration: 0.40876605082303286s
+prompt eval rate:     119.87296866102409 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1703710556030273s
+eval rate:            3.686005662187214 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In “Open All hours” which actress delivered the milk?
+batch: 194 preprocess: True reprocess_method: FusionRAG
+real answer: Barbara Flynn
+answer: Barbara Flynn
+storage_time: 0.08694172510877252
+use_sparse_attention: True
+<think>
+
+</think>
+
+Spy
+prompt eval count:    53 token(s)
+prompt eval duration: 0.41114753391593695s
+prompt eval rate:     128.90749822869267 tokens/s
+eval count:           6 token(s)
+eval duration:        1.551337480545044s
+eval rate:            3.8676303997322177 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In Christianity, ‘Holy Wednesday’ is also known as ‘what’ Wednesday?
+batch: 195 preprocess: True reprocess_method: FusionRAG
+real answer: Holy Wednesday
+answer: Spy
+storage_time: 0.07724341424182057
+use_sparse_attention: True
+<think>
+
+</think>
+
+212°F
+prompt eval count:    51 token(s)
+prompt eval duration: 0.4014657554216683s
+prompt eval rate:     127.03449624597141 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4819326400756836s
+eval rate:            3.6262063904061295 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the boiling point of water on the Farenheit scale?
+batch: 196 preprocess: True reprocess_method: FusionRAG
+real answer: 212 degrees
+answer: 212°F
+storage_time: 0.08419639384374022
+use_sparse_attention: True
+<think>
+
+</think>
+
+212°F
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4079935159534216s
+prompt eval rate:     117.64892853218751 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4814248085021973s
+eval rate:            3.6269485052148136 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the boiling point of water in degrees Fahrenheit?
+batch: 197 preprocess: True reprocess_method: FusionRAG
+real answer: 212
+answer: 212°F
+storage_time: 0.07577068265527487
+use_sparse_attention: True
+<think>
+
+</think>
+
+Sunday
+prompt eval count:    59 token(s)
+prompt eval duration: 0.4029853278771043s
+prompt eval rate:     146.40731539981235 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5508713722229004s
+eval rate:            3.868792800914275 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: If a month has a Friday the thirteenth then on what day of the week would that month begin?
+batch: 198 preprocess: True reprocess_method: FusionRAG
+real answer: Sunday
+answer: Sunday
+storage_time: 0.08820185484364629
+use_sparse_attention: True
+<think>
+
+</think>
+
+Anwar Sadat
+prompt eval count:    53 token(s)
+prompt eval duration: 0.4125627367757261s
+prompt eval rate:     128.46531030457902 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4825189113616943s
+eval rate:            3.6253500260601768 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the Egyptian president who was assassinated in 1981?
+batch: 199 preprocess: True reprocess_method: FusionRAG
+real answer: Sadat
+answer: Anwar Sadat
+storage_time: 0.08619254641234875
+use_sparse_attention: True
+<think>
+
+</think>
+
+Alan Paton
+prompt eval count:    51 token(s)
+prompt eval duration: 0.42253451934084296s
+prompt eval rate:     120.70019765381628 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171592950820923s
+eval rate:            3.683931648873596 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who wrote the novel Cry, the Beloved Country about South Africa?
+batch: 200 preprocess: True reprocess_method: FusionRAG
+real answer: Alan Paton
+answer: Alan Paton
+storage_time: 0.08405475690960884
+use_sparse_attention: True
+<think>
+
+</think>
+
+Alan Bennett
+prompt eval count:    52 token(s)
+prompt eval duration: 0.40838435804471374s
+prompt eval rate:     127.33102768423504 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8612124919891357s
+eval rate:            3.7609891563315707 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who wrote the 2004 play ‘The History Boys’?
+batch: 201 preprocess: True reprocess_method: FusionRAG
+real answer: Alan Bennet
+answer: Alan Bennett
+storage_time: 0.08771094679832458
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dorlcote Mill
+prompt eval count:    60 token(s)
+prompt eval duration: 0.41408444568514824s
+prompt eval rate:     144.89798065397844 tokens/s
+eval count:           10 token(s)
+eval duration:        2.791687488555908s
+eval rate:            3.582062835110827 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the name of the mill in the novel ‘The Mill on the Floss’ by George Eliot?
+batch: 202 preprocess: True reprocess_method: FusionRAG
+real answer: Dorlcote Mill
+answer: Dorlcote Mill
+storage_time: 0.11011619307100773
+use_sparse_attention: True
+<think>
+
+</think>
+
+Graham Hill
+prompt eval count:    54 token(s)
+prompt eval duration: 0.4400223810225725s
+prompt eval rate:     122.72103040420092 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171281337738037s
+eval rate:            3.6844603511095952 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who is the only driver to have completed and won the Triple Crown in motor racing?
+batch: 203 preprocess: True reprocess_method: FusionRAG
+real answer: Graham Hill
+answer: Graham Hill
+storage_time: 0.08518374105915427
+use_sparse_attention: True
+<think>
+
+</think>
+
+Albert II, Prince of Monaco
+prompt eval count:    54 token(s)
+prompt eval duration: 0.40949375880882144s
+prompt eval rate:     131.8701417015021 tokens/s
+eval count:           11 token(s)
+eval duration:        3.101958990097046s
+eval rate:            3.546146172504963 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Princess Charlene became the wife of which European prince in 2011?
+batch: 204 preprocess: True reprocess_method: FusionRAG
+real answer: Albert II, Prince of Monaco
+answer: Albert II, Prince of Monaco
+storage_time: 0.079900112003088
+use_sparse_attention: True
+<think>
+
+</think>
+
+kidney
+prompt eval count:    52 token(s)
+prompt eval duration: 0.4037940166890621s
+prompt eval rate:     128.7785302674312 tokens/s
+eval count:           7 token(s)
+eval duration:        1.862715244293213s
+eval rate:            3.757954964638771 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The peptide hormone renin is secreted by which organ of the body?
+batch: 205 preprocess: True reprocess_method: FusionRAG
+real answer: Human kidney
+answer: kidney
+storage_time: 0.11951962485909462
+use_sparse_attention: True
+<think>
+
+</think>
+
+Mercury
+prompt eval count:    48 token(s)
+prompt eval duration: 0.44347676495090127s
+prompt eval rate:     108.23565921275319 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8604321479797363s
+eval rate:            3.7625666744156065 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the Roman god of trickery and thieves?
+batch: 206 preprocess: True reprocess_method: FusionRAG
+real answer: Mercury
+answer: Mercury
+storage_time: 0.08649137243628502
+use_sparse_attention: True
+<think>
+
+</think>
+
+Edsel
+prompt eval count:    50 token(s)
+prompt eval duration: 0.4104818934574723s
+prompt eval rate:     121.80805243040571 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8617947101593018s
+eval rate:            3.7598130243914247 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which unsuccessful model of car was named after Henry Ford’s son?
+batch: 207 preprocess: True reprocess_method: FusionRAG
+real answer: Edsel
+answer: Edsel
+storage_time: 0.08119035884737968
+use_sparse_attention: True
+<think>
+
+</think>
+
+Lutetia
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4050551988184452s
+prompt eval rate:     118.50236743045649 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480942964553833s
+eval rate:            3.627652924144727 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What was the Roman name for the city of Paris?
+batch: 208 preprocess: True reprocess_method: FusionRAG
+real answer: Lutetia
+answer: Lutetia
+storage_time: 0.09291924024000764
+use_sparse_attention: True
+<think>
+
+</think>
+
+Jules
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4166153692640364s
+prompt eval rate:     115.21418445218055 tokens/s
+eval count:           7 token(s)
+eval duration:        1.860316514968872s
+eval rate:            3.762800546936567 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is fictional Inspector Maigret’s first name?
+batch: 209 preprocess: True reprocess_method: FusionRAG
+real answer: Jules
+answer: Jules
+storage_time: 0.08182305609807372
+use_sparse_attention: True
+<think>
+
+</think>
+
+calamares is a culinary specialty in Spain, specifically a type of sandwich known as a bocadillo de calamares, consisting of battered and fried squid, often served with a spicy tomato sauce and mayonnaise 
+prompt eval count:    46 token(s)
+prompt eval duration: 0.4048824370838702s
+prompt eval rate:     113.61322642520855 tokens/s
+eval count:           50 token(s)
+eval duration:        15.198302268981934s
+eval rate:            3.28984113587769 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In cooking, what is calamares?
+batch: 210 preprocess: True reprocess_method: FusionRAG
+real answer: Squid
+answer: calamares is a culinary specialty in Spain, specifically a type of sandwich known as a bocadillo de calamares, consisting of battered and fried squid, often served with a spicy tomato sauce and mayonnaise
+storage_time: 0.09612432634457946
+use_sparse_attention: True
+<think>
+
+</think>
+
+James Thurber
+prompt eval count:    56 token(s)
+prompt eval duration: 0.4211782901547849s
+prompt eval rate:     132.96031943958874 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1722428798675537s
+eval rate:            3.682829426738771 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who wrote the 1939 story ‘The Secret Life of Walter Mitty’?
+batch: 211 preprocess: True reprocess_method: FusionRAG
+real answer: James Thurber
+answer: James Thurber
+storage_time: 0.07617103168740869
+use_sparse_attention: True
+<think>
+
+</think>
+
+Alvin Toffler
+prompt eval count:    51 token(s)
+prompt eval duration: 0.4003106616437435s
+prompt eval rate:     127.40105344830273 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7939116954803467s
+eval rate:            3.5792111884483657 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who wrote the 1970 book ‘Future Shock’?
+batch: 212 preprocess: True reprocess_method: FusionRAG
+real answer: Heidi Toffler
+answer: Alvin Toffler
+storage_time: 0.08304952783510089
+use_sparse_attention: True
+<think>
+
+</think>
+
+two
+prompt eval count:    48 token(s)
+prompt eval duration: 0.40683318953961134s
+prompt eval rate:     117.98447431075796 tokens/s
+eval count:           6 token(s)
+eval duration:        1.551893711090088s
+eval rate:            3.8662441616478063 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Bezique is a card game for how many players?
+batch: 213 preprocess: True reprocess_method: FusionRAG
+real answer: 2
+answer: two
+storage_time: 0.07667778385803103
+use_sparse_attention: True
+<think>
+
+</think>
+
+Les Dawson
+prompt eval count:    50 token(s)
+prompt eval duration: 0.4011406204663217s
+prompt eval rate:     124.64456963215426 tokens/s
+eval count:           7 token(s)
+eval duration:        1.863159418106079s
+eval rate:            3.757059075017624 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Cosmo Smallpiece was a character played by which English comedian?
+batch: 214 preprocess: True reprocess_method: FusionRAG
+real answer: Les Dawson
+answer: Les Dawson
+storage_time: 0.07638308079913259
+use_sparse_attention: True
+<think>
+
+</think>
+
+Diamonds
+prompt eval count:    52 token(s)
+prompt eval duration: 0.40040538972243667s
+prompt eval rate:     129.86838173194099 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8604140281677246s
+eval rate:            3.762603320559846 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The volcanic rock Kimberlite is best known for sometimes containing which gemstone?
+batch: 215 preprocess: True reprocess_method: FusionRAG
+real answer: Diamond
+answer: Diamonds
+storage_time: 0.07044358784332871
+use_sparse_attention: True
+<think>
+
+</think>
+
+Caroline Lucas
+prompt eval count:    57 token(s)
+prompt eval duration: 0.39663068298250437s
+prompt eval rate:     143.71051571548313 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1713740825653076s
+eval rate:            3.684302978576879 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the name of the only British M.P. to be a member of the Green Party?
+batch: 216 preprocess: True reprocess_method: FusionRAG
+real answer: Caroline Lucas
+answer: Caroline Lucas
+storage_time: 0.13008255790919065
+use_sparse_attention: True
+<think>
+
+</think>
+
+Curragh
+prompt eval count:    51 token(s)
+prompt eval duration: 0.4545003599487245s
+prompt eval rate:     112.21113225466682 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1725192070007324s
+eval rate:            3.68236100017932 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: On whic racecourse does the Irish Derby take place each year?
+batch: 217 preprocess: True reprocess_method: FusionRAG
+real answer: Curragh
+answer: Curragh
+storage_time: 0.09264983469620347
+use_sparse_attention: True
+<think>
+
+</think>
+
+giant kingfisher
+prompt eval count:    54 token(s)
+prompt eval duration: 0.41689429292455316s
+prompt eval rate:     129.52923778635792 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7908577919006348s
+eval rate:            3.5831277498341407 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which antipodean bird is the largest member of the kingfisher family?
+batch: 218 preprocess: True reprocess_method: FusionRAG
+real answer: Dacelo novaeguinea
+answer: giant kingfisher
+storage_time: 0.09141089208424091
+use_sparse_attention: True
+<think>
+
+</think>
+
+nacre
+prompt eval count:    57 token(s)
+prompt eval duration: 0.4167930791154504s
+prompt eval rate:     136.75850885280937 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8604533672332764s
+eval rate:            3.7625237607593807 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the name of the lustrous substance that forms pearl and mother-of-pearl?
+batch: 219 preprocess: True reprocess_method: FusionRAG
+real answer: Mother of pearl
+answer: nacre
+storage_time: 0.0978988278657198
+use_sparse_attention: True
+<think>
+
+</think>
+
+two
+prompt eval count:    49 token(s)
+prompt eval duration: 0.42144617112353444s
+prompt eval rate:     116.2663309275554 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5508222579956055s
+eval rate:            3.8689153247999113 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many ventricles are there in the human heart?
+batch: 220 preprocess: True reprocess_method: FusionRAG
+real answer: 2
+answer: two
+storage_time: 0.071212122682482
+use_sparse_attention: True
+<think>
+
+</think>
+
+hormones
+prompt eval count:    52 token(s)
+prompt eval duration: 0.394956027623266s
+prompt eval rate:     131.66022636221388 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170621395111084s
+eval rate:            3.6855805521950966 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What are the chemicals produced by the endocrine glands to control body functions?
+batch: 221 preprocess: True reprocess_method: FusionRAG
+real answer: Hormone
+answer: hormones
+storage_time: 0.08081184467300773
+use_sparse_attention: True
+<think>
+
+</think>
+
+Detroit River
+prompt eval count:    52 token(s)
+prompt eval duration: 0.40486440993845463s
+prompt eval rate:     128.43806154239334 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8610756397247314s
+eval rate:            3.761265716763322 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The Ambassador Bridge, which connects the US with Canada, spans which river?
+batch: 222 preprocess: True reprocess_method: FusionRAG
+real answer: Detroit River
+answer: Detroit River
+storage_time: 0.08520658500492573
+use_sparse_attention: True
+<think>
+
+</think>
+
+30
+prompt eval count:    48 token(s)
+prompt eval duration: 0.40917918365448713s
+prompt eval rate:     117.3080203428223 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8610174655914307s
+eval rate:            3.7613832913574523 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many holes are on a classic cribbage board?
+batch: 223 preprocess: True reprocess_method: FusionRAG
+real answer: 121
+answer: 30
+storage_time: 0.08835798408836126
+use_sparse_attention: True
+<think>
+
+</think>
+
+canals
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4121887683868408s
+prompt eval rate:     116.45149912224636 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8618359565734863s
+eval rate:            3.7597297309064572 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: James Brindley is chiefly remembered for building what?
+batch: 224 preprocess: True reprocess_method: FusionRAG
+real answer: Canal
+answer: canals
+storage_time: 0.08634040085598826
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Third Foot and Mouth Regiment featured in the Carry On film *Carry On Regardless*.
+prompt eval count:    50 token(s)
+prompt eval duration: 0.41160369105637074s
+prompt eval rate:     121.47607294695592 tokens/s
+eval count:           23 token(s)
+eval duration:        6.823531627655029s
+eval rate:            3.3706885605664243 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The Third Foot and Mouth Regiment featured in which Carry On film?
+batch: 225 preprocess: True reprocess_method: FusionRAG
+real answer: 3rd Foot and Mouth Regiment
+answer: The Third Foot and Mouth Regiment featured in the Carry On film *Carry On Regardless*.
+storage_time: 0.09040638711303473
+use_sparse_attention: True
+<think>
+
+</think>
+
+England and Ireland
+prompt eval count:    60 token(s)
+prompt eval duration: 0.41691210586577654s
+prompt eval rate:     143.91522614917017 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1709909439086914s
+eval rate:            3.684953188057365 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In the Six Nations Rugby Championship, the Millennium Trophy is awarded to the winner of the game between which two countries?
+batch: 226 preprocess: True reprocess_method: FusionRAG
+real answer: England and Ireland
+answer: England and Ireland
+storage_time: 0.08735383208841085
+use_sparse_attention: True
+<think>
+
+</think>
+
+marshmallow
+prompt eval count:    52 token(s)
+prompt eval duration: 0.4114820663817227s
+prompt eval rate:     126.37245763163045 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8612112998962402s
+eval rate:            3.760991565218973 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Originating in the US, what is the filling in a MoonPie?
+batch: 227 preprocess: True reprocess_method: FusionRAG
+real answer: Marshmallow
+answer: marshmallow
+storage_time: 0.12779547087848186
+use_sparse_attention: True
+<think>
+
+</think>
+
+Fonda
+prompt eval count:    69 token(s)
+prompt eval duration: 0.574316187761724s
+prompt eval rate:     120.14287855773824 tokens/s
+eval count:           7 token(s)
+eval duration:        1.86075758934021s
+eval rate:            3.7619086119014944 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the surname of Dick and Jane in the 2005 film ‘Fun With Dick and Jane’, starring Jim Carrey and Tea Leoni?
+batch: 228 preprocess: True reprocess_method: FusionRAG
+real answer: Harper
+answer: Fonda
+storage_time: 0.10144946491345763
+use_sparse_attention: True
+<think>
+
+</think>
+
+the three participants (Dara Ó Briain, Rory McGrath, and Griff Rhys Jones)
+prompt eval count:    48 token(s)
+prompt eval duration: 0.42519091721624136s
+prompt eval rate:     112.8904641572774 tokens/s
+eval count:           26 token(s)
+eval duration:        7.75244402885437s
+eval rate:            3.353781066103639 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who is the narrator of Three Men in a Boat?
+batch: 229 preprocess: True reprocess_method: FusionRAG
+real answer: J
+answer: the three participants (Dara Ó Briain, Rory McGrath, and Griff Rhys Jones)
+storage_time: 0.07627479871734977
+use_sparse_attention: True
+<think>
+
+</think>
+
+Anne Aston
+prompt eval count:    59 token(s)
+prompt eval duration: 0.40261890972033143s
+prompt eval rate:     146.54055876556515 tokens/s
+eval count:           7 token(s)
+eval duration:        1.860058307647705s
+eval rate:            3.763322886825223 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the hostess of The Golden Shot between 1969 and 1975?
+batch: 230 preprocess: True reprocess_method: FusionRAG
+real answer: Anne Aston
+answer: Anne Aston
+storage_time: 0.08606162713840604
+use_sparse_attention: True
+<think>
+
+</think>
+
+Brian Blessed
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4104610630311072s
+prompt eval rate:     116.94166468687013 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8617243766784668s
+eval rate:            3.7599550651470843 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which actor appeared as Fancy Smith in Z-cars?
+batch: 231 preprocess: True reprocess_method: FusionRAG
+real answer: Brian Blessed
+answer: Brian Blessed
+storage_time: 0.07940144604071975
+use_sparse_attention: True
+<think>
+
+</think>
+
+Mike Leigh
+prompt eval count:    56 token(s)
+prompt eval duration: 0.4045976144261658s
+prompt eval rate:     138.40912057631354 tokens/s
+eval count:           7 token(s)
+eval duration:        1.861741542816162s
+eval rate:            3.7599203965827903 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: British actress Alison Steadman married which film director/writer in 1973?
+batch: 232 preprocess: True reprocess_method: FusionRAG
+real answer: Mike Leigh
+answer: Mike Leigh
+storage_time: 0.07392299408093095
+use_sparse_attention: True
+<think>
+
+</think>
+
+sarma
+prompt eval count:    47 token(s)
+prompt eval duration: 0.3975646519102156s
+prompt eval rate:     118.2197657014394 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8605527877807617s
+eval rate:            3.7623227064411813 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the dish of stuffed vine leaves called?
+batch: 233 preprocess: True reprocess_method: FusionRAG
+real answer: Dolmas
+answer: sarma
+storage_time: 0.08316140482202172
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dandy Nichols
+prompt eval count:    60 token(s)
+prompt eval duration: 0.40948426770046353s
+prompt eval rate:     146.5257757933934 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1700098514556885s
+eval rate:            3.6866192080342084 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: On TV, who played the long suffering wife of Alf Garnett in ‘Till Death Us Do Part’?
+batch: 234 preprocess: True reprocess_method: FusionRAG
+real answer: Dandy Nichols
+answer: Dandy Nichols
+storage_time: 0.07794980891048908
+use_sparse_attention: True
+<think>
+
+</think>
+
+Lamb Chop
+prompt eval count:    48 token(s)
+prompt eval duration: 0.40169375762343407s
+prompt eval rate:     119.49401525178138 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1713461875915527s
+eval rate:            3.684350310290025 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which hand puppet would you associate with Shari Lewis?
+batch: 235 preprocess: True reprocess_method: FusionRAG
+real answer: Lamb Chop
+answer: Lamb Chop
+storage_time: 0.08621657500043511
+use_sparse_attention: True
+<think>
+
+</think>
+
+Manic Street Preachers
+prompt eval count:    63 token(s)
+prompt eval duration: 0.4154416611418128s
+prompt eval rate:     151.6458407826717 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7913832664489746s
+eval rate:            3.5824532303374386 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Musician Richey Edwards, who went missing in February 1995, was the rhythm guitarist in which band?
+batch: 236 preprocess: True reprocess_method: FusionRAG
+real answer: Manic Street Preachers
+answer: Manic Street Preachers
+storage_time: 0.09317590296268463
+use_sparse_attention: True
+<think>
+
+</think>
+
+Biggles
+prompt eval count:    50 token(s)
+prompt eval duration: 0.41913789603859186s
+prompt eval rate:     119.29248219396578 tokens/s
+eval count:           7 token(s)
+eval duration:        1.861138105392456s
+eval rate:            3.7611394768170188 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the pilot hero of Captain W.E. Johns stories?
+batch: 237 preprocess: True reprocess_method: FusionRAG
+real answer: Biggles
+answer: Biggles
+storage_time: 0.09163833595812321
+use_sparse_attention: True
+<think>
+
+</think>
+
+Michael Henchard
+prompt eval count:    52 token(s)
+prompt eval duration: 0.41569499811157584s
+prompt eval rate:     125.09171444502873 tokens/s
+eval count:           9 token(s)
+eval duration:        2.481818437576294s
+eval rate:            3.626373252666002 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the first Mayor of Casterbridge in the Thomas Hardy novel?
+batch: 238 preprocess: True reprocess_method: FusionRAG
+real answer: Mayor of Casterbridge
+answer: Michael Henchard
+storage_time: 0.07117638876661658
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dinah
+prompt eval count:    51 token(s)
+prompt eval duration: 0.3955597095191479s
+prompt eval rate:     128.93123028631217 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170772075653076s
+eval rate:            3.685324723736002 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In the Bible, what was the name of Jacob’s only daughter?
+batch: 239 preprocess: True reprocess_method: FusionRAG
+real answer: Hamor
+answer: Dinah
+storage_time: 0.08366126520559192
+use_sparse_attention: True
+<think>
+
+</think>
+
+Joni Mitchell
+prompt eval count:    47 token(s)
+prompt eval duration: 0.40781556256115437s
+prompt eval rate:     115.24817666307688 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171961545944214s
+eval rate:            3.683306463200835 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who recorded the albums Blue and Court And Spark?
+batch: 240 preprocess: True reprocess_method: FusionRAG
+real answer: Joni Mitchell
+answer: Joni Mitchell
+storage_time: 0.10438448609784245
+use_sparse_attention: True
+<think>
+
+</think>
+
+Wolfgang
+prompt eval count:    51 token(s)
+prompt eval duration: 0.44574354542419314s
+prompt eval rate:     114.41556590901547 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170766592025757s
+eval rate:            3.685334033326176 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who was the German soldier in Rowan and Martin's Laugh In?
+batch: 241 preprocess: True reprocess_method: FusionRAG
+real answer: Very interesting ...
+answer: Wolfgang
+storage_time: 0.07591902697458863
+use_sparse_attention: True
+<think>
+
+</think>
+
+Free Willy
+prompt eval count:    49 token(s)
+prompt eval duration: 0.39987298799678683s
+prompt eval rate:     122.5389097810071 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1718804836273193s
+eval rate:            3.6834439373196872 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Michael Jackson's Will You Be There came from which movie?
+batch: 242 preprocess: True reprocess_method: FusionRAG
+real answer: Free Willy
+answer: Free Willy
+storage_time: 0.07718558143824339
+use_sparse_attention: True
+<think>
+
+</think>
+
+Answer: armadillo
+prompt eval count:    49 token(s)
+prompt eval duration: 0.4011456472799182s
+prompt eval rate:     122.15014753932492 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7916369438171387s
+eval rate:            3.582127691119649 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Pink Fairy and Nine Banded are species of which animal?
+batch: 243 preprocess: True reprocess_method: FusionRAG
+real answer: Dasypodidae
+answer: Answer: armadillo
+storage_time: 0.08513327594846487
+use_sparse_attention: True
+<think>
+
+</think>
+
+Richard Doddridge
+prompt eval count:    50 token(s)
+prompt eval duration: 0.40900069661438465s
+prompt eval rate:     122.2491805365827 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171797752380371s
+eval rate:            3.6835842523695876 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What were the first names of English novelist R.D.Blackmore?
+batch: 244 preprocess: True reprocess_method: FusionRAG
+real answer: Richard Doddridge
+answer: Richard Doddridge
+storage_time: 0.0792231117375195
+use_sparse_attention: True
+<think>
+
+</think>
+
+Terry Waite
+prompt eval count:    62 token(s)
+prompt eval duration: 0.4067033105529845s
+prompt eval rate:     152.44527986679068 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480715036392212s
+eval rate:            3.6279862329891004 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What was the name of the Archbishop of Canterbury’s envoy, who was taken hostage in Lebanon in 1987?
+batch: 245 preprocess: True reprocess_method: FusionRAG
+real answer: Terry Waite
+answer: Terry Waite
+storage_time: 0.15030158311128616
+use_sparse_attention: True
+<think>
+
+</think>
+
+deer
+prompt eval count:    50 token(s)
+prompt eval duration: 0.4744866471737623s
+prompt eval rate:     105.3770433748148 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5509417057037354s
+eval rate:            3.8686173554650254 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The pudu is the world’s smallest species of which animal?
+batch: 246 preprocess: True reprocess_method: FusionRAG
+real answer: Fawn
+answer: deer
+storage_time: 0.1697843186557293
+use_sparse_attention: True
+<think>
+
+</think>
+
+Floyd Patterson
+prompt eval count:    53 token(s)
+prompt eval duration: 0.5288851456716657s
+prompt eval rate:     100.21079327666095 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1714582443237305s
+eval rate:            3.684160181717648 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who became the youngest World Heavyweight Boxing Champion in 1956?
+batch: 247 preprocess: True reprocess_method: FusionRAG
+real answer: Floyd Patterson
+answer: Floyd Patterson
+storage_time: 0.11104744207113981
+use_sparse_attention: True
+<think>
+
+</think>
+
+Rifat Ozbek
+prompt eval count:    69 token(s)
+prompt eval duration: 0.5466671348549426s
+prompt eval rate:     126.2194040955271 tokens/s
+eval count:           10 token(s)
+eval duration:        2.792141914367676s
+eval rate:            3.5814798483352366 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Born in Gibraltar, which designer was named British Designer of the Year in 1987, 1994 and 1995?
+batch: 248 preprocess: True reprocess_method: FusionRAG
+real answer: John Galliano
+answer: Rifat Ozbek
+storage_time: 0.07815043674781919
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dominican Republic
+prompt eval count:    49 token(s)
+prompt eval duration: 0.40249063167721033s
+prompt eval rate:     121.7419640199155 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171332836151123s
+eval rate:            3.6843729652155486 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In which country was designer Oscar de la Renta born?
+batch: 249 preprocess: True reprocess_method: FusionRAG
+real answer: Dominican Rep
+answer: Dominican Republic
+storage_time: 0.07733468012884259
+use_sparse_attention: True
+<think>
+
+</think>
+
+Peter Powell
+prompt eval count:    86 token(s)
+prompt eval duration: 0.5137040093541145s
+prompt eval rate:     167.41158027582597 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8615763187408447s
+eval rate:            3.7602541080532994 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Anthea Turner presented Blue Peter in 1992. She is currently married to Grant Bovey, but she was first married to a Radio 1 DJ from 1990-98. Who was he?
+batch: 250 preprocess: True reprocess_method: FusionRAG
+real answer: Peter Powell
+answer: Peter Powell
+storage_time: 0.07878888305276632
+use_sparse_attention: True
+<think>
+
+</think>
+
+The oboe has one reed.
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4028237950988114s
+prompt eval rate:     119.15879991207012 tokens/s
+eval count:           14 token(s)
+eval duration:        4.031806230545044s
+eval rate:            3.4723890979521097 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many reeds does an oboe have?
+batch: 251 preprocess: True reprocess_method: FusionRAG
+real answer: 2
+answer: The oboe has one reed.
+storage_time: 0.09406425897032022
+use_sparse_attention: True
+<think>
+
+</think>
+
+Wales
+prompt eval count:    55 token(s)
+prompt eval duration: 0.41878294479101896s
+prompt eval rate:     131.33295107671134 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8602511882781982s
+eval rate:            3.7629326857084413 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: ‘Hen Wlad FY Nhadau’ is the national anthem of which European country?
+batch: 252 preprocess: True reprocess_method: FusionRAG
+real answer: Welsh nation
+answer: Wales
+storage_time: 0.13290045130997896
+use_sparse_attention: True
+<think>
+
+</think>
+
+Parvati Wasatch
+prompt eval count:    69 token(s)
+prompt eval duration: 0.5770249683409929s
+prompt eval rate:     119.57888095966143 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7936811447143555s
+eval rate:            3.5795065657081158 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: In the US television show ‘The Sopranos’, what did Janice Soprano change her name to after joining an ashram in Los Angeles?
+batch: 253 preprocess: True reprocess_method: FusionRAG
+real answer: Parvati Wasatch
+answer: Parvati Wasatch
+storage_time: 0.08077768189832568
+use_sparse_attention: True
+<think>
+
+</think>
+
+Northamptonshire
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4045637068338692s
+prompt eval rate:     118.6463323061028 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1698901653289795s
+eval rate:            3.686822553429616 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Fotheringhay Castle is in which English county?
+batch: 254 preprocess: True reprocess_method: FusionRAG
+real answer: Northamptonshire
+answer: Northamptonshire
+storage_time: 0.08798598079010844
+use_sparse_attention: True
+<think>
+
+</think>
+
+Canada
+prompt eval count:    59 token(s)
+prompt eval duration: 0.4141058288514614s
+prompt eval rate:     142.4756569199685 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5512025356292725s
+eval rate:            3.8679668593798393 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The Bay of Fundy, which has the highest tides in the world, is mainly in which country?
+batch: 255 preprocess: True reprocess_method: FusionRAG
+real answer: Canada
+answer: Canada
+storage_time: 0.07987833116203547
+use_sparse_attention: True
+<think>
+
+</think>
+
+William Perry
+prompt eval count:    50 token(s)
+prompt eval duration: 0.4043738548643887s
+prompt eval rate:     123.64795448204251 tokens/s
+eval count:           7 token(s)
+eval duration:        1.860060214996338s
+eval rate:            3.763319027827162 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which American footballer player was nicknamed ‘The Refrigerator’?
+batch: 256 preprocess: True reprocess_method: FusionRAG
+real answer: William Perry
+answer: William Perry
+storage_time: 0.13816775986924767
+use_sparse_attention: True
+<think>
+
+</think>
+
+Morgan Fairchild
+prompt eval count:    52 token(s)
+prompt eval duration: 0.4621148966252804s
+prompt eval rate:     112.52612798190262 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4807631969451904s
+eval rate:            3.6279158007030223 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which US soap actress's real name is Patsy Mclenny?
+batch: 257 preprocess: True reprocess_method: FusionRAG
+real answer: Morgan Fairchild
+answer: Morgan Fairchild
+storage_time: 0.13309779204428196
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Fifteenth Pelican
+prompt eval count:    46 token(s)
+prompt eval duration: 0.46817035088315606s
+prompt eval rate:     98.25483376558479 tokens/s
+eval count:           10 token(s)
+eval duration:        2.791637420654297s
+eval rate:            3.5821270792595357 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The Flying Nun was based on which book?
+batch: 258 preprocess: True reprocess_method: FusionRAG
+real answer: Fifteenth Pelican
+answer: The Fifteenth Pelican
+storage_time: 0.08888651197776198
+use_sparse_attention: True
+<think>
+
+</think>
+
+Edward Lear
+prompt eval count:    50 token(s)
+prompt eval duration: 0.4129866845905781s
+prompt eval rate:     121.06927866105033 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8600773811340332s
+eval rate:            3.763284297200749 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Who wrote the poem The Owl and the Pussycat?
+batch: 259 preprocess: True reprocess_method: FusionRAG
+real answer: Edward Lear
+answer: Edward Lear
+storage_time: 0.07777304109185934
+use_sparse_attention: True
+<think>
+
+</think>
+
+Air Force One
+prompt eval count:    53 token(s)
+prompt eval duration: 0.40211775340139866s
+prompt eval rate:     131.8021886665988 tokens/s
+eval count:           8 token(s)
+eval duration:        2.17086124420166s
+eval rate:            3.6851733483049123 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What is the name of the helicopter used to transport the President of the USA?
+batch: 260 preprocess: True reprocess_method: FusionRAG
+real answer: Marine Two
+answer: Air Force One
+storage_time: 0.1259328736923635
+use_sparse_attention: True
+<think>
+
+</think>
+
+10
+prompt eval count:    53 token(s)
+prompt eval duration: 0.46640738658607006s
+prompt eval rate:     113.63456395478734 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8614561557769775s
+eval rate:            3.7604968445137397 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many hurdles are in a 100 metre women’s hurdle race?
+batch: 261 preprocess: True reprocess_method: FusionRAG
+real answer: 10
+answer: 10
+storage_time: 0.08862833399325609
+use_sparse_attention: True
+<think>
+
+</think>
+
+Bedfordshire
+prompt eval count:    48 token(s)
+prompt eval duration: 0.4144671065732837s
+prompt eval rate:     115.81136171903407 tokens/s
+eval count:           8 token(s)
+eval duration:        2.17205810546875s
+eval rate:            3.6831427206564196 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Whipsnade Zoo is in which English county?
+batch: 262 preprocess: True reprocess_method: FusionRAG
+real answer: Bedfordshire, England
+answer: Bedfordshire
+storage_time: 0.07817500410601497
+use_sparse_attention: True
+<think>
+
+</think>
+
+Jekyll
+prompt eval count:    63 token(s)
+prompt eval duration: 0.4079533191397786s
+prompt eval rate:     154.4294335754971 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8602361679077148s
+eval rate:            3.7629630692930736 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What was the surname of British horticulturalist and garden designer Gertrude, who died in 1932?
+batch: 263 preprocess: True reprocess_method: FusionRAG
+real answer: Jekyll
+answer: Jekyll
+storage_time: 0.07833966705948114
+use_sparse_attention: True
+<think>
+
+</think>
+
+Brazil
+prompt eval count:    53 token(s)
+prompt eval duration: 0.4023595782928169s
+prompt eval rate:     131.72297332867092 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5513200759887695s
+eval rate:            3.867673791416489 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Pico da Neblina is the highest mountain in which South American country?
+batch: 264 preprocess: True reprocess_method: FusionRAG
+real answer: Brazil
+answer: Brazil
+storage_time: 0.08391586923971772
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Archies
+prompt eval count:    52 token(s)
+prompt eval duration: 0.4286051504313946s
+prompt eval rate:     121.32378705123253 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171858549118042s
+eval rate:            3.683481137963002 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Reggie, Jughead, Betty and Veronica were members of which fictional band?
+batch: 265 preprocess: True reprocess_method: FusionRAG
+real answer: The Archies
+answer: The Archies
+storage_time: 0.09611147921532393
+use_sparse_attention: True
+<think>
+
+</think>
+
+Puppet on a Chain
+prompt eval count:    73 token(s)
+prompt eval duration: 0.5314089874736965s
+prompt eval rate:     137.37065371633997 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7920801639556885s
+eval rate:            3.5815590573275187 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: Which 1969 novel by Alistair MacLean centres on a veteran Interpol natcotics expert named Paul Sherman and a violent struggle on the streets of Amsterdam ?
+batch: 266 preprocess: True reprocess_method: FusionRAG
+real answer: Puppet on a Chain
+answer: Puppet on a Chain
+storage_time: 0.07672529807314277
+use_sparse_attention: True
+<think>
+
+</think>
+
+four
+prompt eval count:    45 token(s)
+prompt eval duration: 0.39988646749407053s
+prompt eval rate:     112.53194008288679 tokens/s
+eval count:           6 token(s)
+eval duration:        1.550130844116211s
+eval rate:            3.87064099961241 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: How many Cardinal Virtues are there?
+batch: 267 preprocess: True reprocess_method: FusionRAG
+real answer: Four
+answer: four
+storage_time: 0.13238911563530564
+use_sparse_attention: True
+<think>
+
+</think>
+
+Panama Canal
+prompt eval count:    46 token(s)
+prompt eval duration: 0.46694039087742567s
+prompt eval rate:     98.5136452076069 tokens/s
+eval count:           8 token(s)
+eval duration:        2.17142391204834s
+eval rate:            3.684218431790902 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: The Pedro Miguel lock is on which canal?
+batch: 268 preprocess: True reprocess_method: FusionRAG
+real answer: The Panama Canal
+answer: Panama Canal
+storage_time: 0.09029479790478945
+use_sparse_attention: True
+<think>
+
+</think>
+
+Brazil
+prompt eval count:    47 token(s)
+prompt eval duration: 0.41428662929683924s
+prompt eval rate:     113.44802529536663 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5502989292144775s
+eval rate:            3.8702213404998904 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: From which country does the Lambada dance originate?
+batch: 269 preprocess: True reprocess_method: FusionRAG
+real answer: Brazil
+answer: Brazil
+storage_time: 0.10881018079817295
+use_sparse_attention: True
+<think>
+
+</think>
+
+Thomas
+prompt eval count:    58 token(s)
+prompt eval duration: 0.485611560754478s
+prompt eval rate:     119.43702474851997 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5503337383270264s
+eval rate:            3.8701344437454046 tokens/s
+Qwen3-32B triviaqa-v2 0.0 10
+question: What was the first name of 18th Century English cabinet maker and furniture designer Chippendale?
+batch: 270 preprocess: True reprocess_method: FusionRAG
+real answer: Thomas
+answer: Thomas
+
+--- Quality Metrics ---
+EM Score: 0.2963
+ROUGE Score: 0.3081

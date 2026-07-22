@@ -1,0 +1,395 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 140.67it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+{"sample": 0, "processed": 1}
+{"sample": 1, "processed": 2}
+{"sample": 2, "processed": 3}
+{"sample": 3, "processed": 4}
+{"sample": 4, "processed": 5}
+{"sample": 5, "processed": 6}
+{"sample": 6, "processed": 7}
+{"sample": 7, "processed": 8}
+{"sample": 8, "processed": 9}
+{"sample": 9, "processed": 10}
+{"sample": 10, "processed": 11}
+{"sample": 11, "processed": 12}
+{"sample": 12, "processed": 13}
+{"sample": 13, "processed": 14}
+{"sample": 14, "processed": 15}
+{"sample": 15, "processed": 16}
+{"sample": 16, "processed": 17}
+{"sample": 17, "processed": 18}
+{"sample": 18, "processed": 19}
+{"sample": 19, "processed": 20}
+{"sample": 20, "processed": 21}
+{"sample": 21, "processed": 22}
+{"sample": 22, "processed": 23}
+{"sample": 23, "processed": 24}
+{"sample": 24, "processed": 25}
+{"sample": 25, "processed": 26}
+{"sample": 26, "processed": 27}
+{"sample": 27, "processed": 28}
+{"sample": 28, "processed": 29}
+{"sample": 29, "processed": 30}
+{"sample": 30, "processed": 31}
+{"sample": 31, "processed": 32}
+{
+  "task": "teacher-forced future-query attention over X functional K/V ablation",
+  "samples": 32,
+  "prefix_tokens": 256,
+  "target_tokens": 128,
+  "query_tokens": 32,
+  "summary": {
+    "cachedK_cachedV": {
+      "logit_rel_error": 0.27435917989404607,
+      "output_rel_error": 0.8897189237863068
+    },
+    "fullK_cachedV": {
+      "logit_rel_error": 0.0,
+      "output_rel_error": 0.6031158749915206
+    },
+    "cachedK_fullV": {
+      "logit_rel_error": 0.27435917989404607,
+      "output_rel_error": 1.855022008224356
+    }
+  },
+  "by_layer": [
+    {
+      "layer": 0,
+      "cachedK_cachedV_logit_rel_mean": 0.0029958594474270815,
+      "cachedK_cachedV_out_rel_mean": 0.004150143431134476,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 5.938546942012404e-05,
+      "cachedK_fullV_logit_rel_mean": 0.0029958594474270815,
+      "cachedK_fullV_out_rel_mean": 0.004149509716858433
+    },
+    {
+      "layer": 1,
+      "cachedK_cachedV_logit_rel_mean": 0.07556096420786312,
+      "cachedK_cachedV_out_rel_mean": 0.2345490733578248,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.17564747628911398,
+      "cachedK_fullV_logit_rel_mean": 0.07556096420786312,
+      "cachedK_fullV_out_rel_mean": 0.1497964303153511
+    },
+    {
+      "layer": 2,
+      "cachedK_cachedV_logit_rel_mean": 0.14441440228714547,
+      "cachedK_cachedV_out_rel_mean": 0.4176935240608889,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.314057882605234,
+      "cachedK_fullV_logit_rel_mean": 0.14441440228714547,
+      "cachedK_fullV_out_rel_mean": 0.3775813077882408
+    },
+    {
+      "layer": 3,
+      "cachedK_cachedV_logit_rel_mean": 0.12605648598832256,
+      "cachedK_cachedV_out_rel_mean": 0.5313936260640755,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3461003886271053,
+      "cachedK_fullV_logit_rel_mean": 0.12605648598832256,
+      "cachedK_fullV_out_rel_mean": 0.5433372391406939
+    },
+    {
+      "layer": 4,
+      "cachedK_cachedV_logit_rel_mean": 0.239885372300362,
+      "cachedK_cachedV_out_rel_mean": 0.52334969557423,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3437915396579914,
+      "cachedK_fullV_logit_rel_mean": 0.239885372300362,
+      "cachedK_fullV_out_rel_mean": 0.6178353497286184
+    },
+    {
+      "layer": 5,
+      "cachedK_cachedV_logit_rel_mean": 0.1970289312323319,
+      "cachedK_cachedV_out_rel_mean": 0.5307943978238346,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3300589925987944,
+      "cachedK_fullV_logit_rel_mean": 0.1970289312323319,
+      "cachedK_fullV_out_rel_mean": 0.5434096059808174
+    },
+    {
+      "layer": 6,
+      "cachedK_cachedV_logit_rel_mean": 0.22325713430014477,
+      "cachedK_cachedV_out_rel_mean": 0.5427605001036595,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.30679489420225897,
+      "cachedK_fullV_logit_rel_mean": 0.22325713430014477,
+      "cachedK_fullV_out_rel_mean": 0.3987151930872659
+    },
+    {
+      "layer": 7,
+      "cachedK_cachedV_logit_rel_mean": 0.19298578098216596,
+      "cachedK_cachedV_out_rel_mean": 0.9288701784834337,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.36794052383352804,
+      "cachedK_fullV_logit_rel_mean": 0.19298578098216596,
+      "cachedK_fullV_out_rel_mean": 1.8159278670241141
+    },
+    {
+      "layer": 8,
+      "cachedK_cachedV_logit_rel_mean": 0.3677923032822204,
+      "cachedK_cachedV_out_rel_mean": 0.8641250670321163,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.32212910780452225,
+      "cachedK_fullV_logit_rel_mean": 0.3677923032822204,
+      "cachedK_fullV_out_rel_mean": 1.7027865510435474
+    },
+    {
+      "layer": 9,
+      "cachedK_cachedV_logit_rel_mean": 0.2757236081338635,
+      "cachedK_cachedV_out_rel_mean": 0.8566662660551934,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.4289724408336365,
+      "cachedK_fullV_logit_rel_mean": 0.2757236081338635,
+      "cachedK_fullV_out_rel_mean": 1.6397505279563418
+    },
+    {
+      "layer": 10,
+      "cachedK_cachedV_logit_rel_mean": 0.36955867768774814,
+      "cachedK_cachedV_out_rel_mean": 0.8883239509577661,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3435510735006365,
+      "cachedK_fullV_logit_rel_mean": 0.36955867768774814,
+      "cachedK_fullV_out_rel_mean": 1.6320297428618733
+    },
+    {
+      "layer": 11,
+      "cachedK_cachedV_logit_rel_mean": 0.3694634265102054,
+      "cachedK_cachedV_out_rel_mean": 0.8376176702596368,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3685552957778333,
+      "cachedK_fullV_logit_rel_mean": 0.3694634265102054,
+      "cachedK_fullV_out_rel_mean": 1.3592786147956555
+    },
+    {
+      "layer": 12,
+      "cachedK_cachedV_logit_rel_mean": 0.3356022868223558,
+      "cachedK_cachedV_out_rel_mean": 0.7949047486055127,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.422860545634729,
+      "cachedK_fullV_logit_rel_mean": 0.3356022868223558,
+      "cachedK_fullV_out_rel_mean": 1.261504398380832
+    },
+    {
+      "layer": 13,
+      "cachedK_cachedV_logit_rel_mean": 0.2927732300324764,
+      "cachedK_cachedV_out_rel_mean": 0.8529732726156901,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5192733822809862,
+      "cachedK_fullV_logit_rel_mean": 0.2927732300324764,
+      "cachedK_fullV_out_rel_mean": 1.2209382988692865
+    },
+    {
+      "layer": 14,
+      "cachedK_cachedV_logit_rel_mean": 0.3561792273148067,
+      "cachedK_cachedV_out_rel_mean": 0.8669002785315592,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.4656386630132311,
+      "cachedK_fullV_logit_rel_mean": 0.3561792273148067,
+      "cachedK_fullV_out_rel_mean": 1.3624355950424485
+    },
+    {
+      "layer": 15,
+      "cachedK_cachedV_logit_rel_mean": 0.2978309810252044,
+      "cachedK_cachedV_out_rel_mean": 0.8841585874740249,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5732594779560843,
+      "cachedK_fullV_logit_rel_mean": 0.2978309810252044,
+      "cachedK_fullV_out_rel_mean": 1.168176384691673
+    },
+    {
+      "layer": 16,
+      "cachedK_cachedV_logit_rel_mean": 0.44693926755574154,
+      "cachedK_cachedV_out_rel_mean": 0.965698448871079,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5684402176202298,
+      "cachedK_fullV_logit_rel_mean": 0.44693926755574154,
+      "cachedK_fullV_out_rel_mean": 1.4989261620567156
+    },
+    {
+      "layer": 17,
+      "cachedK_cachedV_logit_rel_mean": 0.27960210029844534,
+      "cachedK_cachedV_out_rel_mean": 0.7823562845867236,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6769830084584251,
+      "cachedK_fullV_logit_rel_mean": 0.27960210029844534,
+      "cachedK_fullV_out_rel_mean": 1.1155664934014073
+    },
+    {
+      "layer": 18,
+      "cachedK_cachedV_logit_rel_mean": 0.3268436863525094,
+      "cachedK_cachedV_out_rel_mean": 0.8263040013970533,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6554893844843475,
+      "cachedK_fullV_logit_rel_mean": 0.3268436863525094,
+      "cachedK_fullV_out_rel_mean": 1.1210155498711627
+    },
+    {
+      "layer": 19,
+      "cachedK_cachedV_logit_rel_mean": 0.27519578895485264,
+      "cachedK_cachedV_out_rel_mean": 0.8775881385862901,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5933711741606387,
+      "cachedK_fullV_logit_rel_mean": 0.27519578895485264,
+      "cachedK_fullV_out_rel_mean": 1.4534379652346388
+    },
+    {
+      "layer": 20,
+      "cachedK_cachedV_logit_rel_mean": 0.2857186815950583,
+      "cachedK_cachedV_out_rel_mean": 0.8973517662840028,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5731424698084847,
+      "cachedK_fullV_logit_rel_mean": 0.2857186815950583,
+      "cachedK_fullV_out_rel_mean": 1.5418195296938568
+    },
+    {
+      "layer": 21,
+      "cachedK_cachedV_logit_rel_mean": 0.30289384351034165,
+      "cachedK_cachedV_out_rel_mean": 0.9597776870525592,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.595130865924674,
+      "cachedK_fullV_logit_rel_mean": 0.30289384351034165,
+      "cachedK_fullV_out_rel_mean": 1.605119054806752
+    },
+    {
+      "layer": 22,
+      "cachedK_cachedV_logit_rel_mean": 0.2974547834209537,
+      "cachedK_cachedV_out_rel_mean": 0.8472936331323624,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5790656361870156,
+      "cachedK_fullV_logit_rel_mean": 0.2974547834209537,
+      "cachedK_fullV_out_rel_mean": 1.5539525086993558
+    },
+    {
+      "layer": 23,
+      "cachedK_cachedV_logit_rel_mean": 0.3222544048095872,
+      "cachedK_cachedV_out_rel_mean": 0.8445563624887598,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5120550212650835,
+      "cachedK_fullV_logit_rel_mean": 0.3222544048095872,
+      "cachedK_fullV_out_rel_mean": 1.6165789050573487
+    },
+    {
+      "layer": 24,
+      "cachedK_cachedV_logit_rel_mean": 0.2971748198572468,
+      "cachedK_cachedV_out_rel_mean": 0.8468598811924587,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5588220946051529,
+      "cachedK_fullV_logit_rel_mean": 0.2971748198572468,
+      "cachedK_fullV_out_rel_mean": 1.868709516466866
+    },
+    {
+      "layer": 25,
+      "cachedK_cachedV_logit_rel_mean": 0.3095105822889691,
+      "cachedK_cachedV_out_rel_mean": 0.9221273786074851,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6291443646139985,
+      "cachedK_fullV_logit_rel_mean": 0.3095105822889691,
+      "cachedK_fullV_out_rel_mean": 1.973088023853558
+    },
+    {
+      "layer": 26,
+      "cachedK_cachedV_logit_rel_mean": 0.3323575272674562,
+      "cachedK_cachedV_out_rel_mean": 0.8992010491258068,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6801839354073655,
+      "cachedK_fullV_logit_rel_mean": 0.3323575272674562,
+      "cachedK_fullV_out_rel_mean": 2.077570167914349
+    },
+    {
+      "layer": 27,
+      "cachedK_cachedV_logit_rel_mean": 0.3312549978161044,
+      "cachedK_cachedV_out_rel_mean": 0.8578731369477522,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6116117076484331,
+      "cachedK_fullV_logit_rel_mean": 0.3312549978161044,
+      "cachedK_fullV_out_rel_mean": 1.8209018669896866
+    },
+    {
+      "layer": 28,
+      "cachedK_cachedV_logit_rel_mean": 0.320571970962351,
+      "cachedK_cachedV_out_rel_mean": 0.889330314737433,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6024686665369384,
+      "cachedK_fullV_logit_rel_mean": 0.320571970962351,
+      "cachedK_fullV_out_rel_mean": 1.8463889389305739
+    },
+    {
+      "layer": 29,
+      "cachedK_cachedV_logit_rel_mean": 0.29919844009539437,
+      "cachedK_cachedV_out_rel_mean": 0.8915655393925508,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.7063262198443945,
+      "cachedK_fullV_logit_rel_mean": 0.29919844009539437,
+      "cachedK_fullV_out_rel_mean": 2.5175137288121467
+    },
+    {
+      "layer": 30,
+      "cachedK_cachedV_logit_rel_mean": 0.25569058557926505,
+      "cachedK_cachedV_out_rel_mean": 0.8989226601734501,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6456389786021693,
+      "cachedK_fullV_logit_rel_mean": 0.25569058557926505,
+      "cachedK_fullV_out_rel_mean": 1.9368862865470657
+    },
+    {
+      "layer": 31,
+      "cachedK_cachedV_logit_rel_mean": 0.28143141981785813,
+      "cachedK_cachedV_out_rel_mean": 0.8912083793790017,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6962496454505284,
+      "cachedK_fullV_logit_rel_mean": 0.28143141981785813,
+      "cachedK_fullV_out_rel_mean": 2.3011858110790295
+    },
+    {
+      "layer": 32,
+      "cachedK_cachedV_logit_rel_mean": 0.31191947641768025,
+      "cachedK_cachedV_out_rel_mean": 0.8847339439899837,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6567876529807242,
+      "cachedK_fullV_logit_rel_mean": 0.31191947641768025,
+      "cachedK_fullV_out_rel_mean": 2.0575789308464985
+    },
+    {
+      "layer": 33,
+      "cachedK_cachedV_logit_rel_mean": 0.30031516284326387,
+      "cachedK_cachedV_out_rel_mean": 0.8714703033944096,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.6471832813102241,
+      "cachedK_fullV_logit_rel_mean": 0.30031516284326387,
+      "cachedK_fullV_out_rel_mean": 2.2939192877162573
+    },
+    {
+      "layer": 34,
+      "cachedK_cachedV_logit_rel_mean": 0.36592031687797727,
+      "cachedK_cachedV_out_rel_mean": 0.8691679960947607,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.5541926784344905,
+      "cachedK_fullV_logit_rel_mean": 0.36592031687797727,
+      "cachedK_fullV_out_rel_mean": 1.560728328052765
+    },
+    {
+      "layer": 35,
+      "cachedK_cachedV_logit_rel_mean": 0.3994235641386158,
+      "cachedK_cachedV_out_rel_mean": 0.8195794594147308,
+      "fullK_cachedV_logit_rel_mean": 0.0,
+      "fullK_cachedV_out_rel_mean": 0.3465935561893416,
+      "cachedK_fullV_logit_rel_mean": 0.3994235641386158,
+      "cachedK_fullV_out_rel_mean": 1.4949669135992527
+    }
+  ],
+  "notes": "Restricted to query attention over X only. Q and full attention normalization are teacher-forced from full A+X+Q run."
+}

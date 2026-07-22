@@ -1,0 +1,114 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_working_kv_raw rate=0.15 start=150 end=175
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] CUDA_VISIBLE_DEVICES=2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_raw_sparse_top8/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_k_0p5__alpha_v_0p5/seg_150_175
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:00<00:00, 132.07it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 138.01it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175]
+storage_time: 0.8034848403185606
+select_time: 1.2298110984265804
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1992
+prompt eval count:    2603 token(s)
+prompt eval duration: 33.38026772160083s
+prompt eval rate:     77.98020140849748 tokens/s
+eval count:           9 token(s)
+eval duration:        2.5059609413146973s
+eval rate:            3.5914366627272125 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the country, whose co-official language was used by the director of Group Portrait with a Lady, first attend the Olympics as an independent team?
+batch: 151 preprocess: False reprocess_method: FusionRAG
+real answer: 2016
+answer: 1992
+storage_time: 0.6665287874639034
+select_time: 0.6012807162478566
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rabbi Menachem Mendel Schneersohn
+prompt eval count:    2532 token(s)
+prompt eval duration: 31.79011651314795s
+prompt eval rate:     79.64739603746969 tokens/s
+eval count:           17 token(s)
+eval duration:        4.975702524185181s
+eval rate:            3.4166029655850285 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who followed Menucha Rochel Slonim's father?
+batch: 152 preprocess: False reprocess_method: FusionRAG
+real answer: Menachem Mendel Schneersohn
+answer: Rabbi Menachem Mendel Schneersohn
+storage_time: 0.687846907414496
+select_time: 0.6323819337412715
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bart Millard
+prompt eval count:    2654 token(s)
+prompt eval duration: 33.217065984383225s
+prompt eval rate:     79.89868826005764 tokens/s
+eval count:           9 token(s)
+eval duration:        2.48622989654541s
+eval rate:            3.6199387725589673 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who started out his career on adult contemporary radio along with the performer of All That Echoes?
+batch: 153 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Bart Millard
+storage_time: 0.6608556229621172
+select_time: 0.6006870763376355
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The head of the developer of Simon is the National Security Agency (NSA).
+prompt eval count:    2558 token(s)
+prompt eval duration: 32.1198647627607s
+prompt eval rate:     79.63918960722735 tokens/s
+eval count:           23 token(s)
+eval duration:        6.838241338729858s
+eval rate:            3.3634378871266986 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the head of the developer of Simon?
+batch: 154 preprocess: False reprocess_method: FusionRAG
+real answer: ADM Michael S. Rogers
+answer: Answer: The head of the developer of Simon is the National Security Agency (NSA).
+storage_time: 0.6721843359991908
+select_time: 0.6279658349230886
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2003–04 season

@@ -1,0 +1,90 @@
+START k_only Mon Jun 29 16:39:00 CST 2026
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: MOTIVATION_EXPERIMENTS/kv_update_restore_debug/k_only_rate0p3_max1/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 138.97it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 1 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 10 documents for FAISS index...
+Corpus embeddings shape: (10, 1024)
+FAISS index built with 10 vectors
+Searching for top-10 similar documents for each document...
+Context rank computed: (10, 10)
+[WARNING] Rate=1 results file not found: MOTIVATION_EXPERIMENTS/kv_update_restore_debug/k_only_rate0p3_max1/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in MOTIVATION_EXPERIMENTS/kv_update_restore_debug/k_only_rate0p3_max1/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/1: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+storage_time: 0.060341537930071354
+select_time: 0.25922242319211364
+strict_reprocess_ablation: k_only
+[restore_check] mode=k_only selected=393 key_max_abs_diff_vs_before=15.875 value_max_abs_diff_vs_before=0
+ National Cycle Network
+prompt eval count:    420 token(s)
+prompt eval duration: 0.9352513481862843s
+prompt eval rate:     449.0771393321146 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3066837787628174s
+eval rate:            13.042750471303908 tokens/s
+Predicted: National Cycle Network
+F1: 0.2353, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What network is National Cycle Route 57 part of?...
+
+✗ Main question 1: Some sub-questions INCORRECT
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 0/1 (0.00%)
+Sub Questions: 0/1 (0.00%)
+Average F1: 0.2353
+Average EM: 0.0000
+================================================================================
+
+Results saved to MOTIVATION_EXPERIMENTS/kv_update_restore_debug/k_only_rate0p3_max1/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+END k_only Mon Jun 29 16:39:13 CST 2026

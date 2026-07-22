@@ -1,0 +1,659 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_pt_rank16_scale0.5
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_shared_adapter_rank_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_pt_rank16_scale0.5
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 214.40it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 50 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 835 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:01<00:03,  1.16s/it]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.10it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.30it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.84it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.49it/s]
+Corpus embeddings shape: (835, 1024)
+FAISS index built with 835 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:00<00:02,  1.42it/s]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.39it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.49it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  2.08it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.79it/s]
+Context rank computed: (835, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_shared_adapter_rank_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_pt_rank16_scale0.5/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_shared_adapter_rank_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_pt_rank16_scale0.5
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 31/50: Who is the spouse of Young Man Luther's author?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 32/50: When did the military instruction start in the university that Paulo Manalo attended?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 33/50: Who played king whose regal Name did Albert Adopt in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: What was the regnal name adopted by King George VI?
+Ground Truth: Albert assumed the regnal name 'George VI'.
+storage_time: 0.14442773698829114
+use_sparse_attention: True
+ Albert Frederick Arthur George
+prompt eval count:    34 token(s)
+prompt eval duration: 0.4455808610073291s
+prompt eval rate:     76.30489317502521 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4843454360961914s
+eval rate:            10.323210723940829 tokens/s
+Predicted: Albert Frederick Arthur George
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.14695367001695558
+use_sparse_attention: True
+ Colin Firth
+prompt eval count:    37 token(s)
+prompt eval duration: 0.2720185650396161s
+prompt eval rate:     136.0201278710937 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3565995693206787s
+eval rate:            11.217063463144362 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What was the regnal name adopted by King George VI...
+Sub-Q 2: ✓ CORRECT - Who played King George VI in the film 'The King's ...
+
+✗ Main question 33: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 34/50: What administrative territorial entity contains the place where KPRM is licensed to broadcast to?
+================================================================================
+
+Sub-question 1/1
+Question: Where is KPRM licensed to broadcast?
+Ground Truth: Park Rapids, Minnesota
+storage_time: 0.07051942602265626
+use_sparse_attention: True
+ Park Rapids, Minnesota.
+prompt eval count:    31 token(s)
+prompt eval duration: 0.19375328801106662s
+prompt eval rate:     159.99728478532643 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5947823524475098s
+eval rate:            10.087723644304841 tokens/s
+Predicted: Park Rapids, Minnesota.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is KPRM licensed to broadcast?...
+
+✓ Main question 34: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 35/50: Who is the child of the person who followed Tihomir of Serbia?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 36/50: What year did the author of Prince Prigio die?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of Prince Prigio?
+Ground Truth: The author of Prince Prigio is Andrew Lang.
+storage_time: 0.08898430404951796
+use_sparse_attention: True
+ Andrew Lang
+prompt eval count:    32 token(s)
+prompt eval duration: 0.21227852208539844s
+prompt eval rate:     150.74534948536424 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2382500171661377s
+eval rate:            12.591814412789843 tokens/s
+Predicted: Andrew Lang
+F1: 0.3636, EM: 0.0000
+
+Sub-question 2/2
+Question: What year did Andrew Lang die?
+Ground Truth: Andrew Lang died in 1912.
+storage_time: 0.08913814899278805
+use_sparse_attention: True
+1912
+prompt eval count:    29 token(s)
+prompt eval duration: 0.21241834398824722s
+prompt eval rate:     136.5230490715271 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4764375686645508s
+eval rate:            10.494554436617886 tokens/s
+Predicted: 1912
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of Prince Prigio?...
+Sub-Q 2: ✓ CORRECT - What year did Andrew Lang die?...
+
+✓ Main question 36: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 37/50: In which county is Mark Dismore's birthplace located?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Mark Dismore born?
+Ground Truth: Greenfield, Indiana
+storage_time: 0.13316753803519532
+use_sparse_attention: True
+100% English is a Channel 4 television programme shown in November 2006 in the United Kingdom. It looked at the genetic makeup of English people who considered themselves to be ethnically English and found that while all had an ethnic makeup similar to people of European descent, a minority discovered genetic markers from North Africa and the Middle East from several generations before they were born. The presenter was Andrew Graham-Dixon. The test results were interpreted by DNAPrint Genomics, based in Sarasota, Florida, United States.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2563451480236836s
+prompt eval rate:     117.02971650248796 tokens/s
+eval count:           109 token(s)
+eval duration:        12.858676195144653s
+eval rate:            8.476766841765379 tokens/s
+Predicted: 100% English is a Channel 4 television programme shown in November 2006 in the United Kingdom. It looked at the genetic makeup of English people who considered themselves to be ethnically English and found that while all had an ethnic makeup similar to people of European descent, a minority discovered genetic markers from North Africa and the Middle East from several generations before they were born. The presenter was Andrew Graham-Dixon. The test results were interpreted by DNAPrint Genomics, based in Sarasota, Florida, United States.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Greenfield, Indiana located in?
+Ground Truth: Greenfield, Indiana is located in Hancock County.
+storage_time: 0.10868356900755316
+use_sparse_attention: True
+ Hancock County
+prompt eval count:    32 token(s)
+prompt eval duration: 0.23137692705495283s
+prompt eval rate:     138.30246778409278 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2380974292755127s
+eval rate:            12.599884043807007 tokens/s
+Predicted: Hancock County
+F1: 0.1818, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Mark Dismore born?...
+Sub-Q 2: ✓ CORRECT - Which county is Greenfield, Indiana located in?...
+
+✗ Main question 37: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 38/50: Who was the sibling of Nannina de' Medici?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the parents of Nannina de' Medici?
+Ground Truth: Nannina de' Medici's parents were Piero di Cosimo de' Medici and Lucrezia Tornabuoni.
+storage_time: 0.09553587896516547
+use_sparse_attention: True
+ Piero di Cosimo de' Medici and Lucrezia Tornabuoni.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.21942662895889953s
+prompt eval rate:     159.50662034987465 tokens/s
+eval count:           20 token(s)
+eval duration:        2.2615485191345215s
+eval rate:            8.84349808583981 tokens/s
+Predicted: Piero di Cosimo de' Medici and Lucrezia Tornabuoni.
+F1: 0.7368, EM: 0.0000
+
+Sub-question 2/2
+Question: Based on Nannina de' Medici's parents Piero di Cosimo de' Medici and Lucrezia Tornabuoni, who were her siblings?
+Ground Truth: Nannina de' Medici's siblings were Lorenzo de' Medici and Giuliano de' Medici.
+storage_time: 0.08715092798229307
+use_sparse_attention: True
+1. Lorenzo de' Medici.
+prompt eval count:    57 token(s)
+prompt eval duration: 0.21732223097933456s
+prompt eval rate:     262.2833372505742 tokens/s
+eval count:           9 token(s)
+eval duration:        0.953230619430542s
+eval rate:            9.441576693556677 tokens/s
+Predicted: 1. Lorenzo de' Medici.
+F1: 0.4615, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who were the parents of Nannina de' Medici?...
+Sub-Q 2: ✗ INCORRECT - Based on Nannina de' Medici's parents Piero di Cos...
+
+✗ Main question 38: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 39/50: What county is the NRHEG High School located in?
+================================================================================
+
+Sub-question 1/2
+Question: Where is NRHEG High School located?
+Ground Truth: NRHEG High School is located in New Richland, Minnesota.
+storage_time: 0.06758481700671837
+use_sparse_attention: True
+ New Richland, Minnesota.
+prompt eval count:    31 token(s)
+prompt eval duration: 0.2279026560136117s
+prompt eval rate:     136.0229869288952 tokens/s
+eval count:           7 token(s)
+eval duration:        0.7144432067871094s
+eval rate:            9.797839679208915 tokens/s
+Predicted: New Richland, Minnesota.
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is New Richland, Minnesota located in?
+Ground Truth: New Richland is located in Waseca County, Minnesota.
+storage_time: 0.0757711729966104
+use_sparse_attention: True
+ Waseca County
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19950151297962293s
+prompt eval rate:     165.4122793713881 tokens/s
+eval count:           5 token(s)
+eval duration:        0.475879430770874s
+eval rate:            10.506863034404601 tokens/s
+Predicted: Waseca County
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is NRHEG High School located?...
+Sub-Q 2: ✓ CORRECT - Which county is New Richland, Minnesota located in...
+
+✓ Main question 39: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 40/50: Who founded the political party of Dimuthu Bandara Abayakoon?
+================================================================================
+
+Sub-question 1/2
+Question: What is the name of the political party of Dimuthu Bandara Abayakoon?
+Ground Truth: Janatha Vimukthi Peramuna
+storage_time: 0.07265413901768625
+use_sparse_attention: True
+ Janatha Vimukthi Peramuna
+prompt eval count:    41 token(s)
+prompt eval duration: 0.20642564602894709s
+prompt eval rate:     198.6187316776064 tokens/s
+eval count:           10 token(s)
+eval duration:        1.0742309093475342s
+eval rate:            9.3089855383828 tokens/s
+Predicted: Janatha Vimukthi Peramuna
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who founded the Janatha Vimukthi Peramuna political party?
+Ground Truth: The Janatha Vimukthi Peramuna was founded by Rohana Wijeweera.
+storage_time: 0.09387296001659706
+use_sparse_attention: True
+ Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+prompt eval count:    37 token(s)
+prompt eval duration: 0.21851971599971876s
+prompt eval rate:     169.32110601886203 tokens/s
+eval count:           39 token(s)
+eval duration:        4.515803575515747s
+eval rate:            8.63633666695652 tokens/s
+Predicted: Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+F1: 0.5833, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the name of the political party of Dimuthu...
+Sub-Q 2: ✓ CORRECT - Who founded the Janatha Vimukthi Peramuna politica...
+
+✓ Main question 40: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 41/50: When did military instruction start at the place where Larry Alcala was educated?
+================================================================================
+
+Sub-question 1/2
+Question: Where did Larry Alcala study?
+Ground Truth: Larry Alcala estudió en la Universidad de Filipinas, donde obtuvo un título de Licenciado en Bellas Artes en Pintura.
+storage_time: 0.11873081896919757
+use_sparse_attention: True
+ University of the Philippines
+prompt eval count:    29 token(s)
+prompt eval duration: 0.2894799949717708s
+prompt eval rate:     100.17963418448998 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47532224655151367s
+eval rate:            10.519179433058827 tokens/s
+Predicted: University of the Philippines
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: When did military instruction begin at the University of the Philippines?
+Ground Truth: Military instruction began at the University of the Philippines in 1912.
+storage_time: 0.21179170900722966
+use_sparse_attention: True
+1912
+prompt eval count:    34 token(s)
+prompt eval duration: 0.40020940999966115s
+prompt eval rate:     84.9555236595481 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4758448600769043s
+eval rate:            10.507626370476963 tokens/s
+Predicted: 1912
+F1: 0.3750, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where did Larry Alcala study?...
+Sub-Q 2: ✓ CORRECT - When did military instruction begin at the Univers...
+
+✓ Main question 41: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 42/50: Who has played for West Ham Ajax and the team that David Currie plays for?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 43/50: Who is the spouse of the creator of Absolutely Fabulous?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 44/50: What county shares a border with Cedar Springs?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Cedar Springs located?
+Ground Truth: Cedar Springs is an unincorporated community in west Falls County, Texas, United States, located on Farm-to-market road #2027.
+storage_time: 0.06406841904390603
+use_sparse_attention: True
+ Cedar Springs is located in Guadalupe County, Texas, United States, and is part of the San Antonio Metropolitan Statistical Area.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.18663998204283416s
+prompt eval rate:     150.02144606708094 tokens/s
+eval count:           28 token(s)
+eval duration:        3.199526071548462s
+eval rate:            8.751296090064036 tokens/s
+Predicted: Cedar Springs is located in Guadalupe County, Texas, United States, and is part of the San Antonio Metropolitan Statistical Area.
+F1: 0.3673, EM: 0.0000
+
+Sub-question 2/2
+Question: Which counties share a border with Falls County, Texas?
+Ground Truth: Bell County shares a border with Falls County.
+storage_time: 0.08190436603035778
+use_sparse_attention: True
+ Bell County and Crockett County share a border with Falls County, Texas.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.20498263102490455s
+prompt eval rate:     160.98924984522534 tokens/s
+eval count:           16 token(s)
+eval duration:        1.7778599262237549s
+eval rate:            8.999584142708382 tokens/s
+Predicted: Bell County and Crockett County share a border with Falls County, Texas.
+F1: 0.5882, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where is Cedar Springs located?...
+Sub-Q 2: ✗ INCORRECT - Which counties share a border with Falls County, T...
+
+✗ Main question 44: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 45/50: Bancroft's county borders what county?
+================================================================================
+
+Sub-question 1/3
+Question: Where is Bancroft located?
+Ground Truth: Bancroft is located in Ontario, Canada.
+storage_time: 0.06905545195331797
+use_sparse_attention: True
+ Bancroft is located in Ontario, Canada.
+prompt eval count:    29 token(s)
+prompt eval duration: 0.1916549539892003s
+prompt eval rate:     151.31359454258688 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1838979721069336s
+eval rate:            9.291341195917214 tokens/s
+Predicted: Bancroft is located in Ontario, Canada.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/3
+Question: Which county is Bancroft, Ontario located in?
+Ground Truth: Bancroft, Ontario is located in Hastings County.
+storage_time: 0.10910132998833433
+use_sparse_attention: True
+ Bancroft, Ontario is located in Hastings County.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.23376192501746118s
+prompt eval rate:     141.1692686802396 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3044893741607666s
+eval rate:            9.199001722585981 tokens/s
+Predicted: Bancroft, Ontario is located in Hastings County.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 3/3
+Question: Which counties border Hastings County in Ontario?
+Ground Truth: Renfrew County and Haliburton County border Hastings County in Ontario.
+storage_time: 0.0974929669755511
+use_sparse_attention: True
+ Renfrew County, Haliburton County, and the Saint Lawrence River drainage basin.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.22044636000646278s
+prompt eval rate:     136.08752713866764 tokens/s
+eval count:           19 token(s)
+eval duration:        2.134882688522339s
+eval rate:            8.899786438921788 tokens/s
+Predicted: Renfrew County, Haliburton County, and the Saint Lawrence River drainage basin.
+F1: 0.5517, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Bancroft located?...
+Sub-Q 2: ✓ CORRECT - Which county is Bancroft, Ontario located in?...
+Sub-Q 3: ✗ INCORRECT - Which counties border Hastings County in Ontario?...
+
+✗ Main question 45: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 46/50: Who is the father of Empress Wang's husband?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Empress Wang's husband?
+Ground Truth: Empress Wang's husband was Yang Pu (Emperor Rui), the final ruler of the Chinese state Wu during the Five Dynasties and Ten Kingdoms period.
+storage_time: 0.08386952598812059
+use_sparse_attention: True
+1. The question asks for the identity of Empress Wang's husband.  
+2. From the document titled "Empress Dowager Wang (Rui)," it is stated that Empress Wang was the mother of Yang Pu, the final ruler and the only emperor of the Wu state.  
+3. It also mentions that she was a concubine of the late-Tang Dynasty warlord Yang Xingmi.  
+4. Therefore, based on the information provided, Empress Wang's husband is Yang Xingmi.  
+
+Answer: Yang Xingmi
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20620439399499446s
+prompt eval rate:     145.48671548060338 tokens/s
+eval count:           114 token(s)
+eval duration:        13.399693489074707s
+eval rate:            8.50765729029165 tokens/s
+Predicted: 1. The question asks for the identity of Empress Wang's husband.  
+2. From the document titled "Empress Dowager Wang (Rui)," it is stated that Empress Wang was the mother of Yang Pu, the final ruler and the only emperor of the Wu state.  
+3. It also mentions that she was a concubine of the late-Tang Dynasty warlord Yang Xingmi.  
+4. Therefore, based on the information provided, Empress Wang's husband is Yang Xingmi.  
+
+Answer: Yang Xingmi
+F1: 0.2778, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the father of Yang Pu (Emperor Rui of Wu)?
+Ground Truth: Yang Pu's father was Yang Xingmi, a late-Tang Dynasty warlord and military governor of Huainan Circuit.
+storage_time: 0.09408251801505685
+use_sparse_attention: True
+1. The question asks for the father of Yang Pu (Emperor Rui of Wu).  
+2. From the document titled "Empress Dowager Wang (Rui)", it is stated that Yang Pu was the son of Yang Xingmi.  
+3. Therefore, the father of Yang Pu (Emperor Rui of Wu) was Yang Xingmi.  
+
+Answer: Yang Xingmi
+prompt eval count:    37 token(s)
+prompt eval duration: 0.2180172840016894s
+prompt eval rate:     169.71131518046656 tokens/s
+eval count:           83 token(s)
+eval duration:        9.719204664230347s
+eval rate:            8.539793415963906 tokens/s
+Predicted: 1. The question asks for the father of Yang Pu (Emperor Rui of Wu).  
+2. From the document titled "Empress Dowager Wang (Rui)", it is stated that Yang Pu was the son of Yang Xingmi.  
+3. Therefore, the father of Yang Pu (Emperor Rui of Wu) was Yang Xingmi.  
+
+Answer: Yang Xingmi
+F1: 0.1765, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Empress Wang's husband?...
+Sub-Q 2: ✓ CORRECT - Who was the father of Yang Pu (Emperor Rui of Wu)?...
+
+✗ Main question 46: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 47/50: Who played the king that was king of england in 1951 in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the king of England in 1951?
+Ground Truth: George VI was the King of the United Kingdom in 1951.
+storage_time: 0.09162646596087143
+use_sparse_attention: True
+1951, George VI
+prompt eval count:    35 token(s)
+prompt eval duration: 0.2149244659813121s
+prompt eval rate:     162.84790956764917 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8290157318115234s
+eval rate:            9.649997814298171 tokens/s
+Predicted: 1951, George VI
+F1: 0.5263, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.09995679097482935
+use_sparse_attention: True
+ Colin Firth
+prompt eval count:    38 token(s)
+prompt eval duration: 0.22368794301291928s
+prompt eval rate:     169.87951826176558 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3554668426513672s
+eval rate:            11.252807632252491 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the king of England in 1951?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 47: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 48/50: Who is the spouse of the person who sang holding out for a hero in shrek 2?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 49/50: Who is the employer of the person Mach's principle was named after?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 50/50: Who has played for West Ham Ajax and the team from the city where Malcolm Graham died?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 6/12 (50.00%)
+Sub Questions: 17/24 (70.83%)
+Average F1: 0.5424
+Average EM: 0.2500
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_shared_adapter_rank_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_pt_rank16_scale0.5

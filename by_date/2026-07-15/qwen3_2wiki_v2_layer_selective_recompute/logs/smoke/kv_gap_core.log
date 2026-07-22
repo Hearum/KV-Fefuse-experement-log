@@ -1,0 +1,65 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=2wikimqa-v2 method=online_qk rate=0.15 start=0 end=2
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-15/qwen3_2wiki_v2_layer_selective_recompute/results/kv_gap_core/online_qk/2wikimqa-v2/rate_0p15/seg_0_2
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:12,  1.30s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:09,  1.06s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:07,  1.00it/s]Inference Embeddings:  36%|███▋      | 4/11 [00:03<00:06,  1.05it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.07it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.08it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.08it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.07it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.05it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.04it/s]Inference Embeddings: 100%|██████████| 11/11 [00:10<00:00,  1.10it/s]Inference Embeddings: 100%|██████████| 11/11 [00:10<00:00,  1.05it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 11.362211465835571
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 177.64it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2]
+layer_selective_reprocess: keep_key_layers=[45, 46, 47, 48, 49, 50, 51, 52] keep_value_layers=[59, 60, 61, 62, 63]
+storage_time: 0.32044566000058694
+select_time: 0.6080395470007716
+use_sparse_attention: True
+<think>
+
+</think>
+
+9 May 1849 in Heian-kyō, Japan
+prompt eval count:    1155 token(s)
+prompt eval duration: 3.3640324420011893s
+prompt eval rate:     343.3379492954342 tokens/s
+eval count:           20 token(s)
+eval duration:        5.852747678756714s
+eval rate:            3.417198399410336 tokens/s
+Qwen3-32B 2wikimqa-v2 0.15 10
+question: Where was the wife of Francis I Rákóczi born?
+batch: 1 preprocess: True reprocess_method: FusionRAG
+real answer: Ozalj
+answer: 9 May 1849 in Heian-kyō, Japan
+layer_selective_reprocess: keep_key_layers=[45, 46, 47, 48, 49, 50, 51, 52] keep_value_layers=[59, 60, 61, 62, 63]
+storage_time: 0.24111969200021122
+select_time: 0.40925073499965947
+use_sparse_attention: True
+<think>
+
+</think>
+
+Elizabeth
+prompt eval count:    1122 token(s)
+prompt eval duration: 2.956667274999745s
+prompt eval rate:     379.4813198925458 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5359959602355957s
+eval rate:            3.9062602736791714 tokens/s
+Qwen3-32B 2wikimqa-v2 0.15 10
+question: Who is Sobe (Sister Of Saint Anne)'s grandchild?
+batch: 2 preprocess: True reprocess_method: FusionRAG
+real answer: John the Baptist
+answer: Elizabeth
+
+--- Quality Metrics ---
+EM Score: 0.0000
+ROUGE Score: 0.0000

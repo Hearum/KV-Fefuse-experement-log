@@ -1,0 +1,177 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_working_kv_raw rate=0.15 start=0 end=50
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] CUDA_VISIBLE_DEVICES=0
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_raw_sparse_top32/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_k_0p25__alpha_v_0p25/seg_0_50
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  35%|███▌      | 6/17 [00:00<00:00, 37.46it/s]Loading checkpoint shards:  65%|██████▍   | 11/17 [00:00<00:00, 42.97it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 55.92it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+storage_time: 0.8718810928985476
+select_time: 1.2744617937132716
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Maria Bello
+prompt eval count:    2543 token(s)
+prompt eval duration: 112.587441961281s
+prompt eval rate:     22.586888517056295 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1937718391418457s
+eval rate:            3.6466873433517226 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who plays the wife of the producer of Here Comes the Boom in Grown Ups?
+batch: 1 preprocess: False reprocess_method: FusionRAG
+real answer: Maria Bello
+answer: Maria Bello
+storage_time: 0.7363389767706394
+select_time: 0.620292660780251
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+James Chadwick was a participant of the Manhattan Project.
+prompt eval count:    2581 token(s)
+prompt eval duration: 113.39722111728042s
+prompt eval rate:     22.76069884755479 tokens/s
+eval count:           16 token(s)
+eval duration:        4.660436153411865s
+eval rate:            3.433155068176728 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What was the person who provided evidence to suggest the existence of the neutron a participant of?
+batch: 2 preprocess: False reprocess_method: FusionRAG
+real answer: Manhattan Project
+answer: James Chadwick was a participant of the Manhattan Project.
+storage_time: 0.6936927288770676
+select_time: 0.6059082224965096
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Merseyside
+prompt eval count:    2569 token(s)
+prompt eval duration: 113.1199228959158s
+prompt eval rate:     22.71041151932003 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166947841644287s
+eval rate:            3.691828592389918 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In which borough was Callum McManaman born?
+batch: 3 preprocess: False reprocess_method: FusionRAG
+real answer: Knowsley
+answer: Merseyside
+storage_time: 0.7019916912540793
+select_time: 0.624396619386971
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sebastian Cabot
+prompt eval count:    2632 token(s)
+prompt eval duration: 115.28944299463183s
+prompt eval rate:     22.82949706091088 tokens/s
+eval count:           9 token(s)
+eval duration:        2.476344347000122s
+eval rate:            3.634389543159749 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the child of the Italian navigator who sailed for England and explored the eastern coast of the continent Francisco Bojado's birthplace is located?
+batch: 4 preprocess: False reprocess_method: FusionRAG
+real answer: Sebastian Cabot
+answer: Sebastian Cabot
+storage_time: 0.7961630737408996
+select_time: 0.6279497472569346
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Larry Smith
+prompt eval count:    2646 token(s)
+prompt eval duration: 116.39326365664601s
+prompt eval rate:     22.73327439125309 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8570189476013184s
+eval rate:            3.7694822710569476 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the spouse of the actor who played hannibal smith in the a team?
+batch: 5 preprocess: False reprocess_method: FusionRAG
+real answer: Sherry Boucher
+answer: Larry Smith
+storage_time: 0.7275264076888561
+select_time: 0.6338299456983805
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2003–04
+prompt eval count:    2731 token(s)
+prompt eval duration: 119.64434297569096s
+prompt eval rate:     22.82598518305941 tokens/s
+eval count:           12 token(s)
+eval duration:        3.404329538345337s
+eval rate:            3.5249231500169516 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When was the last time Peter Till's sports team beat the winner of the 1894-95 FA Cup?
+batch: 6 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 2003–04
+storage_time: 1.6856759460642934
+select_time: 0.8820737302303314
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+There is no information provided about the children of the cast members of Green Ice in the given passage.
+prompt eval count:    2569 token(s)
+prompt eval duration: 114.61147785838693s
+prompt eval rate:     22.414857988082456 tokens/s
+eval count:           25 token(s)
+eval duration:        7.967748641967773s
+eval rate:            3.137649180889047 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the child of the cast member of Green Ice?
+batch: 7 preprocess: False reprocess_method: FusionRAG
+real answer: Tatum O'Neal
+answer: There is no information provided about the children of the cast members of Green Ice in the given passage.
+storage_time: 1.5578157529234886
+select_time: 0.6345933098345995
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+3

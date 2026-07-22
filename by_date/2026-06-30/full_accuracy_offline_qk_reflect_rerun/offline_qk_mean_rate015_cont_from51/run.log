@@ -1,0 +1,4047 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_qk_reflect_rerun/offline_qk_mean_rate015_cont_from51/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 139.90it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+  Main question 101: 16 unique documents, 2 sub-questions
+  Main question 102: 16 unique documents, 2 sub-questions
+  Main question 103: 19 unique documents, 2 sub-questions
+  Main question 104: 17 unique documents, 2 sub-questions
+  Main question 105: 10 unique documents, 1 sub-questions
+  Main question 106: 13 unique documents, 2 sub-questions
+  Main question 107: 30 unique documents, 4 sub-questions
+  Main question 108: 17 unique documents, 4 sub-questions
+  Main question 109: 13 unique documents, 4 sub-questions
+  Main question 110: 10 unique documents, 1 sub-questions
+  Main question 111: 28 unique documents, 4 sub-questions
+  Main question 112: 15 unique documents, 4 sub-questions
+  Main question 113: 19 unique documents, 2 sub-questions
+  Main question 114: 17 unique documents, 2 sub-questions
+  Main question 115: 20 unique documents, 2 sub-questions
+  Main question 116: 21 unique documents, 3 sub-questions
+  Main question 117: 25 unique documents, 4 sub-questions
+  Main question 118: 19 unique documents, 2 sub-questions
+  Main question 119: 10 unique documents, 1 sub-questions
+  Main question 120: 19 unique documents, 2 sub-questions
+  Main question 121: 10 unique documents, 1 sub-questions
+  Main question 122: 19 unique documents, 2 sub-questions
+  Main question 123: 14 unique documents, 4 sub-questions
+  Main question 124: 18 unique documents, 4 sub-questions
+  Main question 125: 14 unique documents, 4 sub-questions
+  Main question 126: 10 unique documents, 1 sub-questions
+  Main question 127: 14 unique documents, 2 sub-questions
+  Main question 128: 10 unique documents, 1 sub-questions
+  Main question 129: 10 unique documents, 1 sub-questions
+  Main question 130: 10 unique documents, 1 sub-questions
+  Main question 131: 15 unique documents, 2 sub-questions
+  Main question 132: 19 unique documents, 2 sub-questions
+  Main question 133: 14 unique documents, 4 sub-questions
+  Main question 134: 13 unique documents, 2 sub-questions
+  Main question 135: 12 unique documents, 3 sub-questions
+  Main question 136: 19 unique documents, 2 sub-questions
+  Main question 137: 17 unique documents, 2 sub-questions
+  Main question 138: 16 unique documents, 2 sub-questions
+  Main question 139: 18 unique documents, 2 sub-questions
+  Main question 140: 10 unique documents, 1 sub-questions
+  Main question 141: 30 unique documents, 4 sub-questions
+  Main question 142: 17 unique documents, 2 sub-questions
+  Main question 143: 14 unique documents, 2 sub-questions
+  Main question 144: 18 unique documents, 2 sub-questions
+  Main question 145: 16 unique documents, 2 sub-questions
+  Main question 146: 18 unique documents, 2 sub-questions
+  Main question 147: 19 unique documents, 2 sub-questions
+  Main question 148: 20 unique documents, 2 sub-questions
+  Main question 149: 23 unique documents, 4 sub-questions
+  Main question 150: 10 unique documents, 1 sub-questions
+  Main question 151: 18 unique documents, 2 sub-questions
+  Main question 152: 16 unique documents, 2 sub-questions
+  Main question 153: 15 unique documents, 2 sub-questions
+  Main question 154: 10 unique documents, 1 sub-questions
+  Main question 155: 10 unique documents, 1 sub-questions
+  Main question 156: 19 unique documents, 2 sub-questions
+  Main question 157: 17 unique documents, 2 sub-questions
+  Main question 158: 20 unique documents, 4 sub-questions
+  Main question 159: 18 unique documents, 2 sub-questions
+  Main question 160: 18 unique documents, 4 sub-questions
+  Main question 161: 19 unique documents, 2 sub-questions
+  Main question 162: 12 unique documents, 2 sub-questions
+  Main question 163: 10 unique documents, 1 sub-questions
+  Main question 164: 18 unique documents, 2 sub-questions
+  Main question 165: 18 unique documents, 2 sub-questions
+  Main question 166: 10 unique documents, 1 sub-questions
+  Main question 167: 14 unique documents, 2 sub-questions
+  Main question 168: 19 unique documents, 2 sub-questions
+  Main question 169: 29 unique documents, 4 sub-questions
+  Main question 170: 19 unique documents, 2 sub-questions
+  Main question 171: 21 unique documents, 3 sub-questions
+  Main question 172: 16 unique documents, 4 sub-questions
+  Main question 173: 18 unique documents, 4 sub-questions
+  Main question 174: 13 unique documents, 2 sub-questions
+  Main question 175: 19 unique documents, 2 sub-questions
+  Main question 176: 29 unique documents, 4 sub-questions
+  Main question 177: 10 unique documents, 1 sub-questions
+  Main question 178: 25 unique documents, 4 sub-questions
+  Main question 179: 18 unique documents, 2 sub-questions
+  Main question 180: 17 unique documents, 2 sub-questions
+  Main question 181: 17 unique documents, 2 sub-questions
+  Main question 182: 16 unique documents, 3 sub-questions
+  Main question 183: 22 unique documents, 4 sub-questions
+  Main question 184: 19 unique documents, 2 sub-questions
+  Main question 185: 21 unique documents, 4 sub-questions
+  Main question 186: 20 unique documents, 4 sub-questions
+  Main question 187: 13 unique documents, 2 sub-questions
+  Main question 188: 20 unique documents, 3 sub-questions
+  Main question 189: 18 unique documents, 2 sub-questions
+  Main question 190: 20 unique documents, 4 sub-questions
+  Main question 191: 23 unique documents, 4 sub-questions
+  Main question 192: 19 unique documents, 2 sub-questions
+  Main question 193: 26 unique documents, 3 sub-questions
+  Main question 194: 21 unique documents, 4 sub-questions
+  Main question 195: 17 unique documents, 4 sub-questions
+  Main question 196: 26 unique documents, 4 sub-questions
+  Main question 197: 16 unique documents, 4 sub-questions
+  Main question 198: 21 unique documents, 4 sub-questions
+  Main question 199: 25 unique documents, 4 sub-questions
+  Main question 200: 16 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 3408 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:12,  1.03it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:10,  1.19it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:08,  1.37it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:03<00:07,  1.33it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:06,  1.40it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.34it/s]Inference Embeddings:  50%|█████     | 7/14 [00:05<00:04,  1.41it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:04,  1.39it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:06<00:03,  1.46it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:07<00:02,  1.41it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:08<00:02,  1.37it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.35it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:09<00:00,  1.35it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.69it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.42it/s]
+Corpus embeddings shape: (3408, 1024)
+FAISS index built with 3408 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:08,  1.45it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:08,  1.42it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.51it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:06,  1.48it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:05,  1.53it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.50it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.56it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.52it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:05<00:03,  1.55it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.47it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.41it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.38it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:08<00:00,  1.38it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.72it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.52it/s]
+Context rank computed: (3408, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_qk_reflect_rerun/offline_qk_mean_rate015_cont_from51/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_qk_reflect_rerun/offline_qk_mean_rate015_cont_from51/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 52/200: What character in A League of their Own was played by the actress who played Thelma in the movie Thelma and Louise?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Thelma in Thelma and Louise?
+Ground Truth: Geena Davis played Thelma in Thelma and Louise.
+storage_time: 0.05909407790750265
+ Geena Davis
+prompt eval count:    183 token(s)
+prompt eval duration: 0.68615707103163s
+prompt eval rate:     266.7027823889673 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3041725158691406s
+eval rate:            13.150432045349085 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/2
+Question: What character did Geena Davis play in the movie A League of Their Own?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.07879563374444842
+ Thelma
+prompt eval count:    256 token(s)
+prompt eval duration: 0.17654666863381863s
+prompt eval rate:     1450.0415214912846 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29714322090148926s
+eval rate:            13.46152198210877 tokens/s
+Predicted: Thelma
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in Thelma and Louise?...
+Sub-Q 2: ✗ INCORRECT - What character did Geena Davis play in the movie A...
+
+✗ Main question 52: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 53/200: In A League of Their Own, who played the husband of the actress who played Thelma in Thelma and Louise?
+================================================================================
+
+Sub-question 1/3
+Question: Who played Thelma in Thelma and Louise?
+Ground Truth: Geena Davis played Thelma in Thelma and Louise.
+storage_time: 0.02168282913044095
+ Geena Davis
+prompt eval count:    183 token(s)
+prompt eval duration: 0.11685096146538854s
+prompt eval rate:     1566.0975117796092 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29720091819763184s
+eval rate:            13.458908620666142 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/3
+Question: Which character did Geena Davis play in the film A League of Their Own?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.022821533028036356
+ Thelma
+prompt eval count:    228 token(s)
+prompt eval duration: 0.11977799190208316s
+prompt eval rate:     1903.5216434951324 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2971959114074707s
+eval rate:            13.45913535975869 tokens/s
+Predicted: Thelma
+F1: 0.0000, EM: 0.0000
+
+Sub-question 3/3
+Question: Who played the husband of Dottie Hinson in the film A League of Their Own?
+Ground Truth: Bill Pullman played Bob, the husband of Dottie Hinson.
+storage_time: 0.0288896132260561
+ Bill Pullman
+prompt eval count:    286 token(s)
+prompt eval duration: 0.14251319644972682s
+prompt eval rate:     2006.8316978693956 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29814696311950684s
+eval rate:            13.416202392766523 tokens/s
+Predicted: Bill Pullman
+F1: 0.3333, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in Thelma and Louise?...
+Sub-Q 2: ✗ INCORRECT - Which character did Geena Davis play in the film A...
+Sub-Q 3: ✓ CORRECT - Who played the husband of Dottie Hinson in the fil...
+
+✗ Main question 53: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 54/200: Who is the child of Chiang Hsiao-wen's father?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Chiang Hsiao-wen's father?
+Ground Truth: Chiang Hsiao-wen's father is Chiang Ching-kuo.
+storage_time: 0.024572813883423805
+ Chiang Ching-kuo
+prompt eval count:    237 token(s)
+prompt eval duration: 0.12044692598283291s
+prompt eval rate:     1967.6716368318043 tokens/s
+eval count:           8 token(s)
+eval duration:        0.696922779083252s
+eval rate:            11.479033603297314 tokens/s
+Predicted: Chiang Ching-kuo
+F1: 0.5556, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Chiang Hsiao-wen's father?...
+
+✓ Main question 54: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 55/200: The actor who played Thelma in "Thelma and Louise" also played which character in "A League of Their Own"?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Thelma in the movie 'Thelma and Louise'?
+Ground Truth: Geena Davis played Thelma in the movie 'Thelma & Louise'.
+storage_time: 0.021097279619425535
+ Geena Davis
+prompt eval count:    172 token(s)
+prompt eval duration: 0.11675775097683072s
+prompt eval rate:     1473.1356039406026 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29740190505981445s
+eval rate:            13.449812970080023 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/2
+Question: Which character did Geena Davis play in the movie 'A League of Their Own'?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.03137455973774195
+ Thelma
+prompt eval count:    296 token(s)
+prompt eval duration: 0.1447625975124538s
+prompt eval rate:     2044.7270571705194 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29747629165649414s
+eval rate:            13.446449724534466 tokens/s
+Predicted: Thelma
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in the movie 'Thelma and Louise'...
+Sub-Q 2: ✗ INCORRECT - Which character did Geena Davis play in the movie ...
+
+✗ Main question 55: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 56/200: What is the movie starring Preity Zinta, Madhuri Dixit and the spouse of Kajol?
+================================================================================
+
+Sub-question 1/1
+Question: Movies starring Preity Zinta, Madhuri Dixit, and Ajay Devgn
+Ground Truth: The movie 'Yeh Raaste Hain Pyaar Ke' (2001) stars Preity Zinta, Madhuri Dixit, and Ajay Devgn.
+storage_time: 0.02485901489853859
+ Love Kiya Aur Lagg Gayi, Yeh Raaste Hain Pyaar Ke
+prompt eval count:    254 token(s)
+prompt eval duration: 0.12160467077046633s
+prompt eval rate:     2088.7355591746564 tokens/s
+eval count:           19 token(s)
+eval duration:        1.7840478420257568s
+eval rate:            10.649938612871399 tokens/s
+Predicted: Love Kiya Aur Lagg Gayi, Yeh Raaste Hain Pyaar Ke
+F1: 0.3913, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Movies starring Preity Zinta, Madhuri Dixit, and A...
+
+✓ Main question 56: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 57/200: The territory containing Bansaan Island is located at which island?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Bansaan Island located?
+Ground Truth: Bansaan Island is a boomerang-shaped island located off the mid-northern coast of Bohol Island, Philippines, and is part of the municipality of Talibon.
+storage_time: 0.023461025208234787
+ Bansaan is a boomerang-shaped island located off the mid-northern coast of Bohol Island.
+prompt eval count:    212 token(s)
+prompt eval duration: 0.11920015420764685s
+prompt eval rate:     1778.52118908081 tokens/s
+eval count:           23 token(s)
+eval duration:        2.179271697998047s
+eval rate:            10.553984627583876 tokens/s
+Predicted: Bansaan is a boomerang-shaped island located off the mid-northern coast of Bohol Island.
+F1: 0.7755, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Bansaan Island located?...
+
+✓ Main question 57: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 58/200: In which district was Ernie Watts born?
+================================================================================
+
+Sub-question 1/1
+Question: Where was Ernie Watts born?
+Ground Truth: Woolhampton in Berkshire
+storage_time: 0.022824447136372328
+ Berkshire
+prompt eval count:    191 token(s)
+prompt eval duration: 0.11831788113340735s
+prompt eval rate:     1614.2953049052758 tokens/s
+eval count:           2 token(s)
+eval duration:        0.10014915466308594s
+eval rate:            19.97021349534348 tokens/s
+Predicted: Berkshire
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Ernie Watts born?...
+
+✓ Main question 58: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 59/200: In which county was James Finch born?
+================================================================================
+
+Sub-question 1/2
+Question: Where was James Finch born?
+Ground Truth: Lynn Haven, Florida
+storage_time: 0.02185942605137825
+1785
+prompt eval count:    190 token(s)
+prompt eval duration: 0.13635248504579067s
+prompt eval rate:     1393.4472843395051 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3972160816192627s
+eval rate:            12.5876071774772 tokens/s
+Predicted: 1785
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Lynn Haven, Florida located in?
+Ground Truth: Bay County
+storage_time: 0.02438485622406006
+ Bay County
+prompt eval count:    197 token(s)
+prompt eval duration: 0.1468512392602861s
+prompt eval rate:     1341.4936162086306 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19805026054382324s
+eval rate:            15.147670049826468 tokens/s
+Predicted: Bay County
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was James Finch born?...
+Sub-Q 2: ✓ CORRECT - Which county is Lynn Haven, Florida located in?...
+
+✗ Main question 59: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 60/200: Who was married to the star of No Escape?
+================================================================================
+
+Sub-question 1/2
+Question: Who starred in the movie No Escape?
+Ground Truth: Valerie Hobson, Leslie Perrins, and Robert Cochran starred in the movie No Escape.
+storage_time: 0.022685418836772442
+ Freddie Stroma, Hrithik Roshan, Katrina Kaif, Steve Buscemi, Stacy Keach, Bruce Campbell, and Pam Grier starred in the movie No Escape.
+prompt eval count:    213 token(s)
+prompt eval duration: 0.11853687884286046s
+prompt eval rate:     1796.9091313966978 tokens/s
+eval count:           40 token(s)
+eval duration:        3.929731845855713s
+eval rate:            10.178811575192826 tokens/s
+Predicted: Freddie Stroma, Hrithik Roshan, Katrina Kaif, Steve Buscemi, Stacy Keach, Bruce Campbell, and Pam Grier starred in the movie No Escape.
+F1: 0.2353, EM: 0.0000
+
+Sub-question 2/2
+Question: Which of the actors from No Escape (Valerie Hobson, Leslie Perrins, or Robert Cochran) was married and to whom?
+Ground Truth: Valerie Hobson was married to John Profumo.
+storage_time: 0.023092729970812798
+ Leslie Perrins was married to Valerie Hobson.
+prompt eval count:    198 token(s)
+prompt eval duration: 0.12252335995435715s
+prompt eval rate:     1616.0183664058811 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9919919967651367s
+eval rate:            11.088799139378896 tokens/s
+Predicted: Leslie Perrins was married to Valerie Hobson.
+F1: 0.6000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who starred in the movie No Escape?...
+Sub-Q 2: ✗ INCORRECT - Which of the actors from No Escape (Valerie Hobson...
+
+✗ Main question 60: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 61/200: Who is the other child of Chian Hsiao-chang's father?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the father of Chian Hsiao-chang?
+Ground Truth: Chiang Ching-kuo
+storage_time: 0.022573226131498814
+ Chiang Ching-kuo
+prompt eval count:    210 token(s)
+prompt eval duration: 0.11840431112796068s
+prompt eval rate:     1773.5840696970145 tokens/s
+eval count:           8 token(s)
+eval duration:        0.694892168045044s
+eval rate:            11.51257758812649 tokens/s
+Predicted: Chiang Ching-kuo
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What are all the children of Chiang Ching-kuo?
+Ground Truth: Chiang Ching-kuo had four legitimate children with his wife Faina Ipatyevna Vakhreva (Chiang Fang-liang): Chiang Hsiao-wen (eldest son), Chiang Hsiao-chang (daughter), Chiang Hsiao-wu (second son), and Chiang Hsiao-yung (youngest son). He also had two half-brothers with other mothers: Winston Chang and John Chiang.
+storage_time: 0.029222205746918917
+ Chiang Hsiao-wen, Chiang Hsiao-chang, Chiang Hsiao-wu, Chiang Hsiao-yung, Winston Chang, John Chiang
+prompt eval count:    319 token(s)
+prompt eval duration: 0.15426206775009632s
+prompt eval rate:     2067.90952988377 tokens/s
+eval count:           39 token(s)
+eval duration:        3.7859303951263428s
+eval rate:            10.3012987376115 tokens/s
+Predicted: Chiang Hsiao-wen, Chiang Hsiao-chang, Chiang Hsiao-wu, Chiang Hsiao-yung, Winston Chang, John Chiang
+F1: 0.5472, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the father of Chian Hsiao-chang?...
+Sub-Q 2: ✓ CORRECT - What are all the children of Chiang Ching-kuo?...
+
+✓ Main question 61: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 62/200: Where was the spouse of Frances Tupper born?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 63/200: What is the birthplace of the person after whom São José dos Campos was named?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 64/200: In which county did Snappy Tomato Pizza form?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Snappy Tomato Pizza founded?
+Ground Truth: Fort Mitchell, Kentucky
+storage_time: 0.026870884001255035
+ Fort Mitchell, Kentucky
+prompt eval count:    239 token(s)
+prompt eval duration: 0.12269703717902303s
+prompt eval rate:     1947.8872961804557 tokens/s
+eval count:           5 token(s)
+eval duration:        0.40072154998779297s
+eval rate:            12.477492164203081 tokens/s
+Predicted: Fort Mitchell, Kentucky
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which county is Fort Mitchell, Kentucky located in?
+Ground Truth: Kenton County
+storage_time: 0.022013962268829346
+ Kenton County
+prompt eval count:    145 token(s)
+prompt eval duration: 0.11676058825105429s
+prompt eval rate:     1241.8573953072794 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2983403205871582s
+eval rate:            13.407507212326085 tokens/s
+Predicted: Kenton County
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Snappy Tomato Pizza founded?...
+Sub-Q 2: ✓ CORRECT - Which county is Fort Mitchell, Kentucky located in...
+
+✓ Main question 64: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 65/200: Where are the headquarters for the publisher of In the Shadow of Greatness?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the publisher of In the Shadow of Greatness?
+Ground Truth: The United States Naval Institute
+storage_time: 0.020822511054575443
+ United States Naval Institute
+prompt eval count:    158 token(s)
+prompt eval duration: 0.11570447590202093s
+prompt eval rate:     1365.5478646633783 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3976857662200928s
+eval rate:            12.572740652811875 tokens/s
+Predicted: United States Naval Institute
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where are the headquarters of the United States Naval Institute located?
+Ground Truth: Annapolis, Maryland
+storage_time: 0.02350133191794157
+ Annapolis, Maryland
+prompt eval count:    184 token(s)
+prompt eval duration: 0.11855991091579199s
+prompt eval rate:     1551.9579812326892 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49531078338623047s
+eval rate:            12.113606651122224 tokens/s
+Predicted: Annapolis, Maryland
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the publisher of In the Shadow of Greatness...
+Sub-Q 2: ✓ CORRECT - Where are the headquarters of the United States Na...
+
+✓ Main question 65: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 66/200: In the movie A League of their Own, who played the husband of the person who also played Thelma in the movie Thelma and Louise?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 67/200: What political party was the socialist candidate part of who ran for president in 1912?
+================================================================================
+
+Sub-question 1/1
+Question: Who was the socialist candidate in the 1912 US presidential election?
+Ground Truth: Eugene V. Debs was the Socialist Party candidate in the 1912 US presidential election.
+storage_time: 0.02632239181548357
+ Eugene V. Debs
+prompt eval count:    261 token(s)
+prompt eval duration: 0.14075549226254225s
+prompt eval rate:     1854.2793308070234 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4954054355621338s
+eval rate:            12.111292225108174 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.4348, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the socialist candidate in the 1912 US pre...
+
+✓ Main question 67: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 68/200: What league does the team that occupies the Rabat Ajax Football Ground belong to?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 69/200: Which county does Lloyd Dane's birthplace belong to?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Lloyd Dane born?
+Ground Truth: Lloyd Dane was born in Eldon, Missouri.
+storage_time: 0.021184383891522884
+ The birthplace of Lloyd Dane is not directly stated in the given documents. However, based on the information provided about other individuals and the context, we cannot infer Lloyd Dane's birthplace from the given documents.
+prompt eval count:    169 token(s)
+prompt eval duration: 0.11616891296580434s
+prompt eval rate:     1454.778181919866 tokens/s
+eval count:           43 token(s)
+eval duration:        4.177905559539795s
+eval rate:            10.292238392467766 tokens/s
+Predicted: The birthplace of Lloyd Dane is not directly stated in the given documents. However, based on the information provided about other individuals and the context, we cannot infer Lloyd Dane's birthplace from the given documents.
+F1: 0.1395, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county does Eldon, Missouri belong to?
+Ground Truth: Miller County
+storage_time: 0.02331450441852212
+ Miller County
+prompt eval count:    179 token(s)
+prompt eval duration: 0.11864995863288641s
+prompt eval rate:     1508.6393797560606 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19884181022644043s
+eval rate:            15.087370189315866 tokens/s
+Predicted: Miller County
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Lloyd Dane born?...
+Sub-Q 2: ✓ CORRECT - Which county does Eldon, Missouri belong to?...
+
+✗ Main question 69: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 70/200: The actor who plays the girl in Spiderman Homecoming is signed to which record label?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 71/200: What is the record label for the band which performed Pythons?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 72/200: Who is the voice of the character in Spongebob Squarepants with the same name as the creature that annelid larvae live like?
+================================================================================
+
+Sub-question 1/2
+Question: What creature do annelid larvae live like?
+Ground Truth: Annelid larvae live like plankton.
+storage_time: 0.024944189935922623
+ elateriform
+prompt eval count:    263 token(s)
+prompt eval duration: 0.13819800969213247s
+prompt eval rate:     1903.0664811012284 tokens/s
+eval count:           4 token(s)
+eval duration:        0.298633337020874s
+eval rate:            13.394351882825479 tokens/s
+Predicted: elateriform
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which character in Spongebob Squarepants has the same name as the creature that annelid larvae live like (plankton)?
+Ground Truth: Plankton
+storage_time: 0.030951340217143297
+ Patrick Star
+prompt eval count:    368 token(s)
+prompt eval duration: 0.15022259205579758s
+prompt eval rate:     2449.6981110758147 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1992652416229248s
+eval rate:            15.055310075988988 tokens/s
+Predicted: Patrick Star
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What creature do annelid larvae live like?...
+Sub-Q 2: ✗ INCORRECT - Which character in Spongebob Squarepants has the s...
+
+✗ Main question 72: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 73/200: Who is part of the band that performed Full Cooperation?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song Full Cooperation?
+Ground Truth: The song 'Full Cooperation' was performed by the American hip hop group Def Squad.
+storage_time: 0.024482657201588154
+ Def Squad
+prompt eval count:    257 token(s)
+prompt eval duration: 0.13761664647608995s
+prompt eval rate:     1867.5066322347288 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1997065544128418s
+eval rate:            15.022040757852512 tokens/s
+Predicted: Def Squad
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Who are the members of the American hip hop group Def Squad?
+Ground Truth: The American hip hop group Def Squad consists of Erick Sermon, Redman, and Keith Murray. Jamal is considered an honorary member.
+storage_time: 0.024033661000430584
+ Erick Sermon, Redman and Keith Murray
+prompt eval count:    197 token(s)
+prompt eval duration: 0.11951935011893511s
+prompt eval rate:     1648.2686678262808 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8957943916320801s
+eval rate:            11.163275963115419 tokens/s
+Predicted: Erick Sermon, Redman and Keith Murray
+F1: 0.5625, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song Full Cooperation?...
+Sub-Q 2: ✓ CORRECT - Who are the members of the American hip hop group ...
+
+✓ Main question 73: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 74/200: When is the next episode of the series that Steven the Sword Fighter is a part of being released?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 75/200: What film features Anil Devgan's sibling?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Anil Devgan's sibling?
+Ground Truth: Anil Devgan's sibling is Ajay Devgan.
+storage_time: 0.022406804841011763
+ Ajay Devgan
+prompt eval count:    208 token(s)
+prompt eval duration: 0.11818033363670111s
+prompt eval rate:     1760.0221085803844 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3977036476135254s
+eval rate:            12.572175362240646 tokens/s
+Predicted: Ajay Devgan
+F1: 0.4615, EM: 0.0000
+
+Sub-question 2/2
+Question: Which films feature Ajay Devgan?
+Ground Truth: The films featuring Ajay Devgan are: U Me Aur Hum, Yeh Raaste Hain Pyaar Ke, and Dil Kya Kare.
+storage_time: 0.02785428101196885
+ U Me Aur Hum, Dil Kya Kare, Blackmail (2005 film)
+prompt eval count:    250 token(s)
+prompt eval duration: 0.1239505778066814s
+prompt eval rate:     2016.9329132931566 tokens/s
+eval count:           20 token(s)
+eval duration:        1.8843488693237305s
+eval rate:            10.613745854385103 tokens/s
+Predicted: U Me Aur Hum, Dil Kya Kare, Blackmail (2005 film)
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Anil Devgan's sibling?...
+Sub-Q 2: ✗ INCORRECT - Which films feature Ajay Devgan?...
+
+✗ Main question 75: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 76/200: What political party was the candidate who garnered a million votes during the 1920 election despite being in prison, a member of?
+================================================================================
+
+Sub-question 1/1
+Question: Who was the candidate that received a million votes in the 1920 election while in prison?
+Ground Truth: Eugene V. Debs was the Socialist Party candidate who received 913,664 votes in the 1920 election while in prison.
+storage_time: 0.03111475007608533
+ Eugene V. Debs
+prompt eval count:    267 token(s)
+prompt eval duration: 0.1443788600154221s
+prompt eval rate:     1849.3012063641443 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49521565437316895s
+eval rate:            12.11593362813751 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.2941, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the candidate that received a million vote...
+
+✓ Main question 76: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 77/200: What's the place of birth of the former member of The Sunnyboys?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 78/200: Who was the US physicist who directed the project that developed the first atomic bomb at the same place where Feynman worked on Water Boiler?
+================================================================================
+
+Sub-question 1/2
+Question: Where did Richard Feynman work on the Water Boiler reactor?
+Ground Truth: Richard Feynman worked on the Water Boiler reactor at Los Alamos.
+storage_time: 0.026049213018268347
+ Los Alamos
+prompt eval count:    301 token(s)
+prompt eval duration: 0.1402065041474998s
+prompt eval rate:     2146.8333571981975 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29743361473083496s
+eval rate:            13.448379073158337 tokens/s
+Predicted: Los Alamos
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which atomic bomb development project took place at Los Alamos and who was its director?
+Ground Truth: The Manhattan Project took place at Los Alamos, and its director was Robert Oppenheimer.
+storage_time: 0.029843098018318415
+ The Manhattan Project was the atomic bomb development project that took place at Los Alamos, and its director was Robert Oppenheimer.
+prompt eval count:    356 token(s)
+prompt eval duration: 0.14916489133611321s
+prompt eval rate:     2386.620583511339 tokens/s
+eval count:           27 token(s)
+eval duration:        2.5866236686706543s
+eval rate:            10.43831784539269 tokens/s
+Predicted: The Manhattan Project was the atomic bomb development project that took place at Los Alamos, and its director was Robert Oppenheimer.
+F1: 0.8421, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where did Richard Feynman work on the Water Boiler...
+Sub-Q 2: ✓ CORRECT - Which atomic bomb development project took place a...
+
+✓ Main question 78: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 79/200: What award was received by the person who authored Missing Person?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of Missing Person?
+Ground Truth: Patrick Modiano
+storage_time: 0.020927285309880972
+ Patrick Modiano
+prompt eval count:    150 token(s)
+prompt eval duration: 0.1152939354069531s
+prompt eval rate:     1301.0224646295999 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2977755069732666s
+eval rate:            13.432938258280283 tokens/s
+Predicted: Patrick Modiano
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What award did Patrick Modiano receive?
+Ground Truth: Patrick Modiano received the 2014 Nobel Prize in Literature, the 2012 Austrian State Prize for European Literature, the 2010 Prix mondial Cino Del Duca, the 1978 Prix Goncourt, and the 1972 Grand Prix du roman de l'Académie française.
+storage_time: 0.027000938076525927
+2014 Nobel Prize in Literature
+prompt eval count:    285 token(s)
+prompt eval duration: 0.1403780458495021s
+prompt eval rate:     2030.2319944355522 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7951602935791016s
+eval rate:            11.318472605680594 tokens/s
+Predicted: 2014 Nobel Prize in Literature
+F1: 0.2286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of Missing Person?...
+Sub-Q 2: ✓ CORRECT - What award did Patrick Modiano receive?...
+
+✓ Main question 79: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 80/200: What preity zinta and madhuri dixit movie had a cast member from U Me Aur Hum ?
+================================================================================
+
+Sub-question 1/3
+Question: Who are the cast members of the movie U Me Aur Hum?
+Ground Truth: The cast includes Ajay Devgan, Kajol, Karan Khanna, Isha Sharvani, Sumeet Raghavan, and Divya Dutta.
+storage_time: 0.02202708600088954
+ Ajay Devgn, Mahima Chaudhry, Kajol, and Chandan Singh are the cast members of the movie U Me Aur Hum.
+prompt eval count:    214 token(s)
+prompt eval duration: 0.11788020189851522s
+prompt eval rate:     1815.402387792275 tokens/s
+eval count:           33 token(s)
+eval duration:        3.1674692630767822s
+eval rate:            10.418412069433884 tokens/s
+Predicted: Ajay Devgn, Mahima Chaudhry, Kajol, and Chandan Singh are the cast members of the movie U Me Aur Hum.
+F1: 0.2642, EM: 0.0000
+
+Sub-question 2/3
+Question: Which Bollywood movies feature both Preity Zinta and Madhuri Dixit in their cast?
+Ground Truth: The only Bollywood movie featuring both Preity Zinta and Madhuri Dixit is 'Yeh Raaste Hain Pyaar Ke'.
+storage_time: 0.023754741996526718
+ Dil Kya Kare
+prompt eval count:    266 token(s)
+prompt eval duration: 0.13685867376625538s
+prompt eval rate:     1943.6108262623425 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3962118625640869s
+eval rate:            12.61951110610994 tokens/s
+Predicted: Dil Kya Kare
+F1: 0.0000, EM: 0.0000
+
+Sub-question 3/3
+Question: What is the cast list for the movie 'Yeh Raaste Hain Pyaar Ke'?
+Ground Truth: The cast includes Madhuri Dixit, Ajay Devgn, and Preity Zinta.
+storage_time: 0.024509345181286335
+ Madhuri Dixit, Ajay Devgn, Preity Zinta
+prompt eval count:    236 token(s)
+prompt eval duration: 0.12055431818589568s
+prompt eval rate:     1957.6237794824256 tokens/s
+eval count:           16 token(s)
+eval duration:        1.4849233627319336s
+eval rate:            10.774966844459573 tokens/s
+Predicted: Madhuri Dixit, Ajay Devgn, Preity Zinta
+F1: 0.8966, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the cast members of the movie U Me Aur Hum...
+Sub-Q 2: ✗ INCORRECT - Which Bollywood movies feature both Preity Zinta a...
+Sub-Q 3: ✓ CORRECT - What is the cast list for the movie 'Yeh Raaste Ha...
+
+✗ Main question 80: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 81/200: Who married the publisher of abolitionist newspaper The North Star?
+================================================================================
+
+Sub-question 1/1
+Question: Who was Frederick Douglass married to?
+Ground Truth: Frederick Douglass was married first to Anna Murray Douglass and second to Helen Pitts Douglass.
+storage_time: 0.02460356429219246
+ Helen Pitts and Mary Birdsall
+prompt eval count:    217 token(s)
+prompt eval duration: 0.12050790153443813s
+prompt eval rate:     1800.711797624215 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6955130100250244s
+eval rate:            11.502301013337137 tokens/s
+Predicted: Helen Pitts and Mary Birdsall
+F1: 0.3125, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was Frederick Douglass married to?...
+
+✗ Main question 81: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 82/200: What political party does the person that Adversary in the House is based on a member of?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the book 'Adversary in the House' based on?
+Ground Truth: The book 'Adversary in the House' is based on the life of Eugene V. Debs and his wife Kate.
+storage_time: 0.023186135105788708
+ Eugene V. Debs
+prompt eval count:    225 token(s)
+prompt eval duration: 0.11917703412473202s
+prompt eval rate:     1887.9476373318075 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4967234134674072s
+eval rate:            12.07915680502484 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.4167, EM: 0.0000
+
+Sub-question 2/2
+Question: What political party did Eugene V. Debs belong to?
+Ground Truth: Eugene V. Debs belonged to the Socialist Party of America.
+storage_time: 0.029447353910654783
+ Socialist Party
+prompt eval count:    265 token(s)
+prompt eval duration: 0.14268905762583017s
+prompt eval rate:     1857.185157777849 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1991431713104248s
+eval rate:            15.064538644529234 tokens/s
+Predicted: Socialist Party
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the book 'Adversary in the House' based on?...
+Sub-Q 2: ✓ CORRECT - What political party did Eugene V. Debs belong to?...
+
+✓ Main question 82: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 83/200: What event caused the Liberal Party of Australia's longest-serving leader to become Prime Minister?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the longest-serving leader of the Liberal Party of Australia?
+Ground Truth: Robert Menzies
+storage_time: 0.02254761103540659
+ Robert Menzies
+prompt eval count:    221 token(s)
+prompt eval duration: 0.12539620324969292s
+prompt eval rate:     1762.4138073777062 tokens/s
+eval count:           5 token(s)
+eval duration:        0.40206074714660645s
+eval rate:            12.435931722966261 tokens/s
+Predicted: Robert Menzies
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What specific political event or circumstance caused Robert Menzies to become Prime Minister of Australia?
+Ground Truth: Robert Menzies became Prime Minister following the death of the incumbent Prime Minister, Joseph Lyons, in 1939.
+storage_time: 0.026167187839746475
+ Menzies became Prime Minister after Joseph Lyons' death in 1939, when he assumed the Prime Ministership on the eve of World War II.
+prompt eval count:    273 token(s)
+prompt eval duration: 0.139714146964252s
+prompt eval rate:     1953.9896705653669 tokens/s
+eval count:           34 token(s)
+eval duration:        3.272068738937378s
+eval rate:            10.390979747889308 tokens/s
+Predicted: Menzies became Prime Minister after Joseph Lyons' death in 1939, when he assumed the Prime Ministership on the eve of World War II.
+F1: 0.6923, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the longest-serving leader of the Liberal P...
+Sub-Q 2: ✓ CORRECT - What specific political event or circumstance caus...
+
+✓ Main question 83: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 84/200: Who is the uncle of Liu Bin?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 85/200: Who founded the publisher of The Final Testament of the Holy Bible?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the publisher of The Final Testament of the Holy Bible?
+Ground Truth: The Final Testament of the Holy Bible was published by Gagosian Gallery.
+storage_time: 0.023081111256033182
+ Gagosian Gallery
+prompt eval count:    216 token(s)
+prompt eval duration: 0.11838509142398834s
+prompt eval rate:     1824.554066748239 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4004971981048584s
+eval rate:            12.484481848212324 tokens/s
+Predicted: Gagosian Gallery
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who founded the Gagosian Gallery?
+Ground Truth: The Gagosian Gallery was founded by Larry Gagosian.
+storage_time: 0.023657278157770634
+ Larry Gagosian
+prompt eval count:    205 token(s)
+prompt eval duration: 0.11924407817423344s
+prompt eval rate:     1719.1629399026788 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39469146728515625s
+eval rate:            12.668122861616377 tokens/s
+Predicted: Larry Gagosian
+F1: 0.5333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the publisher of The Final Testament of the...
+Sub-Q 2: ✓ CORRECT - Who founded the Gagosian Gallery?...
+
+✓ Main question 85: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 86/200: The Nicole and Natalie album's band is named after who?
+================================================================================
+
+Sub-question 1/1
+Question: What is the name of the band that released the album 'Nicole and Natalie'?
+Ground Truth: Nina Sky
+storage_time: 0.02945468621328473
+ Nicole and Natalie
+prompt eval count:    334 token(s)
+prompt eval duration: 0.14779302710667253s
+prompt eval rate:     2259.91717294571 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29576539993286133s
+eval rate:            13.524232384545316 tokens/s
+Predicted: Nicole and Natalie
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the name of the band that released the alb...
+
+✗ Main question 86: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 87/200: Of which river is the river Kichi Sipi Bridge crosses a tributary?
+================================================================================
+
+Sub-question 1/2
+Question: Which river does the Kichi Sipi Bridge cross?
+Ground Truth: The Kichi Sipi Bridge crosses the Nelson River.
+storage_time: 0.02077142195776105
+ Nelson River
+prompt eval count:    147 token(s)
+prompt eval duration: 0.11489154864102602s
+prompt eval rate:     1279.467478145808 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19791936874389648s
+eval rate:            15.157687794982497 tokens/s
+Predicted: Nelson River
+F1: 0.2000, EM: 0.0000
+
+Sub-question 2/2
+Question: Into which larger river does the Nelson River flow as a tributary?
+Ground Truth: The Nelson River flows directly into Hudson Bay, not into a larger river as a tributary.
+storage_time: 0.02597385598346591
+ Fraser River
+prompt eval count:    233 token(s)
+prompt eval duration: 0.12178273592144251s
+prompt eval rate:     1913.243270789216 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1976757049560547s
+eval rate:            15.176371829137679 tokens/s
+Predicted: Fraser River
+F1: 0.1111, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which river does the Kichi Sipi Bridge cross?...
+Sub-Q 2: ✗ INCORRECT - Into which larger river does the Nelson River flow...
+
+✗ Main question 87: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 88/200: Who is the spouse of the screenwriter of The Actress?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 89/200: Who is the child of the actor who is a cast member of Love in Pawn?
+================================================================================
+
+Sub-question 1/3
+Question: Who are the cast members of Love in Pawn?
+Ground Truth: Bernard Braden and Barbara Kelly
+storage_time: 0.030573466792702675
+ Bernard Braden, Barbara Kelly
+prompt eval count:    230 token(s)
+prompt eval duration: 0.12596014002338052s
+prompt eval rate:     1825.9744706325966 tokens/s
+eval count:           7 token(s)
+eval duration:        0.593430757522583s
+eval rate:            11.795815958753394 tokens/s
+Predicted: Bernard Braden, Barbara Kelly
+F1: 0.9333, EM: 0.0000
+
+Sub-question 2/3
+Question: Which of the cast members of 'Love in Pawn' (Bernard Braden and Barbara Kelly) are actors?
+Ground Truth: Both Bernard Braden and Barbara Kelly are actors.
+storage_time: 0.021183053962886333
+ Bernard Braden and Barbara Kelly
+prompt eval count:    174 token(s)
+prompt eval duration: 0.1155306058935821s
+prompt eval rate:     1506.0944124215482 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5929992198944092s
+eval rate:            11.804400014634819 tokens/s
+Predicted: Bernard Braden and Barbara Kelly
+F1: 0.8421, EM: 0.0000
+
+Sub-question 3/3
+Question: Who is the child of Bernard Braden or Barbara Kelly?
+Ground Truth: Kim Braden is the daughter of Bernard Braden and Barbara Kelly.
+storage_time: 0.02394703170284629
+ Kim Braden
+prompt eval count:    185 token(s)
+prompt eval duration: 0.11880986159667373s
+prompt eval rate:     1557.1098014407532 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2963523864746094s
+eval rate:            13.497444874946902 tokens/s
+Predicted: Kim Braden
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who are the cast members of Love in Pawn?...
+Sub-Q 2: ✓ CORRECT - Which of the cast members of 'Love in Pawn' (Berna...
+Sub-Q 3: ✓ CORRECT - Who is the child of Bernard Braden or Barbara Kell...
+
+✓ Main question 89: ALL 3 sub-questions CORRECT
+
+================================================================================
+Main Question 90/200: Who is the spouse of the first nominated African American presidential candidate?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the first nominated African American presidential candidate?
+Ground Truth: Frederick Douglass was the first African American to be nominated as a presidential candidate, receiving one vote at the 1888 Republican National Convention.
+storage_time: 0.02333902008831501
+ Eugene V. Debs
+prompt eval count:    215 token(s)
+prompt eval duration: 0.11865349020808935s
+prompt eval rate:     1811.99895277368 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49544620513916016s
+eval rate:            12.110295603767375 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the spouse of Frederick Douglass?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.02838200330734253
+ Helen Pitts
+prompt eval count:    261 token(s)
+prompt eval duration: 0.14060218632221222s
+prompt eval rate:     1856.3011488447064 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29696035385131836s
+eval rate:            13.469811535861496 tokens/s
+Predicted: Helen Pitts
+F1: 0.2424, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was the first nominated African American presi...
+Sub-Q 2: ✗ INCORRECT - Who was the spouse of Frederick Douglass?...
+
+✗ Main question 90: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 91/200: What event caused the founder of Australia's liberal party to become Prime Minister?
+================================================================================
+
+Sub-question 1/3
+Question: Who founded the Liberal Party of Australia?
+Ground Truth: Robert Menzies founded the Liberal Party of Australia.
+storage_time: 0.02433614991605282
+ Joseph Lyons
+prompt eval count:    262 token(s)
+prompt eval duration: 0.13713543489575386s
+prompt eval rate:     1910.520065066803 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19800329208374023s
+eval rate:            15.151263236225535 tokens/s
+Predicted: Joseph Lyons
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/3
+Question: When did Robert Menzies serve as Prime Minister of Australia?
+Ground Truth: Robert Menzies served as Prime Minister of Australia from 1939 to 1941 and again from 1949 to 1966 (his tenure ended before the 1972 election, making him the longest-serving PM).
+storage_time: 0.023087416775524616
+1939 to 1941
+prompt eval count:    201 token(s)
+prompt eval duration: 0.11864811880514026s
+prompt eval rate:     1694.0850139403303 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9908020496368408s
+eval rate:            11.102116718502788 tokens/s
+Predicted: 1939 to 1941
+F1: 0.2951, EM: 0.0000
+
+Sub-question 3/3
+Question: What specific political event or circumstance led to Robert Menzies first becoming Prime Minister of Australia in 1939?
+Ground Truth: Robert Menzies first became Prime Minister of Australia in 1939 following the death of the previous Prime Minister, Joseph Lyons.
+storage_time: 0.028715774416923523
+ Menzies became the Prime Minister of Australia in 1939 following the death of Joseph Lyons, who led the United Australia Party (UAP) government.
+prompt eval count:    298 token(s)
+prompt eval duration: 0.1420111870393157s
+prompt eval rate:     2098.426231149655 tokens/s
+eval count:           35 token(s)
+eval duration:        3.3657383918762207s
+eval rate:            10.398906844476809 tokens/s
+Predicted: Menzies became the Prime Minister of Australia in 1939 following the death of Joseph Lyons, who led the United Australia Party (UAP) government.
+F1: 0.7407, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who founded the Liberal Party of Australia?...
+Sub-Q 2: ✗ INCORRECT - When did Robert Menzies serve as Prime Minister of...
+Sub-Q 3: ✓ CORRECT - What specific political event or circumstance led ...
+
+✗ Main question 91: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 92/200: What is the river that the Kettle Generating Station is located on a tributary of?
+================================================================================
+
+Sub-question 1/2
+Question: On which river is the Kettle Generating Station located?
+Ground Truth: The Kettle Generating Station is located on the Lower Nelson River.
+storage_time: 0.020833144895732403
+ Kettle River
+prompt eval count:    168 token(s)
+prompt eval duration: 0.11544102989137173s
+prompt eval rate:     1455.2884720284069 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29619860649108887s
+eval rate:            13.50445245973951 tokens/s
+Predicted: Kettle River
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: Is the Lower Nelson River a tributary of a larger river system, and if so, which main river does it flow into?
+Ground Truth: Yes, the Lower Nelson River is part of the Nelson River system, and it flows into Hudson Bay.
+storage_time: 0.026314815040677786
+ Lower Nelson River flows into the Fraser River as part of the Nelson River system.
+prompt eval count:    222 token(s)
+prompt eval duration: 0.1218524519354105s
+prompt eval rate:     1821.8755262936688 tokens/s
+eval count:           17 token(s)
+eval duration:        1.5759453773498535s
+eval rate:            10.787175903639246 tokens/s
+Predicted: Lower Nelson River flows into the Fraser River as part of the Nelson River system.
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - On which river is the Kettle Generating Station lo...
+Sub-Q 2: ✗ INCORRECT - Is the Lower Nelson River a tributary of a larger ...
+
+✗ Main question 92: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 93/200: Who is the sibling of the author of Kapalkundala?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 94/200: Who was the spouse of a leading speaker against slavery and publisher of an antislavery newspaper?
+================================================================================
+
+Sub-question 1/2
+Question: Who was a leading speaker against slavery and publisher of an antislavery newspaper?
+Ground Truth: Frederick Douglass
+storage_time: 0.022149779833853245
+ Frederick Douglass
+prompt eval count:    215 token(s)
+prompt eval duration: 0.1177358110435307s
+prompt eval rate:     1826.1223844672681 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29569196701049805s
+eval rate:            13.52759102805788 tokens/s
+Predicted: Frederick Douglass
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who was Frederick Douglass's spouse?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.026064515579491854
+ Helen Pitts
+prompt eval count:    246 token(s)
+prompt eval duration: 0.12662575859576464s
+prompt eval rate:     1942.7326851033624 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2953989505767822s
+eval rate:            13.54100951337094 tokens/s
+Predicted: Helen Pitts
+F1: 0.2424, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was a leading speaker against slavery and publ...
+Sub-Q 2: ✗ INCORRECT - Who was Frederick Douglass's spouse?...
+
+✗ Main question 94: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 95/200: What is the record label of the co-writer and recording artist of Permission to Fly?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 96/200: Where is Ulrich Walter's employer headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Ulrich Walter's employer?
+Ground Truth: Ulrich Walter's employers were the German astronaut team and the German Aerospace Center (DLR).
+storage_time: 0.022813653107732534
+ German Aerospace Center
+prompt eval count:    175 token(s)
+prompt eval duration: 0.1175824012607336s
+prompt eval rate:     1488.3179636036305 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29651832580566406s
+eval rate:            13.489891355388169 tokens/s
+Predicted: German Aerospace Center
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Ulrich Walter's employer?...
+
+✓ Main question 96: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 97/200: Who is the city where Lesnoye Sanatorium is located named after?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Lesnoye Sanatorium located?
+Ground Truth: Lesnoye Sanatorium is located in the city of Tolyatti, Russia.
+storage_time: 0.022100847214460373
+ Tolyatti, Russia
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11673685535788536s
+prompt eval rate:     1550.4957662693607 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4942493438720703s
+eval rate:            12.139621578441625 tokens/s
+Predicted: Tolyatti, Russia
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.024514914024621248
+ Palmiro Togliatti
+prompt eval count:    200 token(s)
+prompt eval duration: 0.1198364282026887s
+prompt eval rate:     1668.9415981401282 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5940797328948975s
+eval rate:            11.782930156343872 tokens/s
+Predicted: Palmiro Togliatti
+F1: 0.3200, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Lesnoye Sanatorium located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 97: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 98/200: Whom is the birth place of Ravil Aryapov named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Ravil Aryapov and where was he born?
+Ground Truth: Ravil Aryapov is a Russian professional football coach and former player. He was born in Stavropol, which is now the city of Tolyatti.
+storage_time: 0.021737392991781235
+ Ravil Velimukhamedovich Aryapov was born on February 1, 1948 in Stavropol, now Tolyatti.
+prompt eval count:    198 token(s)
+prompt eval duration: 0.11712402105331421s
+prompt eval rate:     1690.5157304142717 tokens/s
+eval count:           34 token(s)
+eval duration:        3.265458345413208s
+eval rate:            10.412014609758456 tokens/s
+Predicted: Ravil Velimukhamedovich Aryapov was born on February 1, 1948 in Stavropol, now Tolyatti.
+F1: 0.4912, EM: 0.0000
+
+Sub-question 2/2
+Question: Whom is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.028672412969172
+ Palmiro Togliatti
+prompt eval count:    199 token(s)
+prompt eval duration: 0.12400824390351772s
+prompt eval rate:     1604.7320221293369 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5937454700469971s
+eval rate:            11.789563631442823 tokens/s
+Predicted: Palmiro Togliatti
+F1: 0.3200, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Ravil Aryapov and where was he born?...
+Sub-Q 2: ✓ CORRECT - Whom is the city of Tolyatti named after?...
+
+✓ Main question 98: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 99/200: Who is the city that AvtoVAZ's headquarters is located in named after?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is AvtoVAZ's headquarters located?
+Ground Truth: Tolyatti
+storage_time: 0.021842679008841515
+ Tolyatti
+prompt eval count:    201 token(s)
+prompt eval duration: 0.11714264331385493s
+prompt eval rate:     1715.8567906092906 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29671192169189453s
+eval rate:            13.481089594214543 tokens/s
+Predicted: Tolyatti
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.02478828188031912
+ Palmiro Togliatti
+prompt eval count:    207 token(s)
+prompt eval duration: 0.12008337303996086s
+prompt eval rate:     1723.802344651956 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5937404632568359s
+eval rate:            11.789663048401657 tokens/s
+Predicted: Palmiro Togliatti
+F1: 0.3200, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is AvtoVAZ's headquarters located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 99: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 100/200: What team drafted the winner of the NBA scoring title this year?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 101/200: Where was the founder of the National Women's Party born?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the founder of the National Women's Party?
+Ground Truth: Alice Paul
+storage_time: 0.022587929852306843
+ Alice Paul
+prompt eval count:    221 token(s)
+prompt eval duration: 0.12450758600607514s
+prompt eval rate:     1774.9922481768835 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1978435516357422s
+eval rate:            15.163496485967974 tokens/s
+Predicted: Alice Paul
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where was Alice Paul born?
+Ground Truth: Mount Laurel Township, New Jersey.
+storage_time: 0.026602625846862793
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    224 token(s)
+prompt eval duration: 0.12235057353973389s
+prompt eval rate:     1830.8046584453077 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9906005859375s
+eval rate:            11.10437461491066 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.7143, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the founder of the National Women's Party?...
+Sub-Q 2: ✓ CORRECT - Where was Alice Paul born?...
+
+✓ Main question 101: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 102/200: What administrative territorial entity is the owner of Ciudad Deportiva located?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Ciudad Deportiva located?
+Ground Truth: Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+storage_time: 0.020086973905563354
+ Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+prompt eval count:    151 token(s)
+prompt eval duration: 0.11984317982569337s
+prompt eval rate:     1259.9799189209002 tokens/s
+eval count:           15 token(s)
+eval duration:        1.3845934867858887s
+eval rate:            10.83350466628302 tokens/s
+Predicted: Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What administrative territorial entity owns the Ciudad Deportiva sports complex in Nuevo Laredo, Mexico?
+Ground Truth: The Ciudad Deportiva sports complex is owned by the Nuevo Laredo Municipality.
+storage_time: 0.026025186758488417
+ The Municipality of Nuevo Laredo
+prompt eval count:    266 token(s)
+prompt eval duration: 0.13876709155738354s
+prompt eval rate:     1916.8809911246326 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7915914058685303s
+eval rate:            11.369501908784928 tokens/s
+Predicted: The Municipality of Nuevo Laredo
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Ciudad Deportiva located?...
+Sub-Q 2: ✓ CORRECT - What administrative territorial entity owns the Ci...
+
+✓ Main question 102: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 103/200: Who founded the company that distributed the film UHF?
+================================================================================
+
+Sub-question 1/2
+Question: Which company distributed the film UHF?
+Ground Truth: Orion Pictures
+storage_time: 0.022445879876613617
+ Orion Pictures
+prompt eval count:    206 token(s)
+prompt eval duration: 0.1180035755969584s
+prompt eval rate:     1745.709813943212 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19800662994384766s
+eval rate:            15.151007826610476 tokens/s
+Predicted: Orion Pictures
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who founded Orion Pictures?
+Ground Truth: Morris Mike Medavoy was a co-founder of Orion Pictures.
+storage_time: 0.026516919024288654
+ Morris Mike Medavoy
+prompt eval count:    266 token(s)
+prompt eval duration: 0.13943475997075438s
+prompt eval rate:     1907.7022118142702 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4948694705963135s
+eval rate:            12.124409276591768 tokens/s
+Predicted: Morris Mike Medavoy
+F1: 0.5882, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which company distributed the film UHF?...
+Sub-Q 2: ✓ CORRECT - Who founded Orion Pictures?...
+
+✓ Main question 103: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 104/200: What is the place of birth of the person who submitted the first version of the equal rights amendment to congress in 1923?
+================================================================================
+
+Sub-question 1/2
+Question: Who submitted the first version of the Equal Rights Amendment to Congress in 1923?
+Ground Truth: Alice Paul, the head of the National Women's Party, revised the proposed Equal Rights Amendment in 1923.
+storage_time: 0.02283049887046218
+ Answer: Alice Paul
+prompt eval count:    235 token(s)
+prompt eval duration: 0.1185168819501996s
+prompt eval rate:     1982.8398801340911 tokens/s
+eval count:           5 token(s)
+eval duration:        0.395371675491333s
+eval rate:            12.646328277781764 tokens/s
+Predicted: Answer: Alice Paul
+F1: 0.1053, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the place of birth of Alice Paul?
+Ground Truth: Paulsdale, Mount Laurel Township, New Jersey
+storage_time: 0.023458668030798435
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    189 token(s)
+prompt eval duration: 0.1186791299842298s
+prompt eval rate:     1592.5293691073948 tokens/s
+eval count:           11 token(s)
+eval duration:        0.98934006690979s
+eval rate:            11.118522708130653 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.9412, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who submitted the first version of the Equal Right...
+Sub-Q 2: ✓ CORRECT - What is the place of birth of Alice Paul?...
+
+✓ Main question 104: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 105/200: Since 2004, what is the location of the body to which, if a matter is not specifically reserved, it is devolved?
+================================================================================
+
+Sub-question 1/1
+Question: What is the location of the devolved body responsible for non-reserved matters since 2004?
+Ground Truth: The devolved body is the Scottish Parliament, located in the Holyrood area of Edinburgh since September 2004.
+storage_time: 0.030263699125498533
+ Holyrood area of Edinburgh
+prompt eval count:    356 token(s)
+prompt eval duration: 0.14870188105851412s
+prompt eval rate:     2394.0517595733318 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5934937000274658s
+eval rate:            11.794564962822777 tokens/s
+Predicted: Holyrood area of Edinburgh
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the location of the devolved body responsi...
+
+✓ Main question 105: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 106/200: When did the person who first brought a postal service into Umayyad lands become caliph?
+================================================================================
+
+Sub-question 1/2
+Question: Who first introduced the postal service in the Umayyad Caliphate?
+Ground Truth: Mu'awiyah introduced the postal service in the Umayyad Caliphate.
+storage_time: 0.029679100960493088
+ Umar bin Abdul-Aziz developed the postal service further by building caravanserais at stages along the Khurasan highway, but the initial development of a regular postal service was under Umayyad Caliph Abd al-Malik.
+prompt eval count:    390 token(s)
+prompt eval duration: 0.1569117959588766s
+prompt eval rate:     2485.4727945514755 tokens/s
+eval count:           51 token(s)
+eval duration:        4.950448989868164s
+eval rate:            10.302095851180194 tokens/s
+Predicted: Umar bin Abdul-Aziz developed the postal service further by building caravanserais at stages along the Khurasan highway, but the initial development of a regular postal service was under Umayyad Caliph Abd al-Malik.
+F1: 0.2807, EM: 0.0000
+
+Sub-question 2/2
+Question: When did Mu'awiyah become caliph of the Umayyad Caliphate?
+Ground Truth: Mu'awiyah became caliph in 661 CE.
+storage_time: 0.03543499065563083
+661
+prompt eval count:    493 token(s)
+prompt eval duration: 0.16529092146083713s
+prompt eval rate:     2982.6199505869895 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29700279235839844s
+eval rate:            13.467886844555759 tokens/s
+Predicted: 661
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who first introduced the postal service in the Uma...
+Sub-Q 2: ✓ CORRECT - When did Mu'awiyah become caliph of the Umayyad Ca...
+
+✗ Main question 106: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 107/200: What is the river where Long Spruce Generating Station is located a tributary of?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 108/200: Who is the spouse of the creator of The Nanny Reunion: A Nosh to Remember?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 109/200: Who is the creator of Mickey Mouse's spouse?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 110/200: This is an instance of who was named commander in chief of texas forces by the new national government of texas National Forest?
+================================================================================
+
+Sub-question 1/1
+Question: Who was named commander in chief of Texas forces by the new national government of Texas?
+Ground Truth: Sam Houston was named commander in chief of the Texas forces by the new national government of Texas.
+storage_time: 0.02676633605733514
+ Sam Houston
+prompt eval count:    311 token(s)
+prompt eval duration: 0.14044887525960803s
+prompt eval rate:     2214.3288753658044 tokens/s
+eval count:           3 token(s)
+eval duration:        0.20171594619750977s
+eval rate:            14.872398818993497 tokens/s
+Predicted: Sam Houston
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was named commander in chief of Texas forces b...
+
+✓ Main question 110: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 111/200: What was the average per capita GVA in 2013 of the country which created Burma's academic system?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 112/200: During which era was the company that makes Nirbhay founded?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 113/200: What university did the author of The Secret World of Og go to?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Secret World of Og?
+Ground Truth: Pierre Berton
+storage_time: 0.021071018185466528
+ Pierre Berton
+prompt eval count:    145 token(s)
+prompt eval duration: 0.11561781819909811s
+prompt eval rate:     1254.131951792281 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2962667942047119s
+eval rate:            13.501344322901453 tokens/s
+Predicted: Pierre Berton
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which university did Pierre Berton attend?
+Ground Truth: Pierre Berton attended the University of British Columbia.
+storage_time: 0.02341451495885849
+ University of British Columbia
+prompt eval count:    191 token(s)
+prompt eval duration: 0.11891153128817677s
+prompt eval rate:     1606.2361482598358 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39604663848876953s
+eval rate:            12.62477575640825 tokens/s
+Predicted: University of British Columbia
+F1: 0.5714, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Secret World of Og?...
+Sub-Q 2: ✓ CORRECT - Which university did Pierre Berton attend?...
+
+✓ Main question 113: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 114/200: Who is the child of Caroline LeRoy's spouse?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Caroline LeRoy's spouse?
+Ground Truth: Daniel Webster
+storage_time: 0.02337702503427863
+ Daniel Webster
+prompt eval count:    238 token(s)
+prompt eval duration: 0.11902432516217232s
+prompt eval rate:     1999.5912572973773 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19785213470458984s
+eval rate:            15.162838674848045 tokens/s
+Predicted: Daniel Webster
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is Daniel Webster's child?
+Ground Truth: Daniel Webster's child is Daniel Fletcher Webster.
+storage_time: 0.024479825980961323
+ Alexis Caswell Angell and Charles Remond Webster
+prompt eval count:    217 token(s)
+prompt eval duration: 0.1202136930078268s
+prompt eval rate:     1805.1188227440255 tokens/s
+eval count:           11 token(s)
+eval duration:        0.989067792892456s
+eval rate:            11.121583453679458 tokens/s
+Predicted: Alexis Caswell Angell and Charles Remond Webster
+F1: 0.1739, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Caroline LeRoy's spouse?...
+Sub-Q 2: ✗ INCORRECT - Who is Daniel Webster's child?...
+
+✗ Main question 114: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 115/200: Where was the person featured on the Chester Arthur coin born?
+================================================================================
+
+Sub-question 1/2
+Question: Who is featured on the Chester Arthur coin?
+Ground Truth: The coin for Chester A. Arthur features suffragette Alice Paul.
+storage_time: 0.024960386101156473
+ Queen Elizabeth II
+prompt eval count:    279 token(s)
+prompt eval duration: 0.13812517700716853s
+prompt eval rate:     2019.906913752011 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29734063148498535s
+eval rate:            13.452584599767308 tokens/s
+Predicted: Queen Elizabeth II
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was suffragette Alice Paul born?
+Ground Truth: Alice Paul was born in Paulsdale, Mount Laurel Township, New Jersey.
+storage_time: 0.024406777694821358
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    221 token(s)
+prompt eval duration: 0.12001919467002153s
+prompt eval rate:     1841.372128913322 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9891893863677979s
+eval rate:            11.120216362602589 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.7619, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is featured on the Chester Arthur coin?...
+Sub-Q 2: ✓ CORRECT - Where was suffragette Alice Paul born?...
+
+✗ Main question 115: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 116/200: The Move Ya Body song's band is named after who?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 117/200: Who is the spouse of the producer of Dolores Claiborne?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 118/200: Where did the author of The National Dream go to university?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The National Dream?
+Ground Truth: Pierre Berton
+storage_time: 0.02290426893159747
+ Pierre Berton
+prompt eval count:    220 token(s)
+prompt eval duration: 0.11859215795993805s
+prompt eval rate:     1855.0973671827342 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2969663143157959s
+eval rate:            13.469541180843745 tokens/s
+Predicted: Pierre Berton
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where did Pierre Berton go to university?
+Ground Truth: Pierre Berton estudió en la Universidad de British Columbia.
+storage_time: 0.022690270096063614
+ University of British Columbia
+prompt eval count:    172 token(s)
+prompt eval duration: 0.1173522868193686s
+prompt eval rate:     1465.6723329537365 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39392971992492676s
+eval rate:            12.692619386404449 tokens/s
+Predicted: University of British Columbia
+F1: 0.3158, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The National Dream?...
+Sub-Q 2: ✓ CORRECT - Where did Pierre Berton go to university?...
+
+✓ Main question 118: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 119/200: What type of animal is Xiao Liwu's mother?
+================================================================================
+
+Sub-question 1/1
+Question: What is Xiao Liwu?
+Ground Truth: Xiao Liwu is a giant panda, the sixth cub born to his mother Bai Yun and the fifth for his father Gao Gao at the San Diego Zoo.
+storage_time: 0.025748581159859896
+ Xiao Liwu is a male giant panda.
+prompt eval count:    229 token(s)
+prompt eval duration: 0.12091420916840434s
+prompt eval rate:     1893.9047906359642 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8865365982055664s
+eval rate:            11.279850172278215 tokens/s
+Predicted: Xiao Liwu is a male giant panda.
+F1: 0.3243, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is Xiao Liwu?...
+
+✗ Main question 119: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 120/200: What university did the author of 1967: The Last Good Year attend?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of the book '1967: The Last Good Year'?
+Ground Truth: Pierre Berton
+storage_time: 0.023094535805284977
+ Pierre Berton
+prompt eval count:    240 token(s)
+prompt eval duration: 0.11845084000378847s
+prompt eval rate:     2026.1570115697277 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29571008682250977s
+eval rate:            13.526762116846113 tokens/s
+Predicted: Pierre Berton
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which university did Pierre Berton attend?
+Ground Truth: Pierre Berton attended the University of British Columbia.
+storage_time: 0.023568958044052124
+ University of British Columbia
+prompt eval count:    195 token(s)
+prompt eval duration: 0.12252246169373393s
+prompt eval rate:     1591.5449078017728 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39617276191711426s
+eval rate:            12.620756600742988 tokens/s
+Predicted: University of British Columbia
+F1: 0.5714, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of the book '1967: The Last Good...
+Sub-Q 2: ✓ CORRECT - Which university did Pierre Berton attend?...
+
+✓ Main question 120: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 121/200: Who was honoured with the highest award a citizen without military experience in India before becoming a president?
+================================================================================
+
+Sub-question 1/1
+Question: Which Indian Presidents received the Bharat Ratna award before becoming President?
+Ground Truth: Sarvepalli Radhakrishnan received the Bharat Ratna in 1954 before becoming President.
+storage_time: 0.02913509076461196
+ C. Rajagopalachari, Sarvepalli Radhakrishnan, C.V. Raman
+prompt eval count:    350 token(s)
+prompt eval duration: 0.14735786989331245s
+prompt eval rate:     2375.1700554127247 tokens/s
+eval count:           24 token(s)
+eval duration:        2.273869276046753s
+eval rate:            10.554696460706538 tokens/s
+Predicted: C. Rajagopalachari, Sarvepalli Radhakrishnan, C.V. Raman
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Which Indian Presidents received the Bharat Ratna ...
+
+✗ Main question 121: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 122/200: The Directory of Public Worship was approved by a parliament whose modern equivalent has been based where since 2004?
+================================================================================
+
+Sub-question 1/2
+Question: Which parliament approved the Directory of Public Worship?
+Ground Truth: The Scottish Parliament approved the Directory of Public Worship.
+storage_time: 0.025683052837848663
+ Scottish Reformation Parliament
+prompt eval count:    289 token(s)
+prompt eval duration: 0.14504938712343574s
+prompt eval rate:     1992.4248266837803 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39422035217285156s
+eval rate:            12.683261968696325 tokens/s
+Predicted: Scottish Reformation Parliament
+F1: 0.4615, EM: 0.0000
+
+Sub-question 2/2
+Question: Where has the modern Scottish Parliament been based since 2004?
+Ground Truth: The modern Scottish Parliament has been based in the new Scottish Parliament Building in the Holyrood area of Edinburgh since September 2004.
+storage_time: 0.027587320189923048
+ Holyrood area of Edinburgh
+prompt eval count:    307 token(s)
+prompt eval duration: 0.14062165329232812s
+prompt eval rate:     2183.163067794403 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5918741226196289s
+eval rate:            11.826839073514602 tokens/s
+Predicted: Holyrood area of Edinburgh
+F1: 0.3333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which parliament approved the Directory of Public ...
+Sub-Q 2: ✓ CORRECT - Where has the modern Scottish Parliament been base...
+
+✓ Main question 122: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 123/200: During what era was the manufacturer of Agni-V founded?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 124/200: What city is located in the county containing Qiantong?
+================================================================================
+
+Sub-question 1/4
+Question: Which county contains Qiantong?
+Ground Truth: Qiantong is located in Ninghai County.
+storage_time: 0.02674860181286931
+ Ninghai County
+prompt eval count:    310 token(s)
+prompt eval duration: 0.13995313318446279s
+prompt eval rate:     2215.027223373484 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2957937717437744s
+eval rate:            13.52293517344551 tokens/s
+Predicted: Ninghai County
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/4
+Question: What city is located in Ninghai County?
+Ground Truth: Qiantong is a town located in Ninghai County.
+storage_time: 0.02422300074249506
+ Qiantong
+prompt eval count:    253 token(s)
+prompt eval duration: 0.11983432341367006s
+prompt eval rate:     2111.248203293474 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2959482669830322s
+eval rate:            13.515875733204865 tokens/s
+Predicted: Qiantong
+F1: 0.3636, EM: 0.0000
+
+Sub-question 3/4
+Question: What cities are located within Ninghai County, Zhejiang province?
+Ground Truth: The town of Qiantong is located within Ninghai County, Zhejiang province.
+storage_time: 0.023680339101701975
+ Qiantong
+prompt eval count:    245 token(s)
+prompt eval duration: 0.11908276099711657s
+prompt eval rate:     2057.3926733688377 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29540252685546875s
+eval rate:            13.540845579689558 tokens/s
+Predicted: Qiantong
+F1: 0.2500, EM: 0.0000
+
+Sub-question 4/4
+Question: What cities are located in Ninghai County, Zhejiang province?
+Ground Truth: Qiantong is a town located in Ninghai County, Zhejiang province.
+storage_time: 0.02649853378534317
+ Qiantong, Qiantong, and Ninghai County
+prompt eval count:    275 token(s)
+prompt eval duration: 0.13944390881806612s
+prompt eval rate:     1972.119128981068 tokens/s
+eval count:           13 token(s)
+eval duration:        1.1850354671478271s
+eval rate:            10.97013579795103 tokens/s
+Predicted: Qiantong, Qiantong, and Ninghai County
+F1: 0.4545, EM: 0.0000
+
+⏳ Waiting for 4 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which county contains Qiantong?...
+Sub-Q 2: ✓ CORRECT - What city is located in Ninghai County?...
+Sub-Q 3: ✓ CORRECT - What cities are located within Ninghai County, Zhe...
+Sub-Q 4: ✗ INCORRECT - What cities are located in Ninghai County, Zhejian...
+
+✗ Main question 124: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 125/200: In what era was the company known as the manufacturer of Agni-V founded?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 126/200: What pantheon is the God of the underworld in ancient Egypt a part of?
+================================================================================
+
+Sub-question 1/1
+Question: Who is the god of the underworld in ancient Egyptian mythology?
+Ground Truth: Osiris is the god of the underworld in ancient Egyptian mythology.
+storage_time: 0.029469884932041168
+ Osiris
+prompt eval count:    344 token(s)
+prompt eval duration: 0.14749146299436688s
+prompt eval rate:     2332.3383809213306 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19728922843933105s
+eval rate:            15.206101335241108 tokens/s
+Predicted: Osiris
+F1: 0.1667, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the god of the underworld in ancient Egypti...
+
+✓ Main question 126: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 127/200: Who is the grandmother of Philippe, Duke of Orléans?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Philippe, Duke of Orléans?
+Ground Truth: Philippe, Duke of Orléans (1640–1701) was the younger son of King Louis XIII of France and Anne of Austria, making him the younger brother of King Louis XIV. He was originally styled Duke of Anjou and became Duke of Orléans in 1660. He was also granted other titles such as Duke of Valois, Chartres, and Nemours. At court, he was known simply as 'Monsieur'.
+storage_time: 0.025277184788137674
+ Philippe, Duke of Orléans was the younger son of Louis XIII of France and his wife, Anne of Austria. He became the Duke of Orléans upon the death of his uncle Gaston in 1660 and was known as "Monsieur" at the court of France. He was the father of Louis Philippe I, who would later become King of the French.
+prompt eval count:    219 token(s)
+prompt eval duration: 0.12064127577468753s
+prompt eval rate:     1815.2991054985985 tokens/s
+eval count:           82 token(s)
+eval duration:        7.987468242645264s
+eval rate:            10.266081505301047 tokens/s
+Predicted: Philippe, Duke of Orléans was the younger son of Louis XIII of France and his wife, Anne of Austria. He became the Duke of Orléans upon the death of his uncle Gaston in 1660 and was known as "Monsieur" at the court of France. He was the father of Louis Philippe I, who would later become King of the French.
+F1: 0.6250, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the mother of King Louis XIII of France?
+Ground Truth: Marie de' Medici was the mother of King Louis XIII of France.
+storage_time: 0.02738372888416052
+ Marie de' Medici
+prompt eval count:    247 token(s)
+prompt eval duration: 0.12277517886832356s
+prompt eval rate:     2011.8072909908574 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4925861358642578s
+eval rate:            12.180610786929298 tokens/s
+Predicted: Marie de' Medici
+F1: 0.4706, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Philippe, Duke of Orléans?...
+Sub-Q 2: ✓ CORRECT - Who was the mother of King Louis XIII of France?...
+
+✗ Main question 127: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 128/200: In which district was Alhandra born?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Alhandra?
+Ground Truth: Alhandra is the nickname for Luís Miguel Assunção Joaquim, a Portuguese retired footballer who played mainly as a left back but could also appear as a midfielder. He was born on 5 March 1979 in Vila Franca de Xira, Lisbon.
+storage_time: 0.022212939336895943
+ Luís Miguel Assunção Joaquim
+prompt eval count:    171 token(s)
+prompt eval duration: 0.11659397510811687s
+prompt eval rate:     1466.6280984196032 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8874104022979736s
+eval rate:            11.268743271551386 tokens/s
+Predicted: Luís Miguel Assunção Joaquim
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Alhandra?...
+
+✓ Main question 128: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 129/200: What recognition did the actor of Truman Capote from Capote receive?
+================================================================================
+
+Sub-question 1/1
+Question: Who played Truman Capote in the movie Capote?
+Ground Truth: Philip Seymour Hoffman played Truman Capote in the movie 'Capote'.
+storage_time: 0.026773486752063036
+ Philip Seymour Hoffman
+prompt eval count:    271 token(s)
+prompt eval duration: 0.13912783795967698s
+prompt eval rate:     1947.8488559460195 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2958409786224365s
+eval rate:            13.520777339994375 tokens/s
+Predicted: Philip Seymour Hoffman
+F1: 0.6087, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Truman Capote in the movie Capote?...
+
+✓ Main question 129: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 130/200: In which borough was Callum McManaman born?
+================================================================================
+
+Sub-question 1/1
+Question: Callum McManaman birthplace
+Ground Truth: Whiston, Merseyside
+storage_time: 0.027669609058648348
+ Whiston, Merseyside
+prompt eval count:    313 token(s)
+prompt eval duration: 0.14129630429670215s
+prompt eval rate:     2215.2030200502945 tokens/s
+eval count:           7 token(s)
+eval duration:        0.592618465423584s
+eval rate:            11.811984284014223 tokens/s
+Predicted: Whiston, Merseyside
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Callum McManaman birthplace...
+
+✓ Main question 130: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 131/200: What province shares a border with the province where Lago District is located?
+================================================================================
+
+Sub-question 1/2
+Question: In which province is Lago District located?
+Ground Truth: Niassa Province
+storage_time: 0.020644919015467167
+ Niassa Province
+prompt eval count:    162 token(s)
+prompt eval duration: 0.1151348389685154s
+prompt eval rate:     1407.0458729203615 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29569268226623535s
+eval rate:            13.52755830595255 tokens/s
+Predicted: Niassa Province
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which provinces share a border with Niassa Province?
+Ground Truth: Niassa Province borders Cabo Delgado Province and Tanzania.
+storage_time: 0.02508203312754631
+ Cabo Delgado Province, Gaza Province, Inharrime District, Inhambane Province, Lichinga, Magude District, Metangula, Sanga District, Xai-Xai District, and Lago District.
+prompt eval count:    240 token(s)
+prompt eval duration: 0.1206390461884439s
+prompt eval rate:     1989.4056491884778 tokens/s
+eval count:           50 token(s)
+eval duration:        4.830069541931152s
+eval rate:            10.351817829109157 tokens/s
+Predicted: Cabo Delgado Province, Gaza Province, Inharrime District, Inhambane Province, Lichinga, Magude District, Metangula, Sanga District, Xai-Xai District, and Lago District.
+F1: 0.2128, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which province is Lago District located?...
+Sub-Q 2: ✗ INCORRECT - Which provinces share a border with Niassa Provinc...
+
+✗ Main question 131: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 132/200: What is the record label of the Metalworks Studio founder?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the founder of Metalworks Studio?
+Ground Truth: Gil Moore
+storage_time: 0.02075820229947567
+ Gil Moore
+prompt eval count:    166 token(s)
+prompt eval duration: 0.11532396636903286s
+prompt eval rate:     1439.4232632339883 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19692277908325195s
+eval rate:            15.234398041537423 tokens/s
+Predicted: Gil Moore
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What record label is Gil Moore associated with?
+Ground Truth: Gil Moore is associated with the record label TRC (later renamed TML Entertainment).
+storage_time: 0.024255355820059776
+ Metalworks Records
+
+The reasoning is as follows:
+1. Gil Moore is mentioned as the founder of the Institute, which is the educational extension of Metalworks Studios.
+2. Metalworks Studios is associated with the record label Metalworks Records, as evidenced by the fact that it is the educational extension of the studio.
+3. Therefore, Gil Moore is associated with Metalworks Records.
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11994355684146285s
+prompt eval rate:     1684.1254780112654 tokens/s
+eval count:           77 token(s)
+eval duration:        7.489506244659424s
+eval rate:            10.281051578654699 tokens/s
+Predicted: Metalworks Records
+
+The reasoning is as follows:
+1. Gil Moore is mentioned as the founder of the Institute, which is the educational extension of Metalworks Studios.
+2. Metalworks Studios is associated with the record label Metalworks Records, as evidenced by the fact that it is the educational extension of the studio.
+3. Therefore, Gil Moore is associated with Metalworks Records.
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the founder of Metalworks Studio?...
+Sub-Q 2: ✗ INCORRECT - What record label is Gil Moore associated with?...
+
+✗ Main question 132: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 133/200: When did the spacecraft that detected storms on Neptune leave our solar system?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 134/200: What is the goal of the group that European Movement Germany is a member of?
+================================================================================
+
+Sub-question 1/2
+Question: Which group is European Movement Germany a member of?
+Ground Truth: European Movement Germany is a member of the European Movement International.
+storage_time: 0.023915210273116827
+ European Movement International
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11885506799444556s
+prompt eval rate:     1699.5488994162204 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29557204246520996s
+eval rate:            13.53307967370025 tokens/s
+Predicted: European Movement International
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the goal or mission of the European Movement International?
+Ground Truth: The goal of the European Movement International is to promote European integration and disseminate information about it.
+storage_time: 0.025020628236234188
+ promoting European integration, and disseminating information about it
+prompt eval count:    219 token(s)
+prompt eval duration: 0.12010193010792136s
+prompt eval rate:     1823.4511285806204 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9850234985351562s
+eval rate:            11.167246280274806 tokens/s
+Predicted: promoting European integration, and disseminating information about it
+F1: 0.5833, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which group is European Movement Germany a member ...
+Sub-Q 2: ✓ CORRECT - What is the goal or mission of the European Moveme...
+
+✓ Main question 134: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 135/200: Which company owns the manufacturer of Learjet 60?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 136/200: The city which contains Broadhurst Park shares a border with what town?
+================================================================================
+
+Sub-question 1/2
+Question: Which city contains Broadhurst Park?
+Ground Truth: Moston, Manchester, England
+storage_time: 0.022826381027698517
+ Moston, Manchester, England
+prompt eval count:    201 token(s)
+prompt eval duration: 0.11774708610028028s
+prompt eval rate:     1707.0486128957507 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5908246040344238s
+eval rate:            11.847847825227252 tokens/s
+Predicted: Moston, Manchester, England
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which towns share a border with the city of Manchester, England?
+Ground Truth: Moston shares a border with the city of Manchester.
+storage_time: 0.02606472885236144
+ Middleton, Moston, and Chadderton share borders with the city of Manchester, England.
+prompt eval count:    208 token(s)
+prompt eval duration: 0.12138106673955917s
+prompt eval rate:     1713.6115671671794 tokens/s
+eval count:           20 token(s)
+eval duration:        1.8720688819885254s
+eval rate:            10.683367579271897 tokens/s
+Predicted: Middleton, Moston, and Chadderton share borders with the city of Manchester, England.
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which city contains Broadhurst Park?...
+Sub-Q 2: ✓ CORRECT - Which towns share a border with the city of Manche...
+
+✓ Main question 136: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 137/200: In which state is Vera Barbosa's place of birth located?
+================================================================================
+
+Sub-question 1/2
+Question: What is Vera Barbosa's place of birth?
+Ground Truth: Vila Franca de Xira, Portugal
+storage_time: 0.01974112167954445
+13 January 1989
+prompt eval count:    137 token(s)
+prompt eval duration: 0.11433473648503423s
+prompt eval rate:     1198.2360235546835 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7879989147186279s
+eval rate:            11.421335527110015 tokens/s
+Predicted: 13 January 1989
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: In which state is Vila Franca de Xira, Portugal located?
+Ground Truth: Vila Franca de Xira is located in the Lisbon District of Portugal.
+storage_time: 0.02465148363262415
+ Lisbon District
+prompt eval count:    230 token(s)
+prompt eval duration: 0.12011898262426257s
+prompt eval rate:     1914.7681321898142 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1971728801727295s
+eval rate:            15.215074189573677 tokens/s
+Predicted: Lisbon District
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is Vera Barbosa's place of birth?...
+Sub-Q 2: ✓ CORRECT - In which state is Vila Franca de Xira, Portugal lo...
+
+✗ Main question 137: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 138/200: Who was given India's highest civilian honor before he became President of India?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 139/200: What company succeeded the owner of Empire Sports Network?
+================================================================================
+
+Sub-question 1/2
+Question: Who owned Empire Sports Network?
+Ground Truth: Empire Sports Network was owned by the Adelphia Communications Corporation.
+storage_time: 0.02404584316536784
+ Adelphia Communications Corporation
+prompt eval count:    252 token(s)
+prompt eval duration: 0.11996440542861819s
+prompt eval rate:     2100.623089820974 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49341726303100586s
+eval rate:            12.160093392644363 tokens/s
+Predicted: Adelphia Communications Corporation
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: What company succeeded Adelphia Communications Corporation?
+Ground Truth: Time Warner Cable acquired assets from the bankrupt Adelphia, and a new company, Windjammer Communications, was formed from the sale of some of these systems.
+storage_time: 0.02973522711545229
+ Empire Sports Network
+prompt eval count:    311 token(s)
+prompt eval duration: 0.14324868191033602s
+prompt eval rate:     2171.0496449430852 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2955622673034668s
+eval rate:            13.533527254658065 tokens/s
+Predicted: Empire Sports Network
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who owned Empire Sports Network?...
+Sub-Q 2: ✗ INCORRECT - What company succeeded Adelphia Communications Cor...
+
+✗ Main question 139: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 140/200: Who was honored with the award Dhondo Keshav Karve received prior to becoming president of India?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 141/200: Who is the spouse of the Green performer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 142/200: What is the mouth of watercourse for the body of water where Bartram's Covered Bridge is located?
+================================================================================
+
+Sub-question 1/2
+Question: What body of water is Bartram's Covered Bridge located on?
+Ground Truth: Crum Creek
+storage_time: 0.0206541302613914
+ Crum Creek
+prompt eval count:    165 token(s)
+prompt eval duration: 0.11521642655134201s
+prompt eval rate:     1432.0874630361302 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2958407402038574s
+eval rate:            13.5207882364129 tokens/s
+Predicted: Crum Creek
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What watercourse does Crum Creek flow into?
+Ground Truth: Crum Creek flows into the Delaware River.
+storage_time: 0.025355802848935127
+ Delaware River
+prompt eval count:    236 token(s)
+prompt eval duration: 0.12094788206741214s
+prompt eval rate:     1951.2536802294878 tokens/s
+eval count:           3 token(s)
+eval duration:        0.197357177734375s
+eval rate:            15.200865934745632 tokens/s
+Predicted: Delaware River
+F1: 0.4444, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What body of water is Bartram's Covered Bridge loc...
+Sub-Q 2: ✓ CORRECT - What watercourse does Crum Creek flow into?...
+
+✓ Main question 142: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 143/200: What is the ruler of the underworld in ancient Egypt a part of?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the ruler of the underworld in ancient Egyptian mythology?
+Ground Truth: Osiris is the ruler of the underworld in ancient Egyptian mythology.
+storage_time: 0.026259776204824448
+ Osiris
+prompt eval count:    290 token(s)
+prompt eval duration: 0.13906742399558425s
+prompt eval rate:     2085.3194203784797 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1970081329345703s
+eval rate:            15.227797732575588 tokens/s
+Predicted: Osiris
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: What broader mythological system, pantheon, or conceptual framework is Osiris a part of in ancient Egyptian religion?
+Ground Truth: Osiris is a part of the ancient Egyptian mythological system and pantheon of deities.
+storage_time: 0.03099082689732313
+ Ancient Egyptian religion
+prompt eval count:    382 token(s)
+prompt eval duration: 0.14993892284110188s
+prompt eval rate:     2547.704043497934 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29599452018737793s
+eval rate:            13.513763692205583 tokens/s
+Predicted: Ancient Egyptian religion
+F1: 0.2727, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the ruler of the underworld in ancient Egyp...
+Sub-Q 2: ✓ CORRECT - What broader mythological system, pantheon, or con...
+
+✓ Main question 143: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 144/200: What other county does the county where Imperial is located share a border with?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Imperial located?
+Ground Truth: Imperial is located in Pecos County, Texas.
+storage_time: 0.022531805094331503
+ Pecos County
+prompt eval count:    211 token(s)
+prompt eval duration: 0.11805876437574625s
+prompt eval rate:     1787.2455392506836 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39432454109191895s
+eval rate:            12.67991078149629 tokens/s
+Predicted: Pecos County
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: What other counties share a border with Pecos County, Texas?
+Ground Truth: Crockett County shares a border with Pecos County.
+storage_time: 0.022859667893499136
+ Crockett County and Randall County
+prompt eval count:    183 token(s)
+prompt eval duration: 0.11800068290904164s
+prompt eval rate:     1550.838482359138 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5914037227630615s
+eval rate:            11.836246088028874 tokens/s
+Predicted: Crockett County and Randall County
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which county is Imperial located?...
+Sub-Q 2: ✗ INCORRECT - What other counties share a border with Pecos Coun...
+
+✗ Main question 144: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 145/200: In which state is Póvoa de Santa Iria's municipality located?
+================================================================================
+
+Sub-question 1/2
+Question: What is the municipality of Póvoa de Santa Iria?
+Ground Truth: Vila Franca de Xira
+storage_time: 0.02079186402261257
+ Póvoa de Santa Iria e Forte da Casa is a civil parish in the municipality of Vila Franca de Xira, Portugal.
+prompt eval count:    174 token(s)
+prompt eval duration: 0.1153489719145s
+prompt eval rate:     1508.4659803381155 tokens/s
+eval count:           32 token(s)
+eval duration:        3.0543789863586426s
+eval rate:            10.47676144411589 tokens/s
+Predicted: Póvoa de Santa Iria e Forte da Casa is a civil parish in the municipality of Vila Franca de Xira, Portugal.
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: In which district is the municipality of Vila Franca de Xira located?
+Ground Truth: Lisbon District
+storage_time: 0.023624446243047714
+ Vila Franca de Xira is a municipality in the Lisbon District in Portugal.
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11903373245149851s
+prompt eval rate:     1696.9979504112998 tokens/s
+eval count:           18 token(s)
+eval duration:        1.6749837398529053s
+eval rate:            10.746372977674836 tokens/s
+Predicted: Vila Franca de Xira is a municipality in the Lisbon District in Portugal.
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the municipality of Póvoa de Santa Iria?...
+Sub-Q 2: ✓ CORRECT - In which district is the municipality of Vila Fran...
+
+✓ Main question 145: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 146/200: What is a notable work written by the author of The Timothy files?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Timothy Files?
+Ground Truth: Lawrence Sanders
+storage_time: 0.021118453703820705
+ Lawrence Sanders
+prompt eval count:    172 token(s)
+prompt eval duration: 0.11588816158473492s
+prompt eval rate:     1484.189563868759 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19705557823181152s
+eval rate:            15.224131318276466 tokens/s
+Predicted: Lawrence Sanders
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What is a notable work written by Lawrence Sanders?
+Ground Truth: A notable work written by Lawrence Sanders is 'The Anderson Tapes', his debut crime fiction novel published in 1970 that won the Edgar Award for best first mystery novel. Another notable work is 'The Timothy Files', a 1987 bestselling fiction collection.
+storage_time: 0.026569053065031767
+ The Anderson Tapes
+prompt eval count:    229 token(s)
+prompt eval duration: 0.12205348489806056s
+prompt eval rate:     1876.2266410603638 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3941152095794678s
+eval rate:            12.686645626630709 tokens/s
+Predicted: The Anderson Tapes
+F1: 0.0784, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Timothy Files?...
+Sub-Q 2: ✓ CORRECT - What is a notable work written by Lawrence Sanders...
+
+✓ Main question 146: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 147/200: In what county is William W. Blair's birthplace located?
+================================================================================
+
+Sub-question 1/2
+Question: Where was William W. Blair born?
+Ground Truth: Holley, New York
+storage_time: 0.02160394797101617
+ Holley, New York
+prompt eval count:    169 token(s)
+prompt eval duration: 0.11571672512218356s
+prompt eval rate:     1460.4630386969163 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4927668571472168s
+eval rate:            12.17614357170021 tokens/s
+Predicted: Holley, New York
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: In what county is Holley, New York located?
+Ground Truth: Holley, New York is located in Orleans County.
+storage_time: 0.030226189643144608
+ Orleans County
+prompt eval count:    280 token(s)
+prompt eval duration: 0.14304251642897725s
+prompt eval rate:     1957.459970574722 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19718337059020996s
+eval rate:            15.214264727397596 tokens/s
+Predicted: Orleans County
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was William W. Blair born?...
+Sub-Q 2: ✓ CORRECT - In what county is Holley, New York located?...
+
+✓ Main question 147: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 148/200: How old was Mary when engaged to the person from whom São José dos Campos takes it's name?
+================================================================================
+
+Sub-question 1/2
+Question: Who is São José dos Campos named after?
+Ground Truth: São José dos Campos é nomeada em homenagem a São José (Saint Joseph).
+storage_time: 0.021054201759397984
+ José de Anchieta
+prompt eval count:    157 token(s)
+prompt eval duration: 0.11514193890616298s
+prompt eval rate:     1363.5344470614657 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4929788112640381s
+eval rate:            12.170908491209811 tokens/s
+Predicted: José de Anchieta
+F1: 0.0909, EM: 0.0000
+
+Sub-question 2/2
+Question: How old was Mary when she was engaged to Joseph according to historical or biblical records?
+Ground Truth: According to apocryphal accounts, Mary was 12–14 years old when she was engaged to Joseph.
+storage_time: 0.02814068179577589
+12–14 years old
+prompt eval count:    329 token(s)
+prompt eval duration: 0.14620646368712187s
+prompt eval rate:     2250.242511193292 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6899206638336182s
+eval rate:            11.595536152732608 tokens/s
+Predicted: 12–14 years old
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is São José dos Campos named after?...
+Sub-Q 2: ✓ CORRECT - How old was Mary when she was engaged to Joseph ac...
+
+✗ Main question 148: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 149/200: What is the performer of Heartbeat named after?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 150/200: What was the old show that was named after a character that Walt Disney created in 1928 called?
+================================================================================
+
+Sub-question 1/1
+Question: What is the name of the old show named after Mickey Mouse?
+Ground Truth: The Mickey Mouse Club
+storage_time: 0.02641544584184885
+ Mickey Mouse Club
+prompt eval count:    292 token(s)
+prompt eval duration: 0.13953401846811175s
+prompt eval rate:     2092.67964332821 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2957947254180908s
+eval rate:            13.522891574033997 tokens/s
+Predicted: Mickey Mouse Club
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the name of the old show named after Micke...
+
+✓ Main question 150: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 151/200: Where is the country with ISO code ISO 3166-2:CV located?
+================================================================================
+
+Sub-question 1/2
+Question: What country has the ISO 3166-1 alpha-2 code CV?
+Ground Truth: Cabo Verde
+storage_time: 0.019821424037218094
+ Cabo Verde
+prompt eval count:    157 token(s)
+prompt eval duration: 0.11426201090216637s
+prompt eval rate:     1374.0349811839635 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2955491542816162s
+eval rate:            13.53412771463582 tokens/s
+Predicted: Cabo Verde
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where is Cabo Verde located geographically?
+Ground Truth: Cabo Verde is an island country located in the central Atlantic Ocean, approximately 570 kilometers (350 miles) west of the Cape Verde Peninsula off the coast of Northwest Africa.
+storage_time: 0.026765201706439257
+570 kilometres (350 mi) west of the Cape Verde Peninsula off the coast of Northwest Africa
+prompt eval count:    278 token(s)
+prompt eval duration: 0.13976427307352424s
+prompt eval rate:     1989.0633985822374 tokens/s
+eval count:           23 token(s)
+eval duration:        2.1683719158172607s
+eval rate:            10.607036473875048 tokens/s
+Predicted: 570 kilometres (350 mi) west of the Cape Verde Peninsula off the coast of Northwest Africa
+F1: 0.6400, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What country has the ISO 3166-1 alpha-2 code CV?...
+Sub-Q 2: ✓ CORRECT - Where is Cabo Verde located geographically?...
+
+✓ Main question 151: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 152/200: What award did the author of The Red Tree receive?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Red Tree?
+Ground Truth: Shaun Tan
+storage_time: 0.02132641989737749
+ Shaun Tan
+prompt eval count:    160 token(s)
+prompt eval duration: 0.1155717559158802s
+prompt eval rate:     1384.4212950823144 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19685602188110352s
+eval rate:            15.239564283240117 tokens/s
+Predicted: Shaun Tan
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What award did Shaun Tan receive?
+Ground Truth: Shaun Tan received an Academy Award for Best Animated Short Film in 2011.
+storage_time: 0.0241291681304574
+2001 Academy Award for Best Animated Short Film
+prompt eval count:    217 token(s)
+prompt eval duration: 0.11954230675473809s
+prompt eval rate:     1815.2569236028996 tokens/s
+eval count:           12 token(s)
+eval duration:        1.0839314460754395s
+eval rate:            11.07081083720568 tokens/s
+Predicted: 2001 Academy Award for Best Animated Short Film
+F1: 0.6923, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Red Tree?...
+Sub-Q 2: ✗ INCORRECT - What award did Shaun Tan receive?...
+
+✗ Main question 152: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 153/200: What was the show named after the character featured in the video game Mickey's Safari in Letterland?
+================================================================================
+
+Sub-question 1/2
+Question: What character is featured in the video game Mickey's Safari in Letterland?
+Ground Truth: Mickey Mouse
+storage_time: 0.02485156012699008
+ Mickey
+prompt eval count:    281 token(s)
+prompt eval duration: 0.1379987671971321s
+prompt eval rate:     2036.2500746009543 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09834051132202148s
+eval rate:            20.337498484738283 tokens/s
+Predicted: Mickey
+F1: 0.6667, EM: 0.0000
+
+Sub-question 2/2
+Question: What television show is named after the character Mickey Mouse?
+Ground Truth: The Mickey Mouse Club
+storage_time: 0.026828091591596603
+ The Mickey Mouse Club
+prompt eval count:    279 token(s)
+prompt eval duration: 0.13977840449661016s
+prompt eval rate:     1996.0164877026205 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39464592933654785s
+eval rate:            12.66958462844318 tokens/s
+Predicted: The Mickey Mouse Club
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What character is featured in the video game Micke...
+Sub-Q 2: ✓ CORRECT - What television show is named after the character ...
+
+✓ Main question 153: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 154/200: In which county is Southern Maryland Electric Cooperative headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Southern Maryland Electric Cooperative?
+Ground Truth: The headquarters of Southern Maryland Electric Cooperative is in Hughesville, Maryland.
+storage_time: 0.02475138008594513
+ Hughesville, Maryland
+prompt eval count:    220 token(s)
+prompt eval duration: 0.12005403125658631s
+prompt eval rate:     1832.5082273147787 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3938577175140381s
+eval rate:            12.694939765454228 tokens/s
+Predicted: Hughesville, Maryland
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is the headquarters of Southern Maryland Ele...
+
+✓ Main question 154: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 155/200: Where is Amílcar Cabral International Airport?
+================================================================================
+
+Sub-question 1/1
+Question: Amílcar Cabral International Airport location
+Ground Truth: Amílcar Cabral International Airport is located two km west-southwest from Espargos on Sal Island.
+storage_time: 0.024693340063095093
+2 km west-southwest from Espargos on Sal Island
+prompt eval count:    242 token(s)
+prompt eval duration: 0.12064027599990368s
+prompt eval rate:     2005.9635805225878 tokens/s
+eval count:           14 token(s)
+eval duration:        1.2809019088745117s
+eval rate:            10.929798685600648 tokens/s
+Predicted: 2 km west-southwest from Espargos on Sal Island
+F1: 0.6875, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Amílcar Cabral International Airport location...
+
+✓ Main question 155: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 156/200: Where was the author of Hannibal and Scipio educated at?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of the book 'Hannibal and Scipio'?
+Ground Truth: Thomas Nabbes
+storage_time: 0.022450247313827276
+ Thomas Nabbes
+prompt eval count:    214 token(s)
+prompt eval duration: 0.11805756017565727s
+prompt eval rate:     1812.6751025651422 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29550814628601074s
+eval rate:            13.536005860659277 tokens/s
+Predicted: Thomas Nabbes
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where was Thomas Nabbes educated?
+Ground Truth: Thomas Nabbes was educated at Exeter College, Oxford in 1621.
+storage_time: 0.025477848015725613
+ Exeter College, Oxford
+prompt eval count:    247 token(s)
+prompt eval duration: 0.12120103230699897s
+prompt eval rate:     2037.9364374913541 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49272632598876953s
+eval rate:            12.177145168688947 tokens/s
+Predicted: Exeter College, Oxford
+F1: 0.3810, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of the book 'Hannibal and Scipio...
+Sub-Q 2: ✓ CORRECT - Where was Thomas Nabbes educated?...
+
+✓ Main question 156: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 157/200: Where was Tyler MacDuff's child educated?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Tyler MacDuff?
+Ground Truth: Tyler MacDuff is an actor and the father of Dana MacDuff.
+storage_time: 0.02113344194367528
+ Tyler MacDuff is not directly mentioned in the provided documents. However, based on the names and relationships described, Tyler MacDuff could be inferred to be related to Tyler MacFarlane, as they share a similar name and both are associated with the MacFarlane family. Tyler MacFarlane is described as an American voice actress and singer, best known for her role on "American Dad!" and her connection to her brother Seth MacFarlane. Given the similarity in names and the context, Tyler MacDuff might be another family member, possibly a sibling or cousin, though no direct information is provided about Tyler MacDuff in the given documents.
+prompt eval count:    176 token(s)
+prompt eval duration: 0.11589045682922006s
+prompt eval rate:     1518.6755218279907 tokens/s
+eval count:           133 token(s)
+eval duration:        13.01311707496643s
+eval rate:            10.22045673098988 tokens/s
+Predicted: Tyler MacDuff is not directly mentioned in the provided documents. However, based on the names and relationships described, Tyler MacDuff could be inferred to be related to Tyler MacFarlane, as they share a similar name and both are associated with the MacFarlane family. Tyler MacFarlane is described as an American voice actress and singer, best known for her role on "American Dad!" and her connection to her brother Seth MacFarlane. Given the similarity in names and the context, Tyler MacDuff might be another family member, possibly a sibling or cousin, though no direct information is provided about Tyler MacDuff in the given documents.
+F1: 0.1385, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was Dana MacDuff educated?
+Ground Truth: He graduated from Blair International Baccalaureate School in Pasadena.
+storage_time: 0.02544591808691621
+ Pasadena, California
+prompt eval count:    245 token(s)
+prompt eval duration: 0.12110427767038345s
+prompt eval rate:     2023.049926170492 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29572558403015137s
+eval rate:            13.526053260214953 tokens/s
+Predicted: Pasadena, California
+F1: 0.1250, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Tyler MacDuff?...
+Sub-Q 2: ✗ INCORRECT - Where was Dana MacDuff educated?...
+
+✗ Main question 157: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 158/200: What other recognition did the Oscar winner for Best Actor in 2006 receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 159/200: In which county is Kimbrough Memorial Stadium located?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is Kimbrough Memorial Stadium located?
+Ground Truth: Canyon, Texas
+storage_time: 0.02336037065833807
+ Kimbrough Memorial Stadium is located in Canyon, Texas.
+prompt eval count:    231 token(s)
+prompt eval duration: 0.1189382066950202s
+prompt eval rate:     1942.1849918447754 tokens/s
+eval count:           13 token(s)
+eval duration:        1.182795763015747s
+eval rate:            10.990908495355276 tokens/s
+Predicted: Kimbrough Memorial Stadium is located in Canyon, Texas.
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Canyon, Texas located in?
+Ground Truth: Canyon, Texas is located in Randall County.
+storage_time: 0.023237827233970165
+ Randall County
+prompt eval count:    189 token(s)
+prompt eval duration: 0.11808108212426305s
+prompt eval rate:     1600.5950877135863 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19711065292358398s
+eval rate:            15.219877543417415 tokens/s
+Predicted: Randall County
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is Kimbrough Memorial Stadium locate...
+Sub-Q 2: ✓ CORRECT - Which county is Canyon, Texas located in?...
+
+✓ Main question 159: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 160/200: Who was honored with the highest award in India before becoming president?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 161/200: What military overran much of Erich Zakowski's place of birth?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Erich Zakowski born?
+Ground Truth: Erich Zakowski was born in East Prussia.
+storage_time: 0.021340681239962578
+ Germany
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11622297344729304s
+prompt eval rate:     1557.351310428168 tokens/s
+eval count:           2 token(s)
+eval duration:        0.0985112190246582s
+eval rate:            20.302256126780676 tokens/s
+Predicted: Germany
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which military force overran much of East Prussia during World War II?
+Ground Truth: The Soviet Union overran much of East Prussia during World War II.
+storage_time: 0.029984070919454098
+ Imperial Russian troops
+prompt eval count:    319 token(s)
+prompt eval duration: 0.14345220802351832s
+prompt eval rate:     2223.7371205028885 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2957010269165039s
+eval rate:            13.5271765597536 tokens/s
+Predicted: Imperial Russian troops
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Erich Zakowski born?...
+Sub-Q 2: ✗ INCORRECT - Which military force overran much of East Prussia ...
+
+✗ Main question 161: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 162/200: The 1967 Federation Cup is an instance of this tournament which is named after what organization?
+================================================================================
+
+Sub-question 1/2
+Question: What is the Federation Cup in sports?
+Ground Truth: The Federation Cup is the premier international team competition in women's tennis. It was launched in 1963 and is the world's largest annual women's international team sports competition in terms of participating nations.
+storage_time: 0.02179377293214202
+ The Federation Cup is the premier international team competition in women's tennis, now known as the Fed Cup.
+prompt eval count:    193 token(s)
+prompt eval duration: 0.11714739399030805s
+prompt eval rate:     1647.4971693861792 tokens/s
+eval count:           22 token(s)
+eval duration:        2.071974277496338s
+eval rate:            10.617892431842163 tokens/s
+Predicted: The Federation Cup is the premier international team competition in women's tennis, now known as the Fed Cup.
+F1: 0.4082, EM: 0.0000
+
+Sub-question 2/2
+Question: Which organization is the Federation Cup in women's tennis named after?
+Ground Truth: The International Tennis Federation (ITF)
+storage_time: 0.029020685236901045
+ International Tennis Federation (ITF)
+prompt eval count:    296 token(s)
+prompt eval duration: 0.1443246230483055s
+prompt eval rate:     2050.932084547546 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6895146369934082s
+eval rate:            11.602364287556785 tokens/s
+Predicted: International Tennis Federation (ITF)
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the Federation Cup in sports?...
+Sub-Q 2: ✓ CORRECT - Which organization is the Federation Cup in women'...
+
+✓ Main question 162: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 163/200: What is another notable work made by the author of Miss Sara Sampson?
+================================================================================
+
+Sub-question 1/1
+Question: What are notable works by Gotthold Ephraim Lessing?
+Ground Truth: Notable works by Gotthold Ephraim Lessing include the plays 'Emilia Galotti', a classic bourgeois tragedy, and 'Miss Sara Sampson', considered one of the first bourgeois tragedies.
+storage_time: 0.025145946070551872
+ Miss Sara Sampson, Emilia Galotti
+prompt eval count:    233 token(s)
+prompt eval duration: 0.12072823522612453s
+prompt eval rate:     1929.954492945167 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8870179653167725s
+eval rate:            11.273728820620667 tokens/s
+Predicted: Miss Sara Sampson, Emilia Galotti
+F1: 0.3902, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What are notable works by Gotthold Ephraim Lessing...
+
+✓ Main question 163: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 164/200: What record label is the performer of Almost Made Ya signed to?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the performer of the song Almost Made Ya?
+Ground Truth: The performers of the song 'Almost Made Ya' are the duo Ali & Gipp, featuring LeToya Luckett.
+storage_time: 0.022615967318415642
+ Ali & Gipp
+prompt eval count:    212 token(s)
+prompt eval duration: 0.11806631414219737s
+prompt eval rate:     1795.6010699603128 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3938939571380615s
+eval rate:            12.693771786520397 tokens/s
+Predicted: Ali & Gipp
+F1: 0.2105, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label is the duo Ali & Gipp signed to?
+Ground Truth: Ali & Gipp are signed to Derrty Entertainment and Universal Records.
+storage_time: 0.027745890896767378
+ Derrty Entertainment and Universal Records
+prompt eval count:    305 token(s)
+prompt eval duration: 0.14700156077742577s
+prompt eval rate:     2074.807902630359 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6896064281463623s
+eval rate:            11.600819936530634 tokens/s
+Predicted: Derrty Entertainment and Universal Records
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the performer of the song Almost Made Ya?...
+Sub-Q 2: ✓ CORRECT - What record label is the duo Ali & Gipp signed to?...
+
+✓ Main question 164: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 165/200: According to the agency that published U.S. and World Population Clock, what is the total area in square miles?
+================================================================================
+
+Sub-question 1/2
+Question: Which agency publishes the U.S. and World Population Clock?
+Ground Truth: The United States Census Bureau publishes the U.S. and World Population Clock.
+storage_time: 0.024871051777154207
+ United States Census Bureau
+prompt eval count:    274 token(s)
+prompt eval duration: 0.13792891474440694s
+prompt eval rate:     1986.5305292058842 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3942086696624756s
+eval rate:            12.683637841554924 tokens/s
+Predicted: United States Census Bureau
+F1: 0.5714, EM: 0.0000
+
+Sub-question 2/2
+Question: What total area in square miles does the United States Census Bureau report?
+Ground Truth: 3.8 million square miles
+storage_time: 0.03234926192089915
+3.8 million square miles
+prompt eval count:    401 token(s)
+prompt eval duration: 0.1598080387338996s
+prompt eval rate:     2509.2605051471487 tokens/s
+eval count:           7 token(s)
+eval duration:        0.591118574142456s
+eval rate:            11.8419557533867 tokens/s
+Predicted: 3.8 million square miles
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which agency publishes the U.S. and World Populati...
+Sub-Q 2: ✓ CORRECT - What total area in square miles does the United St...
+
+✓ Main question 165: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 166/200: According to the developer of Topologically Integrated Geographic Encoding and Referencing, what is the total area of Atlantic City in square miles?
+================================================================================
+
+Sub-question 1/1
+Question: What is the total area of Atlantic City in square miles according to TIGER?
+Ground Truth: The total area of Atlantic City is 17.037 square miles.
+storage_time: 0.026537497993558645
+17.037 square miles
+prompt eval count:    277 token(s)
+prompt eval duration: 0.13983761705458164s
+prompt eval rate:     1980.8689952996046 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7884838581085205s
+eval rate:            11.414311031794531 tokens/s
+Predicted: 17.037 square miles
+F1: 0.6000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the total area of Atlantic City in square ...
+
+✓ Main question 166: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 167/200: Who is the child of Sigrid Eskilsdotter's child?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Sigrid Eskilsdotter?
+Ground Truth: Christina Gyllenstierna
+storage_time: 0.02280306676402688
+ Margareta von Ascheberg
+prompt eval count:    220 token(s)
+prompt eval duration: 0.1184504758566618s
+prompt eval rate:     1857.3163037877905 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6896026134490967s
+eval rate:            11.600884109164594 tokens/s
+Predicted: Margareta von Ascheberg
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who are the children of Christina Gyllenstierna?
+Ground Truth: Christina Gyllenstierna's children include a daughter (mother of King Gustav Vasa) and a child who was the parent of Sigrid Sture.
+storage_time: 0.027670542243868113
+ Sigrid Sture
+prompt eval count:    257 token(s)
+prompt eval duration: 0.1401649508625269s
+prompt eval rate:     1833.553954954576 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3940708637237549s
+eval rate:            12.688073289034174 tokens/s
+Predicted: Sigrid Sture
+F1: 0.2000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the child of Sigrid Eskilsdotter?...
+Sub-Q 2: ✗ INCORRECT - Who are the children of Christina Gyllenstierna?...
+
+✗ Main question 167: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 168/200: Who is the child of the Victim of Romance performer?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song 'Victim of Romance'?
+Ground Truth: Michelle Phillips
+storage_time: 0.02237497502937913
+ Michelle Phillips
+prompt eval count:    207 token(s)
+prompt eval duration: 0.11875059781596065s
+prompt eval rate:     1743.1491193063973 tokens/s
+eval count:           3 token(s)
+eval duration:        0.20141291618347168s
+eval rate:            14.894774659174443 tokens/s
+Predicted: Michelle Phillips
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is Michelle Phillips' child?
+Ground Truth: Chynna Phillips
+storage_time: 0.02390298619866371
+ Michelle Phillips' child is Chifundo "Mercy" James, though she adopted Mercy from Malawi.
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11916148383170366s
+prompt eval rate:     1695.1786223583147 tokens/s
+eval count:           23 token(s)
+eval duration:        2.167492151260376s
+eval rate:            10.61134176962335 tokens/s
+Predicted: Michelle Phillips' child is Chifundo "Mercy" James, though she adopted Mercy from Malawi.
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song 'Victim of Romance'?...
+Sub-Q 2: ✗ INCORRECT - Who is Michelle Phillips' child?...
+
+✗ Main question 168: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 169/200: What recognition did the Jack Goes Boating director receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 170/200: What happened to the Curonians who lived in the area where Erich Zakowski was born?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Erich Zakowski born?
+Ground Truth: Erich Zakowski was born in East Prussia.
+storage_time: 0.021426331717520952
+ Berlin, Germany
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11635466199368238s
+prompt eval rate:     1555.5887224340663 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2959885597229004s
+eval rate:            13.514035825387083 tokens/s
+Predicted: Berlin, Germany
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which specific Curonian population historically inhabited East Prussia?
+Ground Truth: The Curonians who lived in the area around the Curonian Lagoon in East Prussia.
+storage_time: 0.025765487924218178
+219 Curonians lived along the Curonian Spit in 1955 after the region was annexed by the Soviet Union.
+prompt eval count:    254 token(s)
+prompt eval duration: 0.12158299423754215s
+prompt eval rate:     2089.1079512628944 tokens/s
+eval count:           30 token(s)
+eval duration:        2.8573803901672363s
+eval rate:            10.499127138702091 tokens/s
+Predicted: 219 Curonians lived along the Curonian Spit in 1955 after the region was annexed by the Soviet Union.
+F1: 0.2927, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Erich Zakowski born?...
+Sub-Q 2: ✗ INCORRECT - Which specific Curonian population historically in...
+
+✗ Main question 170: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 171/200: Who developed the eponymous character from the series that contains Mickey's Safari in Letterland?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 172/200: What league does the team that plays in Stadio Ciro Vigorito play for?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 173/200: What kind of recognition did the actor who played the game maker in hunger games receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 174/200: What is the competition that the 1965 Federation Cup is part of named after?
+================================================================================
+
+Sub-question 1/2
+Question: What is the 1965 Federation Cup?
+Ground Truth: The 1965 Federation Cup was the third edition of the women's international team tennis competition, now known as the Fed Cup. It was held from 15–18 January at the Kooyong Lawn Tennis Club in Melbourne, Australia. Eleven nations participated, and Australia defended their title by defeating the United States in the final.
+storage_time: 0.02396549005061388
+1965 Federation Cup was the third edition of what is now known as the Fed Cup, held at the Blau-Weiss Tennis Club in West Berlin from 6–11 June, with 17 nations participating.
+prompt eval count:    250 token(s)
+prompt eval duration: 0.11987509112805128s
+prompt eval rate:     2085.504149756587 tokens/s
+eval count:           49 token(s)
+eval duration:        4.733665227890015s
+eval rate:            10.351386851630249 tokens/s
+Predicted: 1965 Federation Cup was the third edition of what is now known as the Fed Cup, held at the Blau-Weiss Tennis Club in West Berlin from 6–11 June, with 17 nations participating.
+F1: 0.5155, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the Fed Cup (formerly Federation Cup) tennis competition named after?
+Ground Truth: The Fed Cup (formerly the Federation Cup) is named in honor of the 50th anniversary of the International Tennis Federation (ITF).
+storage_time: 0.02518401714041829
+ Federation
+prompt eval count:    243 token(s)
+prompt eval duration: 0.12097714096307755s
+prompt eval rate:     2008.643931122195 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09873008728027344s
+eval rate:            20.257249386627514 tokens/s
+Predicted: Federation
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the 1965 Federation Cup?...
+Sub-Q 2: ✗ INCORRECT - What is the Fed Cup (formerly Federation Cup) tenn...
+
+✗ Main question 174: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 175/200: What county was Tim Dubois born in?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Tim Dubois born?
+Ground Truth: Tim DuBois was born in Southwest City, Missouri.
+storage_time: 0.020477158948779106
+ Nashville, Tennessee
+prompt eval count:    154 token(s)
+prompt eval duration: 0.12044029729440808s
+prompt eval rate:     1278.6418122462578 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2958509922027588s
+eval rate:            13.520319706275098 tokens/s
+Predicted: Nashville, Tennessee
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What county is Southwest City, Missouri located in?
+Ground Truth: Southwest City is located in McDonald County, Missouri.
+storage_time: 0.023641175124794245
+ McDonald County
+prompt eval count:    204 token(s)
+prompt eval duration: 0.11896435637027025s
+prompt eval rate:     1714.7993417882312 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19724512100219727s
+eval rate:            15.209501683778432 tokens/s
+Predicted: McDonald County
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Tim Dubois born?...
+Sub-Q 2: ✓ CORRECT - What county is Southwest City, Missouri located in...
+
+✗ Main question 175: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 176/200: Where is Assomada located?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 177/200: Who is the father of the performer of Qui de noux deux?
+================================================================================
+
+Sub-question 1/1
+Question: Who performed the song 'Qui de nous deux'?
+Ground Truth: Matthieu Chedid, in his persona as -M-.
+storage_time: 0.02284332411363721
+ Matthieu Chedid
+prompt eval count:    196 token(s)
+prompt eval duration: 0.11825718637555838s
+prompt eval rate:     1657.4045604091057 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49247002601623535s
+eval rate:            12.183482614233657 tokens/s
+Predicted: Matthieu Chedid
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song 'Qui de nous deux'?...
+
+✓ Main question 177: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 178/200: Who is the child of the creator of A Distinguished Member of the Humane Society?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 179/200: What record label did the person who is part of The Bruce Lee Band start?
+================================================================================
+
+Sub-question 1/2
+Question: Who are the members of The Bruce Lee Band?
+Ground Truth: The Bruce Lee Band is Mike Park and his backing band, which has included members from Less Than Jake and the Rx Bandits.
+storage_time: 0.022322033997625113
+ Mike Park, Less Than Jake, and the Rx Bandits
+prompt eval count:    188 token(s)
+prompt eval duration: 0.11708328826352954s
+prompt eval rate:     1605.6945682705123 tokens/s
+eval count:           13 token(s)
+eval duration:        1.182558536529541s
+eval rate:            10.993113320336048 tokens/s
+Predicted: Mike Park, Less Than Jake, and the Rx Bandits
+F1: 0.5455, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label did Mike Park start?
+Ground Truth: Mike Park started the record label Asian Man Records.
+storage_time: 0.021976873744279146
+Asian Man Records
+prompt eval count:    160 token(s)
+prompt eval duration: 0.11641103401780128s
+prompt eval rate:     1374.440158099903 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2958495616912842s
+eval rate:            13.52038508062404 tokens/s
+Predicted: Asian Man Records
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who are the members of The Bruce Lee Band?...
+Sub-Q 2: ✓ CORRECT - What record label did Mike Park start?...
+
+✓ Main question 179: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 180/200: Who is the father of the performer of Je dis aime?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song 'Je dis aime'?
+Ground Truth: The work 'Je dis aime' is a studio album performed by French singer-songwriter Matthieu Chedid, under his persona -M-.
+storage_time: 0.021355677861720324
+ Mylène Farmer
+prompt eval count:    179 token(s)
+prompt eval duration: 0.11619105795398355s
+prompt eval rate:     1540.566056906818 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39421653747558594s
+eval rate:            12.683384700241433 tokens/s
+Predicted: Mylène Farmer
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the father of Matthieu Chedid?
+Ground Truth: Louis Chedid
+storage_time: 0.02488803630694747
+ Louis Chedid
+prompt eval count:    191 token(s)
+prompt eval duration: 0.11954402830451727s
+prompt eval rate:     1597.7376930402686 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3940467834472656s
+eval rate:            12.68884865969002 tokens/s
+Predicted: Louis Chedid
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who performed the song 'Je dis aime'?...
+Sub-Q 2: ✓ CORRECT - Who is the father of Matthieu Chedid?...
+
+✗ Main question 180: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 181/200: Who is the father of the Labo M performer?
+================================================================================
+
+Sub-question 1/2
+Question: What is Labo M?
+Ground Truth: Labo M is the third studio album by French singer-songwriter Matthieu Chedid (under his persona -M-). It is an all-instrumental work released in 2003.
+storage_time: 0.024068372789770365
+ Labo M is the third studio album by French singer-songwriter Matthieu Chedid in his persona as -M-, released in 2003.
+prompt eval count:    250 token(s)
+prompt eval duration: 0.1198732708580792s
+prompt eval rate:     2085.5358180388766 tokens/s
+eval count:           34 token(s)
+eval duration:        3.252436399459839s
+eval rate:            10.453701725158002 tokens/s
+Predicted: Labo M is the third studio album by French singer-songwriter Matthieu Chedid in his persona as -M-, released in 2003.
+F1: 0.8571, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the father of French singer-songwriter Matthieu Chedid?
+Ground Truth: Louis Chedid
+storage_time: 0.02718690363690257
+ Andréée Chedid
+prompt eval count:    224 token(s)
+prompt eval duration: 0.12241462897509336s
+prompt eval rate:     1829.8466602841668 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49295902252197266s
+eval rate:            12.17139706522475 tokens/s
+Predicted: Andréée Chedid
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is Labo M?...
+Sub-Q 2: ✗ INCORRECT - Who is the father of French singer-songwriter Matt...
+
+✗ Main question 181: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 182/200: Where was the designer of the Lap Engine educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 183/200: Who is the spouse of the Rabbit Hole's producer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 184/200: Where did the producer of Julius Caesar study or work?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the producer of Julius Caesar?
+Ground Truth: John Houseman
+storage_time: 0.02425751695409417
+ Julius Caesar (1953 film) was produced by John Houseman.
+prompt eval count:    256 token(s)
+prompt eval duration: 0.12026727385818958s
+prompt eval rate:     2128.592357567334 tokens/s
+eval count:           17 token(s)
+eval duration:        1.5772671699523926s
+eval rate:            10.778135958103483 tokens/s
+Predicted: Julius Caesar (1953 film) was produced by John Houseman.
+F1: 0.2222, EM: 0.0000
+
+Sub-question 2/2
+Question: Where did John Houseman study or work?
+Ground Truth: John Houseman was educated at Clifton College in England and worked in the grain trade in London.
+storage_time: 0.025893737096339464
+ England, grain trade in London, United States
+prompt eval count:    258 token(s)
+prompt eval duration: 0.138806305360049s
+prompt eval rate:     1858.7051887216148 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8872559070587158s
+eval rate:            11.270705464391156 tokens/s
+Predicted: England, grain trade in London, United States
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the producer of Julius Caesar?...
+Sub-Q 2: ✗ INCORRECT - Where did John Houseman study or work?...
+
+✗ Main question 184: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 185/200: Who did the original voice for the character whose series Mickey's safari in Letterland is from?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 186/200: Where was the creator of the Lap Engine educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 187/200: What is the competition the 1972 Federation Cup is part of named after?
+================================================================================
+
+Sub-question 1/2
+Question: What is the Federation Cup in sports?
+Ground Truth: The Federation Cup is the premier international team competition in women's tennis. It was launched in 1963 and is the world's largest annual women's international team sports competition in terms of participating nations.
+storage_time: 0.021739349234849215
+ The Federation Cup is the premier international team competition in women's tennis, now known as the Fed Cup. It was first held in 1963 to celebrate the 50th anniversary of the International Tennis Federation (ITF).
+prompt eval count:    193 token(s)
+prompt eval duration: 0.1168894381262362s
+prompt eval rate:     1651.1329260695672 tokens/s
+eval count:           49 token(s)
+eval duration:        4.729904651641846s
+eval rate:            10.359616865213363 tokens/s
+Predicted: The Federation Cup is the premier international team competition in women's tennis, now known as the Fed Cup. It was first held in 1963 to celebrate the 50th anniversary of the International Tennis Federation (ITF).
+F1: 0.5556, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the Federation Cup in women's tennis named after?
+Ground Truth: The Federation Cup was named in honor of the International Tennis Federation (ITF), as it was launched to celebrate the ITF's 50th anniversary.
+storage_time: 0.028399846982210875
+ Federation Cup is named after the International Tennis Federation (ITF).
+prompt eval count:    276 token(s)
+prompt eval duration: 0.14140057377517223s
+prompt eval rate:     1951.901556204727 tokens/s
+eval count:           14 token(s)
+eval duration:        1.2815961837768555s
+eval rate:            10.923877721562882 tokens/s
+Predicted: Federation Cup is named after the International Tennis Federation (ITF).
+F1: 0.4571, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the Federation Cup in sports?...
+Sub-Q 2: ✓ CORRECT - What is the Federation Cup in women's tennis named...
+
+✓ Main question 187: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 188/200: What instrument is played by the person from The Blackout All-Stars?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 189/200: What is the seat of the county where Van Hook Township is located?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Van Hook Township located?
+Ground Truth: Van Hook Township is located in Mountrail County, North Dakota.
+storage_time: 0.020369675010442734
+ Van Hook Township is located in Mountrail County, North Dakota.
+prompt eval count:    149 token(s)
+prompt eval duration: 0.11472853040322661s
+prompt eval rate:     1298.7179342080158 tokens/s
+eval count:           15 token(s)
+eval duration:        1.3801095485687256s
+eval rate:            10.868702426960306 tokens/s
+Predicted: Van Hook Township is located in Mountrail County, North Dakota.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What is the county seat of Mountrail County, North Dakota?
+Ground Truth: Stanley, North Dakota
+storage_time: 0.023644115775823593
+ Stanley
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11901694908738136s
+prompt eval rate:     1697.2372552727184 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09840226173400879s
+eval rate:            20.32473608590625 tokens/s
+Predicted: Stanley
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which county is Van Hook Township located?...
+Sub-Q 2: ✓ CORRECT - What is the county seat of Mountrail County, North...
+
+✓ Main question 189: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 190/200: Where was Mary's betrothed born?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 191/200: Where was the person who wrote about the rioting being a dividing factor in Birmingham educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 192/200: Where did the producer of On Dangerous Ground study or work?
+================================================================================
+
+Sub-question 1/2
+Question: Who produced the film On Dangerous Ground?
+Ground Truth: John Houseman produced the 1951 film 'On Dangerous Ground'.
+storage_time: 0.0213559428229928
+ John Houseman
+prompt eval count:    180 token(s)
+prompt eval duration: 0.11621485184878111s
+prompt eval rate:     1548.855392718791 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29558897018432617s
+eval rate:            13.532304664499634 tokens/s
+Predicted: John Houseman
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Where did John Houseman study or work?
+Ground Truth: John Houseman was educated at Clifton College in England and worked in the grain trade in London.
+storage_time: 0.025600736029446125
+ England, grain trade in London, United States
+prompt eval count:    249 token(s)
+prompt eval duration: 0.12156798737123609s
+prompt eval rate:     2048.236590769745 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8862662315368652s
+eval rate:            11.283291232544313 tokens/s
+Predicted: England, grain trade in London, United States
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who produced the film On Dangerous Ground?...
+Sub-Q 2: ✗ INCORRECT - Where did John Houseman study or work?...
+
+✗ Main question 192: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 193/200: Who is the sibling of the actress who played Susan Walker in Miracle on 34th street?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 194/200: According to the organization that creates census county division, what is the total area in square miles?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 195/200: Where did the founder of the Acting Company study?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 196/200: What else happened in the northern part of Erich Zakowski's birthplace in the now Russian area?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 197/200: According to the agency that considers if Los Angeles County is to be a separate metropolitan area, what is the total area in square miles?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 198/200: What is the capital of the county which contains Hickory Grove Estates, Mississippi?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 199/200: Who is the child of the cast member of Green Ice?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 200/200: Who is the father of Edward Baring, 1st Baron Revelstoke's father?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 57/98 (58.16%)
+Sub Questions: 127/179 (70.95%)
+Average F1: 0.4791
+Average EM: 0.1955
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_qk_reflect_rerun/offline_qk_mean_rate015_cont_from51/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge

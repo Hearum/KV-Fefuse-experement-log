@@ -1,0 +1,263 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 132.46it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  2.59it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.56it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.36it/s]
+Loading dataset from ./data/result_reflect.json...
+Limited to first 20 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 303 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/2 [00:00<?, ?it/s]Inference Embeddings:  50%|█████     | 1/2 [00:01<00:01,  1.06s/it]Inference Embeddings: 100%|██████████| 2/2 [00:01<00:00,  1.73it/s]
+Corpus embeddings shape: (303, 1024)
+FAISS index built with 303 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/2 [00:00<?, ?it/s]Inference Embeddings:  50%|█████     | 1/2 [00:00<00:00,  1.43it/s]Inference Embeddings: 100%|██████████| 2/2 [00:00<00:00,  2.79it/s]Inference Embeddings: 100%|██████████| 2/2 [00:00<00:00,  2.44it/s]
+Context rank computed: (303, 10)
+[1/16] ex=0 sub=0 full=2132 warmup=True
+storage_time: 0.09894114104099572
+use_sparse_attention: True
+ 
+prompt eval count:    223 token(s)
+prompt eval duration: 0.9313183360500261s
+prompt eval rate:     239.44551649847628 tokens/s
+eval count:           1 token(s)
+eval duration:        2.4080276489257812e-05s
+eval rate:            41527.762376237624 tokens/s
+e2e=1.0372s selection=0.2103s score=0.2092s kv=0.0989s update_query=0.6220s selected=196
+[2/16] ex=1 sub=0 full=2112 warmup=True
+storage_time: 0.09627759695285931
+use_sparse_attention: True
+ 
+prompt eval count:    219 token(s)
+prompt eval duration: 0.3219693269347772s
+prompt eval rate:     680.1890170251027 tokens/s
+eval count:           1 token(s)
+eval duration:        8.821487426757812e-06s
+eval rate:            113359.56756756757 tokens/s
+e2e=0.3869s selection=0.1299s score=0.1286s kv=0.0963s update_query=0.0958s selected=194
+[3/16] ex=2 sub=0 full=2254 warmup=True
+storage_time: 0.09314074198482558
+use_sparse_attention: True
+ 
+prompt eval count:    237 token(s)
+prompt eval duration: 0.32203328498871997s
+prompt eval rate:     735.9487700418965 tokens/s
+eval count:           1 token(s)
+eval duration:        8.58306884765625e-06s
+eval rate:            116508.44444444444 tokens/s
+e2e=0.4022s selection=0.1332s score=0.1321s kv=0.0931s update_query=0.0957s selected=216
+[4/16] ex=3 sub=0 full=1972 warmup=True
+storage_time: 0.0871764610055834
+use_sparse_attention: True
+ 
+prompt eval count:    199 token(s)
+prompt eval duration: 0.3059053689939901s
+prompt eval rate:     650.5279742373845 tokens/s
+eval count:           1 token(s)
+eval duration:        1.1444091796875e-05s
+eval rate:            87381.33333333333 tokens/s
+e2e=0.3609s selection=0.1233s score=0.1224s kv=0.0872s update_query=0.0954s selected=173
+[5/16] ex=3 sub=1 full=2172 warmup=False
+storage_time: 0.1059987010085024
+use_sparse_attention: True
+ 
+prompt eval count:    229 token(s)
+prompt eval duration: 0.3379009490017779s
+prompt eval rate:     677.7133970073434 tokens/s
+eval count:           1 token(s)
+eval duration:        8.106231689453125e-06s
+eval rate:            123361.88235294117 tokens/s
+e2e=0.4178s selection=0.1289s score=0.1278s kv=0.1060s update_query=0.1030s selected=202
+[6/16] ex=4 sub=0 full=2002 warmup=False
+storage_time: 0.08618395600933582
+use_sparse_attention: True
+ 
+prompt eval count:    208 token(s)
+prompt eval duration: 0.3067994579905644s
+prompt eval rate:     677.967299428531 tokens/s
+eval count:           1 token(s)
+eval duration:        8.106231689453125e-06s
+eval rate:            123361.88235294117 tokens/s
+e2e=0.3669s selection=0.1239s score=0.1230s kv=0.0862s update_query=0.0967s selected=176
+[7/16] ex=4 sub=1 full=2891 warmup=False
+storage_time: 0.11302857100963593
+use_sparse_attention: True
+
+prompt eval count:    335 token(s)
+prompt eval duration: 0.40538925398141146s
+prompt eval rate:     826.3662559130414 tokens/s
+eval count:           1 token(s)
+eval duration:        1.9073486328125e-05s
+eval rate:            52428.8 tokens/s
+e2e=0.4904s selection=0.1739s score=0.1719s kv=0.1130s update_query=0.1184s selected=311
+[8/16] ex=6 sub=0 full=2303 warmup=False
+storage_time: 0.09343298396561295
+use_sparse_attention: True
+ 
+prompt eval count:    244 token(s)
+prompt eval duration: 0.3250584579654969s
+prompt eval rate:     750.6342136954922 tokens/s
+eval count:           1 token(s)
+eval duration:        9.5367431640625e-06s
+eval rate:            104857.6 tokens/s
+e2e=0.4110s selection=0.1341s score=0.1329s kv=0.0934s update_query=0.0975s selected=223
+[9/16] ex=7 sub=0 full=2406 warmup=False
+storage_time: 0.09318013995653018
+use_sparse_attention: True
+ 
+prompt eval count:    265 token(s)
+prompt eval duration: 0.3449750709696673s
+prompt eval rate:     768.1714486067914 tokens/s
+eval count:           1 token(s)
+eval duration:        9.059906005859375e-06s
+eval rate:            110376.42105263157 tokens/s
+e2e=0.4158s selection=0.1385s score=0.1371s kv=0.0932s update_query=0.1133s selected=238
+[10/16] ex=7 sub=1 full=2286 warmup=False
+storage_time: 0.09878820495214313
+use_sparse_attention: True
+ 
+prompt eval count:    247 token(s)
+prompt eval duration: 0.32809446891769767s
+prompt eval rate:     752.8319535979737 tokens/s
+eval count:           1 token(s)
+eval duration:        9.298324584960938e-06s
+eval rate:            107546.2564102564 tokens/s
+e2e=0.3881s selection=0.1336s score=0.1324s kv=0.0988s update_query=0.0957s selected=219
+[11/16] ex=9 sub=0 full=2815 warmup=False
+storage_time: 0.09194462496088818
+use_sparse_attention: True
+ 
+prompt eval count:    324 token(s)
+prompt eval duration: 0.37829243898158893s
+prompt eval rate:     856.4802428307818 tokens/s
+eval count:           1 token(s)
+eval duration:        8.344650268554688e-06s
+eval rate:            119837.25714285714 tokens/s
+e2e=0.4708s selection=0.1684s score=0.1666s kv=0.0919s update_query=0.1180s selected=299
+[12/16] ex=9 sub=1 full=3547 warmup=False
+storage_time: 0.11903232301119715
+use_sparse_attention: True
+ 
+prompt eval count:    441 token(s)
+prompt eval duration: 0.4605286300065927s
+prompt eval rate:     957.5951879336727 tokens/s
+eval count:           1 token(s)
+eval duration:        9.775161743164062e-06s
+eval rate:            102300.09756097561 tokens/s
+e2e=0.5668s selection=0.2133s score=0.2106s kv=0.1190s update_query=0.1282s selected=408
+[13/16] ex=10 sub=0 full=2322 warmup=False
+storage_time: 0.0878355770255439
+use_sparse_attention: True
+ 
+prompt eval count:    250 token(s)
+prompt eval duration: 0.3280425780103542s
+prompt eval rate:     762.0961934767782 tokens/s
+eval count:           1 token(s)
+eval duration:        8.58306884765625e-06s
+eval rate:            116508.44444444444 tokens/s
+e2e=0.3896s selection=0.1372s score=0.1359s kv=0.0878s update_query=0.1030s selected=225
+[14/16] ex=10 sub=1 full=2554 warmup=False
+storage_time: 0.10619321902049705
+use_sparse_attention: True
+ 
+prompt eval count:    284 token(s)
+prompt eval duration: 0.44878453196724877s
+prompt eval rate:     632.8203843280536 tokens/s
+eval count:           1 token(s)
+eval duration:        9.298324584960938e-06s
+eval rate:            107546.2564102564 tokens/s
+e2e=0.5266s selection=0.2294s score=0.2278s kv=0.1062s update_query=0.1132s selected=260
+[15/16] ex=11 sub=0 full=2049 warmup=False
+storage_time: 0.08388902101432905
+use_sparse_attention: True
+ 
+prompt eval count:    211 token(s)
+prompt eval duration: 0.3067077560699545s
+prompt eval rate:     687.9513016028023 tokens/s
+eval count:           1 token(s)
+eval duration:        8.58306884765625e-06s
+eval rate:            116508.44444444444 tokens/s
+e2e=0.3836s selection=0.1274s score=0.1264s kv=0.0839s update_query=0.0954s selected=184
+[16/16] ex=11 sub=1 full=2023 warmup=False
+storage_time: 0.09758984501240775
+use_sparse_attention: True
+ 
+prompt eval count:    206 token(s)
+prompt eval duration: 0.32364068494644016s
+prompt eval rate:     636.5083550422323 tokens/s
+eval count:           1 token(s)
+eval duration:        1.0251998901367188e-05s
+eval rate:            97541.95348837209 tokens/s
+e2e=0.3834s selection=0.1242s score=0.1232s kv=0.0976s update_query=0.1019s selected=180
+{
+  "config": {
+    "model_path": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct",
+    "draft_model_path": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-3B-Instruct",
+    "model_name": "Qwen2.5-7B-Instruct",
+    "data_path": "./data/result_reflect.json",
+    "dataset_name": "musique",
+    "cache_path": "/raid/home/hming/fusionrag-reflect-full-cache",
+    "bge_model_path": "/mnt/qjhs-sh-lab-01/models/bge-m3",
+    "output_dir": "MOTIVATION_EXPERIMENTS/kv_load_investigation/draft_sparse_current",
+    "device": "cuda:0",
+    "topk": 10,
+    "rate": 0.15,
+    "max_main_questions": 20,
+    "max_sub_questions": 16,
+    "warmup_sub_questions": 4,
+    "rrf_k": 18,
+    "threshold_factor": 0.5,
+    "seed": 42
+  },
+  "num_measured": 12,
+  "end_to_end_ttft_s_mean": 0.4342275209152528,
+  "end_to_end_ttft_s_p50": 0.413375100994017,
+  "end_to_end_ttft_s_p95": 0.5265523990383372,
+  "kv_load_copy_s_mean": 0.0980914305788853,
+  "draft_selection_s_mean": 0.1527268263307633,
+  "draft_score_forward_s_mean": 0.15129837600397877,
+  "online_update_query_prefill_s_mean": 0.10703293299108434,
+  "extra_impl_overhead_s_mean": 0.07637633101451986,
+  "selected_doc_tokens_mean": 243.75,
+  "reprocess_prefill_tokens_mean": 270.3333333333333,
+  "full_tokens_mean": 2447.5
+}

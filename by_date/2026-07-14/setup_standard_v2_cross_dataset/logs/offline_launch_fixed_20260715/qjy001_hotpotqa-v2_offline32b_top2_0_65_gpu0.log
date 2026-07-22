@@ -1,0 +1,1197 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=hotpotqa-v2 method=offline32b_top2 rate=0.15 start=0 end=65
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/offline32b_top2/hotpotqa-v2/rate_0p15/seg_0_65
+[setup-v2] offline_fixed_set_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/fixed_sets_hotpotqa_32b/chunk_fixed_sets_npz
+[setup-v2] offline_fixed_set_method=offline32b_mean_score_global
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:15,  1.57s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:10,  1.15s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:08,  1.01s/it]Inference Embeddings:  36%|███▋      | 4/11 [00:04<00:06,  1.06it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.10it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.12it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.17it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.16it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.14it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.15it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.55it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.17it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 10.3858642578125
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 236.18it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]
+storage_time: 0.1388686951249838
+use_sparse_attention: True
+<think>
+
+</think>
+
+Glenn Hughes
+prompt eval count:    261 token(s)
+prompt eval duration: 1.195920635946095s
+prompt eval rate:     218.2419068247973 tokens/s
+eval count:           8 token(s)
+eval duration:        2.179755210876465s
+eval rate:            3.670136885133654 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who is older Glenn Hughes or Ross Lynch?
+batch: 1 preprocess: True reprocess_method: FusionRAG
+real answer: Glenn Hughes
+answer: Glenn Hughes
+storage_time: 0.08842261880636215
+use_sparse_attention: True
+<think>
+
+</think>
+
+Chlorophyll a and b are found in Prochlorococcus and are essential for photosynthesis.
+prompt eval count:    266 token(s)
+prompt eval duration: 0.966172085609287s
+prompt eval rate:     275.3132738587197 tokens/s
+eval count:           26 token(s)
+eval duration:        7.755367279052734s
+eval rate:            3.3525169169261737 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What is found in Prochlorococcus and essential for photosynthesis?
+batch: 2 preprocess: True reprocess_method: FusionRAG
+real answer: Chlorophyll
+answer: Chlorophyll a and b are found in Prochlorococcus and are essential for photosynthesis.
+storage_time: 0.0919278678484261
+use_sparse_attention: True
+<think>
+
+</think>
+
+authors
+prompt eval count:    235 token(s)
+prompt eval duration: 0.8129934039898217s
+prompt eval rate:     289.05523568422717 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5502290725708008s
+eval rate:            3.870395740966194 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Alan Furst and Lee Child are what?
+batch: 3 preprocess: True reprocess_method: FusionRAG
+real answer: is a British author
+answer: authors
+storage_time: 0.07804028503596783
+use_sparse_attention: True
+<think>
+
+</think>
+
+Second City Theatre
+prompt eval count:    250 token(s)
+prompt eval duration: 0.7985415710136294s
+prompt eval rate:     313.0707393012267 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171008825302124s
+eval rate:            3.6849228371453977 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Wayne's World featured the actor who was a member of what Chicago comedy troupe?
+batch: 4 preprocess: True reprocess_method: FusionRAG
+real answer: Second City Theatre
+answer: Second City Theatre
+storage_time: 0.07182259485125542
+use_sparse_attention: True
+<think>
+
+</think>
+
+Quinceañera
+prompt eval count:    225 token(s)
+prompt eval duration: 0.7915946668945253s
+prompt eval rate:     284.23637678445823 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4807798862457275s
+eval rate:            3.6278913941132007 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What telenovela inspired the TV show that the band Eme 15 was formed on in 2012?
+batch: 5 preprocess: True reprocess_method: FusionRAG
+real answer: Quinceañera
+answer: Quinceañera
+storage_time: 0.08378690201789141
+use_sparse_attention: True
+<think>
+
+</think>
+
+game shows
+prompt eval count:    302 token(s)
+prompt eval duration: 0.9735431438311934s
+prompt eval rate:     310.2071047529918 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8610191345214844s
+eval rate:            3.761379918213404 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question:  Blake Alexander Carrington is a fictional character on the ABC television series "Dynasty", created by Richard and Esther Shapiro whose role was portrayed by John Forsythe, and also appeared as a guest on several talk and variety shows and as a panelist on what type of television show?
+batch: 6 preprocess: True reprocess_method: FusionRAG
+real answer: game shows
+answer: game shows
+storage_time: 0.0806541508063674
+use_sparse_attention: True
+<think>
+
+</think>
+
+China
+prompt eval count:    258 token(s)
+prompt eval duration: 0.9552545258775353s
+prompt eval rate:     270.0850851902437 tokens/s
+eval count:           6 token(s)
+eval duration:        1.550246238708496s
+eval rate:            3.870352883422298 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what country are the cities Guilin and Ankang located?
+batch: 7 preprocess: True reprocess_method: FusionRAG
+real answer: China
+answer: China
+storage_time: 0.08070470113307238
+use_sparse_attention: True
+<think>
+
+</think>
+
+Bono
+prompt eval count:    286 token(s)
+prompt eval duration: 0.9657654040493071s
+prompt eval rate:     296.138170616638 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8528048992156982s
+eval rate:            3.7780556403769956 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who owns a licensed brand that seeks to engage the private sector in raising awareness and funds to help eliminate HIV/AIDS in eight African countries, who's partner is a Dutch sports and clothing company, which sells alpine sking and tennis equipment?
+batch: 8 preprocess: True reprocess_method: FusionRAG
+real answer: RED
+answer: Bono
+storage_time: 0.08547402592375875
+use_sparse_attention: True
+<think>
+
+</think>
+
+Springfield Elementary School
+prompt eval count:    295 token(s)
+prompt eval duration: 0.9684169222600758s
+prompt eval rate:     304.6208644429031 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4709606170654297s
+eval rate:            3.642308152482256 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In which school was the fictional character in "The Simpsons" which was voice by Marcia Wallace a teacher?
+batch: 9 preprocess: True reprocess_method: FusionRAG
+real answer: Springfield Elementary School
+answer: Springfield Elementary School
+storage_time: 0.08339336700737476
+use_sparse_attention: True
+<think>
+
+</think>
+
+Tsui Hark
+prompt eval count:    284 token(s)
+prompt eval duration: 0.9621256026439369s
+prompt eval rate:     295.17975534541785 tokens/s
+eval count:           9 token(s)
+eval duration:        2.471608877182007s
+eval rate:            3.6413528382618967 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The actor that uses the stage name "Li Ming" starred with Donnie Yen in a 2005 Hong Kong film directed by who?
+batch: 10 preprocess: True reprocess_method: FusionRAG
+real answer: Tsui Hark
+answer: Tsui Hark
+storage_time: 0.12973102601245046
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Funtastic World of Hanna-Barbera
+prompt eval count:    255 token(s)
+prompt eval duration: 0.8564883549697697s
+prompt eval rate:     297.7273403898181 tokens/s
+eval count:           15 token(s)
+eval duration:        4.326548099517822s
+eval rate:            3.4669671190461733 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which original attraction at Universal Studios Florida, featuring Yogi Bear and Boo Boo, was replaced by Jimmy Nuetron's Nicktoon Blast?
+batch: 11 preprocess: True reprocess_method: FusionRAG
+real answer: The Funtastic World of Hanna-Barbera
+answer: The Funtastic World of Hanna-Barbera
+storage_time: 0.07734513469040394
+use_sparse_attention: True
+<think>
+
+</think>
+
+alternative rock
+prompt eval count:    242 token(s)
+prompt eval duration: 0.7925034486688673s
+prompt eval rate:     305.36144720439586 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8570585250854492s
+eval rate:            3.7694019361494853 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Waht kind of music do the bands Nada Surf and Madina Lake play?
+batch: 12 preprocess: True reprocess_method: FusionRAG
+real answer: alternative rock
+answer: alternative rock
+storage_time: 0.073074780870229
+use_sparse_attention: True
+<think>
+
+</think>
+
+became Pakistan's ODI Captain
+prompt eval count:    224 token(s)
+prompt eval duration: 0.7885257294401526s
+prompt eval rate:     284.0744336383777 tokens/s
+eval count:           12 token(s)
+eval duration:        3.3983829021453857s
+eval rate:            3.5310912117714714 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Whar did Sarfraz Ahmed do after Azhar Ali stepped down?
+batch: 13 preprocess: True reprocess_method: FusionRAG
+real answer: He took up the Test captaincy
+answer: became Pakistan's ODI Captain
+storage_time: 0.09277300722897053
+use_sparse_attention: True
+<think>
+
+</think>
+
+American Hairless Terrier
+prompt eval count:    319 token(s)
+prompt eval duration: 0.9821002651005983s
+prompt eval rate:     324.8140860315563 tokens/s
+eval count:           10 token(s)
+eval duration:        2.780637264251709s
+eval rate:            3.596297916510544 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What is a rare breed of dog that was derived as a variant of Rat Terrier, Shiloh Shepherd dog or American Hairless Terrier ?
+batch: 14 preprocess: True reprocess_method: FusionRAG
+real answer: American Hairless Terrier
+answer: American Hairless Terrier
+storage_time: 0.07984616188332438
+use_sparse_attention: True
+<think>
+
+</think>
+
+Blanche Barrow
+prompt eval count:    260 token(s)
+prompt eval duration: 0.9591254787519574s
+prompt eval rate:     271.0802765226503 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4714107513427734s
+eval rate:            3.6416447549684308 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Buck Barrow is married to what fringe member of Bonnie and Clyde's gang born in 1911
+batch: 15 preprocess: True reprocess_method: FusionRAG
+real answer: Blanche Barrow
+answer: Blanche Barrow
+storage_time: 0.08213897794485092
+use_sparse_attention: True
+<think>
+
+</think>
+
+Patricia Neal
+prompt eval count:    286 token(s)
+prompt eval duration: 0.9624320273287594s
+prompt eval rate:     297.1638431378849 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1622278690338135s
+eval rate:            3.699887562532797 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What actress was in both the films "Happy Mother's Day, Love George" and "The Day the Earth Stood Still"?
+batch: 16 preprocess: True reprocess_method: FusionRAG
+real answer: Patricia Neal
+answer: Patricia Neal
+storage_time: 0.09299557516351342
+use_sparse_attention: True
+<think>
+
+</think>
+
+Gossip Girl
+prompt eval count:    317 token(s)
+prompt eval duration: 0.9808236993849277s
+prompt eval rate:     323.1977369620962 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1617379188537598s
+eval rate:            3.70072612883708 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What is the book series, written by Cecily von Ziegesar, that the character Eric van der Woodsen appears in?
+batch: 17 preprocess: True reprocess_method: FusionRAG
+real answer: Gossip Girl
+answer: Gossip Girl
+storage_time: 0.09061773121356964
+use_sparse_attention: True
+<think>
+
+</think>
+
+1965
+prompt eval count:    312 token(s)
+prompt eval duration: 0.9752321355044842s
+prompt eval rate:     319.92383007211254 tokens/s
+eval count:           9 token(s)
+eval duration:        2.472825288772583s
+eval rate:            3.6395616143456944 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what year was the author of the book series which had the character Opal Koboi born?
+batch: 18 preprocess: True reprocess_method: FusionRAG
+real answer: 1965
+answer: 1965
+storage_time: 0.08037351490929723
+use_sparse_attention: True
+<think>
+
+</think>
+
+no
+prompt eval count:    261 token(s)
+prompt eval duration: 0.951004330534488s
+prompt eval rate:     274.4466997887502 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5449481010437012s
+eval rate:            3.8836256026637113 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Are Shiba Inu and Leonberger both large dog breeds?
+batch: 19 preprocess: True reprocess_method: FusionRAG
+real answer: no
+answer: no
+storage_time: 0.08408928895369172
+use_sparse_attention: True
+<think>
+
+</think>
+
+Astor Place Riot
+prompt eval count:    264 token(s)
+prompt eval duration: 0.9544670549221337s
+prompt eval rate:     276.5941460614765 tokens/s
+eval count:           9 token(s)
+eval duration:        2.472050666809082s
+eval rate:            3.640702078172686 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Edwin Forrest's feud with William Charles Macready was the cause of what event that occurred on May 10, 1849, in Manhattan?
+batch: 20 preprocess: True reprocess_method: FusionRAG
+real answer: The Astor Place Riot
+answer: Astor Place Riot
+storage_time: 0.08801274234429002
+use_sparse_attention: True
+<think>
+
+</think>
+
+Neel Sethi
+prompt eval count:    298 token(s)
+prompt eval duration: 0.9714534170925617s
+prompt eval rate:     306.75686014042407 tokens/s
+eval count:           9 token(s)
+eval duration:        2.471360445022583s
+eval rate:            3.641718883267859 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who is the voice of the protagonist feral child in the sequel to the movie adaptation of some of Rudyard Kipling's stories?
+batch: 21 preprocess: True reprocess_method: FusionRAG
+real answer: Haley Joel Osment
+answer: Neel Sethi
+storage_time: 0.17500860337167978
+use_sparse_attention: True
+<think>
+
+</think>
+
+Nelumbo
+prompt eval count:    235 token(s)
+prompt eval duration: 0.8908644202165306s
+prompt eval rate:     263.7887367225662 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162104606628418s
+eval rate:            3.7000984945289885 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which genus is aquatic, Phylica or Nelumbo?
+batch: 22 preprocess: True reprocess_method: FusionRAG
+real answer: Nelumbo
+answer: Nelumbo
+storage_time: 0.08878390118479729
+use_sparse_attention: True
+<think>
+
+</think>
+
+Sojourners
+prompt eval count:    290 token(s)
+prompt eval duration: 0.9689364708028734s
+prompt eval rate:     299.2972281863869 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4716949462890625s
+eval rate:            3.641226039448097 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What Christian publication first published in 1971 has Brandan Robertson written for?
+batch: 23 preprocess: True reprocess_method: FusionRAG
+real answer: Sojourners
+answer: Sojourners
+storage_time: 0.08636733703315258
+use_sparse_attention: True
+<think>
+
+</think>
+
+Albany
+prompt eval count:    278 token(s)
+prompt eval duration: 0.9625957389362156s
+prompt eval rate:     288.8024419339561 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162534713745117s
+eval rate:            3.6993625809342285 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Johannes Megapolensis served for several years at the first permanent Dutch settlement in what town?
+batch: 24 preprocess: True reprocess_method: FusionRAG
+real answer: New Netherland
+answer: Albany
+storage_time: 0.11248212028294802
+use_sparse_attention: True
+<think>
+
+</think>
+
+Answer: Lady Mary Crawley
+prompt eval count:    261 token(s)
+prompt eval duration: 0.9830515990033746s
+prompt eval rate:     265.4997970244938 tokens/s
+eval count:           11 token(s)
+eval duration:        3.089120626449585s
+eval rate:            3.5608839311149256 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Non-Stop starred the English actress best known for what role in Downton Abbey?
+batch: 25 preprocess: True reprocess_method: FusionRAG
+real answer: Lady Mary Crawley
+answer: Answer: Lady Mary Crawley
+storage_time: 0.12234473787248135
+use_sparse_attention: True
+<think>
+
+</think>
+
+Ashley Banjo
+prompt eval count:    238 token(s)
+prompt eval duration: 0.8520702165551484s
+prompt eval rate:     279.3197032073424 tokens/s
+eval count:           9 token(s)
+eval duration:        2.471073865890503s
+eval rate:            3.642141226222172 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: An official ambassador of the United Dance Organisation, this actor made his film debut in Street Dance 3D.
+batch: 26 preprocess: True reprocess_method: FusionRAG
+real answer: George Sampson
+answer: Ashley Banjo
+storage_time: 0.09230744605883956
+use_sparse_attention: True
+<think>
+
+</think>
+
+Rob Quist
+prompt eval count:    281 token(s)
+prompt eval duration: 0.9818747681565583s
+prompt eval rate:     286.1872095232363 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162752389907837s
+eval rate:            3.698990248412538 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which member of Mission Mountain Wood Band, abbreviated M2Wb, was appointed to the Montana Arts Council by Governor Brian Schweitzer?
+batch: 27 preprocess: True reprocess_method: FusionRAG
+real answer: Robert Ernest Quist
+answer: Rob Quist
+storage_time: 0.09299021027982235
+use_sparse_attention: True
+<think>
+
+</think>
+
+January 19, 1954
+prompt eval count:    295 token(s)
+prompt eval duration: 0.9763077353127301s
+prompt eval rate:     302.1588269046192 tokens/s
+eval count:           15 token(s)
+eval duration:        4.324034690856934s
+eval rate:            3.468982344595231 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Famous for her role as Peggy Bundy, when was the wife of producer, writer, and director on "The Shield" born?
+batch: 28 preprocess: True reprocess_method: FusionRAG
+real answer: born January 19, 1954
+answer: January 19, 1954
+storage_time: 0.08579583931714296
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    265 token(s)
+prompt eval duration: 0.9580488884821534s
+prompt eval rate:     276.603838474091 tokens/s
+eval count:           6 token(s)
+eval duration:        1.544586420059204s
+eval rate:            3.884534994014786 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Are Shifty Shellshock and Alissa White-Gluz both death metal vocalists?
+batch: 29 preprocess: True reprocess_method: FusionRAG
+real answer: no
+answer: yes
+storage_time: 0.08304646424949169
+use_sparse_attention: True
+<think>
+
+</think>
+
+screenwriter
+prompt eval count:    261 token(s)
+prompt eval duration: 0.9540922371670604s
+prompt eval rate:     273.5584567535887 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8540899753570557s
+eval rate:            3.7754370570133515 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Peter Benchley and Ödön von Horváth, have which mutual occupation?
+batch: 30 preprocess: True reprocess_method: FusionRAG
+real answer: novelist
+answer: screenwriter
+storage_time: 0.09033639589324594
+use_sparse_attention: True
+<think>
+
+</think>
+
+2013
+prompt eval count:    264 token(s)
+prompt eval duration: 0.9605836346745491s
+prompt eval rate:     274.83291456390947 tokens/s
+eval count:           9 token(s)
+eval duration:        2.472400665283203s
+eval rate:            3.640186692381871 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Until which year did this Polish professional boxer who lost to Joe Smith Jr. in 2016 in a knockout victory hold the IBO light heavyweight title?
+batch: 31 preprocess: True reprocess_method: FusionRAG
+real answer: 2013
+answer: 2013
+storage_time: 0.09761377237737179
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    293 token(s)
+prompt eval duration: 0.9802292701788247s
+prompt eval rate:     298.9096621717362 tokens/s
+eval count:           6 token(s)
+eval duration:        1.545029878616333s
+eval rate:            3.8834200445193723 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Were Ronnie Van Zant and Mick Jones both lead singers of a band?
+batch: 32 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.08178342785686255
+use_sparse_attention: True
+<think>
+
+</think>
+
+Passenger 57
+prompt eval count:    249 token(s)
+prompt eval duration: 0.7989657199941576s
+prompt eval rate:     311.65292048051924 tokens/s
+eval count:           10 token(s)
+eval duration:        2.779493570327759s
+eval rate:            3.5977777055338884 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Tome Sizemore had a role in which movie that starred Wesley Snipes and Bruce Payne ?
+batch: 33 preprocess: True reprocess_method: FusionRAG
+real answer: Passenger 57
+answer: Passenger 57
+storage_time: 0.15009516989812255
+use_sparse_attention: True
+<think>
+
+</think>
+
+Stamford Bridge
+prompt eval count:    267 token(s)
+prompt eval duration: 1.054262495599687s
+prompt eval rate:     253.25761004912223 tokens/s
+eval count:           9 token(s)
+eval duration:        2.470158576965332s
+eval rate:            3.6434907798740537 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: At which battle, in the East Riding of Yorkshire, did King Harold defeat King Harald of Norway?
+batch: 34 preprocess: True reprocess_method: FusionRAG
+real answer: Battle of Stamford Bridge
+answer: Stamford Bridge
+storage_time: 0.08640245627611876
+use_sparse_attention: True
+<think>
+
+</think>
+
+Jonathan David Larson
+prompt eval count:    264 token(s)
+prompt eval duration: 0.9576592119410634s
+prompt eval rate:     275.672177229834 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1618096828460693s
+eval rate:            3.7006032785771534 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What Pulitzer prize winning, American composer known for exploring addiction and homophobia, wrote "Tick, Tick...Boom!"?
+batch: 35 preprocess: True reprocess_method: FusionRAG
+real answer: Jonathan Larson
+answer: Jonathan David Larson
+storage_time: 0.08260122500360012
+use_sparse_attention: True
+<think>
+
+</think>
+
+18,709
+prompt eval count:    248 token(s)
+prompt eval duration: 0.7955569690093398s
+prompt eval rate:     311.73128972626535 tokens/s
+eval count:           11 token(s)
+eval duration:        3.089188814163208s
+eval rate:            3.5608053316675154 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The inner urban neighbourhood Eureka Tower is in had a population of what in 2011?
+batch: 36 preprocess: True reprocess_method: FusionRAG
+real answer: 11,235
+answer: 18,709
+storage_time: 0.08852053200826049
+use_sparse_attention: True
+<think>
+
+</think>
+
+Battle of Paris
+prompt eval count:    326 token(s)
+prompt eval duration: 1.016311643179506s
+prompt eval rate:     320.7677509037651 tokens/s
+eval count:           8 token(s)
+eval duration:        2.163268566131592s
+eval rate:            3.6981076345531103 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Aleksey Petrovich Yermolov, was a Russian Imperial general, of the 19th century who commanded Russian troops in the Caucasian War, he distinguished himself during the Napoleonic Wars at which event that was fought on March 30–31, 1814 between the Sixth Coalition—consisting of Russia, Austria, and Prussia against the French Empire?
+batch: 37 preprocess: True reprocess_method: FusionRAG
+real answer: Battle of Paris
+answer: Battle of Paris
+storage_time: 0.17052225768566132
+use_sparse_attention: True
+<think>
+
+</think>
+
+January 1996
+prompt eval count:    280 token(s)
+prompt eval duration: 1.07222407637164s
+prompt eval rate:     261.139444795446 tokens/s
+eval count:           11 token(s)
+eval duration:        3.089589834213257s
+eval rate:            3.560343149174387 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: When did the arena that hosted the 2017 Canadian Olympic Curling Trials open?
+batch: 38 preprocess: True reprocess_method: FusionRAG
+real answer: January 1996
+answer: January 1996
+storage_time: 0.08940751012414694
+use_sparse_attention: True
+<think>
+
+</think>
+
+Gangnam
+prompt eval count:    282 token(s)
+prompt eval duration: 0.9672087240032852s
+prompt eval rate:     291.56064559963806 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1623127460479736s
+eval rate:            3.699742331270756 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Lee Min-ho stared in his first leading film role in 2015 in a film which was set in which part of Seoul? 
+batch: 39 preprocess: True reprocess_method: FusionRAG
+real answer: Gangnam district
+answer: Gangnam
+storage_time: 0.08559043193235993
+use_sparse_attention: True
+<think>
+
+</think>
+
+Bryan Beller
+prompt eval count:    251 token(s)
+prompt eval duration: 0.8063222421333194s
+prompt eval rate:     311.289937055338 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4707746505737305s
+eval rate:            3.6425822961677787 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who is the American bass guitarist known for his work in a virtual death metal band featured in "Metalocalypse"?
+batch: 40 preprocess: True reprocess_method: FusionRAG
+real answer: Bryan Beller
+answer: Bryan Beller
+storage_time: 0.08049267064779997
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    245 token(s)
+prompt eval duration: 0.7954188985750079s
+prompt eval rate:     308.0138030903179 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5452420711517334s
+eval rate:            3.882886773544775 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Were both Hal Hartley and Mervyn LeRoy producers?
+batch: 41 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.08373475400730968
+use_sparse_attention: True
+<think>
+
+</think>
+
+Lago and Emila are not directly related.
+prompt eval count:    256 token(s)
+prompt eval duration: 0.8012324920855463s
+prompt eval rate:     319.5077615158264 tokens/s
+eval count:           15 token(s)
+eval duration:        4.325878620147705s
+eval rate:            3.4675036720026675 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: How are Lago and Emila related?
+batch: 42 preprocess: True reprocess_method: FusionRAG
+real answer: husband of Emilia
+answer: Lago and Emila are not directly related.
+storage_time: 0.08809859165921807
+use_sparse_attention: True
+<think>
+
+</think>
+
+Rachel Griffiths
+prompt eval count:    269 token(s)
+prompt eval duration: 0.9618306583724916s
+prompt eval rate:     279.6750110411051 tokens/s
+eval count:           8 token(s)
+eval duration:        2.163102626800537s
+eval rate:            3.6983913296027318 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The Rookie stars which actress of Australian heritage?
+batch: 43 preprocess: True reprocess_method: FusionRAG
+real answer: Rachel Anne Griffiths
+answer: Rachel Griffiths
+storage_time: 0.0958985248580575
+use_sparse_attention: True
+<think>
+
+</think>
+
+1958
+prompt eval count:    306 token(s)
+prompt eval duration: 0.980765697080642s
+prompt eval rate:     312.0011241327495 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4708690643310547s
+eval rate:            3.6424431103703974 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what year was the actress who portrayed Tiffany Valentine-Ray born?
+batch: 44 preprocess: True reprocess_method: FusionRAG
+real answer: 1958
+answer: 1958
+storage_time: 0.09005022514611483
+use_sparse_attention: True
+<think>
+
+</think>
+
+Dallas Cowboys
+prompt eval count:    282 token(s)
+prompt eval duration: 0.967353596817702s
+prompt eval rate:     291.5169808927096 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8533196449279785s
+eval rate:            3.777006313593587 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which team did the head coach of the 1985 Oklahoma Sooners lead to a Super Bowl victory ?
+batch: 45 preprocess: True reprocess_method: FusionRAG
+real answer: the Dallas Cowboys
+answer: Dallas Cowboys
+storage_time: 0.09075322886928916
+use_sparse_attention: True
+<think>
+
+</think>
+
+Prudential Center in Newark, New Jersey
+prompt eval count:    279 token(s)
+prompt eval duration: 0.9661326790228486s
+prompt eval rate:     288.7802121362689 tokens/s
+eval count:           14 token(s)
+eval duration:        4.015984058380127s
+eval rate:            3.4860696149394053 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Where did the league that Michael Anthony Edward Kidd-Gilchrist plays for hold it's 2012 draft?
+batch: 46 preprocess: True reprocess_method: FusionRAG
+real answer: Newark, New Jersey.
+answer: Prudential Center in Newark, New Jersey
+storage_time: 0.16254542162641883
+use_sparse_attention: True
+<think>
+
+</think>
+
+Emilia Fox
+prompt eval count:    295 token(s)
+prompt eval duration: 1.0475550936535s
+prompt eval rate:     281.6081004113538 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1629738807678223s
+eval rate:            3.6986114678186146 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Cashback was a movie that starred which English actress from "Silent Witness"?
+batch: 47 preprocess: True reprocess_method: FusionRAG
+real answer: Emilia Rose Elizabeth Fox
+answer: Emilia Fox
+storage_time: 0.10475752828642726
+use_sparse_attention: True
+<think>
+
+</think>
+
+comedian
+prompt eval count:    315 token(s)
+prompt eval duration: 1.0222477419301867s
+prompt eval rate:     308.14448110711754 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8533439636230469s
+eval rate:            3.776956753519141 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Legend is a science fiction Western television show starring an American , director, producer, writer, singer, musician, voice artist and stand-up what?
+batch: 48 preprocess: True reprocess_method: FusionRAG
+real answer: comedian
+answer: comedian
+storage_time: 0.09262529481202364
+use_sparse_attention: True
+<think>
+
+</think>
+
+CIT Group
+prompt eval count:    281 token(s)
+prompt eval duration: 0.9697543997317553s
+prompt eval rate:     289.7640888019974 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1624884605407715s
+eval rate:            3.699441706153404 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What does the company abbreviation stand for, who's former hairman and CEO is an American businessman,and  investment banker?
+batch: 49 preprocess: True reprocess_method: FusionRAG
+real answer: Commercial Investment Trust
+answer: CIT Group
+storage_time: 0.08828674303367734
+use_sparse_attention: True
+<think>
+
+</think>
+
+Bijou Lilly Phillips
+prompt eval count:    259 token(s)
+prompt eval duration: 0.9578955597244203s
+prompt eval rate:     270.38438311010907 tokens/s
+eval count:           10 token(s)
+eval duration:        2.780550479888916s
+eval rate:            3.5964101613431247 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actress of the movie Havoc is daughter of John Phillips
+batch: 50 preprocess: True reprocess_method: FusionRAG
+real answer: Bijou Phillips
+answer: Bijou Lilly Phillips
+storage_time: 0.07963388133794069
+use_sparse_attention: True
+<think>
+
+</think>
+
+Million Dollar Arm
+prompt eval count:    226 token(s)
+prompt eval duration: 0.805968685541302s
+prompt eval rate:     280.4079166527601 tokens/s
+eval count:           9 token(s)
+eval duration:        2.471510410308838s
+eval rate:            3.641497912555977 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which came first, Million Dollar Arm or The Wild?
+batch: 51 preprocess: True reprocess_method: FusionRAG
+real answer: The Wild
+answer: Million Dollar Arm
+storage_time: 0.08637265581637621
+use_sparse_attention: True
+<think>
+
+</think>
+
+Saira Banu
+prompt eval count:    276 token(s)
+prompt eval duration: 0.9616484385915101s
+prompt eval rate:     287.0071732287599 tokens/s
+eval count:           9 token(s)
+eval duration:        2.470855951309204s
+eval rate:            3.642462441095068 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Hindi film actresses and the wife of the film actor Dilip Kumar is the daughter of Naseem Banu, known as what?
+batch: 52 preprocess: True reprocess_method: FusionRAG
+real answer: "Beauty Queen"
+answer: Saira Banu
+storage_time: 0.08525921311229467
+use_sparse_attention: True
+<think>
+
+</think>
+
+Nada Surf
+prompt eval count:    253 token(s)
+prompt eval duration: 0.8038826561532915s
+prompt eval rate:     314.72255068998 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162391424179077s
+eval rate:            3.6996077169687687 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which is an American band, Nada Surf or Shihad?
+batch: 53 preprocess: True reprocess_method: FusionRAG
+real answer: Nada Surf
+answer: Nada Surf
+storage_time: 0.0922231231816113
+use_sparse_attention: True
+<think>
+
+</think>
+
+Eric Robert Rudolph
+prompt eval count:    275 token(s)
+prompt eval duration: 0.9673609770834446s
+prompt eval rate:     284.2785749215502 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4719226360321045s
+eval rate:            3.6408906447196396 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Judy Clarke defended an American domestic terrorist convicted for a series of anti-abortion and anti-gay-motivated bombings across the southern United States know as what?
+batch: 54 preprocess: True reprocess_method: FusionRAG
+real answer: the Olympic Park Bomber
+answer: Eric Robert Rudolph
+storage_time: 0.08730216324329376
+use_sparse_attention: True
+<think>
+
+</think>
+
+Moloko
+prompt eval count:    276 token(s)
+prompt eval duration: 0.9624524614773691s
+prompt eval rate:     286.7674103886011 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162365674972534s
+eval rate:            3.699651771480147 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The artist behind Overpowered was also part of what hip hop duo?
+batch: 55 preprocess: True reprocess_method: FusionRAG
+real answer: Moloko
+answer: Moloko
+storage_time: 0.0891130450181663
+use_sparse_attention: True
+<think>
+
+</think>
+
+Wu-Tang Clan
+prompt eval count:    283 token(s)
+prompt eval duration: 0.9671122231520712s
+prompt eval rate:     292.6237444064445 tokens/s
+eval count:           10 token(s)
+eval duration:        2.780881643295288s
+eval rate:            3.5959818801026726 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: One Upon a Time in Shaolin featuring Tarik Azzougarh with what group?
+batch: 56 preprocess: True reprocess_method: FusionRAG
+real answer: Wu-Tang Clan
+answer: Wu-Tang Clan
+storage_time: 0.08687491901218891
+use_sparse_attention: True
+<think>
+
+</think>
+
+William Mark Fagerbakke
+prompt eval count:    247 token(s)
+prompt eval duration: 0.8011902580037713s
+prompt eval rate:     308.2913172402021 tokens/s
+eval count:           11 token(s)
+eval duration:        3.088625431060791s
+eval rate:            3.5614548431086512 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actor had a role in The Legend of Frosty the Snowman and also in "How I Met Your Mother"
+batch: 57 preprocess: True reprocess_method: FusionRAG
+real answer: Bill Fagerbakke
+answer: William Mark Fagerbakke
+storage_time: 0.09237787732854486
+use_sparse_attention: True
+<think>
+
+</think>
+
+Allen Drury
+prompt eval count:    258 token(s)
+prompt eval duration: 0.9617844400927424s
+prompt eval rate:     268.25137655078066 tokens/s
+eval count:           8 token(s)
+eval duration:        2.164496898651123s
+eval rate:            3.696008991736353 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Was Allen Drury or Jean Giono born first?
+batch: 58 preprocess: True reprocess_method: FusionRAG
+real answer: Jean Giono
+answer: Allen Drury
+storage_time: 0.08792063593864441
+use_sparse_attention: True
+<think>
+
+</think>
+
+Marlon Samuels
+prompt eval count:    298 token(s)
+prompt eval duration: 0.9714279496110976s
+prompt eval rate:     306.7649022444759 tokens/s
+eval count:           9 token(s)
+eval duration:        2.471388816833496s
+eval rate:            3.641677075941205 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The 2000 ICC KnockOut Trophy was a One Day International cricket tournament held in Kenya, which Jamaican cricketer who plays internationally, made his ODI debut during the competition?
+batch: 59 preprocess: True reprocess_method: FusionRAG
+real answer: Marlon Nathaniel Samuels
+answer: Marlon Samuels
+storage_time: 0.09555763006210327
+use_sparse_attention: True
+<think>
+
+</think>
+
+March 24, 1996
+prompt eval count:    293 token(s)
+prompt eval duration: 0.9987549409270287s
+prompt eval rate:     293.36525707501585 tokens/s
+eval count:           15 token(s)
+eval duration:        4.32374119758606s
+eval rate:            3.469217817286216 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Troy McClure is a fictional character from the American animated sitcom "The Simpsons" who appeared as the main character in an episode that aired when?
+batch: 60 preprocess: True reprocess_method: FusionRAG
+real answer: March 24, 1996
+answer: March 24, 1996
+storage_time: 0.08512876508757472
+use_sparse_attention: True
+<think>
+
+</think>
+
+Missouri
+prompt eval count:    247 token(s)
+prompt eval duration: 0.7991447201929986s
+prompt eval rate:     309.08043782150986 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8535149097442627s
+eval rate:            3.7766084120498493 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What state is the college that Everson Walls played at located in?
+batch: 61 preprocess: True reprocess_method: FusionRAG
+real answer: Louisiana
+answer: Missouri
+storage_time: 0.09970047418028116
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    301 token(s)
+prompt eval duration: 0.983593525364995s
+prompt eval rate:     306.0207212001563 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5443205833435059s
+eval rate:            3.885203671254448 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Are both Veridia and Digital Summer rock bands ?
+batch: 62 preprocess: True reprocess_method: FusionRAG
+real answer: yes
+answer: yes
+storage_time: 0.11751269409433007
+use_sparse_attention: True
+<think>
+
+</think>
+
+Medellín Cartel
+prompt eval count:    216 token(s)
+prompt eval duration: 0.832002439070493s
+prompt eval rate:     259.61462353561564 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7794415950775146s
+eval rate:            3.597844983578838 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What cartel did Barry Seal work for in the movie "American Made?"
+batch: 63 preprocess: True reprocess_method: FusionRAG
+real answer: Medellín Cartel
+answer: Medellín Cartel
+storage_time: 0.14613132225349545
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Farmer's Daughter
+prompt eval count:    265 token(s)
+prompt eval duration: 1.0172103964723647s
+prompt eval rate:     260.5164093082482 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4733083248138428s
+eval rate:            3.63885080954369 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The Crusades is a 1935 historical adventure film starring an American actress who won an Academy Award in 1948 for her role in what film?
+batch: 64 preprocess: True reprocess_method: FusionRAG
+real answer: The Farmer's Daughter
+answer: The Farmer's Daughter
+storage_time: 0.08935854723677039
+use_sparse_attention: True
+<think>
+
+</think>
+
+Mortal Engines Quartet
+prompt eval count:    293 token(s)
+prompt eval duration: 0.9712008400820196s
+prompt eval rate:     301.6883716608561 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7846813201904297s
+eval rate:            3.591075189643658 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What tetralogy was written by Philip Reeve that is a sequel of a series about a woman named Fever Crumb?
+batch: 65 preprocess: True reprocess_method: FusionRAG
+real answer: Mortal Engines Quartet
+answer: Mortal Engines Quartet
+
+--- Quality Metrics ---
+EM Score: 0.1385
+ROUGE Score: 0.1714

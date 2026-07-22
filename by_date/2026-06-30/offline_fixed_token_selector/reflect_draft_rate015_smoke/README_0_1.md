@@ -1,0 +1,8 @@
+# Reflect Offline Draft Fixed Sets
+
+- examples: 0..0
+- rate: 0.15
+- calibration queries per example: 4, from other examples only
+- methods: `draft_frequency_per_chunk`, `draft_mean_score_per_chunk`
+- draft model: `/mnt/qjhs-sh-lab-01/models/Qwen2.5-3B-Instruct`
+- layer aggregation: RRF, k=18

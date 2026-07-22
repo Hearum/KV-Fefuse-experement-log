@@ -1,0 +1,103 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  9.64it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  8.90it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00,  8.83it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  9.75it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.94it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.53it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.58it/s]
+Loading dataset from ./data/result_reflect.json...
+Limited to first 5 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 60 documents for FAISS index...
+Corpus embeddings shape: (60, 1024)
+FAISS index built with 60 vectors
+Searching for top-10 similar documents for each document...
+Context rank computed: (60, 10)
+[1/3] ex=0 sub=0 full=2132 warmup=False
+storage_time: 0.09934464999241754
+use_sparse_attention: True
+ 
+prompt eval count:    223 token(s)
+prompt eval duration: 1.0813845549710095s
+prompt eval rate:     206.2171121040085 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2159347534179688e-05s
+eval rate:            82241.25490196078 tokens/s
+e2e=1.2297s selection=0.2527s score=0.2516s kv=0.0993s update_query=0.7293s selected=196
+[2/3] ex=1 sub=0 full=2112 warmup=False
+storage_time: 0.0916638849885203
+use_sparse_attention: True
+ 
+prompt eval count:    219 token(s)
+prompt eval duration: 0.3169893989688717s
+prompt eval rate:     690.8748390715292 tokens/s
+eval count:           1 token(s)
+eval duration:        1.049041748046875e-05s
+eval rate:            95325.09090909091 tokens/s
+e2e=0.4173s selection=0.1291s score=0.1280s kv=0.0917s update_query=0.0963s selected=194
+[3/3] ex=2 sub=0 full=2254 warmup=False
+storage_time: 0.09382138698128983
+use_sparse_attention: True
+ 
+prompt eval count:    237 token(s)
+prompt eval duration: 0.32408529898384586s
+prompt eval rate:     731.2889561578457 tokens/s
+eval count:           1 token(s)
+eval duration:        8.58306884765625e-06s
+eval rate:            116508.44444444444 tokens/s
+e2e=0.4254s selection=0.1341s score=0.1330s kv=0.0938s update_query=0.0961s selected=216
+{
+  "config": {
+    "model_path": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct",
+    "draft_model_path": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-3B-Instruct",
+    "model_name": "Qwen2.5-7B-Instruct",
+    "data_path": "./data/result_reflect.json",
+    "dataset_name": "musique",
+    "cache_path": "/raid/home/hming/fusionrag-reflect-full-cache",
+    "bge_model_path": "/mnt/qjhs-sh-lab-01/models/bge-m3",
+    "output_dir": "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/online_ttft_profile_draft_select_sparse_update_smoke",
+    "device": "cuda:0",
+    "topk": 10,
+    "rate": 0.15,
+    "max_main_questions": 5,
+    "max_sub_questions": 3,
+    "warmup_sub_questions": 0,
+    "rrf_k": 18,
+    "threshold_factor": 0.5,
+    "seed": 42
+  },
+  "num_measured": 3,
+  "end_to_end_ttft_s_mean": 0.690788441648086,
+  "end_to_end_ttft_s_p50": 0.42541058897040784,
+  "end_to_end_ttft_s_p95": 1.2296625800081529,
+  "kv_load_copy_s_mean": 0.09494330732074256,
+  "draft_selection_s_mean": 0.17197825798454383,
+  "draft_score_forward_s_mean": 0.17086285300320014,
+  "online_update_query_prefill_s_mean": 0.30723151900262263,
+  "extra_impl_overhead_s_mean": 0.1166353573401769,
+  "selected_doc_tokens_mean": 202.0,
+  "reprocess_prefill_tokens_mean": 226.33333333333334,
+  "full_tokens_mean": 2166.0
+}

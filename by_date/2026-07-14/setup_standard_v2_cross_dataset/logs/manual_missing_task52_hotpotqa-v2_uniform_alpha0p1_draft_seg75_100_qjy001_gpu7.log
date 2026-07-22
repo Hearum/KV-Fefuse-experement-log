@@ -1,0 +1,526 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=hotpotqa-v2 method=uniform_alpha0p1_draft rate=0.15 start=75 end=100
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/uniform_alpha0p1_draft/hotpotqa-v2/rate_0p15/seg_75_100
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:15,  1.56s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:10,  1.14s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:08,  1.01s/it]Inference Embeddings:  36%|███▋      | 4/11 [00:04<00:06,  1.06it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.11it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.13it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.17it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.17it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.17it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.16it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.59it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.19it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 10.595320701599121
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 245.19it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 54.77it/s]
+>>> [runner] ONLY_EXAMPLES active: [76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+storage_time: 0.1369920028373599
+draft_select_time: 0.3605697210878134, draft_score_forward_time: 0.3591868123039603
+reprocess_attention_ablation: uniform, doc_tokens=207
+use_sparse_attention: False
+<think>
+
+</think>
+
+Giancarlo Esposito
+prompt eval count:    289 token(s)
+prompt eval duration: 1.7833967758342624s
+prompt eval rate:     162.05030978863778 tokens/s
+eval count:           12 token(s)
+eval duration:        3.416332960128784s
+eval rate:            3.5125381922807786 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actor who starred in the 2016 film Money Monster also is best known for his portrayal of Gustavo "Gus" Fring on the AMC shows "Breaking Bad" and "Better Call Saul"?
+batch: 76 preprocess: True reprocess_method: DraftModel
+real answer: Giancarlo Giuseppe Alessandro Esposito
+answer: Giancarlo Esposito
+storage_time: 0.10270857904106379
+draft_select_time: 0.14121816493570805, draft_score_forward_time: 0.13982788380235434
+reprocess_attention_ablation: uniform, doc_tokens=227
+use_sparse_attention: False
+<think>
+
+</think>
+
+They are both American musicians and singers.
+prompt eval count:    279 token(s)
+prompt eval duration: 1.5513416593894362s
+prompt eval rate:     179.84432914011117 tokens/s
+eval count:           13 token(s)
+eval duration:        3.7156734466552734s
+eval rate:            3.4986928175031555 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question:  What do Ian Astbury and George Thorogood have in common?
+batch: 77 preprocess: True reprocess_method: DraftModel
+real answer: singer and songwriter
+answer: They are both American musicians and singers.
+storage_time: 0.07651149993762374
+draft_select_time: 0.1332420096732676, draft_score_forward_time: 0.13205268094316125
+reprocess_attention_ablation: uniform, doc_tokens=207
+use_sparse_attention: False
+<think>
+
+</think>
+
+Leonard Gordon Goodman
+prompt eval count:    258 token(s)
+prompt eval duration: 1.4796123085543513s
+prompt eval rate:     174.37000118772855 tokens/s
+eval count:           9 token(s)
+eval duration:        2.476745367050171s
+eval rate:            3.633801084170026 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which judge of Strictly Come Dancing is a professional ballroom dancer?
+batch: 78 preprocess: True reprocess_method: DraftModel
+real answer: Len Goodman
+answer: Leonard Gordon Goodman
+storage_time: 0.09295267099514604
+draft_select_time: 0.1634701183065772, draft_score_forward_time: 0.16207805136218667
+reprocess_attention_ablation: uniform, doc_tokens=268
+use_sparse_attention: False
+<think>
+
+</think>
+
+the corner of Bloor and Bathurst Streets, extending the full length of the block west to Markham Street
+prompt eval count:    317 token(s)
+prompt eval duration: 1.6568463402800262s
+prompt eval rate:     191.32733814435883 tokens/s
+eval count:           27 token(s)
+eval duration:        8.045418739318848s
+eval rate:            3.3559471389659343 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Where was Honest Ed's s store located at in Canada?
+batch: 79 preprocess: True reprocess_method: DraftModel
+real answer: Toronto, Ontario
+answer: the corner of Bloor and Bathurst Streets, extending the full length of the block west to Markham Street
+storage_time: 0.08269144920632243
+draft_select_time: 0.1535478923469782, draft_score_forward_time: 0.1521209292113781
+reprocess_attention_ablation: uniform, doc_tokens=244
+use_sparse_attention: False
+<think>
+
+</think>
+
+Raymond Briggs
+prompt eval count:    314 token(s)
+prompt eval duration: 1.5787587957456708s
+prompt eval rate:     198.89042002245392 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166224718093872s
+eval rate:            3.693060989092326 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who was the author of the book, on which Channel 4's 1982 film, for which Howard Blake wrote the soundtrack. is based ? 
+batch: 80 preprocess: True reprocess_method: DraftModel
+real answer: Raymond Briggs,
+answer: Raymond Briggs
+storage_time: 0.08146130386739969
+draft_select_time: 0.1417001229710877, draft_score_forward_time: 0.14052753429859877
+reprocess_attention_ablation: uniform, doc_tokens=220
+use_sparse_attention: False
+<think>
+
+</think>
+
+Jon Lovitz
+prompt eval count:    318 token(s)
+prompt eval duration: 1.5314511521719396s
+prompt eval rate:     207.64619201141676 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1669700145721436s
+eval rate:            3.69179081676382 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The Producers is a 2005 American musical comedy film directed by Susan Stroman, the film stars an ensemble cast, including which American comedian, actor and singer, best known as a cast member of "Saturday Night Live" from 1985 to 1990?
+batch: 81 preprocess: True reprocess_method: DraftModel
+real answer: Jon Lovitz
+answer: Jon Lovitz
+storage_time: 0.07581558497622609
+draft_select_time: 0.12963598314672709, draft_score_forward_time: 0.12869745027273893
+reprocess_attention_ablation: uniform, doc_tokens=184
+use_sparse_attention: False
+<think>
+
+</think>
+
+Mississippi
+prompt eval count:    234 token(s)
+prompt eval duration: 1.2653478682041168s
+prompt eval rate:     184.92938256742912 tokens/s
+eval count:           7 token(s)
+eval duration:        1.857722520828247s
+eval rate:            3.768054659142055 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The university that Tramaine Brock attended is in which state?
+batch: 82 preprocess: True reprocess_method: DraftModel
+real answer: Mississippi
+answer: Mississippi
+storage_time: 0.07743981294333935
+draft_select_time: 0.12953916192054749, draft_score_forward_time: 0.12856662087142467
+reprocess_attention_ablation: uniform, doc_tokens=196
+use_sparse_attention: False
+<think>
+
+</think>
+
+no
+prompt eval count:    249 token(s)
+prompt eval duration: 1.3060701237991452s
+prompt eval rate:     190.64826264894535 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5484559535980225s
+eval rate:            3.8748276862885787 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Are Hal Ashby and Ciro Ippolito of the same nationality?
+batch: 83 preprocess: True reprocess_method: DraftModel
+real answer: no
+answer: no
+storage_time: 0.08540053898468614
+draft_select_time: 0.1551788686774671, draft_score_forward_time: 0.15394445322453976
+reprocess_attention_ablation: uniform, doc_tokens=252
+use_sparse_attention: False
+<think>
+
+</think>
+
+American
+prompt eval count:    302 token(s)
+prompt eval duration: 1.5923617696389556s
+prompt eval rate:     189.65539474643003 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5468568801879883s
+eval rate:            3.8788333147348606 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Tommy Lee Jones and Marshall Neilan, are of which nationality?
+batch: 84 preprocess: True reprocess_method: DraftModel
+real answer: American
+answer: American
+storage_time: 0.08536503789946437
+draft_select_time: 0.15364270377904177, draft_score_forward_time: 0.15237819124013186
+reprocess_attention_ablation: uniform, doc_tokens=249
+use_sparse_attention: False
+<think>
+
+</think>
+
+trees
+prompt eval count:    303 token(s)
+prompt eval duration: 1.5871940036304295s
+prompt eval rate:     190.90293896457544 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5475566387176514s
+eval rate:            3.877079423065102 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Lodoicea and Nothofagus, are genus of what mutual species?
+batch: 85 preprocess: True reprocess_method: DraftModel
+real answer: trees
+answer: trees
+storage_time: 0.13240904593840241
+draft_select_time: 0.18790565663948655, draft_score_forward_time: 0.18662203708663583
+reprocess_attention_ablation: uniform, doc_tokens=253
+use_sparse_attention: False
+<think>
+
+</think>
+
+George Welch
+prompt eval count:    331 token(s)
+prompt eval duration: 1.7172354548238218s
+prompt eval rate:     192.7516690097449 tokens/s
+eval count:           7 token(s)
+eval duration:        1.857473373413086s
+eval rate:            3.7685600774656494 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Kenneth Marlar Taylor had a friend best known for being one of the few United States Army Air Corps fighter pilots able to get airborne to engage Japanese forces in the attack on Pearl Harbor whose name was what?
+batch: 86 preprocess: True reprocess_method: DraftModel
+real answer: George Welch
+answer: George Welch
+storage_time: 0.09942056192085147
+draft_select_time: 0.1726632285863161, draft_score_forward_time: 0.17114635882899165
+reprocess_attention_ablation: uniform, doc_tokens=276
+use_sparse_attention: False
+<think>
+
+</think>
+
+McCall's
+prompt eval count:    367 token(s)
+prompt eval duration: 1.6802004892379045s
+prompt eval rate:     218.42631421114615 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1667380332946777s
+eval rate:            3.69218607744446 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which magazine, Photoplay or McCall's was a monthly American women's magazine,  that enjoyed great popularity through much of the 20th century, peaking at a readership of 8.4 million in the early 1960s?
+batch: 87 preprocess: True reprocess_method: DraftModel
+real answer: McCall's
+answer: McCall's
+storage_time: 0.08125554211437702
+draft_select_time: 0.1362212928943336, draft_score_forward_time: 0.13506776606664062
+reprocess_attention_ablation: uniform, doc_tokens=209
+use_sparse_attention: False
+<think>
+
+</think>
+
+Celeste Holm
+prompt eval count:    272 token(s)
+prompt eval duration: 1.4952052608132362s
+prompt eval rate:     181.91482275287092 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4758355617523193s
+eval rate:            3.635136411737329 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What american stage, film  and television actress, born in 1917 starred in A Letter to Three Wives?
+batch: 88 preprocess: True reprocess_method: DraftModel
+real answer: Celeste Holm
+answer: Celeste Holm
+storage_time: 0.08674651477485895
+draft_select_time: 0.14116838807240129, draft_score_forward_time: 0.1399524686858058
+reprocess_attention_ablation: uniform, doc_tokens=235
+use_sparse_attention: False
+<think>
+
+</think>
+
+3 March 1968
+prompt eval count:    287 token(s)
+prompt eval duration: 1.5529240020550787s
+prompt eval rate:     184.81264995595112 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4526944160461426s
+eval rate:            3.4755465019524707 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: When was the physicist who hosted Wonders of the Solar System born? 
+batch: 89 preprocess: True reprocess_method: DraftModel
+real answer: 3 March 1968
+answer: 3 March 1968
+storage_time: 0.0988177852705121
+draft_select_time: 0.1648791180923581, draft_score_forward_time: 0.163260486908257
+reprocess_attention_ablation: uniform, doc_tokens=261
+use_sparse_attention: False
+<think>
+
+</think>
+
+25
+prompt eval count:    322 token(s)
+prompt eval duration: 1.6979701574891806s
+prompt eval rate:     189.63819745580645 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8607382774353027s
+eval rate:            3.7619476553404687 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In how many countries did a song written by Rolf Magnus Joakim Larsson go to the number one spot?
+batch: 90 preprocess: True reprocess_method: DraftModel
+real answer: 25
+answer: 25
+storage_time: 0.09694922808557749
+draft_select_time: 0.13146854797378182, draft_score_forward_time: 0.1304283570498228
+reprocess_attention_ablation: uniform, doc_tokens=193
+use_sparse_attention: False
+<think>
+
+</think>
+
+1931
+prompt eval count:    251 token(s)
+prompt eval duration: 1.3356237732805312s
+prompt eval rate:     187.9271730717244 tokens/s
+eval count:           9 token(s)
+eval duration:        2.482917070388794s
+eval rate:            3.6247686671994694 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What year was the composer born that was responsible for the music and lyrics for the Doctor Dolittle musical?
+batch: 91 preprocess: True reprocess_method: DraftModel
+real answer: 1931
+answer: 1931
+storage_time: 0.08456569025292993
+draft_select_time: 0.16032528318464756, draft_score_forward_time: 0.15883608721196651
+reprocess_attention_ablation: uniform, doc_tokens=253
+use_sparse_attention: False
+<think>
+
+</think>
+
+Cinderella Man
+prompt eval count:    315 token(s)
+prompt eval duration: 1.6012742002494633s
+prompt eval rate:     196.71833840258338 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4778387546539307s
+eval rate:            3.632197608942876 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which movie starring Russell Crow was about the world heavyweight boxing champion from 1935 to 1937?
+batch: 92 preprocess: True reprocess_method: DraftModel
+real answer: Cinderella Man
+answer: Cinderella Man
+storage_time: 0.08368030097335577
+draft_select_time: 0.16934797121211886, draft_score_forward_time: 0.16778701171278954
+reprocess_attention_ablation: uniform, doc_tokens=250
+use_sparse_attention: False
+<think>
+
+</think>
+
+Ricky Warwick
+prompt eval count:    312 token(s)
+prompt eval duration: 1.6035009981133044s
+prompt eval rate:     194.5742474542282 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166952610015869s
+eval rate:            3.6918204685341105 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What artists front his own band, The Fighting Hearts, and also co-founded the hard rock/heavy metal band The Almighty?
+batch: 93 preprocess: True reprocess_method: DraftModel
+real answer: Ricky Warwick
+answer: Ricky Warwick
+storage_time: 0.10902901086956263
+draft_select_time: 0.15377060696482658, draft_score_forward_time: 0.15234794421121478
+reprocess_attention_ablation: uniform, doc_tokens=238
+use_sparse_attention: False
+<think>
+
+</think>
+
+1837
+prompt eval count:    293 token(s)
+prompt eval duration: 1.5921418047510087s
+prompt eval rate:     184.0288340684714 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4795479774475098s
+eval rate:            3.629693832044645 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what year was the physicist after whom the van der Waals forces were named born?
+batch: 94 preprocess: True reprocess_method: DraftModel
+real answer: 1837
+answer: 1837
+storage_time: 0.09852074878290296
+draft_select_time: 0.15366676170378923, draft_score_forward_time: 0.15224920772016048
+reprocess_attention_ablation: uniform, doc_tokens=239
+use_sparse_attention: False
+<think>
+
+</think>
+
+Vanessa is an American opera, and King Priam is an opera by Michael Tippett. Both are operas.
+prompt eval count:    288 token(s)
+prompt eval duration: 1.5827654218301177s
+prompt eval rate:     181.96000242852904 tokens/s
+eval count:           30 token(s)
+eval duration:        8.982518434524536s
+eval rate:            3.3398205880317757 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: what kind of music is in Vanessa and King Priam?
+batch: 95 preprocess: True reprocess_method: DraftModel
+real answer: opera
+answer: Vanessa is an American opera, and King Priam is an opera by Michael Tippett. Both are operas.
+storage_time: 0.10169963538646698
+draft_select_time: 0.18103736359626055, draft_score_forward_time: 0.17914420971646905
+reprocess_attention_ablation: uniform, doc_tokens=328
+use_sparse_attention: False
+<think>
+
+</think>
+
+Stan Dragoti
+prompt eval count:    395 token(s)
+prompt eval duration: 1.9324723640456796s
+prompt eval rate:     204.40137067370918 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166865348815918s
+eval rate:            3.691969140755144 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who directed the 1991 sport comedy film the nominee for an Academy Award for Best Supporting Actor for "Jagged Edge" starred in?
+batch: 96 preprocess: True reprocess_method: DraftModel
+real answer: Stan Dragoti
+answer: Stan Dragoti
+storage_time: 0.0883104088716209
+draft_select_time: 0.16376584395766258, draft_score_forward_time: 0.16230901097878814
+reprocess_attention_ablation: uniform, doc_tokens=257
+use_sparse_attention: False
+<think>
+
+</think>
+
+January 13, 1987
+prompt eval count:    325 token(s)
+prompt eval duration: 1.6872685570269823s
+prompt eval rate:     192.61901055790415 tokens/s
+eval count:           15 token(s)
+eval duration:        4.333134412765503s
+eval rate:            3.461697369878417 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: When was the South Korean singer, actor, host and entertainer born who was known as Ballad Prince and was also a star of Gu Family Book?
+batch: 97 preprocess: True reprocess_method: DraftModel
+real answer: January 13, 1987
+answer: January 13, 1987
+storage_time: 0.08061289321631193
+draft_select_time: 0.1409767190925777, draft_score_forward_time: 0.1397657529450953
+reprocess_attention_ablation: uniform, doc_tokens=225
+use_sparse_attention: False
+<think>
+
+</think>
+
+The Day the Universe Changed
+prompt eval count:    298 token(s)
+prompt eval duration: 1.532596261240542s
+prompt eval rate:     194.44129385960227 tokens/s
+eval count:           10 token(s)
+eval duration:        2.786578416824341s
+eval rate:            3.588630393325255 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What TV documentary permiered on BBC1 on March 19 1985 that was written and presented by the same person who is responsible for "Connections"?
+batch: 98 preprocess: True reprocess_method: DraftModel
+real answer: The Day the Universe Changed
+answer: The Day the Universe Changed
+storage_time: 0.0854077860713005
+draft_select_time: 0.15410941978916526, draft_score_forward_time: 0.1526601337827742
+reprocess_attention_ablation: uniform, doc_tokens=243
+use_sparse_attention: False
+<think>
+
+</think>
+
+Peter John Kay
+prompt eval count:    345 token(s)
+prompt eval duration: 1.584845904726535s
+prompt eval rate:     217.6867788666998 tokens/s
+eval count:           8 token(s)
+eval duration:        2.167433977127075s
+eval rate:            3.691000549231939 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The League of Gentlemen's Apocalypse is a feature film spin-off of the British television comedy series "The League of Gentlemen", featuring in guest roles are which English comedian and actor, and in a 2004 poll for the BBC, Kay was named the 46th most influential person in British culture?
+batch: 99 preprocess: True reprocess_method: DraftModel
+real answer: Peter Kay
+answer: Peter John Kay
+storage_time: 0.08657845901325345
+draft_select_time: 0.16538477316498756, draft_score_forward_time: 0.1639851569198072
+reprocess_attention_ablation: uniform, doc_tokens=268
+use_sparse_attention: False
+<think>
+
+</think>
+
+Canton
+prompt eval count:    324 token(s)
+prompt eval duration: 1.6939689642749727s
+prompt eval rate:     191.26678636563665 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8569238185882568s
+eval rate:            3.7696753792095863 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: In what city did Michael Gansey work during his time as the GM for the Canton Charge?
+batch: 100 preprocess: True reprocess_method: DraftModel
+real answer: Canton, Ohio
+answer: Canton
+
+--- Quality Metrics ---
+EM Score: 0.0692
+ROUGE Score: 0.0803

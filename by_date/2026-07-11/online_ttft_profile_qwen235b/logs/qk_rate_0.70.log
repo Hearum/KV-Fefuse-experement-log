@@ -1,0 +1,1010 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Checking offline cache directories...
+Raw KV cache: /home/hming/fusionrag-qwen3-235b-three-groups-unified-prompt-cache/online_qk_rate015/Qwen3-235B-A22B/musique/kv_cache
+Preprocess KV cache: /home/hming/fusionrag-qwen3-235b-three-groups-unified-prompt-cache/online_qk_rate015/Qwen3-235B-A22B/musique/preprocess_kv_cache_global_topk10_bge
+Loading dataset from ./data/result_reflect.json...
+Limited to first 50 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 835 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:01<00:03,  1.20s/it]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.08it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.28it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.83it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.47it/s]
+Corpus embeddings shape: (835, 1024)
+FAISS index built with 835 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:00<00:02,  1.44it/s]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.40it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.50it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  2.07it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.79it/s]
+Context rank computed: (835, 10)
+Offline cache check passed for 2128 files.
+Profiling 60 sub-questions, warmup=3.
+Loading checkpoint shards:   0%|          | 0/118 [00:00<?, ?it/s]Loading checkpoint shards:   1%|          | 1/118 [00:00<01:34,  1.24it/s]Loading checkpoint shards:   2%|▏         | 2/118 [00:01<01:36,  1.20it/s]Loading checkpoint shards:   3%|▎         | 3/118 [00:02<01:31,  1.26it/s]Loading checkpoint shards:   3%|▎         | 4/118 [00:03<01:27,  1.31it/s]Loading checkpoint shards:   4%|▍         | 5/118 [00:03<01:24,  1.34it/s]Loading checkpoint shards:   5%|▌         | 6/118 [00:04<01:21,  1.37it/s]Loading checkpoint shards:   6%|▌         | 7/118 [00:05<01:19,  1.39it/s]Loading checkpoint shards:   7%|▋         | 8/118 [00:05<01:17,  1.41it/s]Loading checkpoint shards:   8%|▊         | 9/118 [00:06<01:16,  1.43it/s]Loading checkpoint shards:   8%|▊         | 10/118 [00:07<01:15,  1.43it/s]Loading checkpoint shards:   9%|▉         | 11/118 [00:07<01:14,  1.44it/s]Loading checkpoint shards:  10%|█         | 12/118 [00:08<01:15,  1.40it/s]Loading checkpoint shards:  11%|█         | 13/118 [00:09<01:15,  1.40it/s]Loading checkpoint shards:  12%|█▏        | 14/118 [00:10<01:14,  1.40it/s]Loading checkpoint shards:  13%|█▎        | 15/118 [00:10<01:13,  1.41it/s]Loading checkpoint shards:  14%|█▎        | 16/118 [00:11<01:12,  1.41it/s]Loading checkpoint shards:  14%|█▍        | 17/118 [00:12<01:11,  1.41it/s]Loading checkpoint shards:  15%|█▌        | 18/118 [00:13<01:11,  1.41it/s]Loading checkpoint shards:  16%|█▌        | 19/118 [00:13<01:10,  1.40it/s]Loading checkpoint shards:  17%|█▋        | 20/118 [00:14<01:09,  1.41it/s]Loading checkpoint shards:  18%|█▊        | 21/118 [00:15<01:08,  1.41it/s]Loading checkpoint shards:  19%|█▊        | 22/118 [00:15<01:08,  1.40it/s]Loading checkpoint shards:  19%|█▉        | 23/118 [00:16<01:07,  1.41it/s]Loading checkpoint shards:  20%|██        | 24/118 [00:17<01:06,  1.41it/s]Loading checkpoint shards:  21%|██        | 25/118 [00:17<01:06,  1.41it/s]Loading checkpoint shards:  22%|██▏       | 26/118 [00:18<01:07,  1.36it/s]Loading checkpoint shards:  23%|██▎       | 27/118 [00:19<01:06,  1.37it/s]Loading checkpoint shards:  24%|██▎       | 28/118 [00:20<01:05,  1.38it/s]Loading checkpoint shards:  25%|██▍       | 29/118 [00:20<01:04,  1.37it/s]Loading checkpoint shards:  25%|██▌       | 30/118 [00:21<01:03,  1.38it/s]Loading checkpoint shards:  26%|██▋       | 31/118 [00:22<01:05,  1.32it/s]Loading checkpoint shards:  27%|██▋       | 32/118 [00:23<01:07,  1.28it/s]Loading checkpoint shards:  28%|██▊       | 33/118 [00:24<01:04,  1.32it/s]Loading checkpoint shards:  29%|██▉       | 34/118 [00:24<01:02,  1.34it/s]Loading checkpoint shards:  30%|██▉       | 35/118 [00:25<01:01,  1.35it/s]Loading checkpoint shards:  31%|███       | 36/118 [00:26<01:00,  1.37it/s]Loading checkpoint shards:  31%|███▏      | 37/118 [00:26<00:58,  1.38it/s]Loading checkpoint shards:  32%|███▏      | 38/118 [00:27<00:57,  1.40it/s]Loading checkpoint shards:  33%|███▎      | 39/118 [00:28<00:57,  1.39it/s]Loading checkpoint shards:  34%|███▍      | 40/118 [00:29<00:57,  1.36it/s]Loading checkpoint shards:  35%|███▍      | 41/118 [00:29<00:57,  1.34it/s]Loading checkpoint shards:  36%|███▌      | 42/118 [00:30<00:57,  1.32it/s]Loading checkpoint shards:  36%|███▋      | 43/118 [00:31<00:57,  1.31it/s]Loading checkpoint shards:  37%|███▋      | 44/118 [00:32<00:56,  1.31it/s]Loading checkpoint shards:  38%|███▊      | 45/118 [00:32<00:56,  1.29it/s]Loading checkpoint shards:  39%|███▉      | 46/118 [00:33<00:56,  1.28it/s]Loading checkpoint shards:  40%|███▉      | 47/118 [00:34<00:56,  1.26it/s]Loading checkpoint shards:  41%|████      | 48/118 [00:35<00:55,  1.27it/s]Loading checkpoint shards:  42%|████▏     | 49/118 [00:36<00:54,  1.27it/s]Loading checkpoint shards:  42%|████▏     | 50/118 [00:36<00:53,  1.27it/s]Loading checkpoint shards:  43%|████▎     | 51/118 [00:37<00:52,  1.27it/s]Loading checkpoint shards:  44%|████▍     | 52/118 [00:38<00:51,  1.27it/s]Loading checkpoint shards:  45%|████▍     | 53/118 [00:39<00:51,  1.27it/s]Loading checkpoint shards:  46%|████▌     | 54/118 [00:40<00:50,  1.27it/s]Loading checkpoint shards:  47%|████▋     | 55/118 [00:40<00:49,  1.27it/s]Loading checkpoint shards:  47%|████▋     | 56/118 [00:41<00:48,  1.27it/s]Loading checkpoint shards:  48%|████▊     | 57/118 [00:42<00:48,  1.27it/s]Loading checkpoint shards:  49%|████▉     | 58/118 [00:43<00:47,  1.26it/s]Loading checkpoint shards:  50%|█████     | 59/118 [00:44<00:46,  1.26it/s]Loading checkpoint shards:  51%|█████     | 60/118 [00:44<00:45,  1.26it/s]Loading checkpoint shards:  52%|█████▏    | 61/118 [00:45<00:45,  1.26it/s]Loading checkpoint shards:  53%|█████▎    | 62/118 [00:46<00:44,  1.26it/s]Loading checkpoint shards:  53%|█████▎    | 63/118 [00:47<00:43,  1.26it/s]Loading checkpoint shards:  54%|█████▍    | 64/118 [00:48<00:42,  1.26it/s]Loading checkpoint shards:  55%|█████▌    | 65/118 [00:48<00:42,  1.25it/s]Loading checkpoint shards:  56%|█████▌    | 66/118 [00:49<00:41,  1.25it/s]Loading checkpoint shards:  57%|█████▋    | 67/118 [00:50<00:40,  1.25it/s]Loading checkpoint shards:  58%|█████▊    | 68/118 [00:51<00:39,  1.25it/s]Loading checkpoint shards:  58%|█████▊    | 69/118 [00:52<00:39,  1.25it/s]Loading checkpoint shards:  59%|█████▉    | 70/118 [00:52<00:38,  1.25it/s]Loading checkpoint shards:  60%|██████    | 71/118 [00:53<00:37,  1.24it/s]Loading checkpoint shards:  61%|██████    | 72/118 [00:54<00:37,  1.24it/s]Loading checkpoint shards:  62%|██████▏   | 73/118 [00:55<00:36,  1.22it/s]Loading checkpoint shards:  63%|██████▎   | 74/118 [00:56<00:37,  1.19it/s]Loading checkpoint shards:  64%|██████▎   | 75/118 [00:57<00:35,  1.20it/s]Loading checkpoint shards:  64%|██████▍   | 76/118 [00:57<00:34,  1.21it/s]Loading checkpoint shards:  65%|██████▌   | 77/118 [00:58<00:33,  1.22it/s]Loading checkpoint shards:  66%|██████▌   | 78/118 [00:59<00:32,  1.23it/s]Loading checkpoint shards:  67%|██████▋   | 79/118 [01:00<00:31,  1.24it/s]Loading checkpoint shards:  68%|██████▊   | 80/118 [01:01<00:30,  1.25it/s]Loading checkpoint shards:  69%|██████▊   | 81/118 [01:01<00:29,  1.25it/s]Loading checkpoint shards:  69%|██████▉   | 82/118 [01:02<00:28,  1.26it/s]Loading checkpoint shards:  70%|███████   | 83/118 [01:03<00:28,  1.25it/s]Loading checkpoint shards:  71%|███████   | 84/118 [01:04<00:27,  1.26it/s]Loading checkpoint shards:  72%|███████▏  | 85/118 [01:04<00:26,  1.26it/s]Loading checkpoint shards:  73%|███████▎  | 86/118 [01:05<00:25,  1.27it/s]Loading checkpoint shards:  74%|███████▎  | 87/118 [01:06<00:24,  1.27it/s]Loading checkpoint shards:  75%|███████▍  | 88/118 [01:07<00:24,  1.25it/s]Loading checkpoint shards:  75%|███████▌  | 89/118 [01:08<00:22,  1.26it/s]Loading checkpoint shards:  76%|███████▋  | 90/118 [01:08<00:22,  1.26it/s]Loading checkpoint shards:  77%|███████▋  | 91/118 [01:09<00:21,  1.27it/s]Loading checkpoint shards:  78%|███████▊  | 92/118 [01:10<00:20,  1.28it/s]Loading checkpoint shards:  79%|███████▉  | 93/118 [01:11<00:19,  1.28it/s]Loading checkpoint shards:  80%|███████▉  | 94/118 [01:12<00:18,  1.28it/s]Loading checkpoint shards:  81%|████████  | 95/118 [01:12<00:17,  1.28it/s]Loading checkpoint shards:  81%|████████▏ | 96/118 [01:13<00:17,  1.28it/s]Loading checkpoint shards:  82%|████████▏ | 97/118 [01:14<00:16,  1.29it/s]Loading checkpoint shards:  83%|████████▎ | 98/118 [01:15<00:15,  1.28it/s]Loading checkpoint shards:  84%|████████▍ | 99/118 [01:15<00:14,  1.29it/s]Loading checkpoint shards:  85%|████████▍ | 100/118 [01:16<00:13,  1.29it/s]Loading checkpoint shards:  86%|████████▌ | 101/118 [01:17<00:13,  1.29it/s]Loading checkpoint shards:  86%|████████▋ | 102/118 [01:18<00:12,  1.25it/s]Loading checkpoint shards:  87%|████████▋ | 103/118 [01:19<00:11,  1.26it/s]Loading checkpoint shards:  88%|████████▊ | 104/118 [01:19<00:11,  1.25it/s]Loading checkpoint shards:  89%|████████▉ | 105/118 [01:20<00:10,  1.26it/s]Loading checkpoint shards:  90%|████████▉ | 106/118 [01:21<00:09,  1.26it/s]Loading checkpoint shards:  91%|█████████ | 107/118 [01:22<00:08,  1.25it/s]Loading checkpoint shards:  92%|█████████▏| 108/118 [01:23<00:08,  1.25it/s]Loading checkpoint shards:  92%|█████████▏| 109/118 [01:23<00:07,  1.23it/s]Loading checkpoint shards:  93%|█████████▎| 110/118 [01:24<00:06,  1.23it/s]Loading checkpoint shards:  94%|█████████▍| 111/118 [01:25<00:05,  1.23it/s]Loading checkpoint shards:  95%|█████████▍| 112/118 [01:26<00:04,  1.24it/s]Loading checkpoint shards:  96%|█████████▌| 113/118 [01:27<00:04,  1.24it/s]Loading checkpoint shards:  97%|█████████▋| 114/118 [01:27<00:03,  1.23it/s]Loading checkpoint shards:  97%|█████████▋| 115/118 [01:28<00:02,  1.19it/s]Loading checkpoint shards:  98%|█████████▊| 116/118 [01:29<00:01,  1.20it/s]Loading checkpoint shards:  99%|█████████▉| 117/118 [01:30<00:00,  1.21it/s]Loading checkpoint shards: 100%|██████████| 118/118 [01:31<00:00,  1.34it/s]Loading checkpoint shards: 100%|██████████| 118/118 [01:31<00:00,  1.30it/s]
+
+Model loaded with device_map across GPUs:
+  model.embed_tokens: 0
+  model.layers.0: 0
+  model.layers.1: 0
+  model.layers.2: 0
+  model.layers.3: 0
+  model.layers.4: 0
+  model.layers.5: 0
+  model.layers.6: 0
+  model.layers.7: 0
+  model.layers.8: 0
+  model.layers.9: 0
+  model.layers.10: 0
+  model.layers.11: 0
+  model.layers.12: 0
+  model.layers.13: 1
+  model.layers.14: 1
+  model.layers.15: 1
+  model.layers.16: 1
+  model.layers.17: 1
+  model.layers.18: 1
+  model.layers.19: 1
+  model.layers.20: 1
+  model.layers.21: 1
+  model.layers.22: 1
+  model.layers.23: 1
+  model.layers.24: 1
+  model.layers.25: 1
+  model.layers.26: 2
+  model.layers.27: 2
+  model.layers.28: 2
+  model.layers.29: 2
+  model.layers.30: 2
+  model.layers.31: 2
+  model.layers.32: 2
+  model.layers.33: 2
+  model.layers.34: 2
+  model.layers.35: 2
+  model.layers.36: 2
+  model.layers.37: 2
+  model.layers.38: 2
+  model.layers.39: 3
+  model.layers.40: 3
+  model.layers.41: 3
+  model.layers.42: 3
+  model.layers.43: 3
+  model.layers.44: 3
+  model.layers.45: 3
+  model.layers.46: 3
+  model.layers.47: 3
+  model.layers.48: 3
+  model.layers.49: 3
+  model.layers.50: 3
+  model.layers.51: 3
+  model.layers.52: 4
+  model.layers.53: 4
+  model.layers.54: 4
+  model.layers.55: 4
+  model.layers.56: 4
+  model.layers.57: 4
+  model.layers.58: 4
+  model.layers.59: 4
+  model.layers.60: 4
+  model.layers.61: 4
+  model.layers.62: 4
+  model.layers.63: 4
+  model.layers.64: 4
+  model.layers.65: 5
+  model.layers.66: 5
+  model.layers.67: 5
+  model.layers.68: 5
+  model.layers.69: 5
+  model.layers.70: 5
+  model.layers.71: 5
+  model.layers.72: 5
+  model.layers.73: 5
+  model.layers.74: 5
+  model.layers.75: 5
+  model.layers.76: 5
+  model.layers.77: 5
+  model.layers.78: 6
+  model.layers.79: 6
+  model.layers.80: 6
+  model.layers.81: 6
+  model.layers.82: 6
+  model.layers.83: 6
+  model.layers.84: 6
+  model.layers.85: 6
+  model.layers.86: 6
+  model.layers.87: 6
+  model.layers.88: 6
+  model.layers.89: 6
+  model.layers.90: 6
+  model.layers.91: 7
+  model.layers.92: 7
+  model.layers.93: 7
+  model.norm: 7
+  model.rotary_emb: 7
+  lm_head: 7
+
+[1/60] example=0 sub=0 full_tokens=2132 warmup=True
+storage_time: 0.7172874389216304
+select_time: 2.866563051007688
+use_sparse_attention: True
+ 
+prompt eval count:    946 token(s)
+prompt eval duration: 8.901794485747814s
+prompt eval rate:     106.27070772242494 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.9018s fusion_wall=9.1331s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.8666s recompute_prefill=5.3179s
+
+[2/60] example=1 sub=0 full_tokens=2112 warmup=True
+storage_time: 0.4673669789917767
+select_time: 1.8150224089622498
+use_sparse_attention: True
+ 
+prompt eval count:    931 token(s)
+prompt eval duration: 7.530819084029645s
+prompt eval rate:     123.6253307391676 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.5308s fusion_wall=7.7192s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8150s recompute_prefill=5.2484s
+
+[3/60] example=2 sub=0 full_tokens=2254 warmup=True
+storage_time: 0.47472803900018334
+select_time: 1.712341914884746
+use_sparse_attention: True
+ 
+prompt eval count:    1029 token(s)
+prompt eval duration: 7.759367300197482s
+prompt eval rate:     132.61390525665811 tokens/s
+eval count:           1 token(s)
+eval duration:        2.7179718017578125e-05s
+eval rate:            36792.14035087719 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.7594s fusion_wall=7.9415s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7123s recompute_prefill=5.5723s
+
+[4/60] example=3 sub=0 full_tokens=1972 warmup=False
+storage_time: 0.43105247896164656
+select_time: 1.8764400850050151
+use_sparse_attention: True
+ 
+prompt eval count:    833 token(s)
+prompt eval duration: 7.22005519317463s
+prompt eval rate:     115.3730792511758 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.2201s fusion_wall=7.3697s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8764s recompute_prefill=4.9126s
+
+[5/60] example=3 sub=1 full_tokens=2172 warmup=False
+storage_time: 0.5027427030727267
+select_time: 1.8382537658326328
+use_sparse_attention: True
+ 
+prompt eval count:    974 token(s)
+prompt eval duration: 7.647546126041561s
+prompt eval rate:     127.36111478730645 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.6475s fusion_wall=7.8081s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8383s recompute_prefill=5.3065s
+
+[6/60] example=4 sub=0 full_tokens=2002 warmup=False
+storage_time: 0.42644087225198746
+select_time: 1.9206784069538116
+use_sparse_attention: True
+
+prompt eval count:    856 token(s)
+prompt eval duration: 7.131605037022382s
+prompt eval rate:     120.02908118947103 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.1316s fusion_wall=7.2745s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9207s recompute_prefill=4.7845s
+
+[7/60] example=4 sub=1 full_tokens=2891 warmup=False
+storage_time: 0.5709028970450163
+select_time: 1.8065657843835652
+use_sparse_attention: True
+
+prompt eval count:    1476 token(s)
+prompt eval duration: 8.849246558267623s
+prompt eval rate:     166.79386095542915 tokens/s
+eval count:           1 token(s)
+eval duration:        1.5020370483398438e-05s
+eval rate:            66576.25396825396 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.8492s fusion_wall=9.0913s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8066s recompute_prefill=6.4718s
+
+[8/60] example=6 sub=0 full_tokens=2303 warmup=False
+storage_time: 0.4856842262670398
+select_time: 1.7994962856173515
+use_sparse_attention: True
+
+prompt eval count:    1064 token(s)
+prompt eval duration: 7.985373334027827s
+prompt eval rate:     133.2436137288672 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2874603271484375e-05s
+eval rate:            77672.29629629629 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.9854s fusion_wall=8.1662s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7995s recompute_prefill=5.7002s
+
+[9/60] example=7 sub=0 full_tokens=2406 warmup=False
+storage_time: 0.4394617029465735
+select_time: 1.8663999610580504
+use_sparse_attention: True
+ 
+prompt eval count:    1137 token(s)
+prompt eval duration: 8.075159070082009s
+prompt eval rate:     140.80217988677379 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4543533325195312e-05s
+eval rate:            68759.08196721312 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.0752s fusion_wall=8.2946s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8664s recompute_prefill=5.7693s
+
+[10/60] example=7 sub=1 full_tokens=2286 warmup=False
+storage_time: 0.5138748553581536
+select_time: 1.912221847102046
+use_sparse_attention: True
+
+prompt eval count:    1054 token(s)
+prompt eval duration: 8.004329349379987s
+prompt eval rate:     131.67873959129912 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.0043s fusion_wall=8.1157s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9122s recompute_prefill=5.5782s
+
+[11/60] example=9 sub=0 full_tokens=2815 warmup=False
+storage_time: 0.45353066734969616
+select_time: 1.8669724171049893
+use_sparse_attention: True
+ 
+prompt eval count:    1423 token(s)
+prompt eval duration: 8.561825106386095s
+prompt eval rate:     166.2028810818166 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.5618s fusion_wall=8.7077s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8670s recompute_prefill=6.2413s
+
+[12/60] example=9 sub=1 full_tokens=3547 warmup=False
+storage_time: 0.5879932949319482
+select_time: 2.124780084937811
+use_sparse_attention: True
+
+prompt eval count:    1938 token(s)
+prompt eval duration: 10.402493592817336s
+prompt eval rate:     186.30148461116485 tokens/s
+eval count:           1 token(s)
+eval duration:        1.52587890625e-05s
+eval rate:            65536.0 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=10.4025s fusion_wall=10.5939s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.1248s recompute_prefill=7.6897s
+
+[13/60] example=10 sub=0 full_tokens=2322 warmup=False
+storage_time: 0.4366719019599259
+select_time: 1.8265243880450726
+use_sparse_attention: True
+ 
+prompt eval count:    1078 token(s)
+prompt eval duration: 7.723188939969987s
+prompt eval rate:     139.57964881850853 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.7232s fusion_wall=7.8439s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8265s recompute_prefill=5.4600s
+
+[14/60] example=10 sub=1 full_tokens=2554 warmup=False
+storage_time: 0.5196268591098487
+select_time: 1.848419160116464
+use_sparse_attention: True
+ 
+prompt eval count:    1240 token(s)
+prompt eval duration: 8.346749560441822s
+prompt eval rate:     148.56082490803314 tokens/s
+eval count:           1 token(s)
+eval duration:        1.430511474609375e-05s
+eval rate:            69905.06666666667 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.3467s fusion_wall=8.4762s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8484s recompute_prefill=5.9787s
+
+[15/60] example=11 sub=0 full_tokens=2049 warmup=False
+storage_time: 0.44372994592413306
+select_time: 1.8933940599672496
+use_sparse_attention: True
+
+prompt eval count:    888 token(s)
+prompt eval duration: 7.31018455978483s
+prompt eval rate:     121.47436124733596 tokens/s
+eval count:           1 token(s)
+eval duration:        1.33514404296875e-05s
+eval rate:            74898.28571428571 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.3102s fusion_wall=7.4108s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8934s recompute_prefill=4.9731s
+
+[16/60] example=11 sub=1 full_tokens=2023 warmup=False
+storage_time: 0.49844013806432486
+select_time: 1.8185953930951655
+use_sparse_attention: True
+ 
+prompt eval count:    869 token(s)
+prompt eval duration: 7.364056004211307s
+prompt eval rate:     118.00562074800112 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.3641s fusion_wall=7.4676s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8186s recompute_prefill=5.0470s
+
+[17/60] example=12 sub=0 full_tokens=2835 warmup=False
+storage_time: 0.46545584872365
+select_time: 2.072954379953444
+use_sparse_attention: True
+ 
+prompt eval count:    1439 token(s)
+prompt eval duration: 8.939751679543406s
+prompt eval rate:     160.96643973823402 tokens/s
+eval count:           1 token(s)
+eval duration:        1.33514404296875e-05s
+eval rate:            74898.28571428571 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.9398s fusion_wall=9.1434s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.0730s recompute_prefill=6.4013s
+
+[18/60] example=12 sub=1 full_tokens=2923 warmup=False
+storage_time: 0.5696413768455386
+select_time: 2.030085221864283
+use_sparse_attention: True
+
+prompt eval count:    1500 token(s)
+prompt eval duration: 9.229803952854127s
+prompt eval rate:     162.51699469046207 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2874603271484375e-05s
+eval rate:            77672.29629629629 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=9.2298s fusion_wall=9.3687s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.0301s recompute_prefill=6.6301s
+
+[19/60] example=13 sub=0 full_tokens=1955 warmup=False
+storage_time: 0.4282449008896947
+select_time: 1.6663542198948562
+use_sparse_attention: True
+ 
+prompt eval count:    820 token(s)
+prompt eval duration: 6.8240537056699395s
+prompt eval rate:     120.16318091381403 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.8241s fusion_wall=6.9151s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.6664s recompute_prefill=4.7295s
+
+[20/60] example=13 sub=1 full_tokens=2900 warmup=False
+storage_time: 0.5740686929784715
+select_time: 1.8538956199772656
+use_sparse_attention: True
+
+prompt eval count:    1483 token(s)
+prompt eval duration: 8.978418024256825s
+prompt eval rate:     165.17386425909402 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3828277587890625e-05s
+eval rate:            72315.58620689655 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.9784s fusion_wall=9.1779s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8539s recompute_prefill=6.5505s
+
+[21/60] example=14 sub=0 full_tokens=1885 warmup=False
+storage_time: 0.41495834989473224
+select_time: 2.0012526880018413
+use_sparse_attention: True
+ 
+prompt eval count:    775 token(s)
+prompt eval duration: 7.194411098957062s
+prompt eval rate:     107.72250700440901 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.1944s fusion_wall=7.2793s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.0013s recompute_prefill=4.7782s
+
+[22/60] example=14 sub=1 full_tokens=2497 warmup=False
+storage_time: 0.5476135271601379
+select_time: 1.789164847228676
+use_sparse_attention: True
+
+prompt eval count:    1200 token(s)
+prompt eval duration: 8.12116978270933s
+prompt eval rate:     147.76196436071356 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.1212s fusion_wall=8.2686s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7892s recompute_prefill=5.7844s
+
+[23/60] example=15 sub=0 full_tokens=1493 warmup=False
+storage_time: 0.40625657932832837
+select_time: 1.7772670909762383
+use_sparse_attention: True
+
+prompt eval count:    497 token(s)
+prompt eval duration: 6.117016232106835s
+prompt eval rate:     81.24876265512577 tokens/s
+eval count:           1 token(s)
+eval duration:        1.239776611328125e-05s
+eval rate:            80659.69230769231 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.1170s fusion_wall=6.1957s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7773s recompute_prefill=3.9335s
+
+[24/60] example=15 sub=1 full_tokens=1941 warmup=False
+storage_time: 0.49132755072787404
+select_time: 1.8788890009745955
+use_sparse_attention: True
+
+prompt eval count:    812 token(s)
+prompt eval duration: 7.305004393681884s
+prompt eval rate:     111.15667510101716 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.3050s fusion_wall=7.4052s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8789s recompute_prefill=4.9348s
+
+[25/60] example=16 sub=0 full_tokens=2335 warmup=False
+storage_time: 0.43839119374752045
+select_time: 1.9324868358671665
+use_sparse_attention: True
+ 
+prompt eval count:    1088 token(s)
+prompt eval duration: 7.848374790512025s
+prompt eval rate:     138.62742657439009 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.8484s fusion_wall=7.9759s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9325s recompute_prefill=5.4775s
+
+[26/60] example=16 sub=1 full_tokens=3011 warmup=False
+storage_time: 0.5711795962415636
+select_time: 2.019292965065688
+use_sparse_attention: True
+
+prompt eval count:    1562 token(s)
+prompt eval duration: 9.421400284394622s
+prompt eval rate:     165.79276464744405 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=9.4214s fusion_wall=9.5920s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.0193s recompute_prefill=6.8309s
+
+[27/60] example=17 sub=0 full_tokens=2235 warmup=False
+storage_time: 0.44250738387927413
+select_time: 1.8678933288902044
+use_sparse_attention: True
+乔治
+prompt eval count:    1018 token(s)
+prompt eval duration: 7.755647648125887s
+prompt eval rate:     131.2591863615664 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.7556s fusion_wall=7.8669s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8679s recompute_prefill=5.4452s
+
+[28/60] example=17 sub=1 full_tokens=2758 warmup=False
+storage_time: 0.5996199599467218
+select_time: 1.949557467829436
+use_sparse_attention: True
+ 
+prompt eval count:    1385 token(s)
+prompt eval duration: 9.051463667768985s
+prompt eval rate:     153.01392690021993 tokens/s
+eval count:           1 token(s)
+eval duration:        1.239776611328125e-05s
+eval rate:            80659.69230769231 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=9.0515s fusion_wall=9.2118s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9496s recompute_prefill=6.5023s
+
+[29/60] example=18 sub=0 full_tokens=1840 warmup=False
+storage_time: 0.4208118566311896
+select_time: 1.8873345470055938
+use_sparse_attention: True
+ 
+prompt eval count:    742 token(s)
+prompt eval duration: 6.876523279584944s
+prompt eval rate:     107.9033648010548 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.8765s fusion_wall=6.9568s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8873s recompute_prefill=4.5684s
+
+[30/60] example=18 sub=1 full_tokens=2020 warmup=False
+storage_time: 0.586306091863662
+select_time: 1.7235896191559732
+use_sparse_attention: True
+
+prompt eval count:    866 token(s)
+prompt eval duration: 7.330047297291458s
+prompt eval rate:     118.1438488562001 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.3300s fusion_wall=7.4500s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7236s recompute_prefill=5.0202s
+
+[31/60] example=19 sub=0 full_tokens=1848 warmup=False
+storage_time: 0.42279943404719234
+select_time: 1.7120965290814638
+use_sparse_attention: True
+ 
+prompt eval count:    745 token(s)
+prompt eval duration: 6.715885897167027s
+prompt eval rate:     110.93100916355124 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.7159s fusion_wall=6.8144s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7121s recompute_prefill=4.5810s
+
+[32/60] example=19 sub=1 full_tokens=2399 warmup=False
+storage_time: 0.5212228409945965
+select_time: 1.8787939362227917
+use_sparse_attention: True
+
+prompt eval count:    1133 token(s)
+prompt eval duration: 8.065676321275532s
+prompt eval rate:     140.4717911889655 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3828277587890625e-05s
+eval rate:            72315.58620689655 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.0657s fusion_wall=8.2203s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8788s recompute_prefill=5.6657s
+
+[33/60] example=20 sub=0 full_tokens=2337 warmup=False
+storage_time: 0.4406275497749448
+select_time: 1.8470294098369777
+use_sparse_attention: True
+
+prompt eval count:    1089 token(s)
+prompt eval duration: 7.900936011690646s
+prompt eval rate:     137.83177061409654 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.9009s fusion_wall=8.0519s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8470s recompute_prefill=5.6133s
+
+[34/60] example=20 sub=1 full_tokens=3098 warmup=False
+storage_time: 0.5352501817978919
+select_time: 2.1454949993640184
+use_sparse_attention: True
+
+prompt eval count:    1626 token(s)
+prompt eval duration: 9.623544667381793s
+prompt eval rate:     168.960612352244 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=9.6235s fusion_wall=9.8398s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.1455s recompute_prefill=6.9428s
+
+[35/60] example=21 sub=0 full_tokens=2568 warmup=False
+storage_time: 0.4452547449618578
+select_time: 1.893975033890456
+use_sparse_attention: True
+
+
+prompt eval count:    1251 token(s)
+prompt eval duration: 8.308261252939701s
+prompt eval rate:     150.5730214679227 tokens/s
+eval count:           1 token(s)
+eval duration:        3.123283386230469e-05s
+eval rate:            32017.58778625954 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.3083s fusion_wall=8.4337s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8940s recompute_prefill=5.9690s
+
+[36/60] example=21 sub=1 full_tokens=2931 warmup=False
+storage_time: 0.5765343951061368
+select_time: 1.7604779922403395
+use_sparse_attention: True
+
+prompt eval count:    1503 token(s)
+prompt eval duration: 8.87038213107735s
+prompt eval rate:     169.44027639285633 tokens/s
+eval count:           1 token(s)
+eval duration:        2.47955322265625e-05s
+eval rate:            40329.846153846156 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.8704s fusion_wall=9.1338s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7605s recompute_prefill=6.5334s
+
+[37/60] example=24 sub=0 full_tokens=2374 warmup=False
+storage_time: 0.5097352718003094
+select_time: 1.9439863641746342
+use_sparse_attention: True
+
+prompt eval count:    1115 token(s)
+prompt eval duration: 8.043849308975041s
+prompt eval rate:     138.6152272589098 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.0438s fusion_wall=8.1704s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9440s recompute_prefill=5.5901s
+
+[38/60] example=24 sub=1 full_tokens=2814 warmup=False
+storage_time: 0.5245549813844264
+select_time: 1.8586663720197976
+use_sparse_attention: True
+
+prompt eval count:    1422 token(s)
+prompt eval duration: 8.779255682602525s
+prompt eval rate:     161.97272882915536 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4543533325195312e-05s
+eval rate:            68759.08196721312 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.7793s fusion_wall=8.9471s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8587s recompute_prefill=6.3960s
+
+[39/60] example=25 sub=0 full_tokens=1607 warmup=False
+storage_time: 0.4244242310523987
+select_time: 1.9070752942934632
+use_sparse_attention: True
+
+prompt eval count:    578 token(s)
+prompt eval duration: 6.800252304412425s
+prompt eval rate:     84.99684631185785 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2159347534179688e-05s
+eval rate:            82241.25490196078 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.8003s fusion_wall=6.8843s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9071s recompute_prefill=4.4688s
+
+[40/60] example=25 sub=1 full_tokens=1944 warmup=False
+storage_time: 0.49640457704663277
+select_time: 1.8370356718078256
+use_sparse_attention: True
+
+prompt eval count:    813 token(s)
+prompt eval duration: 7.043477070052177s
+prompt eval rate:     115.42594544060572 tokens/s
+eval count:           1 token(s)
+eval duration:        1.33514404296875e-05s
+eval rate:            74898.28571428571 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.0435s fusion_wall=7.1450s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8370s recompute_prefill=4.7100s
+
+[41/60] example=26 sub=0 full_tokens=2352 warmup=False
+storage_time: 0.472449216991663
+select_time: 1.8169259233400226
+use_sparse_attention: True
+ 
+prompt eval count:    1099 token(s)
+prompt eval duration: 8.011392444372177s
+prompt eval rate:     137.17964856059731 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.0114s fusion_wall=8.1428s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8169s recompute_prefill=5.7220s
+
+[42/60] example=27 sub=0 full_tokens=2155 warmup=False
+storage_time: 0.42971816612407565
+select_time: 1.8292952729389071
+use_sparse_attention: True
+
+prompt eval count:    961 token(s)
+prompt eval duration: 7.582273697946221s
+prompt eval rate:     126.7429847936381 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3828277587890625e-05s
+eval rate:            72315.58620689655 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.5823s fusion_wall=7.6940s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8293s recompute_prefill=5.3233s
+
+[43/60] example=27 sub=1 full_tokens=2259 warmup=False
+storage_time: 0.5160178830847144
+select_time: 1.766066915821284
+use_sparse_attention: True
+ 
+prompt eval count:    1033 token(s)
+prompt eval duration: 7.730852365028113s
+prompt eval rate:     133.6204536349652 tokens/s
+eval count:           1 token(s)
+eval duration:        1.33514404296875e-05s
+eval rate:            74898.28571428571 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.7309s fusion_wall=7.8383s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7661s recompute_prefill=5.4488s
+
+[44/60] example=32 sub=0 full_tokens=2258 warmup=False
+storage_time: 0.4353745640255511
+select_time: 1.902139469049871
+use_sparse_attention: True
+乔治
+prompt eval count:    1034 token(s)
+prompt eval duration: 7.7767091654241085s
+prompt eval rate:     132.96112507296138 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.7767s fusion_wall=7.8951s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9021s recompute_prefill=5.4392s
+
+[45/60] example=32 sub=1 full_tokens=2543 warmup=False
+storage_time: 0.5203411658294499
+select_time: 1.88451444869861
+use_sparse_attention: True
+ 
+prompt eval count:    1234 token(s)
+prompt eval duration: 8.43445179471746s
+prompt eval rate:     146.30470717407624 tokens/s
+eval count:           1 token(s)
+eval duration:        1.239776611328125e-05s
+eval rate:            80659.69230769231 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.4345s fusion_wall=8.5886s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8845s recompute_prefill=6.0296s
+
+[46/60] example=33 sub=0 full_tokens=1591 warmup=False
+storage_time: 0.44558629114180803
+select_time: 1.801085994578898
+use_sparse_attention: True
+
+prompt eval count:    566 token(s)
+prompt eval duration: 6.371016415767372s
+prompt eval rate:     88.83982759787425 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2159347534179688e-05s
+eval rate:            82241.25490196078 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.3710s fusion_wall=6.4469s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8011s recompute_prefill=4.1243s
+
+[47/60] example=35 sub=0 full_tokens=1991 warmup=False
+storage_time: 0.42125788936391473
+select_time: 1.7932419939897954
+use_sparse_attention: True
+ 
+prompt eval count:    846 token(s)
+prompt eval duration: 7.1383619122207165s
+prompt eval rate:     118.51458505510443 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.1384s fusion_wall=7.2424s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7932s recompute_prefill=4.9239s
+
+[48/60] example=35 sub=1 full_tokens=2029 warmup=False
+storage_time: 0.4945385460741818
+select_time: 1.7481237882748246
+use_sparse_attention: True
+
+prompt eval count:    872 token(s)
+prompt eval duration: 7.255589030217379s
+prompt eval rate:     120.18321274377287 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.2556s fusion_wall=7.3692s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7481s recompute_prefill=5.0129s
+
+[49/60] example=36 sub=0 full_tokens=2278 warmup=False
+storage_time: 0.43382024206221104
+select_time: 1.8275650921277702
+use_sparse_attention: True
+
+prompt eval count:    1047 token(s)
+prompt eval duration: 7.85961524490267s
+prompt eval rate:     133.21262776559306 tokens/s
+eval count:           1 token(s)
+eval duration:        4.1961669921875e-05s
+eval rate:            23831.272727272728 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.8596s fusion_wall=8.0582s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8276s recompute_prefill=5.5982s
+
+[50/60] example=36 sub=1 full_tokens=2637 warmup=False
+storage_time: 0.5207382100634277
+select_time: 1.929409810807556
+use_sparse_attention: True
+ 
+prompt eval count:    1299 token(s)
+prompt eval duration: 8.643954186700284s
+prompt eval rate:     150.27844571396048 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2636184692382812e-05s
+eval rate:            79137.81132075471 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=8.6440s fusion_wall=8.8857s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9294s recompute_prefill=6.1938s
+
+[51/60] example=37 sub=0 full_tokens=1892 warmup=False
+storage_time: 0.42261503310874104
+select_time: 1.863446457311511
+use_sparse_attention: True
+
+prompt eval count:    778 token(s)
+prompt eval duration: 7.039944822434336s
+prompt eval rate:     110.51222980054212 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2874603271484375e-05s
+eval rate:            77672.29629629629 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.0399s fusion_wall=7.1486s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8634s recompute_prefill=4.7539s
+
+[52/60] example=37 sub=1 full_tokens=2133 warmup=False
+storage_time: 0.5036855489015579
+select_time: 2.169191785622388
+use_sparse_attention: True
+ 
+prompt eval count:    953 token(s)
+prompt eval duration: 7.8822798654437065s
+prompt eval rate:     120.9041059526442 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2159347534179688e-05s
+eval rate:            82241.25490196078 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.8823s fusion_wall=8.0023s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=2.1692s recompute_prefill=5.2094s
+
+[53/60] example=38 sub=0 full_tokens=1625 warmup=False
+storage_time: 0.41677180910483
+select_time: 1.8120933291502297
+use_sparse_attention: True
+ 
+prompt eval count:    590 token(s)
+prompt eval duration: 6.7252327729947865s
+prompt eval rate:     87.72930542555324 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.7252s fusion_wall=6.8104s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8121s recompute_prefill=4.4964s
+
+[54/60] example=38 sub=1 full_tokens=1810 warmup=False
+storage_time: 0.4927527070976794
+select_time: 1.8628947520628572
+use_sparse_attention: True
+ 
+prompt eval count:    720 token(s)
+prompt eval duration: 7.005749110132456s
+prompt eval rate:     102.77273546074606 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.0057s fusion_wall=7.1046s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8629s recompute_prefill=4.6501s
+
+[55/60] example=39 sub=0 full_tokens=1791 warmup=False
+storage_time: 0.4199651703238487
+select_time: 1.9761006408371031
+use_sparse_attention: True
+
+prompt eval count:    709 token(s)
+prompt eval duration: 6.905915384180844s
+prompt eval rate:     102.66560775188229 tokens/s
+eval count:           1 token(s)
+eval duration:        1.33514404296875e-05s
+eval rate:            74898.28571428571 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.9059s fusion_wall=6.9949s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9761s recompute_prefill=4.5098s
+
+[56/60] example=39 sub=1 full_tokens=2177 warmup=False
+storage_time: 0.5132062090560794
+select_time: 1.9908742802217603
+use_sparse_attention: True
+ 
+prompt eval count:    978 token(s)
+prompt eval duration: 7.944734493270516s
+prompt eval rate:     123.10040075327906 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.9447s fusion_wall=8.0500s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9909s recompute_prefill=5.4407s
+
+[57/60] example=40 sub=0 full_tokens=1903 warmup=False
+storage_time: 0.42582645965740085
+select_time: 1.7563727460801601
+use_sparse_attention: True
+ 
+prompt eval count:    784 token(s)
+prompt eval duration: 7.06406887434423s
+prompt eval rate:     110.98419536188061 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3589859008789062e-05s
+eval rate:            73584.28070175438 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.0641s fusion_wall=7.2086s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7564s recompute_prefill=4.8819s
+
+[58/60] example=40 sub=1 full_tokens=2334 warmup=False
+storage_time: 0.5105844442732632
+select_time: 1.9340257020667195
+use_sparse_attention: True
+
+prompt eval count:    1087 token(s)
+prompt eval duration: 7.94206165522337s
+prompt eval rate:     136.86622531884993 tokens/s
+eval count:           1 token(s)
+eval duration:        1.4066696166992188e-05s
+eval rate:            71089.89830508475 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.9421s fusion_wall=8.0723s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.9340s recompute_prefill=5.4975s
+
+[59/60] example=43 sub=0 full_tokens=1651 warmup=False
+storage_time: 0.41788263618946075
+select_time: 1.721016662195325
+use_sparse_attention: True
+ 
+prompt eval count:    607 token(s)
+prompt eval duration: 6.529303743503988s
+prompt eval rate:     92.96550196548982 tokens/s
+eval count:           1 token(s)
+eval duration:        1.2874603271484375e-05s
+eval rate:            77672.29629629629 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=6.5293s fusion_wall=6.6184s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.7210s recompute_prefill=4.3904s
+
+[60/60] example=43 sub=1 full_tokens=1809 warmup=False
+storage_time: 0.567666744813323
+select_time: 1.8647476746700704
+use_sparse_attention: True
+
+prompt eval count:    719 token(s)
+prompt eval duration: 7.049691329244524s
+prompt eval rate:     101.99028105207142 tokens/s
+eval count:           1 token(s)
+eval duration:        1.3113021850585938e-05s
+eval rate:            76260.07272727272 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=7.0497s fusion_wall=7.1441s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=1.8647s recompute_prefill=4.6173s
+{
+  "config": {
+    "model": "/home/hming/models/Qwen3-235B-A22B",
+    "dataset": "musique",
+    "topk": 10,
+    "rate": 0.7,
+    "max_main_questions": 50,
+    "max_sub_questions": 60,
+    "warmup_sub_questions": 3,
+    "raw_kv_cache": "/home/hming/fusionrag-qwen3-235b-three-groups-unified-prompt-cache/online_qk_rate015/Qwen3-235B-A22B/musique/kv_cache",
+    "preprocess_kv_cache": "/home/hming/fusionrag-qwen3-235b-three-groups-unified-prompt-cache/online_qk_rate015/Qwen3-235B-A22B/musique/preprocess_kv_cache_global_topk10_bge"
+  },
+  "num_measured": 57,
+  "full_ttft_compute_s_mean": 0.0,
+  "full_ttft_compute_s_p50": 0.0,
+  "full_ttft_compute_s_p95": 0.0,
+  "full_ttft_wall_s_mean": 0.0,
+  "full_ttft_wall_s_p50": 0.0,
+  "full_ttft_wall_s_p95": 0.0,
+  "full_exact_cache_ttft_s_mean": 0.0,
+  "full_exact_cache_ttft_s_p50": 0.0,
+  "full_exact_cache_ttft_s_p95": 0.0,
+  "fusion_ttft_compute_s_mean": 7.801045916222951,
+  "fusion_ttft_compute_s_p50": 7.7767091654241085,
+  "fusion_ttft_compute_s_p95": 9.229803952854127,
+  "fusion_ttft_wall_s_mean": 7.936558170840471,
+  "fusion_ttft_wall_s_p50": 7.89505457226187,
+  "fusion_ttft_wall_s_p95": 9.368657776154578,
+  "speedup_compute_mean": 0.0,
+  "ttft_reduction_pct_compute_mean": 0.0,
+  "speedup_full_exact_over_fusion_compute_mean": 0.0,
+  "ttft_reduction_pct_full_exact_vs_fusion_compute_mean": 0.0,
+  "speedup_wall_mean": 0.0,
+  "ttft_reduction_pct_wall_mean": 0.0,
+  "fusion_storage_time_s_mean": 0.48323057188342017,
+  "fusion_selection_time_s_mean": 1.8751319967488056,
+  "fusion_selection_score_forward_time_s_mean": 1.8740977977010373,
+  "fusion_reprocess_prefill_time_s_mean": 5.442683347590725,
+  "fusion_selected_doc_tokens_mean": 1011.8245614035088,
+  "fusion_reprocess_prefill_tokens_mean": 1038.7368421052631,
+  "full_tokens_mean": 2265.0526315789475,
+  "end_to_end_ttft_s_mean": 7.936558170840471,
+  "end_to_end_ttft_s_p50": 7.89505457226187,
+  "end_to_end_ttft_s_p95": 9.368657776154578,
+  "kv_load_copy_s_mean": 0.48323057188342017,
+  "selection_s_mean": 1.8751319967488056,
+  "online_update_query_prefill_s_mean": 5.442683347590725,
+  "extra_impl_overhead_s_mean": 0.13551225461752006,
+  "rate1_baseline_candidate_s_mean": 0.0
+}
+Wrote /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/online_ttft_profile_qwen235b/qk_rate_sweep/clean_online_ttft_topk10_rate0.7_n60.csv
+Wrote /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/online_ttft_profile_qwen235b/qk_rate_sweep/clean_online_ttft_topk10_rate0.7_n60_summary.json
+Wrote /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/online_ttft_profile_qwen235b/qk_rate_sweep/README.md

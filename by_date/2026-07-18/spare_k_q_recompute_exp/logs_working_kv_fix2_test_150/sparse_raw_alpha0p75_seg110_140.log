@@ -1,0 +1,657 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_working_kv_raw rate=0.15 start=110 end=140
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_110_140
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:00<00:00, 138.02it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 143.46it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140]
+storage_time: 1.092788933776319
+select_time: 1.459568152204156
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Kampong Cham
+prompt eval count:    2577 token(s)
+prompt eval duration: 32.67057859292254s
+prompt eval rate:     78.87830920013943 tokens/s
+eval count:           9 token(s)
+eval duration:        2.5039727687835693s
+eval rate:            3.5942882894737718 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the capital of the county that shares a border with the county where KRSU is licensed to broadcast?
+batch: 111 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Kampong Cham
+storage_time: 0.6786341490224004
+select_time: 0.607893736101687
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Xanana Gusmão
+prompt eval count:    2549 token(s)
+prompt eval duration: 30.975150626152754s
+prompt eval rate:     82.29177093485524 tokens/s
+eval count:           11 token(s)
+eval duration:        3.105907440185547s
+eval rate:            3.5416380596785784 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Kiwil's birth country participated in a Commission of Truth and Friendship. Who is the president of the other country that participated?
+batch: 112 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Xanana Gusmão
+storage_time: 0.655939120799303
+select_time: 0.6024527428671718
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Aiden Lucas
+prompt eval count:    2520 token(s)
+prompt eval duration: 30.708243700675666s
+prompt eval rate:     82.06265472435837 tokens/s
+eval count:           8 token(s)
+eval duration:        2.174354076385498s
+eval rate:            3.6792535709265297 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the child of the male star of the 1921 film Money?
+batch: 113 preprocess: False reprocess_method: FusionRAG
+real answer: Anthony Ainley
+answer: Aiden Lucas
+storage_time: 0.7638058043085039
+select_time: 0.6170861190184951
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+fleur-de-lis
+prompt eval count:    2599 token(s)
+prompt eval duration: 31.678973018191755s
+prompt eval rate:     82.0418009923338 tokens/s
+eval count:           10 token(s)
+eval duration:        2.793166399002075s
+eval rate:            3.5801662241006253 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the symbol of the Saints from the headquarters location of Ten High's manufacturer called?
+batch: 114 preprocess: False reprocess_method: FusionRAG
+real answer: fleur - de-lis
+answer: fleur-de-lis
+storage_time: 0.6257023271173239
+select_time: 0.5981151238083839
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Tanzania
+prompt eval count:    2382 token(s)
+prompt eval duration: 29.13227184303105s
+prompt eval rate:     81.76499288605315 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1729817390441895s
+eval rate:            3.681577187813318 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Which country has a body of water that was inspiration for the name of the Mara Region?
+batch: 115 preprocess: False reprocess_method: FusionRAG
+real answer: Tanzania
+answer: Tanzania
+storage_time: 0.721207135822624
+select_time: 0.6118319230154157
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Johnny Cash
+prompt eval count:    2641 token(s)
+prompt eval duration: 32.13468946283683s
+prompt eval rate:     82.18532819662897 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8641955852508545s
+eval rate:            3.754970806380302 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Along with the subject of The One That Got Away, what notable pop artist started out his career on adult contemporary radio?
+batch: 116 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Johnny Cash
+storage_time: 0.7673364938236773
+select_time: 0.6205116738565266
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The federal leader of the political party Ken Epp belongs to is not explicitly mentioned in the provided text. However, Ken Epp is associated with the Reform Party, the Canadian Alliance, and later the Conservative Party of 
+prompt eval count:    2725 token(s)
+prompt eval duration: 33.19333073636517s
+prompt eval rate:     82.09480457514341 tokens/s
+eval count:           50 token(s)
+eval duration:        15.213757276535034s
+eval rate:            3.2864991264924144 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the federal leader of the political party Ken Epp belongs to?
+batch: 117 preprocess: False reprocess_method: FusionRAG
+real answer: Andrew Scheer
+answer: Answer: The federal leader of the political party Ken Epp belongs to is not explicitly mentioned in the provided text. However, Ken Epp is associated with the Reform Party, the Canadian Alliance, and later the Conservative Party of
+storage_time: 0.7680503749288619
+select_time: 0.639555006287992
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Cape Verde is located in the Atlantic Ocean, approximately 570 kilometres (350 miles) off the western coast of the African continent, near Senegal, The Gambia, and Mauritania.
+prompt eval count:    2688 token(s)
+prompt eval duration: 32.752600979059935s
+prompt eval rate:     82.06981795792485 tokens/s
+eval count:           48 token(s)
+eval duration:        14.602940559387207s
+eval rate:            3.2870092023448088 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where is the country with ISO code ISO 3166-2:CV located?
+batch: 118 preprocess: False reprocess_method: FusionRAG
+real answer: central Atlantic Ocean
+answer: Cape Verde is located in the Atlantic Ocean, approximately 570 kilometres (350 miles) off the western coast of the African continent, near Senegal, The Gambia, and Mauritania.
+storage_time: 0.62883669603616
+select_time: 0.5839640079066157
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Ben Affleck did not play a role in *Dazed and Confused*.
+prompt eval count:    2503 token(s)
+prompt eval duration: 30.4686615052633s
+prompt eval rate:     82.14998218965478 tokens/s
+eval count:           21 token(s)
+eval duration:        6.211012840270996s
+eval rate:            3.381091061966592 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who did the person portraying Batman in the Justice League movie play in Dazed and Confused?
+batch: 119 preprocess: False reprocess_method: FusionRAG
+real answer: Fred O'Bannion
+answer: Ben Affleck did not play a role in *Dazed and Confused*.
+storage_time: 0.6448586103506386
+select_time: 0.5930475369095802
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: In Batman: Under the Red Hood, the actor of Barney Stinson from How I Met Your Mother, Neil Patrick Harris, plays the role of the villain Mr. Freeze.
+prompt eval count:    2593 token(s)
+prompt eval duration: 31.43645672313869s
+prompt eval rate:     82.48385060811997 tokens/s
+eval count:           42 token(s)
+eval duration:        12.726827144622803s
+eval rate:            3.300115537260626 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In Batman Under the Red Hood, who does the actor of Barney Stinson from How I Met Your Mother play?
+batch: 120 preprocess: False reprocess_method: FusionRAG
+real answer: Nightwing / Dick Grayson
+answer: Answer: In Batman: Under the Red Hood, the actor of Barney Stinson from How I Met Your Mother, Neil Patrick Harris, plays the role of the villain Mr. Freeze.
+storage_time: 0.5327077517285943
+select_time: 0.5642885672859848
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Best Choreography
+prompt eval count:    2015 token(s)
+prompt eval duration: 24.762399942148477s
+prompt eval rate:     81.3733727226591 tokens/s
+eval count:           8 token(s)
+eval duration:        2.172039270401001s
+eval rate:            3.6831746594172046 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What did the singer of "Moon River" in the movie Breakfast at Tiffany win a Tony for?
+batch: 121 preprocess: False reprocess_method: FusionRAG
+real answer: for Best Performance by a Leading Actress in a Play in Ondine
+answer: Best Choreography
+storage_time: 0.6438874267041683
+select_time: 0.5947763971053064
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Pristina
+prompt eval count:    2493 token(s)
+prompt eval duration: 30.317073815967888s
+prompt eval rate:     82.2308912506901 tokens/s
+eval count:           8 token(s)
+eval duration:        2.175405979156494s
+eval rate:            3.677474492876944 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where is the headquarter of the Radio Television of the country whose co-official language is the same as the one Politika is written in?
+batch: 122 preprocess: False reprocess_method: FusionRAG
+real answer: Pristina
+answer: Pristina
+storage_time: 0.49801081884652376
+select_time: 0.5205824892036617
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The source of the river of which the Kraai River is a tributary (the Orange River) is the Khatling Glacier in the Drakensberg mountains in Lesotho.
+prompt eval count:    1823 token(s)
+prompt eval duration: 22.49963172711432s
+prompt eval rate:     81.02354839004327 tokens/s
+eval count:           43 token(s)
+eval duration:        13.052711486816406s
+eval rate:            3.29433467087901 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the source of the river of which Kraai River is a tributary?
+batch: 123 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: The source of the river of which the Kraai River is a tributary (the Orange River) is the Khatling Glacier in the Drakensberg mountains in Lesotho.
+storage_time: 0.8735315636731684
+select_time: 0.6813266039825976
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Lea Thompson
+prompt eval count:    2613 token(s)
+prompt eval duration: 31.98722688946873s
+prompt eval rate:     81.68885689994863 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1756207942962646s
+eval rate:            3.677111388608378 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who played the girlfriend of Chance's voice actor in Homeward Bound in Back to the Future?
+batch: 124 preprocess: False reprocess_method: FusionRAG
+real answer: Claudia Wells
+answer: Lea Thompson
+storage_time: 0.6546547980979085
+select_time: 0.5966614871285856
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Carolyn Lawrence
+prompt eval count:    2594 token(s)
+prompt eval duration: 31.410359777510166s
+prompt eval rate:     82.58421802151102 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1740310192108154s
+eval rate:            3.679800301517336 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the voice of the character in Spongebob Squarepants with the same name as the creature that annelid larvae live like?
+batch: 125 preprocess: False reprocess_method: FusionRAG
+real answer: Mr. Lawrence
+answer: Carolyn Lawrence
+storage_time: 0.6520177558995783
+select_time: 0.5971677890047431
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+280 BC and 279 BC
+prompt eval count:    2621 token(s)
+prompt eval duration: 31.925547108985484s
+prompt eval rate:     82.09726182773282 tokens/s
+eval count:           15 token(s)
+eval duration:        4.340892553329468s
+eval rate:            3.4555105466720177 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Between which years did war with the person for whom Pyrrhic victory is named occur?
+batch: 126 preprocess: False reprocess_method: FusionRAG
+real answer: 323–272 BC
+answer: 280 BC and 279 BC
+storage_time: 0.9938453831709921
+select_time: 0.6512659029103816
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+selling its interests in four Nigerian oil fields
+prompt eval count:    2681 token(s)
+prompt eval duration: 32.8610586351715s
+prompt eval rate:     81.58592910121588 tokens/s
+eval count:           13 token(s)
+eval duration:        3.7251462936401367s
+eval rate:            3.489795829547587 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: MV Miralda's owner announced it was in the process of doing what in April 2010?
+batch: 127 preprocess: False reprocess_method: FusionRAG
+real answer: trying to find a potential buyer for all of its operations in Finland
+answer: selling its interests in four Nigerian oil fields
+storage_time: 0.6399333612062037
+select_time: 0.5921828104183078
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The Battle of Puebla ended on 15 February 1862.
+prompt eval count:    2565 token(s)
+prompt eval duration: 31.213542920537293s
+prompt eval rate:     82.17586854942795 tokens/s
+eval count:           25 token(s)
+eval duration:        7.448842287063599s
+eval rate:            3.3562262478583405 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the Battle at Choo Hoey's birthplace end?
+batch: 128 preprocess: False reprocess_method: FusionRAG
+real answer: 15 February 1942
+answer: Answer: The Battle of Puebla ended on 15 February 1862.
+storage_time: 1.069670938886702
+select_time: 0.6014364352449775
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Xanana Gusmão
+prompt eval count:    2653 token(s)
+prompt eval duration: 32.634707431308925s
+prompt eval rate:     81.29381902945383 tokens/s
+eval count:           11 token(s)
+eval duration:        3.1030545234680176s
+eval rate:            3.544894205631374 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Sumardi was born?
+batch: 129 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Xanana Gusmão
+storage_time: 0.6491569271311164
+select_time: 0.5987040339969099
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Brandi Carlile
+prompt eval count:    2636 token(s)
+prompt eval duration: 32.05197197198868s
+prompt eval rate:     82.24142970996266 tokens/s
+eval count:           9 token(s)
+eval duration:        2.482231855392456s
+eval rate:            3.6257692771318677 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who wrote the song The Story sung by the performer of Give Up the Ghost?
+batch: 130 preprocess: False reprocess_method: FusionRAG
+real answer: Phil Hanseroth
+answer: Brandi Carlile
+storage_time: 0.6773557672277093
+select_time: 0.6063609006814659
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Thailand
+prompt eval count:    2674 token(s)
+prompt eval duration: 32.468608817085624s
+prompt eval rate:     82.35646975403789 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8639335632324219s
+eval rate:            3.755498660510541 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where did they film The Beach in the country where Siddhi Savetsila was born?
+batch: 131 preprocess: False reprocess_method: FusionRAG
+real answer: Ko Phi Phi Leh
+answer: Thailand
+storage_time: 0.6410098243504763
+select_time: 0.5912851807661355
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+American
+prompt eval count:    2516 token(s)
+prompt eval duration: 30.62909278506413s
+prompt eval rate:     82.14412413895896 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5517230033874512s
+eval rate:            3.8666694937832626 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the author of Growing Up this nationality of the creator MacGruder and Loud?
+batch: 132 preprocess: False reprocess_method: FusionRAG
+real answer: Min Zhou
+answer: American
+storage_time: 0.6511530368588865
+select_time: 0.5907776057720184
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Kentucky
+prompt eval count:    2554 token(s)
+prompt eval duration: 31.126113613601774s
+prompt eval rate:     82.05328913545858 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8609118461608887s
+eval rate:            3.761596775495405 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In which county did Snappy Tomato Pizza form?
+batch: 133 preprocess: False reprocess_method: FusionRAG
+real answer: Kenton County
+answer: Kentucky
+storage_time: 0.66124073183164
+select_time: 0.6031435648910701
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Best Director
+prompt eval count:    2623 token(s)
+prompt eval duration: 31.946632218081504s
+prompt eval rate:     82.10568119025096 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8545825481414795s
+eval rate:            3.7744343097668334 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What other recognition did the Oscar winner for Best Actor in 2006 receive?
+batch: 134 preprocess: False reprocess_method: FusionRAG
+real answer: nominated for an Academy Award for Best Supporting Actor
+answer: Best Director
+storage_time: 0.6887338189408183
+select_time: 0.6129962471313775
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1 January 1986
+prompt eval count:    2604 token(s)
+prompt eval duration: 31.74196843523532s
+prompt eval rate:     82.03650020360482 tokens/s
+eval count:           12 token(s)
+eval duration:        3.402946710586548s
+eval rate:            3.526355544348687 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the Smile performer's birthday?
+batch: 135 preprocess: False reprocess_method: FusionRAG
+real answer: 1 January 1986
+answer: 1 January 1986
+storage_time: 0.35972612211480737
+select_time: 0.4588189418427646
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Warner Bros. Records
+prompt eval count:    1211 token(s)
+prompt eval duration: 15.507591952104121s
+prompt eval rate:     78.09078312998089 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7959094047546387s
+eval rate:            3.5766538010832196 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What record label does the performer of Emotional Rain belong to?
+batch: 136 preprocess: False reprocess_method: FusionRAG
+real answer: Attic Records
+answer: Warner Bros. Records
+storage_time: 0.6938144429586828
+select_time: 0.6238363170996308
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2015
+prompt eval count:    2730 token(s)
+prompt eval duration: 33.07401164108887s
+prompt eval rate:     82.54214909353288 tokens/s
+eval count:           9 token(s)
+eval duration:        2.481163501739502s
+eval rate:            3.6273304817236958 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the majority party in the House of Representatives gain control of the body which approves members of the Cabinet?
+batch: 137 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: 2015
+storage_time: 0.6677661510184407
+select_time: 0.5987830790691078
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sazerac Company
+prompt eval count:    2610 token(s)
+prompt eval duration: 31.73129575420171s
+prompt eval rate:     82.25318058921044 tokens/s
+eval count:           9 token(s)
+eval duration:        2.474546194076538s
+eval rate:            3.63703050746994 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the manufacturer of the Kentucky Tavern headquarters location saints symbol called?
+batch: 138 preprocess: False reprocess_method: FusionRAG
+real answer: fleur - de-lis
+answer: Sazerac Company
+storage_time: 0.6116057885810733
+select_time: 0.5740653518587351
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Zhejiang
+prompt eval count:    2433 token(s)
+prompt eval duration: 29.745771979447454s
+prompt eval rate:     81.79313690971131 tokens/s
+eval count:           8 token(s)
+eval duration:        2.165987730026245s
+eval rate:            3.693465059427213 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In which county was Zhu Qinan born?
+batch: 139 preprocess: False reprocess_method: FusionRAG
+real answer: Yongjia County
+answer: Zhejiang
+storage_time: 0.69037667196244
+select_time: 0.61227713432163
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Karen Fairchild
+prompt eval count:    2642 token(s)
+prompt eval duration: 32.19420778751373s
+prompt eval rate:     82.06445138944152 tokens/s
+eval count:           8 token(s)
+eval duration:        2.16631817817688s
+eval rate:            3.6929016617183184 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who sings Home Alone Tonight with the Rain is a Good Thing singer?
+batch: 140 preprocess: False reprocess_method: FusionRAG
+real answer: Karen Fairchild
+answer: Karen Fairchild
+
+--- Quality Metrics ---
+EM Score: 0.0250
+ROUGE Score: 0.0430
+[setup-v2] auto GLM/EM/F1: /mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/bin/python /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset/scripts/judge_task_csv.py --csv MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_110_140/csv/reprocess_method_FusionRAG_rate_0.15_revert_rope_True.csv --output MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_110_140/metrics/metrics.csv
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[auto-glm] rows=30 em=0.133333 f1=0.253599 glm=7/30

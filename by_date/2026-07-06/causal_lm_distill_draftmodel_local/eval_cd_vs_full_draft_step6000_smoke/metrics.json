@@ -1,0 +1,47 @@
+{
+  "load_info": {
+    "step": 6000,
+    "epoch": 8,
+    "missing_embed": 0,
+    "unexpected_embed": 0,
+    "missing_layers": 0,
+    "unexpected_layers": 0
+  },
+  "config": {
+    "model_path": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-3B-Instruct",
+    "cd_checkpoint": "MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/outputs/qwen_cd_wikitext103_4layer_gpu0_3_s256_n20000_step6000/training_state_final_step006000.pt",
+    "wiki_val_cache_dir": "MOTIVATION_EXPERIMENTS/predictor_distill_wikitext/teacher_cache_wikitext103_val_50k",
+    "musique_val_cache_dir": "MOTIVATION_EXPERIMENTS/native_initialized_layer4_distill/teacher_cache_musique_val",
+    "out_dir": "MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/eval_cd_vs_full_draft_step6000_smoke",
+    "layers": 4,
+    "score_mode": "attn_prob",
+    "batch_size": 1,
+    "wiki_limit": 8,
+    "musique_limit": 8,
+    "eval_ratios": "0.05,0.10,0.15,0.30",
+    "temperature": 2.0
+  },
+  "score_note": "teacher_scores are cached full 3B draft-model scores from the HS/native layer4 pipeline; metrics compare CD 4-layer top-token sets against that full draft distribution.",
+  "wiki": {
+    "val_kl": 0.008178340271115303,
+    "val_recall_r0p05": 0.381578947368421,
+    "val_jaccard_r0p05": 0.24105841206439094,
+    "val_recall_r0p1": 0.4572368421052631,
+    "val_jaccard_r0p1": 0.3004123299093228,
+    "val_recall_r0p15": 0.5372807017543859,
+    "val_jaccard_r0p15": 0.3702679507731085,
+    "val_recall_r0p3": 0.6315217391304347,
+    "val_jaccard_r0p3": 0.4642656598656721
+  },
+  "musique": {
+    "val_kl": 0.01197326835244894,
+    "val_recall_r0p05": 0.3958333333333333,
+    "val_jaccard_r0p05": 0.2709415584415584,
+    "val_recall_r0p1": 0.3565283400809717,
+    "val_jaccard_r0p1": 0.2212729978354978,
+    "val_recall_r0p15": 0.31914235190097257,
+    "val_jaccard_r0p15": 0.19079831932773106,
+    "val_recall_r0p3": 0.35700565855071853,
+    "val_jaccard_r0p3": 0.22009555134128908
+  }
+}

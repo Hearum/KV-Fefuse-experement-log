@@ -1,0 +1,80 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 228.41it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading dataset from /raid/home/hming/FusionRAG-pca-analysis/data/result_reflect.json...
+Limited to first 1 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+storage_time: 0.1688404669985175
+select_time: 0.325684491021093
+use_sparse_attention: True
+ 
+prompt eval count:    1347 token(s)
+prompt eval duration: 1.752963270060718s
+prompt eval rate:     768.4131339234184 tokens/s
+eval count:           1 token(s)
+eval duration:        1.5020370483398438e-05s
+eval rate:            66576.25396825396 tokens/s
+storage_time: 0.075935508008115
+select_time: 0.14277088100789115
+use_sparse_attention: True
+ 
+prompt eval count:    1347 token(s)
+prompt eval duration: 1.4773211230058223s
+prompt eval rate:     911.7855143500113 tokens/s
+eval count:           1 token(s)
+eval duration:        1.5020370483398438e-05s
+eval rate:            66576.25396825396 tokens/s
+[
+  {
+    "source": "raw",
+    "kind": "k",
+    "doc_tokens": 1313,
+    "selected_tokens": 1313,
+    "original_gap": 0.26564034819602966,
+    "delta_l2": 5535.5498046875,
+    "base_l2": 20838.513671875
+  },
+  {
+    "source": "raw",
+    "kind": "v",
+    "doc_tokens": 1313,
+    "selected_tokens": 1313,
+    "original_gap": 0.4832860827445984,
+    "delta_l2": 9602.6103515625,
+    "base_l2": 19869.412109375
+  },
+  {
+    "source": "preprocess",
+    "kind": "k",
+    "doc_tokens": 1313,
+    "selected_tokens": 1313,
+    "original_gap": 0.21792541444301605,
+    "delta_l2": 4570.64111328125,
+    "base_l2": 20973.419921875
+  },
+  {
+    "source": "preprocess",
+    "kind": "v",
+    "doc_tokens": 1313,
+    "selected_tokens": 1313,
+    "original_gap": 0.43781188130378723,
+    "delta_l2": 8666.669921875,
+    "base_l2": 19795.419921875
+  }
+]

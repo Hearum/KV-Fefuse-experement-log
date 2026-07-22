@@ -1,0 +1,24 @@
+# RAG Docs Preprocess Ablation
+
+目的：把 preprocess 阶段的 offline top-k 文档替换为 online RAG 真实召回/使用的文档集合，观察 online QK 和 DraftModel 的性能是否接近 full_rate1。
+
+实现：`--recall_method rag_docs`。对每个 chunk，使用包含该 chunk 的 sub-question 的真实 `chunk_ids` 作为 preprocess recall；原 preprocess 逻辑会跳过 self 并最后追加当前 chunk，因此文档集合接近 online RAG，但顺序经过确定性轮转，不完全等同原 online 顺序。
+
+运行：`tmux new-session -d -s ragdocs_preprocess_ablation_qjy003 /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/rag_docs_preprocess_ablation/launch_ragdocs_ablation_qjy003.sh`
+
+## 当前结果
+
+| dataset | method | native baseline | Main Acc | Sub Acc | F1 | EM | rows | finished seg | missing seg | traceback/killed | note |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 2wikimqa | ragdocs_online_qk_rate015 | 107/200 (53.50%) | 99/200 (49.50%) | 99/200 (49.50%) | 0.3612 | 0.2150 | 200 | 8 | 0 | 0/4 | preprocess uses online RAG docs; online selector is FusionRAG-QK. |
+| 2wikimqa | ragdocs_online_draft_rate015 | 101/200 (50.50%) | 89/189 (47.09%) | 89/189 (47.09%) | 0.3524 | 0.2116 | 189 | 7 | 0 | 2/8 | preprocess uses online RAG docs; online selector is DraftModel 3B. |
+| hotpotqa | ragdocs_online_qk_rate015 | 206/260 (79.23%) | 69/80 (86.25%) | 69/80 (86.25%) | 0.5738 | 0.4625 | 80 | 3 | 0 | 16/0 | preprocess uses online RAG docs; online selector is FusionRAG-QK. |
+| hotpotqa | ragdocs_online_draft_rate015 | 207/260 (79.62%) | 0/0 (0.00%) | 0/0 (0.00%) | 0.0000 | 0.0000 | 0 | 0 | 0 | 22/0 | preprocess uses online RAG docs; online selector is DraftModel 3B. |
+| triviaqa | ragdocs_online_qk_rate015 | 212/270 (78.52%) | 135/150 (90.00%) | 135/150 (90.00%) | 0.6749 | 0.5667 | 150 | 6 | 0 | 10/0 | preprocess uses online RAG docs; online selector is FusionRAG-QK. |
+| triviaqa | ragdocs_online_draft_rate015 | 214/270 (79.26%) | 0/0 (0.00%) | 0/0 (0.00%) | 0.0000 | 0.0000 | 0 | 0 | 0 | 22/0 | preprocess uses online RAG docs; online selector is DraftModel 3B. |
+
+## 输出文件
+
+- `ragdocs_ablation_summary.csv`
+- `ragdocs_ablation_summary.json`
+- `logs/supervisor.log`

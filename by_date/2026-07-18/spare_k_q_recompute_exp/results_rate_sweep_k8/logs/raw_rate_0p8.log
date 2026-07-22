@@ -1,0 +1,4222 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_block_raw rate=0.8 start=0 end=200
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_rate_sweep_k8/raw/sparse_block_raw/musique-v2/rate_0p8/seg_0_200
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  24%|██▎       | 4/17 [00:00<00:00, 38.32it/s]Loading checkpoint shards:  76%|███████▋  | 13/17 [00:00<00:00, 66.52it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 61.03it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
+storage_time: 0.9491957016289234
+select_time: 1.3652186784893274
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Maria Bello
+prompt eval count:    13332 token(s)
+prompt eval duration: 157.99074763152748s
+prompt eval rate:     84.38468834322778 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173184871673584s
+eval rate:            3.6812330622562945 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who plays the wife of the producer of Here Comes the Boom in Grown Ups?
+batch: 1 preprocess: False reprocess_method: FusionRAG
+real answer: Maria Bello
+answer: Maria Bello
+storage_time: 0.7260150983929634
+select_time: 0.6282418360933661
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Manhattan Project
+prompt eval count:    13527 token(s)
+prompt eval duration: 159.4087259331718s
+prompt eval rate:     84.85733714270361 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1623599529266357s
+eval rate:            3.6996615615140476 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What was the person who provided evidence to suggest the existence of the neutron a participant of?
+batch: 2 preprocess: False reprocess_method: FusionRAG
+real answer: Manhattan Project
+answer: Manhattan Project
+storage_time: 0.6781482715159655
+select_time: 0.6015147855505347
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Callum McManaman was born in the borough of Wigan.
+prompt eval count:    13496 token(s)
+prompt eval duration: 159.08095542155206s
+prompt eval rate:     84.83730792436252 tokens/s
+eval count:           19 token(s)
+eval duration:        5.5568883419036865s
+eval rate:            3.4191797335072875 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which borough was Callum McManaman born?
+batch: 3 preprocess: False reprocess_method: FusionRAG
+real answer: Knowsley
+answer: Callum McManaman was born in the borough of Wigan.
+storage_time: 0.6759289959445596
+select_time: 0.6161997588351369
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Paula Santiago
+prompt eval count:    13747 token(s)
+prompt eval duration: 161.78652251698077s
+prompt eval rate:     84.96999494229901 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1678292751312256s
+eval rate:            3.6903275049257442 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the child of the Italian navigator who sailed for England and explored the eastern coast of the continent Francisco Bojado's birthplace is located?
+batch: 4 preprocess: False reprocess_method: FusionRAG
+real answer: Sebastian Cabot
+answer: Paula Santiago
+storage_time: 0.7111706370487809
+select_time: 0.6207411671057343
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Pamela Bach
+prompt eval count:    13881 token(s)
+prompt eval duration: 163.5496966196224s
+prompt eval rate:     84.87328492136488 tokens/s
+eval count:           9 token(s)
+eval duration:        2.481839895248413s
+eval rate:            3.6263418995040246 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the actor who played hannibal smith in the a team?
+batch: 5 preprocess: False reprocess_method: FusionRAG
+real answer: Sherry Boucher
+answer: Answer: Pamela Bach
+storage_time: 0.7198582096025348
+select_time: 0.6220782063901424
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1984–85
+prompt eval count:    14297 token(s)
+prompt eval duration: 168.09565705433488s
+prompt eval rate:     85.05276251949013 tokens/s
+eval count:           12 token(s)
+eval duration:        3.410550117492676s
+eval rate:            3.5184939633204997 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the last time Peter Till's sports team beat the winner of the 1894-95 FA Cup?
+batch: 6 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 1984–85
+storage_time: 0.6834586383774877
+select_time: 0.6008659647777677
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: There is no information provided in the given passages about the child of a cast member of Green Ice.
+prompt eval count:    13489 token(s)
+prompt eval duration: 158.98736170027405s
+prompt eval rate:     84.84322184948081 tokens/s
+eval count:           27 token(s)
+eval duration:        8.061357259750366s
+eval rate:            3.3493119247807783 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the child of the cast member of Green Ice?
+batch: 7 preprocess: False reprocess_method: FusionRAG
+real answer: Tatum O'Neal
+answer: Answer: There is no information provided in the given passages about the child of a cast member of Green Ice.
+storage_time: 0.7464927034452558
+select_time: 0.6365007469430566
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+3
+prompt eval count:    13759 token(s)
+prompt eval duration: 162.0246514827013s
+prompt eval rate:     84.91917664435768 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5489082336425781s
+eval rate:            3.873696239505267 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: How many times did plague occur in the birthplace of La Silvia's composer?
+batch: 8 preprocess: False reprocess_method: FusionRAG
+real answer: 22
+answer: 3
+storage_time: 0.6476318556815386
+select_time: 0.6003574728965759
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1946
+prompt eval count:    12765 token(s)
+prompt eval duration: 150.33247260469943s
+prompt eval rate:     84.91179436372127 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4791791439056396s
+eval rate:            3.630233830469231 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did military instruction start at the place where Larry Alcala was educated?
+batch: 9 preprocess: False reprocess_method: FusionRAG
+real answer: 1912
+answer: 1946
+storage_time: 0.6843036068603396
+select_time: 0.6179752256721258
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+INSAT-4CR
+prompt eval count:    13555 token(s)
+prompt eval duration: 159.67015845607966s
+prompt eval rate:     84.89375930398768 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789462089538574s
+eval rate:            3.584920561388298 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the experimental satellite being forerunner to communication satellite of INSAT-4CR's manufacturer called?
+batch: 10 preprocess: False reprocess_method: FusionRAG
+real answer: ATS - 6 (Applications Technology Satellite - 6)
+answer: INSAT-4CR
+storage_time: 0.7098192749544978
+select_time: 0.6383097935467958
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Robert Robinson Taylor
+prompt eval count:    13757 token(s)
+prompt eval duration: 161.99222443345934s
+prompt eval rate:     84.92382920299293 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1703243255615234s
+eval rate:            3.686085026914204 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who was the first African American student at the university Robert Khayat was educated at?
+batch: 11 preprocess: False reprocess_method: FusionRAG
+real answer: James Howard Meredith
+answer: Robert Robinson Taylor
+storage_time: 0.7245985642075539
+select_time: 0.6208227463066578
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The prize named after the author of Lectures on Jurisprudence is given out by the Royal Swedish Academy of Sciences.
+prompt eval count:    13341 token(s)
+prompt eval duration: 157.01881171111017s
+prompt eval rate:     84.96434188118386 tokens/s
+eval count:           30 token(s)
+eval duration:        8.985910892486572s
+eval rate:            3.338559702954992 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who gives out the prize named after the author of Lectures on Jurisprudence?
+batch: 12 preprocess: False reprocess_method: FusionRAG
+real answer: University of Cambridge
+answer: The prize named after the author of Lectures on Jurisprudence is given out by the Royal Swedish Academy of Sciences.
+storage_time: 0.6887428155168891
+select_time: 0.6206488283351064
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Frances Freeling Broderip's sibling is Thomas Hood.
+prompt eval count:    13668 token(s)
+prompt eval duration: 161.0886063957587s
+prompt eval rate:     84.84771397438736 tokens/s
+eval count:           18 token(s)
+eval duration:        5.269853591918945s
+eval rate:            3.4156546640312917 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is Frances Freeling Broderip's sibling?
+batch: 13 preprocess: False reprocess_method: FusionRAG
+real answer: Tom Hood
+answer: Frances Freeling Broderip's sibling is Thomas Hood.
+storage_time: 0.6789555894210935
+select_time: 0.6104498263448477
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Bethany Price
+prompt eval count:    13372 token(s)
+prompt eval duration: 157.7480563838035s
+prompt eval rate:     84.76808086602168 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789459705352783s
+eval rate:            3.5849236254643437 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the person who voices Jarvis in Iron Man?
+batch: 14 preprocess: False reprocess_method: FusionRAG
+real answer: Jennifer Connelly
+answer: Answer: Bethany Price
+storage_time: 0.5673015182837844
+select_time: 0.5592070734128356
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Orange River
+prompt eval count:    10714 token(s)
+prompt eval duration: 126.3362880833447s
+prompt eval rate:     84.80540438968667 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8599824905395508s
+eval rate:            3.7634762884081847 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the source of the river that is the mouth of the Caledon River?
+batch: 15 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: Orange River
+storage_time: 0.7102740723639727
+select_time: 0.6205229517072439
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Royal Albert Bridge
+prompt eval count:    13671 token(s)
+prompt eval duration: 160.92003329005092s
+prompt eval rate:     84.955239695723 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1683499813079834s
+eval rate:            3.689441312040537 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the name of the famous bridge located in the birthplace of the composer of Nulla in mundo pax sincera?
+batch: 16 preprocess: False reprocess_method: FusionRAG
+real answer: Rialto Bridge
+answer: Royal Albert Bridge
+storage_time: 0.7307574953883886
+select_time: 0.6287018051370978
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1946
+prompt eval count:    14069 token(s)
+prompt eval duration: 165.60760654322803s
+prompt eval rate:     84.95382726473747 tokens/s
+eval count:           9 token(s)
+eval duration:        2.479243755340576s
+eval rate:            3.6301392231453504 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the party that gained control of Congress in the midterm elections in 1946 take control of the government branch that determines the rules of the US House?
+batch: 17 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: 1946
+storage_time: 0.6881452109664679
+select_time: 0.6062843203544617
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+John Houseman, the producer of Julius Caesar, studied or worked in England and the United States. He was educated in England at Clifton College and later worked in the United States in theatre, film, and television.
+prompt eval count:    13541 token(s)
+prompt eval duration: 159.64904681872576s
+prompt eval rate:     84.81729311779225 tokens/s
+eval count:           49 token(s)
+eval duration:        14.877062797546387s
+eval rate:            3.2936608971013666 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where did the producer of Julius Caesar study or work?
+batch: 18 preprocess: False reprocess_method: FusionRAG
+real answer: Clifton College
+answer: John Houseman, the producer of Julius Caesar, studied or worked in England and the United States. He was educated in England at Clifton College and later worked in the United States in theatre, film, and television.
+storage_time: 0.7793742418289185
+select_time: 0.6549188550561666
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Izmir
+prompt eval count:    13466 token(s)
+prompt eval duration: 158.90388284157962s
+prompt eval rate:     84.74305195817668 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1732609272003174s
+eval rate:            3.68110423367613 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Mehmet Hayri Tarhan's birthplace is the capital of what municipality?
+batch: 19 preprocess: False reprocess_method: FusionRAG
+real answer: Malko Tarnovo Municipality
+answer: Izmir
+storage_time: 0.7453886223956943
+select_time: 0.6157468901947141
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Amanda Feilding
+prompt eval count:    13665 token(s)
+prompt eval duration: 161.10172409936786s
+prompt eval rate:     84.82218347689067 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789266586303711s
+eval rate:            3.585171833020031 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the performer of Heartbeat named after?
+batch: 20 preprocess: False reprocess_method: FusionRAG
+real answer: Natalie Albino
+answer: Amanda Feilding
+storage_time: 0.9502124078571796
+select_time: 0.630867613479495
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+University of Toronto
+prompt eval count:    13675 token(s)
+prompt eval duration: 161.33939753845334s
+prompt eval rate:     84.75921076090994 tokens/s
+eval count:           8 token(s)
+eval duration:        2.169250011444092s
+eval rate:            3.687910548712787 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The author of Elizabeth and After attended which university?
+batch: 21 preprocess: False reprocess_method: FusionRAG
+real answer: University of Toronto
+answer: University of Toronto
+storage_time: 0.7310256902128458
+select_time: 0.6338787581771612
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1999
+prompt eval count:    14015 token(s)
+prompt eval duration: 165.19533158373088s
+prompt eval rate:     84.83895922262404 tokens/s
+eval count:           9 token(s)
+eval duration:        2.477973699569702s
+eval rate:            3.6319998075697257 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What year did the publisher of Labyrinth end?
+batch: 22 preprocess: False reprocess_method: FusionRAG
+real answer: 1986
+answer: 1999
+storage_time: 0.6872393386438489
+select_time: 0.6352575812488794
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+FDA
+prompt eval count:    13442 token(s)
+prompt eval duration: 158.38943918049335s
+prompt eval rate:     84.86676933480466 tokens/s
+eval count:           6 token(s)
+eval duration:        1.549736738204956s
+eval rate:            3.871625323246668 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The food safety system of the agency that has the authority to decide if a drug is marketed otc or prescription is known as?
+batch: 23 preprocess: False reprocess_method: FusionRAG
+real answer: Food Safety Modernization Act (FSMA)
+answer: FDA
+storage_time: 0.7076018247753382
+select_time: 0.6365093011409044
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Zeferino Martins
+prompt eval count:    13797 token(s)
+prompt eval duration: 162.44770653545856s
+prompt eval rate:     84.93194698928197 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4794604778289795s
+eval rate:            3.6298219231469333 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the newly declared independent country that has a Commission of Truth and Friendship with the country where Ambelau is located?
+batch: 24 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Zeferino Martins
+storage_time: 0.6918495409190655
+select_time: 0.6106222625821829
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Edward Pakenham
+prompt eval count:    13728 token(s)
+prompt eval duration: 161.52982561290264s
+prompt eval rate:     84.9874006110698 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4795122146606445s
+eval rate:            3.6297461842638166 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who was the British general in the battle named after the birth city of the person who recorded Mother-in-Law?
+batch: 25 preprocess: False reprocess_method: FusionRAG
+real answer: General Edward Pakenham
+answer: Edward Pakenham
+storage_time: 0.7988861920312047
+select_time: 0.6674279719591141
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Ocala, Florida
+prompt eval count:    14394 token(s)
+prompt eval duration: 169.7514317817986s
+prompt eval rate:     84.7945719745227 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4814090728759766s
+eval rate:            3.6269715051734357 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where is Sean Hampton's birth place in the state of Florida?
+batch: 26 preprocess: False reprocess_method: FusionRAG
+real answer: in Northern Florida
+answer: Ocala, Florida
+storage_time: 0.6849625119939446
+select_time: 0.6221661008894444
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Kim Un-yong is a member of the International Olympic Committee (IOC), and the president of the IOC during the time mentioned in the passage is Kim Jong Un.
+prompt eval count:    13898 token(s)
+prompt eval duration: 163.82884546834975s
+prompt eval rate:     84.83243570610993 tokens/s
+eval count:           38 token(s)
+eval duration:        11.467142581939697s
+eval rate:            3.3138159509631038 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the group Kim Un-yong is a member of?
+batch: 27 preprocess: False reprocess_method: FusionRAG
+real answer: Thomas Bach
+answer: Kim Un-yong is a member of the International Olympic Committee (IOC), and the president of the IOC during the time mentioned in the passage is Kim Jong Un.
+storage_time: 0.6525036934763193
+select_time: 0.5962550146505237
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1970
+prompt eval count:    13112 token(s)
+prompt eval duration: 154.3092715544626s
+prompt eval rate:     84.97221111806098 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4782192707061768s
+eval rate:            3.6316399062765017 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: During the war in which The Things They Carried is set, when was conscription introduced by the country where the film Grievous Bodily Harm was later released?
+batch: 28 preprocess: False reprocess_method: FusionRAG
+real answer: 1964
+answer: 1970
+storage_time: 0.78013885486871
+select_time: 0.768219318240881
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Francisco Guterres
+prompt eval count:    13646 token(s)
+prompt eval duration: 160.97165054269135s
+prompt eval rate:     84.77269105457137 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7908174991607666s
+eval rate:            3.583179481641893 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the new country who has jointly established a Commission on Truth and Friendship with the birth country of Satyo Husodo?
+batch: 29 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Francisco Guterres
+storage_time: 0.640716309659183
+select_time: 0.5890651792287827
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Prince Philip, Duke of Edinburgh
+prompt eval count:    13073 token(s)
+prompt eval duration: 153.95439113862813s
+prompt eval rate:     84.91475886665958 tokens/s
+eval count:           11 token(s)
+eval duration:        3.100071668624878s
+eval rate:            3.5483050638243316 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the current queen of England?
+batch: 30 preprocess: False reprocess_method: FusionRAG
+real answer: Philip Mountbatten
+answer: Prince Philip, Duke of Edinburgh
+storage_time: 0.5310383271425962
+select_time: 0.509885661303997
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1834
+prompt eval count:    9022 token(s)
+prompt eval duration: 106.75904216710478s
+prompt eval rate:     84.50806429939956 tokens/s
+eval count:           9 token(s)
+eval duration:        2.479278802871704s
+eval rate:            3.6300879068443055 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which year did Taifa of Francisco Giner de los Rios' birthplace cease to exist?
+batch: 31 preprocess: False reprocess_method: FusionRAG
+real answer: 1065
+answer: 1834
+storage_time: 0.6920709991827607
+select_time: 0.6211165292188525
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+selling some of its assets, including its liquefied petroleum gas (LPG) business
+prompt eval count:    14033 token(s)
+prompt eval duration: 165.12653297837824s
+prompt eval rate:     84.98331398890019 tokens/s
+eval count:           23 token(s)
+eval duration:        6.815090179443359s
+eval rate:            3.374863632674423 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What did M. King Hubbert's employer announce it was in the process of doing in April 2010?
+batch: 32 preprocess: False reprocess_method: FusionRAG
+real answer: trying to find a potential buyer for all of its operations in Finland
+answer: selling some of its assets, including its liquefied petroleum gas (LPG) business
+storage_time: 0.6658668778836727
+select_time: 0.6046363757923245
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Keturah
+prompt eval count:    13370 token(s)
+prompt eval duration: 157.3153385585174s
+prompt eval rate:     84.98853400125819 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1706066131591797s
+eval rate:            3.685605651203886 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who did the person considered the founder of three major monotheistic religions marry after the death of Sarah?
+batch: 33 preprocess: False reprocess_method: FusionRAG
+real answer: Keturah
+answer: Keturah
+storage_time: 0.6751446295529604
+select_time: 0.606328547000885
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+South Central Coast
+prompt eval count:    12702 token(s)
+prompt eval duration: 149.67766832746565s
+prompt eval rate:     84.86235884040158 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1686713695526123s
+eval rate:            3.68889455189809 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In what region of the country of S-Fone is The place of birth of John Phan located?
+batch: 34 preprocess: False reprocess_method: FusionRAG
+real answer: South Central Coast
+answer: South Central Coast
+storage_time: 0.8033620407804847
+select_time: 0.6235868195071816
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Barbra Streisand
+prompt eval count:    13717 token(s)
+prompt eval duration: 161.4926085639745s
+prompt eval rate:     84.93887195193876 tokens/s
+eval count:           10 token(s)
+eval duration:        2.791093587875366s
+eval rate:            3.582825041568094 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Along with the Closer performer, what notable pop artist started out his career on adult contemporary radio?
+batch: 35 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Barbra Streisand
+storage_time: 0.5969663420692086
+select_time: 0.5613587647676468
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+BEC Recordings
+prompt eval count:    11125 token(s)
+prompt eval duration: 131.2498484440148s
+prompt eval rate:     84.7620026376291 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4788401126861572s
+eval rate:            3.630730337926994 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The Live Life Loud album's band signed to which label?
+batch: 36 preprocess: False reprocess_method: FusionRAG
+real answer: Fair Trade Services
+answer: BEC Recordings
+storage_time: 0.7147266902029514
+select_time: 0.6544250342994928
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Christina Gyllenstierna
+prompt eval count:    13722 token(s)
+prompt eval duration: 161.648890664801s
+prompt eval rate:     84.8876843111424 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4105329513549805s
+eval rate:            3.51851167285526 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the child of Sigrid Eskilsdotter's child?
+batch: 37 preprocess: False reprocess_method: FusionRAG
+real answer: Svante Stensson Sture
+answer: Christina Gyllenstierna
+storage_time: 0.5601077219471335
+select_time: 0.5326374676078558
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+TML Entertainment
+prompt eval count:    9437 token(s)
+prompt eval duration: 111.64838404674083s
+prompt eval rate:     84.5242864961598 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1694345474243164s
+eval rate:            3.6875968484497874 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the record label of the Metalworks Studio founder?
+batch: 38 preprocess: False reprocess_method: FusionRAG
+real answer: TML Entertainment
+answer: TML Entertainment
+storage_time: 0.6613507000729442
+select_time: 0.5993304001167417
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Susilo Bambang Yudhoyono
+prompt eval count:    13334 token(s)
+prompt eval duration: 156.82373537495732s
+prompt eval rate:     85.02539470902862 tokens/s
+eval count:           15 token(s)
+eval duration:        4.338615894317627s
+eval rate:            3.457323802193645 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the new country that jointly established a Commission of Truth and Friendship with the country that broadcasts Dahsyat?
+batch: 39 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Susilo Bambang Yudhoyono
+storage_time: 0.6768754189833999
+select_time: 0.6215630201622844
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+3
+prompt eval count:    13800 token(s)
+prompt eval duration: 162.42126721795648s
+prompt eval rate:     84.96424289980136 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5477535724639893s
+eval rate:            3.8765861095368908 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: How many times did the plague occur in the city where Flora's painter died?
+batch: 40 preprocess: False reprocess_method: FusionRAG
+real answer: 22
+answer: 3
+storage_time: 0.6444607554003596
+select_time: 0.5908966232091188
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Appleton
+prompt eval count:    12198 token(s)
+prompt eval duration: 143.72046014573425s
+prompt eval rate:     84.87309313949513 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8595952987670898s
+eval rate:            3.7642598928062436 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the seat of the county sharing a border with the county in which Valley New School is located?
+batch: 41 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Appleton
+storage_time: 0.7199046378955245
+select_time: 0.6239031217992306
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Austin
+prompt eval count:    14116 token(s)
+prompt eval duration: 166.17610602732748s
+prompt eval rate:     84.94602706407527 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5493595600128174s
+eval rate:            3.8725678369650773 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the highest city in the state where Dell ranks sixth by revenue?
+batch: 42 preprocess: False reprocess_method: FusionRAG
+real answer: Fort Davis
+answer: Austin
+storage_time: 0.7548943851143122
+select_time: 0.5824437430128455
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Lea Thompson played the girlfriend of who plays Marty McFly's daughter in Back to the Future 2.
+prompt eval count:    12390 token(s)
+prompt eval duration: 146.18938926327974s
+prompt eval rate:     84.75307313642465 tokens/s
+eval count:           27 token(s)
+eval duration:        8.054469585418701s
+eval rate:            3.3521760450718046 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who played the girlfriend of who plays marty mcfly's daughter in back to the future 2?
+batch: 43 preprocess: False reprocess_method: FusionRAG
+real answer: Claudia Wells
+answer: Lea Thompson played the girlfriend of who plays Marty McFly's daughter in Back to the Future 2.
+storage_time: 0.674779019318521
+select_time: 0.6011274475604296
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The quote "by the skin of your teeth" is not directly referenced in the provided documents. However, the phrase "by the skin of my teeth" is mentioned in the passage titled "Immaculate Conception Part 
+prompt eval count:    13392 token(s)
+prompt eval duration: 157.78394375834614s
+prompt eval rate:     84.87555628924136 tokens/s
+eval count:           50 token(s)
+eval duration:        15.176489353179932s
+eval rate:            3.2945695698408337 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What specific part of the book where the quote "by the skin of your teeth" comes from document reference for Mary?
+batch: 44 preprocess: False reprocess_method: FusionRAG
+real answer: Genesis 3:15
+answer: The quote "by the skin of your teeth" is not directly referenced in the provided documents. However, the phrase "by the skin of my teeth" is mentioned in the passage titled "Immaculate Conception Part
+storage_time: 0.7579012932255864
+select_time: 0.6721374914050102
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bartoszyce
+prompt eval count:    13932 token(s)
+prompt eval duration: 164.15544025227427s
+prompt eval rate:     84.87077844382912 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789320230484009s
+eval rate:            3.5851028830292386 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the seat of the county sharing a border with the county in which J. P. Hayes was born?
+batch: 45 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Bartoszyce
+storage_time: 0.6883009793236852
+select_time: 0.6106495745480061
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+3
+prompt eval count:    13603 token(s)
+prompt eval duration: 160.1825489094481s
+prompt eval rate:     84.921860044129 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5504591464996338s
+eval rate:            3.8698214097067907 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: How many times did plague occur in the place where Venus with a Mirror's creator died?
+batch: 46 preprocess: False reprocess_method: FusionRAG
+real answer: 22
+answer: 3
+storage_time: 0.6974407322704792
+select_time: 0.6283095823600888
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The source of the river Orlam clans crossed to migrate to Namibia is the Orange River.
+prompt eval count:    13853 token(s)
+prompt eval duration: 162.9491147994995s
+prompt eval rate:     85.01426974332081 tokens/s
+eval count:           25 token(s)
+eval duration:        7.437325954437256s
+eval rate:            3.361423198761983 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the source of the river Orlam clans crossed to migrate to Namibia?
+batch: 47 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: The source of the river Orlam clans crossed to migrate to Namibia is the Orange River.
+storage_time: 0.6625545592978597
+select_time: 0.6072201933711767
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Common Sense was an important work because it was a highly influential pamphlet that argued for American independence from Britain, helping to rally public support for the American Revolution. It was written by Thomas Paine and played a significant role in 
+prompt eval count:    13642 token(s)
+prompt eval duration: 160.67353065963835s
+prompt eval rate:     84.90508638226439 tokens/s
+eval count:           50 token(s)
+eval duration:        15.180992364883423s
+eval rate:            3.293592329027165 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Why was Common Sense, by the same author as Rights of Man, an important work?
+batch: 48 preprocess: False reprocess_method: FusionRAG
+real answer: crystallized the rebellious demand for independence from Great Britain
+answer: Common Sense was an important work because it was a highly influential pamphlet that argued for American independence from Britain, helping to rally public support for the American Revolution. It was written by Thomas Paine and played a significant role in
+storage_time: 0.7900446308776736
+select_time: 0.6474864277988672
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Hinds County
+prompt eval count:    13528 token(s)
+prompt eval duration: 159.50131371151656s
+prompt eval rate:     84.81434845400418 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1686642169952393s
+eval rate:            3.688906718387359 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which county was Larkin I. Smith born?
+batch: 49 preprocess: False reprocess_method: FusionRAG
+real answer: Pearl River County
+answer: Hinds County
+storage_time: 0.6840502098202705
+select_time: 0.6184056429192424
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The African Queen
+prompt eval count:    13616 token(s)
+prompt eval duration: 160.28102547954768s
+prompt eval rate:     84.95079164400181 tokens/s
+eval count:           8 token(s)
+eval duration:        2.169491767883301s
+eval rate:            3.687499587889807 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What movie did the person who acted in the comedy film Crime School win his only Oscar for?
+batch: 50 preprocess: False reprocess_method: FusionRAG
+real answer: The African Queen
+answer: The African Queen
+storage_time: 0.7058427510783076
+select_time: 0.6135111255571246
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The African Queen
+prompt eval count:    13764 token(s)
+prompt eval duration: 162.0619585318491s
+prompt eval rate:     84.93048044519986 tokens/s
+eval count:           8 token(s)
+eval duration:        2.166455030441284s
+eval rate:            3.692668385722497 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: with what movie did Mary Philips' husband win his only oscar?
+batch: 51 preprocess: False reprocess_method: FusionRAG
+real answer: The African Queen
+answer: The African Queen
+storage_time: 0.7293377285823226
+select_time: 0.6628611050546169
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Manchester City
+prompt eval count:    14467 token(s)
+prompt eval duration: 170.36667331214994s
+prompt eval rate:     84.91684270604505 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8593180179595947s
+eval rate:            3.7648212583244693 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The all time top goal scorer in premier league in one season is a member of what team?
+batch: 52 preprocess: False reprocess_method: FusionRAG
+real answer: Egypt national football team
+answer: Manchester City
+storage_time: 0.5341984583064914
+select_time: 0.5229024374857545
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Gonbad-e Qabus County is located in Golestan province, Iran.
+prompt eval count:    8562 token(s)
+prompt eval duration: 101.52340157330036s
+prompt eval rate:     84.33523569261217 tokens/s
+eval count:           22 token(s)
+eval duration:        6.504904747009277s
+eval rate:            3.382063359208267 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where is the province of Gonbad-e Qabus County located?
+batch: 53 preprocess: False reprocess_method: FusionRAG
+real answer: in the north-east of the country south of the Caspian Sea
+answer: Gonbad-e Qabus County is located in Golestan province, Iran.
+storage_time: 0.689619017764926
+select_time: 0.6161559382453561
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+John D. Loudermilk
+prompt eval count:    13685 token(s)
+prompt eval duration: 161.04802029579878s
+prompt eval rate:     84.97465522931981 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4043984413146973s
+eval rate:            3.524851807700243 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who wrote the song turn me on that is performed by performer of Feelin' the Same Way?
+batch: 54 preprocess: False reprocess_method: FusionRAG
+real answer: John D. Loudermilk
+answer: John D. Loudermilk
+storage_time: 0.6781889135017991
+select_time: 0.6228789463639259
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+National Institute of Dramatic Art (NIDA)
+prompt eval count:    13549 token(s)
+prompt eval duration: 159.60710803046823s
+prompt eval rate:     84.88970301631906 tokens/s
+eval count:           15 token(s)
+eval duration:        4.339922189712524s
+eval rate:            3.4562831646052152 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What institute did the actor playing the voice of John Smith in Pocahontas attend?
+batch: 55 preprocess: False reprocess_method: FusionRAG
+real answer: National Institute of Dramatic Art
+answer: National Institute of Dramatic Art (NIDA)
+storage_time: 0.634671731851995
+select_time: 0.5834069438278675
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Khalid ibn Walid
+prompt eval count:    12675 token(s)
+prompt eval duration: 149.42579975444824s
+prompt eval rate:     84.82470912539104 tokens/s
+eval count:           12 token(s)
+eval duration:        3.408937931060791s
+eval rate:            3.5201579620036814 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who led the muslim forces to retake the proposed embassy destination?
+batch: 56 preprocess: False reprocess_method: FusionRAG
+real answer: Abu Ubaidah
+answer: Khalid ibn Walid
+storage_time: 0.7019149074330926
+select_time: 0.6080421255901456
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Walker Pond
+prompt eval count:    11787 token(s)
+prompt eval duration: 139.00242452137172s
+prompt eval rate:     84.79708206951268 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8569271564483643s
+eval rate:            3.7696686031499964 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Which is the body of water near George Mills' place of birth?
+batch: 57 preprocess: False reprocess_method: FusionRAG
+real answer: River Thames
+answer: Walker Pond
+storage_time: 0.6679333159700036
+select_time: 0.6154741151258349
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The party who gained control of Congress in the midterm elections in 1946 took control of the determiner of rules of the US House and US Senate in January 1947.
+prompt eval count:    13628 token(s)
+prompt eval duration: 160.30575184803456s
+prompt eval rate:     85.01254535719323 tokens/s
+eval count:           47 token(s)
+eval duration:        14.251186609268188s
+eval rate:            3.297970989267222 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the party who gained control of congress in the midterm elections in 1946 take control of the determiner of rules of the US House and US Senate?
+batch: 58 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: Answer: The party who gained control of Congress in the midterm elections in 1946 took control of the determiner of rules of the US House and US Senate in January 1947.
+storage_time: 0.7009054040536284
+select_time: 0.6146806990727782
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Cody Martin
+prompt eval count:    13524 token(s)
+prompt eval duration: 159.2924081766978s
+prompt eval rate:     84.90046798086118 tokens/s
+eval count:           8 token(s)
+eval duration:        2.169057846069336s
+eval rate:            3.6882372752286074 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who does the Nothing Suits Me Like a Suit artist play in Batman Under the Red Hood?
+batch: 59 preprocess: False reprocess_method: FusionRAG
+real answer: Nightwing / Dick Grayson
+answer: Cody Martin
+storage_time: 0.6766640273854136
+select_time: 0.611638106405735
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2007
+prompt eval count:    13792 token(s)
+prompt eval duration: 162.18471005931497s
+prompt eval rate:     85.03884240971867 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4777324199676514s
+eval rate:            3.632353488807117 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the death penalty abolished in the country near the country where the writer of The Book Thief is a citizen of?
+batch: 60 preprocess: False reprocess_method: FusionRAG
+real answer: 1989
+answer: 2007
+storage_time: 0.5263170460239053
+select_time: 0.5379476519301534
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Pécs
+prompt eval count:    9376 token(s)
+prompt eval duration: 110.87577194813639s
+prompt eval rate:     84.56310910183109 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1704516410827637s
+eval rate:            3.6858688065535867 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the seat of the county sharing a border with the county in which Miller Electric is headquartered?
+batch: 61 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Pécs
+storage_time: 0.6542442552745342
+select_time: 0.6046968335285783
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Joey Lawrence
+prompt eval count:    12478 token(s)
+prompt eval duration: 147.1949780685827s
+prompt eval rate:     84.77191385011866 tokens/s
+eval count:           8 token(s)
+eval duration:        2.169903039932251s
+eval rate:            3.6868006785454233 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the brother of the Nothin' My Love Can't Fix performer?
+batch: 62 preprocess: False reprocess_method: FusionRAG
+real answer: Matthew Lawrence
+answer: Joey Lawrence
+storage_time: 0.684836239553988
+select_time: 0.6074771555140615
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Joey Johnson
+prompt eval count:    13733 token(s)
+prompt eval duration: 161.74472059309483s
+prompt eval rate:     84.90539876444218 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1699352264404297s
+eval rate:            3.6867459924705823 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the brother of the Melissa and Joey Theme Song singer?
+batch: 63 preprocess: False reprocess_method: FusionRAG
+real answer: Matthew Lawrence
+answer: Joey Johnson
+storage_time: 0.6878087893128395
+select_time: 0.6163758235052228
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1988
+prompt eval count:    14239 token(s)
+prompt eval duration: 167.44958998262882s
+prompt eval rate:     85.03454682377634 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4798319339752197s
+eval rate:            3.629278209016698 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the last time the team that Arthur James was a member of beat the 1894-95 FA cup winner?
+batch: 64 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 1988
+storage_time: 0.6755140256136656
+select_time: 0.611066703684628
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Richard Stallman
+prompt eval count:    13520 token(s)
+prompt eval duration: 159.32681761775166s
+prompt eval rate:     84.85702659571383 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1705501079559326s
+eval rate:            3.6857015973401426 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who started the foundation that developed the Free Software Directory?
+batch: 65 preprocess: False reprocess_method: FusionRAG
+real answer: Richard Stallman
+answer: Richard Stallman
+storage_time: 0.6598859233781695
+select_time: 0.6012096013873816
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Egyptian
+prompt eval count:    13415 token(s)
+prompt eval duration: 157.9994172519073s
+prompt eval rate:     84.90537644586193 tokens/s
+eval count:           7 token(s)
+eval duration:        1.859184980392456s
+eval rate:            3.7650906573709344 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What pantheon is the God of the underworld in ancient Egypt a part of?
+batch: 66 preprocess: False reprocess_method: FusionRAG
+real answer: ancient Egyptian religion
+answer: Egyptian
+storage_time: 0.8330256547778845
+select_time: 0.6802295502275229
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Juan Bautista Vicini was born in the Dominican Republic.
+prompt eval count:    13726 token(s)
+prompt eval duration: 161.81715018954128s
+prompt eval rate:     84.82413627926536 tokens/s
+eval count:           20 token(s)
+eval duration:        5.89230751991272s
+eval rate:            3.394255973981523 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where was the president born on the fourth of July born?
+batch: 67 preprocess: False reprocess_method: FusionRAG
+real answer: Plymouth Notch
+answer: Answer: Juan Bautista Vicini was born in the Dominican Republic.
+storage_time: 0.6669120853766799
+select_time: 0.6028798511251807
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Elisabeth Shue
+prompt eval count:    13419 token(s)
+prompt eval duration: 158.1368977855891s
+prompt eval rate:     84.8568562296842 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7868614196777344s
+eval rate:            3.5882659716737457 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who play's Marty's girlfriend in back to the future?
+batch: 68 preprocess: False reprocess_method: FusionRAG
+real answer: Claudia Wells
+answer: Elisabeth Shue
+storage_time: 0.3409932292997837
+select_time: 0.4479062110185623
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sire Records
+prompt eval count:    5435 token(s)
+prompt eval duration: 64.95406229235232s
+prompt eval rate:     83.6745202407443 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1674907207489014s
+eval rate:            3.6909039210261887 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the record label for the band which performed Pythons?
+batch: 69 preprocess: False reprocess_method: FusionRAG
+real answer: Kanine Records
+answer: Sire Records
+storage_time: 0.7288248976692557
+select_time: 0.6244528125971556
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The employer of the person Mach's principle was named after is the University of Vienna.
+prompt eval count:    13715 token(s)
+prompt eval duration: 161.4877147860825s
+prompt eval rate:     84.92906112497667 tokens/s
+eval count:           22 token(s)
+eval duration:        6.509805679321289s
+eval rate:            3.3795171597647005 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the employer of the person Mach's principle was named after?
+batch: 70 preprocess: False reprocess_method: FusionRAG
+real answer: Charles University
+answer: The employer of the person Mach's principle was named after is the University of Vienna.
+storage_time: 0.6525321584194899
+select_time: 0.6104646371677518
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+10.75 years
+prompt eval count:    12838 token(s)
+prompt eval duration: 151.0206746980548s
+prompt eval rate:     85.0082283479916 tokens/s
+eval count:           11 token(s)
+eval duration:        3.098156213760376s
+eval rate:            3.5504988260901116 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the life expectancy of the type of retriever named after the body of water the Patuxent River turns into?
+batch: 71 preprocess: False reprocess_method: FusionRAG
+real answer: average lifespan at 9.4 years
+answer: 10.75 years
+storage_time: 0.68450543936342
+select_time: 0.6146924691274762
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Xanana Gusmão
+prompt eval count:    14006 token(s)
+prompt eval duration: 164.9024490537122s
+prompt eval rate:     84.93506361108047 tokens/s
+eval count:           11 token(s)
+eval duration:        3.1002442836761475s
+eval rate:            3.5481075016955224 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Sambas is located?
+batch: 72 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Xanana Gusmão
+storage_time: 0.7625913238152862
+select_time: 0.6294830851256847
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The capital of the country it is about is Georgetown.
+prompt eval count:    13618 token(s)
+prompt eval duration: 160.5761600844562s
+prompt eval rate:     84.80710955373146 tokens/s
+eval count:           16 token(s)
+eval duration:        4.648062467575073s
+eval rate:            3.442294528444088 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the capital of the country it is about?
+batch: 73 preprocess: False reprocess_method: FusionRAG
+real answer: Aden
+answer: The capital of the country it is about is Georgetown.
+storage_time: 0.7003893060609698
+select_time: 0.6288256710395217
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+American football
+prompt eval count:    14071 token(s)
+prompt eval duration: 165.68113881908357s
+prompt eval rate:     84.92819460496892 tokens/s
+eval count:           7 token(s)
+eval duration:        1.857853889465332s
+eval rate:            3.767788220425943 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The league playing in the Thursday night football game is a type of what?
+batch: 74 preprocess: False reprocess_method: FusionRAG
+real answer: sports league
+answer: American football
+storage_time: 0.7057266291230917
+select_time: 0.6135795218870044
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+a participant of the Battle of Brechin is an instance of a participant in the Wars of Scottish Independence.
+prompt eval count:    13895 token(s)
+prompt eval duration: 163.7416797960177s
+prompt eval rate:     84.85927356620373 tokens/s
+eval count:           26 token(s)
+eval duration:        7.747665643692017s
+eval rate:            3.3558495159336985 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: A participant of the Battle of Brechin is an instance of?
+batch: 75 preprocess: False reprocess_method: FusionRAG
+real answer: Scottish clan
+answer: a participant of the Battle of Brechin is an instance of a participant in the Wars of Scottish Independence.
+storage_time: 0.6719259368255734
+select_time: 0.6032877936959267
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+fleur-de-lis
+prompt eval count:    13605 token(s)
+prompt eval duration: 160.15784511715174s
+prompt eval rate:     84.94744662709628 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7895495891571045s
+eval rate:            3.5848081134207828 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the symbol of the Saints from the city that is the location of Blanton's manufacturer's headquarters called?
+batch: 76 preprocess: False reprocess_method: FusionRAG
+real answer: fleur - de-lis
+answer: fleur-de-lis
+storage_time: 0.6685366397723556
+select_time: 0.5957992030307651
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Greek mythology
+prompt eval count:    11643 token(s)
+prompt eval duration: 137.33163261879236s
+prompt eval rate:     84.78017611804596 tokens/s
+eval count:           7 token(s)
+eval duration:        1.859827995300293s
+eval rate:            3.7637889190229985 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What mythology is the city where Eutychides was born in a part of?
+batch: 77 preprocess: False reprocess_method: FusionRAG
+real answer: Greek mythology
+answer: Greek mythology
+storage_time: 0.6965186782181263
+select_time: 0.6338281622156501
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The College of Charleston
+prompt eval count:    13899 token(s)
+prompt eval duration: 163.81350992247462s
+prompt eval rate:     84.84648187184168 tokens/s
+eval count:           9 token(s)
+eval duration:        2.477513551712036s
+eval rate:            3.632674377817522 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the oldest college in the state that contains Borough House Plantation?
+batch: 78 preprocess: False reprocess_method: FusionRAG
+real answer: College of Charles Towne
+answer: The College of Charleston
+storage_time: 0.7203379357233644
+select_time: 0.6204232405871153
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rowan County
+prompt eval count:    13948 token(s)
+prompt eval duration: 164.21956853754818s
+prompt eval rate:     84.93506665626663 tokens/s
+eval count:           8 token(s)
+eval duration:        2.16664981842041s
+eval rate:            3.6923364043352316 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What county shares a border with the other county, that contains the city, that is the birthplace of the performer of Never Gonna Fall in Love Again?
+batch: 79 preprocess: False reprocess_method: FusionRAG
+real answer: Cabarrus County
+answer: Rowan County
+storage_time: 0.8296388816088438
+select_time: 0.6212238632142544
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Clatskanie, Oregon
+prompt eval count:    13407 token(s)
+prompt eval duration: 158.1708587417379s
+prompt eval rate:     84.76276923988262 tokens/s
+eval count:           11 token(s)
+eval duration:        3.09824538230896s
+eval rate:            3.55039664153466 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What city was the author of What We Talk About When We Talk About love born in?
+batch: 80 preprocess: False reprocess_method: FusionRAG
+real answer: Clatskanie
+answer: Clatskanie, Oregon
+storage_time: 0.6694726636633277
+select_time: 0.6148269418627024
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Moseley's law
+prompt eval count:    13642 token(s)
+prompt eval duration: 160.57108560949564s
+prompt eval rate:     84.95925619620559 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789957284927368s
+eval rate:            3.584284266294899 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What undertaking included the person who discovered that the number of protons in each element's atoms is unique?
+batch: 81 preprocess: False reprocess_method: FusionRAG
+real answer: Manhattan Project
+answer: Moseley's law
+storage_time: 0.6683377847075462
+select_time: 0.5947535242885351
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The story of the character from The Bourne Deception is based on the character Jason Bourne from the Jason Bourne film series, created by Robert Ludlum.
+prompt eval count:    13341 token(s)
+prompt eval duration: 156.99746965058148s
+prompt eval rate:     84.97589183884396 tokens/s
+eval count:           39 token(s)
+eval duration:        11.785223007202148s
+eval rate:            3.3092288517719557 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What was the story of the character from The Bourne Deception based on?
+batch: 82 preprocess: False reprocess_method: FusionRAG
+real answer: the novel of the same name by Robert Ludlum
+answer: The story of the character from The Bourne Deception is based on the character Jason Bourne from the Jason Bourne film series, created by Robert Ludlum.
+storage_time: 0.6781455520540476
+select_time: 0.6089878287166357
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The two features played up for the person with the biggest net worth in 2017 were their status as the richest man in the world and their record of being named the top billionaire for the fourth consecutive year.
+prompt eval count:    13843 token(s)
+prompt eval duration: 162.76699957810342s
+prompt eval rate:     85.04795220088495 tokens/s
+eval count:           49 token(s)
+eval duration:        14.872335195541382s
+eval rate:            3.2947078825045475 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Which two features were played up the person who had the biggest net worth in 2017?
+batch: 83 preprocess: False reprocess_method: FusionRAG
+real answer: ease of use and enhanced support for Plug and Play
+answer: The two features played up for the person with the biggest net worth in 2017 were their status as the richest man in the world and their record of being named the top billionaire for the fourth consecutive year.
+storage_time: 0.7554834671318531
+select_time: 0.6613018689677119
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Tom Hanks
+prompt eval count:    13701 token(s)
+prompt eval duration: 161.378277878277s
+prompt eval rate:     84.89990214379577 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171046495437622s
+eval rate:            3.684858899526896 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is one of the members of the music group that performed "Good Little Girls"?
+batch: 84 preprocess: False reprocess_method: FusionRAG
+real answer: Aaron Benward
+answer: Tom Hanks
+storage_time: 0.6787100471556187
+select_time: 0.609000469557941
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+3
+prompt eval count:    13674 token(s)
+prompt eval duration: 160.95843435823917s
+prompt eval rate:     84.95360963543102 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5479199886322021s
+eval rate:            3.8761693395417782 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: How many times did plague occur in the place where Bajazet's composer was born?
+batch: 85 preprocess: False reprocess_method: FusionRAG
+real answer: 22
+answer: 3
+storage_time: 0.7190107703208923
+select_time: 0.6094931978732347
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1973
+prompt eval count:    13207 token(s)
+prompt eval duration: 155.62199421040714s
+prompt eval rate:     84.86589615439325 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4793496131896973s
+eval rate:            3.629984231397463 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What year did the company that published Starship Command end?
+batch: 86 preprocess: False reprocess_method: FusionRAG
+real answer: 1986
+answer: 1973
+storage_time: 0.6970606669783592
+select_time: 0.613535687327385
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Loretta
+prompt eval count:    13210 token(s)
+prompt eval duration: 155.6297756806016s
+prompt eval rate:     84.88092938661579 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1697752475738525s
+eval rate:            3.6870178185253284 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the child of Peter Andreas Heiberg?
+batch: 87 preprocess: False reprocess_method: FusionRAG
+real answer: Johanne Luise Heiberg
+answer: Loretta
+storage_time: 0.6779286628589034
+select_time: 0.6169546488672495
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Dottie Hinson
+prompt eval count:    13306 token(s)
+prompt eval duration: 156.44122720882297s
+prompt eval rate:     85.05430593585608 tokens/s
+eval count:           9 token(s)
+eval duration:        2.479510545730591s
+eval rate:            3.6297486274042603 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What character in A League of their Own was played by the actress who played Thelma in the movie Thelma and Louise?
+batch: 88 preprocess: False reprocess_method: FusionRAG
+real answer: Dottie Hinson
+answer: Dottie Hinson
+storage_time: 0.680219478905201
+select_time: 0.6223264038562775
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+NES
+prompt eval count:    13809 token(s)
+prompt eval duration: 162.44986932072788s
+prompt eval rate:     85.00468518529016 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5484035015106201s
+eval rate:            3.874958945873223 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the abbreviated name of the exclusive platform of the video game named for the league with a halftime event just before the publishers clearing house sweepstakes drawing.
+batch: 89 preprocess: False reprocess_method: FusionRAG
+real answer: NES
+answer: NES
+storage_time: 0.6931954538449645
+select_time: 0.6213113004341722
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2010–11 season
+prompt eval count:    14325 token(s)
+prompt eval duration: 168.37516508065164s
+prompt eval rate:     85.07786758895429 tokens/s
+eval count:           13 token(s)
+eval duration:        3.717613458633423s
+eval rate:            3.4968670478126413 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the last time the sports team Alan O'Neil was a member of beat the winner of the 1894-95 FA cup?
+batch: 90 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 2010–11 season
+storage_time: 0.6283112559467554
+select_time: 0.5848543997853994
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+</think>
+
+Will Arnett
+prompt eval count:    12829 token(s)
+prompt eval duration: 151.01463313773274s
+prompt eval rate:     84.95203235238351 tokens/s
+eval count:           8 token(s)
+eval duration:        2.167440414428711s
+eval rate:            3.690989586954169 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the person who plays Batman in the Lego Batman Movie?
+batch: 91 preprocess: False reprocess_method: FusionRAG
+real answer: Amy Poehler
+answer: Will Arnett
+storage_time: 0.5957987364381552
+select_time: 0.579717056825757
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The population of the region where Baton à feu originated was reduced by up to 50% by the Black Death.
+prompt eval count:    12261 token(s)
+prompt eval duration: 144.29855298809707s
+prompt eval rate:     84.96966702785569 tokens/s
+eval count:           29 token(s)
+eval duration:        8.669153690338135s
+eval rate:            3.3451938950304703 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: By how much of the population of the region where Baton a feu originated reduced by the black death?
+batch: 92 preprocess: False reprocess_method: FusionRAG
+real answer: 30% to 65%
+answer: The population of the region where Baton à feu originated was reduced by up to 50% by the Black Death.
+storage_time: 0.6781487418338656
+select_time: 0.6101611377671361
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1985
+prompt eval count:    14098 token(s)
+prompt eval duration: 165.89663650095463s
+prompt eval rate:     84.98062587253766 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480213165283203s
+eval rate:            3.6287203559667964 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the explorer reach the headquarters location of the group Con-Test's record label is part of?
+batch: 93 preprocess: False reprocess_method: FusionRAG
+real answer: August 3, 1769
+answer: 1985
+storage_time: 0.6653838427737355
+select_time: 0.5997811546549201
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Château de Chalmazel
+prompt eval count:    13232 token(s)
+prompt eval duration: 155.7435958283022s
+prompt eval rate:     84.96015473141811 tokens/s
+eval count:           12 token(s)
+eval duration:        3.408184766769409s
+eval rate:            3.520935870907816 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the name of the castle in the city where the performers of Spirit If.. became a band?
+batch: 94 preprocess: False reprocess_method: FusionRAG
+real answer: Casa Loma
+answer: Château de Chalmazel
+storage_time: 0.6967769907787442
+select_time: 0.6123677501454949
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Katherine Applegate
+prompt eval count:    13572 token(s)
+prompt eval duration: 159.7595233283937s
+prompt eval rate:     84.95268211399251 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4771575927734375s
+eval rate:            3.633196380503009 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who wrote a book about growing up in the same nationality as the man who produced The Wild Women of Chastity Gulch?
+batch: 95 preprocess: False reprocess_method: FusionRAG
+real answer: Min Zhou
+answer: Katherine Applegate
+storage_time: 0.6690027741715312
+select_time: 0.6065501747652888
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Hannah
+prompt eval count:    13482 token(s)
+prompt eval duration: 158.7770029520616s
+prompt eval rate:     84.91154102505968 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1688392162323s
+eval rate:            3.6886090679868713 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the actor of Ethan in A Dog's Purpose?
+batch: 96 preprocess: False reprocess_method: FusionRAG
+real answer: Meg Ryan
+answer: Answer: Hannah
+storage_time: 0.7045099996030331
+select_time: 0.6291928701102734
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Pierre-Hugues Boisvenu is a member of the Conservative Party of Canada. The federal leader of the Conservative Party of Canada is Pierre Poilievre.
+prompt eval count:    14312 token(s)
+prompt eval duration: 168.2792145125568s
+prompt eval rate:     85.04912529724255 tokens/s
+eval count:           40 token(s)
+eval duration:        12.074622392654419s
+eval rate:            3.3127329948085125 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the federal leader of the party that Pierre-Hugues Boisvenu is a member of?
+batch: 97 preprocess: False reprocess_method: FusionRAG
+real answer: Andrew Scheer
+answer: Pierre-Hugues Boisvenu is a member of the Conservative Party of Canada. The federal leader of the Conservative Party of Canada is Pierre Poilievre.
+storage_time: 0.6576280985027552
+select_time: 0.5934131965041161
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+12:00
+prompt eval count:    12727 token(s)
+prompt eval duration: 149.87478381302208s
+prompt eval rate:     84.91755368186358 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789419174194336s
+eval rate:            3.584975715558522 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: At what local time does the country where Fuser and Alberto meet the indigenous couple traveling to look for work change their clocks for DST?
+batch: 98 preprocess: False reprocess_method: FusionRAG
+real answer: 24:00
+answer: 12:00
+storage_time: 0.7148548914119601
+select_time: 0.6138610960915685
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2008
+prompt eval count:    13729 token(s)
+prompt eval duration: 161.71132767386734s
+prompt eval rate:     84.8981960477628 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4799611568450928s
+eval rate:            3.62908909889921 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the place of birth of the performer of Mother-in-Law elect its first black Mayor?
+batch: 99 preprocess: False reprocess_method: FusionRAG
+real answer: 1970s
+answer: 2008
+storage_time: 0.7724627498537302
+select_time: 0.655558061785996
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2003
+prompt eval count:    13955 token(s)
+prompt eval duration: 164.36860715039074s
+prompt eval rate:     84.900640346923 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4798216819763184s
+eval rate:            3.6292932130617395 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the last time Ken Faulkner's team beat the 1894-95 FA Cup winner?
+batch: 100 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 2003
+storage_time: 0.682057423517108
+select_time: 0.6220666337758303
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2005
+prompt eval count:    13504 token(s)
+prompt eval duration: 158.99568880163133s
+prompt eval rate:     84.93312052535003 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480769634246826s
+eval rate:            3.6279063866937586 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In what year was Twilight Princess from the game series on which The Legend of Neil was based originally planned for release?
+batch: 101 preprocess: False reprocess_method: FusionRAG
+real answer: 2005
+answer: 2005
+storage_time: 0.7002020487561822
+select_time: 0.6127169923856854
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Benny Beaver
+prompt eval count:    13689 token(s)
+prompt eval duration: 161.21942253224552s
+prompt eval rate:     84.90912437837359 tokens/s
+eval count:           8 token(s)
+eval duration:        2.168790340423584s
+eval rate:            3.6886921943951156 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the mascot of the school that owns Goss Stadium at Coleman Field?
+batch: 102 preprocess: False reprocess_method: FusionRAG
+real answer: Benny Beaver
+answer: Benny Beaver
+storage_time: 0.6595355793833733
+select_time: 0.6055573355406523
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Elizabeth Oleynik
+prompt eval count:    13478 token(s)
+prompt eval duration: 158.7425634600222s
+prompt eval rate:     84.90476470977681 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4791572093963623s
+eval rate:            3.630265949205926 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the actor that plays vision in avengers age of ultron?
+batch: 103 preprocess: False reprocess_method: FusionRAG
+real answer: Jennifer Connelly
+answer: Elizabeth Oleynik
+storage_time: 0.6773729091510177
+select_time: 0.6075582383200526
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rhett Butler
+prompt eval count:    13593 token(s)
+prompt eval duration: 160.05937655083835s
+prompt eval rate:     84.92473413878734 tokens/s
+eval count:           8 token(s)
+eval duration:        2.168588161468506s
+eval rate:            3.6890360936871613 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who was the spouse of the leading lady in Gone With the wind?
+batch: 104 preprocess: False reprocess_method: FusionRAG
+real answer: Laurence Olivier
+answer: Rhett Butler
+storage_time: 0.6889466168358922
+select_time: 0.6164404843002558
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Lucy Mack Smith
+prompt eval count:    13473 token(s)
+prompt eval duration: 158.76948953140527s
+prompt eval rate:     84.8588733248713 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4776086807250977s
+eval rate:            3.6325348994846345 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who was the mother of the person who found the sacred writings that became the Book of Mormon?
+batch: 105 preprocess: False reprocess_method: FusionRAG
+real answer: Lucy Mack Smith
+answer: Lucy Mack Smith
+storage_time: 0.6750980541110039
+select_time: 0.6152126826345921
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+John Cranley
+prompt eval count:    13537 token(s)
+prompt eval duration: 159.44383580889553s
+prompt eval rate:     84.90136938391919 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170523166656494s
+eval rate:            3.685747345568911 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the mayor presiding now where Merrill Elam was born?
+batch: 106 preprocess: False reprocess_method: FusionRAG
+real answer: Lance Bottoms
+answer: John Cranley
+storage_time: 0.7038950733840466
+select_time: 0.623877945356071
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Cherdynsky District
+prompt eval count:    13998 token(s)
+prompt eval duration: 164.84113503433764s
+prompt eval rate:     84.91812433276507 tokens/s
+eval count:           12 token(s)
+eval duration:        3.409342050552368s
+eval rate:            3.5197407071712874 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What county shares a border with the county where She Did It's performer was born?
+batch: 107 preprocess: False reprocess_method: FusionRAG
+real answer: Cabarrus County
+answer: Answer: Cherdynsky District
+storage_time: 0.7003971040248871
+select_time: 0.6210513738915324
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+TDRS-F
+prompt eval count:    13882 token(s)
+prompt eval duration: 163.27639836166054s
+prompt eval rate:     85.02147364404185 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4776058197021484s
+eval rate:            3.6325390941654945 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the experimental satellite which was the forerunner to the communication satellite of the operator of GSAT-7 called?
+batch: 108 preprocess: False reprocess_method: FusionRAG
+real answer: ATS - 6 (Applications Technology Satellite - 6)
+answer: TDRS-F
+storage_time: 0.4585504066199064
+select_time: 0.4900337131693959
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Paterson River
+prompt eval count:    7575 token(s)
+prompt eval duration: 89.80154518224299s
+prompt eval rate:     84.35266881685963 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1679422855377197s
+eval rate:            3.6901351356850083 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What watercourse is the river on which the Lostock Dam is located the mouth of?
+batch: 109 preprocess: False reprocess_method: FusionRAG
+real answer: Hunter River
+answer: Paterson River
+storage_time: 0.7035981640219688
+select_time: 0.6308444384485483
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Maine
+prompt eval count:    13922 token(s)
+prompt eval duration: 163.8605656977743s
+prompt eval rate:     84.96247978099774 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8596360683441162s
+eval rate:            3.7641773673668526 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: There is a state A where Storm of the Century was filmed based on the book by the author who wrote a short story featuring the author of This Is My God. What is the population of state A?
+batch: 110 preprocess: False reprocess_method: FusionRAG
+real answer: 1,335,907
+answer: Maine
+storage_time: 0.718981777317822
+select_time: 0.613653339445591
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Pécs
+prompt eval count:    13487 token(s)
+prompt eval duration: 158.82565411552787s
+prompt eval rate:     84.91701214836313 tokens/s
+eval count:           8 token(s)
+eval duration:        2.167975902557373s
+eval rate:            3.690077915793757 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the capital of the county that shares a border with the county where KRSU is licensed to broadcast?
+batch: 111 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Pécs
+storage_time: 0.6790856001898646
+select_time: 0.6155604487285018
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Johan Ferrier
+prompt eval count:    13329 token(s)
+prompt eval duration: 156.79675734508783s
+prompt eval rate:     85.00813553602214 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4783425331115723s
+eval rate:            3.631459283677165 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Kiwil's birth country participated in a Commission of Truth and Friendship. Who is the president of the other country that participated?
+batch: 112 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Johan Ferrier
+storage_time: 0.6726985042914748
+select_time: 0.6068578846752644
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Aiden Lucas
+prompt eval count:    13203 token(s)
+prompt eval duration: 155.45945553295314s
+prompt eval rate:     84.92889644272121 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1689445972442627s
+eval rate:            3.688429852087667 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the child of the male star of the 1921 film Money?
+batch: 113 preprocess: False reprocess_method: FusionRAG
+real answer: Anthony Ainley
+answer: Aiden Lucas
+storage_time: 0.6714057745411992
+select_time: 0.6082963794469833
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+fleur-de-lis
+prompt eval count:    13623 token(s)
+prompt eval duration: 160.41108193341643s
+prompt eval rate:     84.92555399417259 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7872538566589355s
+eval rate:            3.5877607545898025 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the symbol of the Saints from the headquarters location of Ten High's manufacturer called?
+batch: 114 preprocess: False reprocess_method: FusionRAG
+real answer: fleur - de-lis
+answer: fleur-de-lis
+storage_time: 0.620538447983563
+select_time: 0.5937021216377616
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Tanzania
+prompt eval count:    12469 token(s)
+prompt eval duration: 146.9622815605253s
+prompt eval rate:     84.84489943676287 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1687004566192627s
+eval rate:            3.6888450756685023 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Which country has a body of water that was inspiration for the name of the Mara Region?
+batch: 115 preprocess: False reprocess_method: FusionRAG
+real answer: Tanzania
+answer: Tanzania
+storage_time: 0.7975463448092341
+select_time: 0.6172300353646278
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bart Millard
+prompt eval count:    13821 token(s)
+prompt eval duration: 162.64975124504417s
+prompt eval rate:     84.97400023180863 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4778618812561035s
+eval rate:            3.6321637085912255 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Along with the subject of The One That Got Away, what notable pop artist started out his career on adult contemporary radio?
+batch: 116 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Bart Millard
+storage_time: 0.7027636002749205
+select_time: 0.6262201648205519
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Ken Epp belongs to the Conservative Party of Canada. The federal leader of the Conservative Party of Canada during the time referenced in the passage is Stephen Harper.
+prompt eval count:    14312 token(s)
+prompt eval duration: 168.39390221051872s
+prompt eval rate:     84.99120105969016 tokens/s
+eval count:           36 token(s)
+eval duration:        10.847657680511475s
+eval rate:            3.318688795340247 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the federal leader of the political party Ken Epp belongs to?
+batch: 117 preprocess: False reprocess_method: FusionRAG
+real answer: Andrew Scheer
+answer: Ken Epp belongs to the Conservative Party of Canada. The federal leader of the Conservative Party of Canada during the time referenced in the passage is Stephen Harper.
+storage_time: 0.7592074861750007
+select_time: 0.6444889372214675
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Cape Verde is located in the Atlantic Ocean, approximately 570 kilometers (350 miles) off the coast of West Africa.
+prompt eval count:    14096 token(s)
+prompt eval duration: 166.0184100046754s
+prompt eval rate:     84.90624623861312 tokens/s
+eval count:           34 token(s)
+eval duration:        10.230845928192139s
+eval rate:            3.3232833568834748 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where is the country with ISO code ISO 3166-2:CV located?
+batch: 118 preprocess: False reprocess_method: FusionRAG
+real answer: central Atlantic Ocean
+answer: Cape Verde is located in the Atlantic Ocean, approximately 570 kilometers (350 miles) off the coast of West Africa.
+storage_time: 0.6356579307466745
+select_time: 0.5926179401576519
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The person portraying Batman in the Justice League movie, Ben Affleck, did not play a role in Dazed and Confused.
+prompt eval count:    13108 token(s)
+prompt eval duration: 154.26286325976253s
+prompt eval rate:     84.9718443117933 tokens/s
+eval count:           33 token(s)
+eval duration:        9.913305044174194s
+eval rate:            3.328859533016518 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who did the person portraying Batman in the Justice League movie play in Dazed and Confused?
+batch: 119 preprocess: False reprocess_method: FusionRAG
+real answer: Fred O'Bannion
+answer: Answer: The person portraying Batman in the Justice League movie, Ben Affleck, did not play a role in Dazed and Confused.
+storage_time: 0.688332743011415
+select_time: 0.6659174496307969
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Mr. Freeze
+prompt eval count:    13569 token(s)
+prompt eval duration: 159.7892458671704s
+prompt eval rate:     84.91810526022282 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1675620079040527s
+eval rate:            3.690782533938065 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In Batman Under the Red Hood, who does the actor of Barney Stinson from How I Met Your Mother play?
+batch: 120 preprocess: False reprocess_method: FusionRAG
+real answer: Nightwing / Dick Grayson
+answer: Mr. Freeze
+storage_time: 0.5454912995919585
+select_time: 0.5375299174338579
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Best Original Song
+prompt eval count:    10502 token(s)
+prompt eval duration: 123.9339655842632s
+prompt eval rate:     84.73867474901098 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1692588329315186s
+eval rate:            3.6878955514906746 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What did the singer of "Moon River" in the movie Breakfast at Tiffany win a Tony for?
+batch: 121 preprocess: False reprocess_method: FusionRAG
+real answer: for Best Performance by a Leading Actress in a Play in Ondine
+answer: Best Original Song
+storage_time: 0.6598975965753198
+select_time: 0.6032602209597826
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Belgrade
+prompt eval count:    13013 token(s)
+prompt eval duration: 153.3028212953359s
+prompt eval rate:     84.8842825594881 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8577346801757812s
+eval rate:            3.7680299962627877 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where is the headquarter of the Radio Television of the country whose co-official language is the same as the one Politika is written in?
+batch: 122 preprocess: False reprocess_method: FusionRAG
+real answer: Pristina
+answer: Belgrade
+storage_time: 0.5304108485579491
+select_time: 0.5377422394230962
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The source of the river of which Kraai River is a tributary is the Scheldt.
+prompt eval count:    9489 token(s)
+prompt eval duration: 112.0859156018123s
+prompt eval rate:     84.65827262106582 tokens/s
+eval count:           26 token(s)
+eval duration:        7.743687152862549s
+eval rate:            3.35757365796845 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the source of the river of which Kraai River is a tributary?
+batch: 123 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: The source of the river of which Kraai River is a tributary is the Scheldt.
+storage_time: 0.690053578466177
+select_time: 0.6097602862864733
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Shelley Long
+prompt eval count:    13696 token(s)
+prompt eval duration: 161.24153684452176s
+prompt eval rate:     84.9408922045097 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4769017696380615s
+eval rate:            3.6335716298168457 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who played the girlfriend of Chance's voice actor in Homeward Bound in Back to the Future?
+batch: 124 preprocess: False reprocess_method: FusionRAG
+real answer: Claudia Wells
+answer: Shelley Long
+storage_time: 0.6809728508815169
+select_time: 0.608954418450594
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Mary Jo Catlett
+prompt eval count:    13560 token(s)
+prompt eval duration: 159.6102254819125s
+prompt eval rate:     84.95696287038113 tokens/s
+eval count:           9 token(s)
+eval duration:        2.477113723754883s
+eval rate:            3.6332607234348253 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the voice of the character in Spongebob Squarepants with the same name as the creature that annelid larvae live like?
+batch: 125 preprocess: False reprocess_method: FusionRAG
+real answer: Mr. Lawrence
+answer: Mary Jo Catlett
+storage_time: 0.7026940770447254
+select_time: 0.6285891188308597
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+356–323 BC
+prompt eval count:    13744 token(s)
+prompt eval duration: 161.8110228702426s
+prompt eval rate:     84.93858920242666 tokens/s
+eval count:           13 token(s)
+eval duration:        3.71610164642334s
+eval rate:            3.4982896693668737 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Between which years did war with the person for whom Pyrrhic victory is named occur?
+batch: 126 preprocess: False reprocess_method: FusionRAG
+real answer: 323–272 BC
+answer: 356–323 BC
+storage_time: 0.6761353733018041
+select_time: 0.6572486665099859
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+selling its interests in four Nigerian oil fields
+prompt eval count:    14040 token(s)
+prompt eval duration: 165.38046501483768s
+prompt eval rate:     84.89515372169471 tokens/s
+eval count:           13 token(s)
+eval duration:        3.7171151638031006s
+eval rate:            3.4973358174620772 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: MV Miralda's owner announced it was in the process of doing what in April 2010?
+batch: 127 preprocess: False reprocess_method: FusionRAG
+real answer: trying to find a potential buyer for all of its operations in Finland
+answer: selling its interests in four Nigerian oil fields
+storage_time: 0.687464652583003
+select_time: 0.5983947478234768
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+12 May 1862
+prompt eval count:    13460 token(s)
+prompt eval duration: 158.69231612235308s
+prompt eval rate:     84.81822137892442 tokens/s
+eval count:           13 token(s)
+eval duration:        3.716275453567505s
+eval rate:            3.4981260572384154 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the Battle at Choo Hoey's birthplace end?
+batch: 128 preprocess: False reprocess_method: FusionRAG
+real answer: 15 February 1942
+answer: 12 May 1862
+storage_time: 0.692468486726284
+select_time: 0.6211665757000446
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Francisco Guterres
+prompt eval count:    13868 token(s)
+prompt eval duration: 163.09189471695572s
+prompt eval rate:     85.03181610629865 tokens/s
+eval count:           10 token(s)
+eval duration:        2.789484977722168s
+eval rate:            3.584891146524754 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Sumardi was born?
+batch: 129 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Francisco Guterres
+storage_time: 0.6848176512867212
+select_time: 0.6091629080474377
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Brandi Carlile
+prompt eval count:    13829 token(s)
+prompt eval duration: 162.73822375107557s
+prompt eval rate:     84.97696288705254 tokens/s
+eval count:           9 token(s)
+eval duration:        2.479944944381714s
+eval rate:            3.629112823810623 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who wrote the song The Story sung by the performer of Give Up the Ghost?
+batch: 130 preprocess: False reprocess_method: FusionRAG
+real answer: Phil Hanseroth
+answer: Brandi Carlile
+storage_time: 0.7122727325186133
+select_time: 0.6567493565380573
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bangkok, Thailand
+prompt eval count:    14027 token(s)
+prompt eval duration: 165.19710355158895s
+prompt eval rate:     84.91068970600654 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4816765785217285s
+eval rate:            3.6265805455443636 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where did they film The Beach in the country where Siddhi Savetsila was born?
+batch: 131 preprocess: False reprocess_method: FusionRAG
+real answer: Ko Phi Phi Leh
+answer: Bangkok, Thailand
+storage_time: 0.6786581641063094
+select_time: 0.5959872491657734
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+American
+prompt eval count:    13184 token(s)
+prompt eval duration: 155.22789724729955s
+prompt eval rate:     84.9331868420279 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5502707958221436s
+eval rate:            3.870291574974851 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the author of Growing Up this nationality of the creator MacGruder and Loud?
+batch: 132 preprocess: False reprocess_method: FusionRAG
+real answer: Min Zhou
+answer: American
+storage_time: 0.6843136362731457
+select_time: 0.6541239498183131
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Henbury
+prompt eval count:    13421 token(s)
+prompt eval duration: 158.2713588308543s
+prompt eval rate:     84.79740174811486 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8595881462097168s
+eval rate:            3.764274371326611 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which county did Snappy Tomato Pizza form?
+batch: 133 preprocess: False reprocess_method: FusionRAG
+real answer: Kenton County
+answer: Henbury
+storage_time: 0.7467230977490544
+select_time: 0.6173983765766025
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Best Director
+prompt eval count:    13751 token(s)
+prompt eval duration: 161.89855316933244s
+prompt eval rate:     84.93590418697316 tokens/s
+eval count:           7 token(s)
+eval duration:        1.859736680984497s
+eval rate:            3.763973723578103 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What other recognition did the Oscar winner for Best Actor in 2006 receive?
+batch: 134 preprocess: False reprocess_method: FusionRAG
+real answer: nominated for an Academy Award for Best Supporting Actor
+answer: Best Director
+storage_time: 0.7105163019150496
+select_time: 0.616805175319314
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1986
+prompt eval count:    13693 token(s)
+prompt eval duration: 161.38783314824104s
+prompt eval rate:     84.84530545386555 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480001211166382s
+eval rate:            3.6290304857420472 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the Smile performer's birthday?
+batch: 135 preprocess: False reprocess_method: FusionRAG
+real answer: 1 January 1986
+answer: 1986
+storage_time: 0.356280486099422
+select_time: 0.46632249653339386
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: A&M Records
+prompt eval count:    6248 token(s)
+prompt eval duration: 74.43591877166182s
+prompt eval rate:     83.937971118033 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7867610454559326s
+eval rate:            3.588395214690513 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What record label does the performer of Emotional Rain belong to?
+batch: 136 preprocess: False reprocess_method: FusionRAG
+real answer: Attic Records
+answer: Answer: A&M Records
+storage_time: 0.7038158578798175
+select_time: 0.6217011213302612
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2014
+prompt eval count:    14309 token(s)
+prompt eval duration: 168.16038671322167s
+prompt eval rate:     85.09138376568059 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4806032180786133s
+eval rate:            3.62814977196195 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the majority party in the House of Representatives gain control of the body which approves members of the Cabinet?
+batch: 137 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: 2014
+storage_time: 0.6884734099730849
+select_time: 0.6155029619112611
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sazerac Company
+prompt eval count:    13700 token(s)
+prompt eval duration: 161.3150213835761s
+prompt eval rate:     84.926994910313 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4815497398376465s
+eval rate:            3.626765909833755 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the manufacturer of the Kentucky Tavern headquarters location saints symbol called?
+batch: 138 preprocess: False reprocess_method: FusionRAG
+real answer: fleur - de-lis
+answer: Sazerac Company
+storage_time: 0.6567410146817565
+select_time: 0.586526888422668
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Zhejiang
+prompt eval count:    12780 token(s)
+prompt eval duration: 150.54439601674676s
+prompt eval rate:     84.89190124737911 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170290470123291s
+eval rate:            3.6861425279840683 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which county was Zhu Qinan born?
+batch: 139 preprocess: False reprocess_method: FusionRAG
+real answer: Yongjia County
+answer: Zhejiang
+storage_time: 0.6985759800300002
+select_time: 0.6115901991724968
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Daniel Stern
+prompt eval count:    13873 token(s)
+prompt eval duration: 163.15106120239943s
+prompt eval rate:     85.03162589172281 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8608918190002441s
+eval rate:            3.761637258290876 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who sings Home Alone Tonight with the Rain is a Good Thing singer?
+batch: 140 preprocess: False reprocess_method: FusionRAG
+real answer: Karen Fairchild
+answer: Daniel Stern
+storage_time: 0.8067283891141415
+select_time: 0.634305601939559
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Casa Loma
+prompt eval count:    13757 token(s)
+prompt eval duration: 162.06977316644043s
+prompt eval rate:     84.88319401713485 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480100393295288s
+eval rate:            3.6288853565487234 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the name of the castle in the city where the performer of Never Too Loud was formed?
+batch: 141 preprocess: False reprocess_method: FusionRAG
+real answer: Casa Loma
+answer: Casa Loma
+storage_time: 0.6990498630329967
+select_time: 0.6315635582432151
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Shirley Temple
+prompt eval count:    13746 token(s)
+prompt eval duration: 161.73393286205828s
+prompt eval rate:     84.99144092244306 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4808313846588135s
+eval rate:            3.627816084420329 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the sibling of the actress that played the little girl in Miracle on 34th street 1947?
+batch: 142 preprocess: False reprocess_method: FusionRAG
+real answer: Lana Wood
+answer: Shirley Temple
+storage_time: 0.8676890796050429
+select_time: 0.6220241095870733
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Tunis
+prompt eval count:    13865 token(s)
+prompt eval duration: 163.3606877103448s
+prompt eval rate:     84.87354083978921 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1721103191375732s
+eval rate:            3.6830541844561395 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What city is the star of 'Three Strangers in Rome' from?
+batch: 143 preprocess: False reprocess_method: FusionRAG
+real answer: La Goulette
+answer: Tunis
+storage_time: 0.912133882753551
+select_time: 0.7552088154479861
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The northern part of Erich Zakowski's birthplace, which is in the now Russian area, was occupied by the Soviet Union after World War II and became part of the Kaliningrad Oblast. This region was previously 
+prompt eval count:    14007 token(s)
+prompt eval duration: 173.31057980563492s
+prompt eval rate:     80.82022468396696 tokens/s
+eval count:           50 token(s)
+eval duration:        15.208296298980713s
+eval rate:            3.287679238821188 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What else happened in the northern part of Erich Zakowski's birthplace in the now Russian area?
+batch: 144 preprocess: False reprocess_method: FusionRAG
+real answer: names were replaced by new Russian names
+answer: The northern part of Erich Zakowski's birthplace, which is in the now Russian area, was occupied by the Soviet Union after World War II and became part of the Kaliningrad Oblast. This region was previously
+storage_time: 0.7585933310911059
+select_time: 0.5641354909166694
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Charles County
+prompt eval count:    10608 token(s)
+prompt eval duration: 125.5346296261996s
+prompt eval rate:     84.5025793407532 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8620364665985107s
+eval rate:            3.759324871218716 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In which county is Southern Maryland Electric Cooperative headquartered?
+batch: 145 preprocess: False reprocess_method: FusionRAG
+real answer: Charles County
+answer: Charles County
+storage_time: 0.7098798863589764
+select_time: 0.630988790653646
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2015
+prompt eval count:    13830 token(s)
+prompt eval duration: 162.64423604961485s
+prompt eval rate:     85.03221716250147 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4797728061676025s
+eval rate:            3.6293647456797338 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the party that controls the House of Representatives take control of the branch who determines the rules of the US house and Senate?
+batch: 146 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: 2015
+storage_time: 0.9655600292608142
+select_time: 0.6947742970660329
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The sports team that the all-time highest goal scorer in the Spain national team was a member of achieved the following series of wins in 2009: winning the La Liga, Copa del Rey, and UEFA Champions 
+prompt eval count:    14070 token(s)
+prompt eval duration: 166.0077700810507s
+prompt eval rate:     84.75506895328178 tokens/s
+eval count:           50 token(s)
+eval duration:        15.208094358444214s
+eval rate:            3.2877228942387355 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What series of wins did the sports team that the all time highest goal scorer in spain national team was a member or achieve in 2009?
+batch: 147 preprocess: False reprocess_method: FusionRAG
+real answer: continental treble
+answer: The sports team that the all-time highest goal scorer in the Spain national team was a member of achieved the following series of wins in 2009: winning the La Liga, Copa del Rey, and UEFA Champions League
+storage_time: 0.7117238296195865
+select_time: 0.6236843736842275
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Maya Rudolph
+prompt eval count:    13584 token(s)
+prompt eval duration: 159.9943108521402s
+prompt eval rate:     84.90301891142707 tokens/s
+eval count:           10 token(s)
+eval duration:        2.793130874633789s
+eval rate:            3.580211758359197 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In Grown Ups, who plays the wife of the actor who produced The Chosen One?
+batch: 148 preprocess: False reprocess_method: FusionRAG
+real answer: Joyce Van Patten
+answer: Answer: Maya Rudolph
+storage_time: 0.7296082638204098
+select_time: 0.6384803531691432
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bobby Brown plays himself in *The Wire*.
+prompt eval count:    13380 token(s)
+prompt eval duration: 157.89804749935865s
+prompt eval rate:     84.73822325164817 tokens/s
+eval count:           15 token(s)
+eval duration:        4.34483790397644s
+eval rate:            3.4523727539459745 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who does the performer of Don't Be Cruel play in the wire?
+batch: 149 preprocess: False reprocess_method: FusionRAG
+real answer: a Western District uniformed officer
+answer: Bobby Brown plays himself in *The Wire*.
+storage_time: 0.9574627047404647
+select_time: 0.6464685201644897
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1998
+prompt eval count:    14318 token(s)
+prompt eval duration: 168.70540542062372s
+prompt eval rate:     84.86983546438084 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4848921298980713s
+eval rate:            3.6218876029717935 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did Burroughs Corporation merge to form a new corporation?
+batch: 150 preprocess: False reprocess_method: FusionRAG
+real answer: 1986
+answer: 1998
+storage_time: 0.9293539151549339
+select_time: 0.70232168212533
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1992
+prompt eval count:    13589 token(s)
+prompt eval duration: 160.34372269548476s
+prompt eval rate:     84.74918613313861 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4811244010925293s
+eval rate:            3.627387645712957 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the country, whose co-official language was used by the director of Group Portrait with a Lady, first attend the Olympics as an independent team?
+batch: 151 preprocess: False reprocess_method: FusionRAG
+real answer: 2016
+answer: 1992
+storage_time: 0.7592650698497891
+select_time: 0.6344880200922489
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rabbi Shneur Zalman of Liadi
+prompt eval count:    13293 token(s)
+prompt eval duration: 156.6506947427988s
+prompt eval rate:     84.85758726972436 tokens/s
+eval count:           17 token(s)
+eval duration:        4.960098028182983s
+eval rate:            3.4273516175299372 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who followed Menucha Rochel Slonim's father?
+batch: 152 preprocess: False reprocess_method: FusionRAG
+real answer: Menachem Mendel Schneersohn
+answer: Rabbi Shneur Zalman of Liadi
+storage_time: 0.7389937974512577
+select_time: 0.6330671356990933
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Curt Bisquera
+prompt eval count:    13912 token(s)
+prompt eval duration: 163.93958633672446s
+prompt eval rate:     84.86052887449273 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7966527938842773s
+eval rate:            3.575703076859597 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who started out his career on adult contemporary radio along with the performer of All That Echoes?
+batch: 153 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Curt Bisquera
+storage_time: 0.8617315385490656
+select_time: 0.7034707562997937
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The head of the developer of Simon is not explicitly mentioned in the provided passages.
+prompt eval count:    13439 token(s)
+prompt eval duration: 158.7302519734949s
+prompt eval rate:     84.66565026460157 tokens/s
+eval count:           23 token(s)
+eval duration:        6.828490495681763s
+eval rate:            3.3682407575356317 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the head of the developer of Simon?
+batch: 154 preprocess: False reprocess_method: FusionRAG
+real answer: ADM Michael S. Rogers
+answer: Answer: The head of the developer of Simon is not explicitly mentioned in the provided passages.
+storage_time: 0.8728438885882497
+select_time: 0.6918059159070253
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2010
+prompt eval count:    14004 token(s)
+prompt eval duration: 165.1862546717748s
+prompt eval rate:     84.77702958896887 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480882406234741s
+eval rate:            3.627741475122711 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the last time the team that Terry Twell was a member of beat the 194-95 winner of the FA Cup?
+batch: 155 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 2010
+storage_time: 0.8935717195272446
+select_time: 0.6080843731760979
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Francis Bacon
+prompt eval count:    12993 token(s)
+prompt eval duration: 153.4291454134509s
+prompt eval rate:     84.68404073415978 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1713733673095703s
+eval rate:            3.6843041921953574 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the father of the artist who painted Head I?
+batch: 156 preprocess: False reprocess_method: FusionRAG
+real answer: Nicholas Bacon
+answer: Francis Bacon
+storage_time: 0.7854299498721957
+select_time: 0.6529622925445437
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The Orange River
+prompt eval count:    13938 token(s)
+prompt eval duration: 164.28415707033128s
+prompt eval rate:     84.84080418072838 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170074939727783s
+eval rate:            3.6865086332011785 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where is the origin of the river Augrabies Falls is part of?
+batch: 157 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: The Orange River
+storage_time: 0.7564863162115216
+select_time: 0.6801687851548195
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The BBC Footballer of the Year is a member of the San Diego Chargers.
+prompt eval count:    14449 token(s)
+prompt eval duration: 170.14753398112953s
+prompt eval rate:     84.92041971999717 tokens/s
+eval count:           21 token(s)
+eval duration:        6.203630685806274s
+eval rate:            3.3851144698293187 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The BBC Footballer of the Year is a member of which team?
+batch: 158 preprocess: False reprocess_method: FusionRAG
+real answer: Egypt national football team
+answer: The BBC Footballer of the Year is a member of the San Diego Chargers.
+storage_time: 0.8143605850636959
+select_time: 0.6467760466039181
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Paris
+prompt eval count:    13690 token(s)
+prompt eval duration: 161.39387794677168s
+prompt eval rate:     84.8235396172525 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5508298873901367s
+eval rate:            3.8688962914541776 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where was the person who acted in the film Sous les pieds des femmes born?
+batch: 159 preprocess: False reprocess_method: FusionRAG
+real answer: La Goulette
+answer: Paris
+storage_time: 0.7344008851796389
+select_time: 0.6429335046559572
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2 million
+prompt eval count:    13336 token(s)
+prompt eval duration: 156.94015121646225s
+prompt eval rate:     84.97506786269184 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8615624904632568s
+eval rate:            3.7602820404154276 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: How many people were in British Colonies where does the london broil cut come from ?
+batch: 160 preprocess: False reprocess_method: FusionRAG
+real answer: 2 million
+answer: 2 million
+storage_time: 0.7488696118816733
+select_time: 0.6388185592368245
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Jennifer Connelly
+prompt eval count:    13939 token(s)
+prompt eval duration: 164.2753611272201s
+prompt eval rate:     84.85143422819928 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1719937324523926s
+eval rate:            3.6832518807350425 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the spouse of the person who voices Jarvis in the Avengers Age of Ultron?
+batch: 161 preprocess: False reprocess_method: FusionRAG
+real answer: Jennifer Connelly
+answer: Jennifer Connelly
+storage_time: 0.8761240029707551
+select_time: 0.6694535845890641
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sejong City is located in South Korea, and Redan High School is in Sejong City. The most populous city in South Korea is Seoul. The county that shares a border with Gyeonggi-do (the county 
+prompt eval count:    13800 token(s)
+prompt eval duration: 162.6260633971542s
+prompt eval rate:     84.85724681349869 tokens/s
+eval count:           50 token(s)
+eval duration:        15.205355405807495s
+eval rate:            3.288315114351298 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Which county shares a border with the county where the most populous city in the state where Redan High School is located?
+batch: 162 preprocess: False reprocess_method: FusionRAG
+real answer: Presque Isle County
+answer: Sejong City is located in South Korea, and Redan High School is in Sejong City. The most populous city in South Korea is Seoul. The county that shares a border with Gyeonggi-do (the county
+storage_time: 0.7587307756766677
+select_time: 0.6231909971684217
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The rapper who owns Aspiro was inspired by his experiences with taxes and foreign policy when writing "Song Cry."
+prompt eval count:    13916 token(s)
+prompt eval duration: 164.06350488681346s
+prompt eval rate:     84.82081380378028 tokens/s
+eval count:           28 token(s)
+eval duration:        8.373910665512085s
+eval rate:            3.3437184988511857 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The rapper who owns Aspiro was inspired by what when writing Song Cry?
+batch: 163 preprocess: False reprocess_method: FusionRAG
+real answer: three different relationships he had in the past
+answer: The rapper who owns Aspiro was inspired by his experiences with taxes and foreign policy when writing "Song Cry."
+storage_time: 0.9533809842541814
+select_time: 0.659478354267776
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Idaho
+prompt eval count:    13638 token(s)
+prompt eval duration: 160.99728642310947s
+prompt eval rate:     84.7095022717253 tokens/s
+eval count:           7 token(s)
+eval duration:        1.862215518951416s
+eval rate:            3.758963411464635 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What administrative territorial entity includes the place that KTRP is licensed to broadcast to?
+batch: 164 preprocess: False reprocess_method: FusionRAG
+real answer: Canyon County
+answer: Idaho
+storage_time: 0.8685883330181241
+select_time: 0.664368025958538
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Harvey Keitel
+prompt eval count:    13556 token(s)
+prompt eval duration: 159.80835688766092s
+prompt eval rate:     84.82660271345723 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4813642501831055s
+eval rate:            3.627037021805996 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In A League of Their Own, who played the husband of the actress who played Thelma in Thelma and Louise?
+batch: 165 preprocess: False reprocess_method: FusionRAG
+real answer: Bill Pullman
+answer: Harvey Keitel
+storage_time: 0.7540696198120713
+select_time: 0.6248207865282893
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Indonesia
+prompt eval count:    13252 token(s)
+prompt eval duration: 156.1407746374607s
+prompt eval rate:     84.87212921012772 tokens/s
+eval count:           7 token(s)
+eval duration:        1.861029863357544s
+eval rate:            3.761358233860404 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the former name of the country where Atika Suri studied?
+batch: 166 preprocess: False reprocess_method: FusionRAG
+real answer: Dutch East Indies
+answer: Indonesia
+storage_time: 0.5652269124984741
+select_time: 0.5775280501693487
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Pskov Oblast
+prompt eval count:    10619 token(s)
+prompt eval duration: 125.40789415314794s
+prompt eval rate:     84.67569024827172 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4110100269317627s
+eval rate:            3.5180195617290866 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What province shares a border with the province where Lago District is located?
+batch: 167 preprocess: False reprocess_method: FusionRAG
+real answer: Cabo Delgado Province
+answer: Answer: Pskov Oblast
+storage_time: 0.74825737811625
+select_time: 0.6181683456525207
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The Communications of the organization that Andries van Dam is a member of were published by the Association for Computing Machinery (ACM).
+prompt eval count:    12885 token(s)
+prompt eval duration: 152.01507482957095s
+prompt eval rate:     84.761330509134 tokens/s
+eval count:           31 token(s)
+eval duration:        9.30597472190857s
+eval rate:            3.3311932308410768 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who published Communications of the organization that Andries van Dam is a member of?
+batch: 168 preprocess: False reprocess_method: FusionRAG
+real answer: Association for Computing Machinery
+answer: The Communications of the organization that Andries van Dam is a member of were published by the Association for Computing Machinery (ACM).
+storage_time: 0.7044903188943863
+select_time: 0.6295584533363581
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Cedar Springs is located in Guadalupe County, Texas. Therefore, the county that shares a border with Cedar Springs is Guadalupe County.
+prompt eval count:    13634 token(s)
+prompt eval duration: 160.73701682779938s
+prompt eval rate:     84.82178075138948 tokens/s
+eval count:           37 token(s)
+eval duration:        11.174937725067139s
+eval rate:            3.310980419783745 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What county shares a border with Cedar Springs?
+batch: 169 preprocess: False reprocess_method: FusionRAG
+real answer: Bell County
+answer: Cedar Springs is located in Guadalupe County, Texas. Therefore, the county that shares a border with Cedar Springs is Guadalupe County.
+storage_time: 0.7233494929969311
+select_time: 0.6163626732304692
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The administrative territorial entity that is the owner of Ciudad Deportiva is the municipality of Madrid, Spain.
+prompt eval count:    13803 token(s)
+prompt eval duration: 162.49156473297626s
+prompt eval rate:     84.94594794925253 tokens/s
+eval count:           26 token(s)
+eval duration:        7.762495279312134s
+eval rate:            3.349438429842622 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What administrative territorial entity is the owner of Ciudad Deportiva located?
+batch: 170 preprocess: False reprocess_method: FusionRAG
+real answer: Tamaulipas
+answer: The administrative territorial entity that is the owner of Ciudad Deportiva is the municipality of Madrid, Spain.
+storage_time: 0.6387470439076424
+select_time: 0.5798573503270745
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sebastian Cabot
+prompt eval count:    12050 token(s)
+prompt eval duration: 142.0046681817621s
+prompt eval rate:     84.85636531734526 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4803738594055176s
+eval rate:            3.628485264780637 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the son of the Italian navigator who explored the eastern coast of the continent Ulises Solís' birthplace is located in for England?
+batch: 171 preprocess: False reprocess_method: FusionRAG
+real answer: Sebastian Cabot
+answer: Sebastian Cabot
+storage_time: 0.7001194627955556
+select_time: 0.6085995053872466
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Colin Firth
+prompt eval count:    13598 token(s)
+prompt eval duration: 160.1408284129575s
+prompt eval rate:     84.91276169082028 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4819540977478027s
+eval rate:            3.626175040129413 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who played the monarch at the end of WW2 in The King's Speech?
+batch: 172 preprocess: False reprocess_method: FusionRAG
+real answer: Colin Firth
+answer: Colin Firth
+storage_time: 0.6817865883931518
+select_time: 0.5963603733107448
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+South Park
+prompt eval count:    12753 token(s)
+prompt eval duration: 150.18738726712763s
+prompt eval rate:     84.91392141549906 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8610813617706299s
+eval rate:            3.7612541524461944 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the place of birth of who does the voice of stan on the series that Insecurity is part of?
+batch: 173 preprocess: False reprocess_method: FusionRAG
+real answer: Denver
+answer: South Park
+storage_time: 0.9270607475191355
+select_time: 0.6249044463038445
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bangkok, Thailand
+prompt eval count:    13913 token(s)
+prompt eval duration: 164.25052884873003s
+prompt eval rate:     84.70596775255116 tokens/s
+eval count:           9 token(s)
+eval duration:        2.482452154159546s
+eval rate:            3.6254475176570007 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where did they film The Beach in the country where Pao Sarasin was born?
+batch: 174 preprocess: False reprocess_method: FusionRAG
+real answer: Ko Phi Phi Leh
+answer: Bangkok, Thailand
+storage_time: 0.8576563103124499
+select_time: 0.604972898028791
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The competition that the 1965 Federation Cup is part of is named after Hazel Hotchkiss Wightman.
+prompt eval count:    12836 token(s)
+prompt eval duration: 151.26624457817525s
+prompt eval rate:     84.85700187635902 tokens/s
+eval count:           30 token(s)
+eval duration:        8.998321771621704s
+eval rate:            3.333955015324298 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the competition that the 1965 Federation Cup is part of named after?
+batch: 175 preprocess: False reprocess_method: FusionRAG
+real answer: International Tennis Federation
+answer: The competition that the 1965 Federation Cup is part of is named after Hazel Hotchkiss Wightman.
+storage_time: 0.756818681024015
+select_time: 0.6313382862135768
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Xanana Gusmão
+prompt eval count:    13709 token(s)
+prompt eval duration: 161.4569759881124s
+prompt eval rate:     84.90806864244351 tokens/s
+eval count:           11 token(s)
+eval duration:        3.1037099361419678s
+eval rate:            3.544145627755868 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Kotamadya is located?
+batch: 176 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Xanana Gusmão
+storage_time: 0.8474589465186
+select_time: 0.6405140860006213
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Colin Firth
+prompt eval count:    13674 token(s)
+prompt eval duration: 161.17584182787687s
+prompt eval rate:     84.83901709415458 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4828474521636963s
+eval rate:            3.6248703045194666 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In the King's Speech, who played the person who was the King of England in 1950?
+batch: 177 preprocess: False reprocess_method: FusionRAG
+real answer: Colin Firth
+answer: Colin Firth
+storage_time: 1.0102945528924465
+select_time: 0.6344096185639501
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Ekulu River
+prompt eval count:    13608 token(s)
+prompt eval duration: 160.5450669322163s
+prompt eval rate:     84.76124654608934 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1726930141448975s
+eval rate:            3.682066425361313 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the body of water by the area where Athlete was formed?
+batch: 178 preprocess: False reprocess_method: FusionRAG
+real answer: River Thames
+answer: Ekulu River
+storage_time: 0.9585707103833556
+select_time: 0.6219809418544173
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Obie Award
+prompt eval count:    13798 token(s)
+prompt eval duration: 162.71078247390687s
+prompt eval rate:     84.80077220581688 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1717028617858887s
+eval rate:            3.6837452032554956 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What award did the author of The Happy Journey to Trenton and Camden receive?
+batch: 179 preprocess: False reprocess_method: FusionRAG
+real answer: Pulitzer Prize for Drama
+answer: Obie Award
+storage_time: 0.8967994228005409
+select_time: 0.7070617433637381
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Glasgow
+prompt eval count:    13687 token(s)
+prompt eval duration: 161.53478376474231s
+prompt eval rate:     84.73097670365296 tokens/s
+eval count:           8 token(s)
+eval duration:        2.170445680618286s
+eval rate:            3.6858789286636613 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Where was the designer of the Lap Engine educated?
+batch: 180 preprocess: False reprocess_method: FusionRAG
+real answer: University of Glasgow
+answer: Glasgow
+storage_time: 0.7004616921767592
+select_time: 0.6221096999943256
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Chen Qiang
+prompt eval count:    13627 token(s)
+prompt eval duration: 160.6049325503409s
+prompt eval rate:     84.84795444080572 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4814372062683105s
+eval rate:            3.6269303842407434 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who is the father of the Labo M performer?
+batch: 181 preprocess: False reprocess_method: FusionRAG
+real answer: Louis Chedid
+answer: Chen Qiang
+storage_time: 0.922090221196413
+select_time: 0.6161042544990778
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Roncalli left the place of death of the maker of The Gozzi Altarpiece because he was required to meet with Pope Pius XI for an appointment.
+prompt eval count:    13375 token(s)
+prompt eval duration: 157.87669766508043s
+prompt eval rate:     84.71801220705618 tokens/s
+eval count:           39 token(s)
+eval duration:        11.790030717849731s
+eval rate:            3.3078794223118724 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Why did Roncalli leave the place of death of the maker of The Gozzi Altarpiece?
+batch: 182 preprocess: False reprocess_method: FusionRAG
+real answer: for the conclave in Rome
+answer: Roncalli left the place of death of the maker of The Gozzi Altarpiece because he was required to meet with Pope Pius XI for an appointment.
+storage_time: 0.7928118240088224
+select_time: 0.63593496568501
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The British Empire
+prompt eval count:    14005 token(s)
+prompt eval duration: 165.0960829090327s
+prompt eval rate:     84.82938997236354 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1710684299468994s
+eval rate:            3.6848216710496158 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who gives out the award named after the person who argued that colonies were redundant?
+batch: 183 preprocess: False reprocess_method: FusionRAG
+real answer: University of Cambridge
+answer: The British Empire
+storage_time: 0.687705528922379
+select_time: 0.6126056499779224
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Poland
+prompt eval count:    13518 token(s)
+prompt eval duration: 159.22034654952586s
+prompt eval rate:     84.9012095058793 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8607478141784668s
+eval rate:            3.761928374528576 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In 1990, who became the president of the country that Germany invaded?
+batch: 184 preprocess: False reprocess_method: FusionRAG
+real answer: Lech Wałęsa
+answer: Poland
+storage_time: 0.8574351947754622
+select_time: 0.62579664029181
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The mouth of the watercourse of the body of water by Rotterdam Centrum is referred to as the **Goudsesingel**.
+prompt eval count:    13462 token(s)
+prompt eval duration: 158.7608709456399s
+prompt eval rate:     84.794193429497 tokens/s
+eval count:           33 token(s)
+eval duration:        9.937321901321411s
+eval rate:            3.3208142322139973 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the name for the mouth of the watercourse of the body of water by Rotterdam Centrum?
+batch: 185 preprocess: False reprocess_method: FusionRAG
+real answer: Het Scheur
+answer: The mouth of the watercourse of the body of water by Rotterdam Centrum is referred to as the **Goudsesingel**.
+storage_time: 0.877365798689425
+select_time: 0.6497897943481803
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Blaine Larsen
+prompt eval count:    13671 token(s)
+prompt eval duration: 161.1990666417405s
+prompt eval rate:     84.8081833524715 tokens/s
+eval count:           9 token(s)
+eval duration:        2.483473300933838s
+eval rate:            3.62395681750064 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who sings Home Alone Tonight with the singer of "I Don't Want This Night to End"?
+batch: 186 preprocess: False reprocess_method: FusionRAG
+real answer: Karen Fairchild
+answer: Blaine Larsen
+storage_time: 0.7105468967929482
+select_time: 0.610013896599412
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+University of Wisconsin–Madison
+prompt eval count:    13595 token(s)
+prompt eval duration: 160.02347828354686s
+prompt eval rate:     84.95628357678186 tokens/s
+eval count:           11 token(s)
+eval duration:        3.110078811645508s
+eval rate:            3.536887862394723 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What company is the school where Lawrence Landweber was educated a part of?
+batch: 187 preprocess: False reprocess_method: FusionRAG
+real answer: City University of New York
+answer: University of Wisconsin–Madison
+storage_time: 0.8598876595497131
+select_time: 0.6862397575750947
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Wichita
+prompt eval count:    13636 token(s)
+prompt eval duration: 160.74458461999893s
+prompt eval rate:     84.83022947389225 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173685073852539s
+eval rate:            3.6803859474551985 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the capital of the county that shares a border with the county where WAPL is licensed to broadcast?
+batch: 188 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Wichita
+storage_time: 0.7326908558607101
+select_time: 0.6440260140225291
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Meredith
+prompt eval count:    13924 token(s)
+prompt eval duration: 164.14414202421904s
+prompt eval rate:     84.8278825445111 tokens/s
+eval count:           8 token(s)
+eval duration:        2.172435998916626s
+eval rate:            3.6825020410219342 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who was the first black student admitted to where Robert Khayat was educated?
+batch: 189 preprocess: False reprocess_method: FusionRAG
+real answer: James Howard Meredith
+answer: Meredith
+storage_time: 0.8222259720787406
+select_time: 0.6043863026425242
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Lacey Chabert
+prompt eval count:    13378 token(s)
+prompt eval duration: 157.86053921561688s
+prompt eval rate:     84.74568797543127 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7911367416381836s
+eval rate:            3.5827696475131368 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: Who did the original voice of the character played by mila kunis in the cleveland show?
+batch: 190 preprocess: False reprocess_method: FusionRAG
+real answer: Lacey Chabert
+answer: Lacey Chabert
+storage_time: 0.6733997194096446
+select_time: 0.6057848604395986
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Jive Records
+prompt eval count:    11205 token(s)
+prompt eval duration: 132.2203519223258s
+prompt eval rate:     84.74489620616419 tokens/s
+eval count:           8 token(s)
+eval duration:        2.17041015625s
+eval rate:            3.6859392575928007 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the record label of the co-writer and recording artist of Permission to Fly?
+batch: 191 preprocess: False reprocess_method: FusionRAG
+real answer: Hollywood Records
+answer: Jive Records
+storage_time: 0.4752747295424342
+select_time: 0.6019809544086456
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Atlantic
+prompt eval count:    6572 token(s)
+prompt eval duration: 78.35954850539565s
+prompt eval rate:     83.86980432317662 tokens/s
+eval count:           6 token(s)
+eval duration:        1.551361083984375s
+eval rate:            3.8675715550309824 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What record label is the performer who released All Your Faded Things on?
+batch: 192 preprocess: False reprocess_method: FusionRAG
+real answer: Kill Rock Stars
+answer: Atlantic
+storage_time: 0.7042726203799248
+select_time: 0.6098848758265376
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Gotthold Ephraim Lessing
+prompt eval count:    13512 token(s)
+prompt eval duration: 159.22209100052714s
+prompt eval rate:     84.86259610769253 tokens/s
+eval count:           13 token(s)
+eval duration:        3.721747636795044s
+eval rate:            3.4929826706882405 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is another notable work made by the author of Miss Sara Sampson?
+batch: 193 preprocess: False reprocess_method: FusionRAG
+real answer: Emilia Galotti
+answer: Gotthold Ephraim Lessing
+storage_time: 0.8377607027068734
+select_time: 0.6004230165854096
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2014
+prompt eval count:    12696 token(s)
+prompt eval duration: 149.75861238315701s
+prompt eval rate:     84.77642653043097 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4811558723449707s
+eval rate:            3.627341635531342 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When did the majority party in the body which determines rules of the US House and US Senate gain control of the House?
+batch: 194 preprocess: False reprocess_method: FusionRAG
+real answer: the 2010 election
+answer: 2014
+storage_time: 0.7156976275146008
+select_time: 0.6495575970038772
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1954
+prompt eval count:    13386 token(s)
+prompt eval duration: 157.8483569789678s
+prompt eval rate:     84.80290993325697 tokens/s
+eval count:           9 token(s)
+eval duration:        2.480539083480835s
+eval rate:            3.6282435781542626 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: In what year did Margaret Knox's spouse pass away?
+batch: 195 preprocess: False reprocess_method: FusionRAG
+real answer: 1572
+answer: 1954
+storage_time: 0.7648090999573469
+select_time: 0.6422332711517811
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rostov
+prompt eval count:    13219 token(s)
+prompt eval duration: 155.84438911546022s
+prompt eval rate:     84.82178970335889 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1725656986236572s
+eval rate:            3.6822821998285633 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The city where Dmitry Borisovich was born is located where in Russia?
+batch: 196 preprocess: False reprocess_method: FusionRAG
+real answer: Yaroslavl Oblast
+answer: Rostov
+storage_time: 0.754443658515811
+select_time: 0.6241465769708157
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Major League Baseball
+prompt eval count:    13753 token(s)
+prompt eval duration: 162.00730564631522s
+prompt eval rate:     84.89123342390953 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7930569648742676s
+eval rate:            3.5803064977767685 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What league includes the operating group of Al Janoub Stadium?
+batch: 197 preprocess: False reprocess_method: FusionRAG
+real answer: Qatar Stars League
+answer: Answer: Major League Baseball
+storage_time: 0.8773763496428728
+select_time: 0.6499206069856882
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The kingdom that Heptarchy was part of was abolished in 825.
+prompt eval count:    13438 token(s)
+prompt eval duration: 158.60781702771783s
+prompt eval rate:     84.72470179481516 tokens/s
+eval count:           24 token(s)
+eval duration:        7.13224458694458s
+eval rate:            3.3649995744581562 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: When was the kingdom that Heptarchy was part of abolished?
+batch: 198 preprocess: False reprocess_method: FusionRAG
+real answer: 918
+answer: Answer: The kingdom that Heptarchy was part of was abolished in 825.
+storage_time: 0.742621211335063
+select_time: 0.6318154074251652
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: $47,807
+prompt eval count:    13804 token(s)
+prompt eval duration: 162.4355417629704s
+prompt eval rate:     84.98140154660923 tokens/s
+eval count:           14 token(s)
+eval duration:        4.031317710876465s
+eval rate:            3.4728098860152117 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: What is the average salary of a working person with the same nationality as the producer of The Wild Women of Chastity Gulch?
+batch: 199 preprocess: False reprocess_method: FusionRAG
+real answer: $59,039
+answer: Answer: $47,807
+storage_time: 0.7746596187353134
+select_time: 0.693267640657723
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Santa Clara County
+prompt eval count:    13868 token(s)
+prompt eval duration: 163.35427198000252s
+prompt eval rate:     84.89523923621472 tokens/s
+eval count:           8 token(s)
+eval duration:        2.171257495880127s
+eval rate:            3.6845008089458187 tokens/s
+Qwen3-32B musique-v2 0.8 10
+question: The city that Psycho Donuts is located in is in which county?
+batch: 200 preprocess: False reprocess_method: FusionRAG
+real answer: Santa Clara County
+answer: Santa Clara County
+
+--- Quality Metrics ---
+EM Score: 0.1650
+ROUGE Score: 0.2484

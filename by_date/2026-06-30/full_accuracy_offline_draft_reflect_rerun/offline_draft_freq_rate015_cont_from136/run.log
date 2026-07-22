@@ -1,0 +1,627 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_freq_rate015_cont_from136/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 138.45it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+  Main question 101: 16 unique documents, 2 sub-questions
+  Main question 102: 16 unique documents, 2 sub-questions
+  Main question 103: 19 unique documents, 2 sub-questions
+  Main question 104: 17 unique documents, 2 sub-questions
+  Main question 105: 10 unique documents, 1 sub-questions
+  Main question 106: 13 unique documents, 2 sub-questions
+  Main question 107: 30 unique documents, 4 sub-questions
+  Main question 108: 17 unique documents, 4 sub-questions
+  Main question 109: 13 unique documents, 4 sub-questions
+  Main question 110: 10 unique documents, 1 sub-questions
+  Main question 111: 28 unique documents, 4 sub-questions
+  Main question 112: 15 unique documents, 4 sub-questions
+  Main question 113: 19 unique documents, 2 sub-questions
+  Main question 114: 17 unique documents, 2 sub-questions
+  Main question 115: 20 unique documents, 2 sub-questions
+  Main question 116: 21 unique documents, 3 sub-questions
+  Main question 117: 25 unique documents, 4 sub-questions
+  Main question 118: 19 unique documents, 2 sub-questions
+  Main question 119: 10 unique documents, 1 sub-questions
+  Main question 120: 19 unique documents, 2 sub-questions
+  Main question 121: 10 unique documents, 1 sub-questions
+  Main question 122: 19 unique documents, 2 sub-questions
+  Main question 123: 14 unique documents, 4 sub-questions
+  Main question 124: 18 unique documents, 4 sub-questions
+  Main question 125: 14 unique documents, 4 sub-questions
+  Main question 126: 10 unique documents, 1 sub-questions
+  Main question 127: 14 unique documents, 2 sub-questions
+  Main question 128: 10 unique documents, 1 sub-questions
+  Main question 129: 10 unique documents, 1 sub-questions
+  Main question 130: 10 unique documents, 1 sub-questions
+  Main question 131: 15 unique documents, 2 sub-questions
+  Main question 132: 19 unique documents, 2 sub-questions
+  Main question 133: 14 unique documents, 4 sub-questions
+  Main question 134: 13 unique documents, 2 sub-questions
+  Main question 135: 12 unique documents, 3 sub-questions
+  Main question 136: 19 unique documents, 2 sub-questions
+  Main question 137: 17 unique documents, 2 sub-questions
+  Main question 138: 16 unique documents, 2 sub-questions
+  Main question 139: 18 unique documents, 2 sub-questions
+  Main question 140: 10 unique documents, 1 sub-questions
+  Main question 141: 30 unique documents, 4 sub-questions
+  Main question 142: 17 unique documents, 2 sub-questions
+  Main question 143: 14 unique documents, 2 sub-questions
+  Main question 144: 18 unique documents, 2 sub-questions
+  Main question 145: 16 unique documents, 2 sub-questions
+  Main question 146: 18 unique documents, 2 sub-questions
+  Main question 147: 19 unique documents, 2 sub-questions
+  Main question 148: 20 unique documents, 2 sub-questions
+  Main question 149: 23 unique documents, 4 sub-questions
+  Main question 150: 10 unique documents, 1 sub-questions
+  Main question 151: 18 unique documents, 2 sub-questions
+  Main question 152: 16 unique documents, 2 sub-questions
+  Main question 153: 15 unique documents, 2 sub-questions
+  Main question 154: 10 unique documents, 1 sub-questions
+  Main question 155: 10 unique documents, 1 sub-questions
+  Main question 156: 19 unique documents, 2 sub-questions
+  Main question 157: 17 unique documents, 2 sub-questions
+  Main question 158: 20 unique documents, 4 sub-questions
+  Main question 159: 18 unique documents, 2 sub-questions
+  Main question 160: 18 unique documents, 4 sub-questions
+  Main question 161: 19 unique documents, 2 sub-questions
+  Main question 162: 12 unique documents, 2 sub-questions
+  Main question 163: 10 unique documents, 1 sub-questions
+  Main question 164: 18 unique documents, 2 sub-questions
+  Main question 165: 18 unique documents, 2 sub-questions
+  Main question 166: 10 unique documents, 1 sub-questions
+  Main question 167: 14 unique documents, 2 sub-questions
+  Main question 168: 19 unique documents, 2 sub-questions
+  Main question 169: 29 unique documents, 4 sub-questions
+  Main question 170: 19 unique documents, 2 sub-questions
+  Main question 171: 21 unique documents, 3 sub-questions
+  Main question 172: 16 unique documents, 4 sub-questions
+  Main question 173: 18 unique documents, 4 sub-questions
+  Main question 174: 13 unique documents, 2 sub-questions
+  Main question 175: 19 unique documents, 2 sub-questions
+  Main question 176: 29 unique documents, 4 sub-questions
+  Main question 177: 10 unique documents, 1 sub-questions
+  Main question 178: 25 unique documents, 4 sub-questions
+  Main question 179: 18 unique documents, 2 sub-questions
+  Main question 180: 17 unique documents, 2 sub-questions
+  Main question 181: 17 unique documents, 2 sub-questions
+  Main question 182: 16 unique documents, 3 sub-questions
+  Main question 183: 22 unique documents, 4 sub-questions
+  Main question 184: 19 unique documents, 2 sub-questions
+  Main question 185: 21 unique documents, 4 sub-questions
+  Main question 186: 20 unique documents, 4 sub-questions
+  Main question 187: 13 unique documents, 2 sub-questions
+  Main question 188: 20 unique documents, 3 sub-questions
+  Main question 189: 18 unique documents, 2 sub-questions
+  Main question 190: 20 unique documents, 4 sub-questions
+  Main question 191: 23 unique documents, 4 sub-questions
+  Main question 192: 19 unique documents, 2 sub-questions
+  Main question 193: 26 unique documents, 3 sub-questions
+  Main question 194: 21 unique documents, 4 sub-questions
+  Main question 195: 17 unique documents, 4 sub-questions
+  Main question 196: 26 unique documents, 4 sub-questions
+  Main question 197: 16 unique documents, 4 sub-questions
+  Main question 198: 21 unique documents, 4 sub-questions
+  Main question 199: 25 unique documents, 4 sub-questions
+  Main question 200: 16 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 3408 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:12,  1.05it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:09,  1.22it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.39it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:07,  1.40it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:06,  1.48it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.46it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.53it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.51it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:06<00:03,  1.55it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.47it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.42it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.38it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:09<00:00,  1.38it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.71it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.48it/s]
+Corpus embeddings shape: (3408, 1024)
+FAISS index built with 3408 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:08,  1.45it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:08,  1.42it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.52it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:06,  1.49it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:05,  1.55it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:03<00:05,  1.51it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.57it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.53it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:05<00:03,  1.57it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.48it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.43it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.39it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:08<00:00,  1.39it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.74it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.54it/s]
+Context rank computed: (3408, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_freq_rate015_cont_from136/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_freq_rate015_cont_from136/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 137/200: In which state is Vera Barbosa's place of birth located?
+================================================================================
+
+Sub-question 1/2
+Question: What is Vera Barbosa's place of birth?
+Ground Truth: Vila Franca de Xira, Portugal
+storage_time: 0.05309249693527818
+ Vera Barbosa was born in Vila Franca de Xira, Portugal.
+prompt eval count:    137 token(s)
+prompt eval duration: 0.6907446519471705s
+prompt eval rate:     198.33667855958734 tokens/s
+eval count:           17 token(s)
+eval duration:        1.5897595882415771s
+eval rate:            10.693440772892957 tokens/s
+Predicted: Vera Barbosa was born in Vila Franca de Xira, Portugal.
+F1: 0.6364, EM: 0.0000
+
+Sub-question 2/2
+Question: In which state is Vila Franca de Xira, Portugal located?
+Ground Truth: Vila Franca de Xira is located in the Lisbon District of Portugal.
+storage_time: 0.09112834371626377
+ Lisbon District
+prompt eval count:    230 token(s)
+prompt eval duration: 0.1873178333044052s
+prompt eval rate:     1227.8596006725807 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1976466178894043s
+eval rate:            15.178605290775522 tokens/s
+Predicted: Lisbon District
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is Vera Barbosa's place of birth?...
+Sub-Q 2: ✓ CORRECT - In which state is Vila Franca de Xira, Portugal lo...
+
+✓ Main question 137: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 138/200: Who was given India's highest civilian honor before he became President of India?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 139/200: What company succeeded the owner of Empire Sports Network?
+================================================================================
+
+Sub-question 1/2
+Question: Who owned Empire Sports Network?
+Ground Truth: Empire Sports Network was owned by the Adelphia Communications Corporation.
+storage_time: 0.029922251123934984
+ Adelphia Communications Corporation
+prompt eval count:    252 token(s)
+prompt eval duration: 0.12790727242827415s
+prompt eval rate:     1970.1772636994713 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4950122833251953s
+eval rate:            12.120911343241024 tokens/s
+Predicted: Adelphia Communications Corporation
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: What company succeeded Adelphia Communications Corporation?
+Ground Truth: Time Warner Cable acquired assets from the bankrupt Adelphia, and a new company, Windjammer Communications, was formed from the sale of some of these systems.
+storage_time: 0.030216030310839415
+ Windjammer Communications
+prompt eval count:    311 token(s)
+prompt eval duration: 0.14465518621727824s
+prompt eval rate:     2149.940200089783 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3961195945739746s
+eval rate:            12.622450564147135 tokens/s
+Predicted: Windjammer Communications
+F1: 0.2143, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who owned Empire Sports Network?...
+Sub-Q 2: ✓ CORRECT - What company succeeded Adelphia Communications Cor...
+
+✓ Main question 139: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 140/200: Who was honored with the award Dhondo Keshav Karve received prior to becoming president of India?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 141/200: Who is the spouse of the Green performer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 142/200: What is the mouth of watercourse for the body of water where Bartram's Covered Bridge is located?
+================================================================================
+
+Sub-question 1/2
+Question: What body of water is Bartram's Covered Bridge located on?
+Ground Truth: Crum Creek
+storage_time: 0.020733254961669445
+ According to the reference material, Bartram's Covered Bridge is a historic covered bridge that uses a Burr Truss design and is located on Green Creek. However, the specific body of water it spans is not explicitly mentioned in the provided documents. Given the context and the format of the other answers, a more precise answer based on the available information would be that Bartram's Covered Bridge is located on Green Creek, which is a tributary of the Delaware River. Therefore, the body of water it is located on can be inferred to be Green Creek.
+prompt eval count:    165 token(s)
+prompt eval duration: 0.11525920126587152s
+prompt eval rate:     1431.5559902188636 tokens/s
+eval count:           112 token(s)
+eval duration:        10.983535766601562s
+eval rate:            10.19708064688664 tokens/s
+Predicted: According to the reference material, Bartram's Covered Bridge is a historic covered bridge that uses a Burr Truss design and is located on Green Creek. However, the specific body of water it spans is not explicitly mentioned in the provided documents. Given the context and the format of the other answers, a more precise answer based on the available information would be that Bartram's Covered Bridge is located on Green Creek, which is a tributary of the Delaware River. Therefore, the body of water it is located on can be inferred to be Green Creek.
+F1: 0.0217, EM: 0.0000
+
+Sub-question 2/2
+Question: What watercourse does Crum Creek flow into?
+Ground Truth: Crum Creek flows into the Delaware River.
+storage_time: 0.02613632194697857
+ Delaware River
+prompt eval count:    236 token(s)
+prompt eval duration: 0.12189990701153874s
+prompt eval rate:     1936.0146023545435 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19777750968933105s
+eval rate:            15.168559886876928 tokens/s
+Predicted: Delaware River
+F1: 0.4444, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What body of water is Bartram's Covered Bridge loc...
+Sub-Q 2: ✓ CORRECT - What watercourse does Crum Creek flow into?...
+
+✗ Main question 142: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 143/200: What is the ruler of the underworld in ancient Egypt a part of?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the ruler of the underworld in ancient Egyptian mythology?
+Ground Truth: Osiris is the ruler of the underworld in ancient Egyptian mythology.
+storage_time: 0.025425150990486145
+ Osiris
+prompt eval count:    290 token(s)
+prompt eval duration: 0.13886166596785188s
+prompt eval rate:     2088.4093387381545 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19776439666748047s
+eval rate:            15.169565657685983 tokens/s
+Predicted: Osiris
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: What broader mythological system, pantheon, or conceptual framework is Osiris a part of in ancient Egyptian religion?
+Ground Truth: Osiris is a part of the ancient Egyptian mythological system and pantheon of deities.
+storage_time: 0.03248260309919715
+ Egyptian mythology
+prompt eval count:    382 token(s)
+prompt eval duration: 0.15121661918237805s
+prompt eval rate:     2526.1773610960095 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19779229164123535s
+eval rate:            15.167426268772578 tokens/s
+Predicted: Egyptian mythology
+F1: 0.0952, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the ruler of the underworld in ancient Egyp...
+Sub-Q 2: ✓ CORRECT - What broader mythological system, pantheon, or con...
+
+✓ Main question 143: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 144/200: What other county does the county where Imperial is located share a border with?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Imperial located?
+Ground Truth: Imperial is located in Pecos County, Texas.
+storage_time: 0.022710130084306
+ Pecos County
+prompt eval count:    211 token(s)
+prompt eval duration: 0.11826063273474574s
+prompt eval rate:     1784.1947495179165 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39603376388549805s
+eval rate:            12.625186173382955 tokens/s
+Predicted: Pecos County
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: What other counties share a border with Pecos County, Texas?
+Ground Truth: Crockett County shares a border with Pecos County.
+storage_time: 0.023085113149136305
+ Crockett County and Pecos County share a border with Pecos County, Texas.
+prompt eval count:    183 token(s)
+prompt eval duration: 0.1183708761818707s
+prompt eval rate:     1545.9883875390938 tokens/s
+eval count:           20 token(s)
+eval duration:        1.8766143321990967s
+eval rate:            10.657490810359072 tokens/s
+Predicted: Crockett County and Pecos County share a border with Pecos County, Texas.
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which county is Imperial located?...
+Sub-Q 2: ✗ INCORRECT - What other counties share a border with Pecos Coun...
+
+✗ Main question 144: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 145/200: In which state is Póvoa de Santa Iria's municipality located?
+================================================================================
+
+Sub-question 1/2
+Question: What is the municipality of Póvoa de Santa Iria?
+Ground Truth: Vila Franca de Xira
+storage_time: 0.02098085405305028
+ Póvoa de Santa Iria e Forte da Casa is a civil parish in the municipality of Vila Franca de Xira, Portugal.
+prompt eval count:    174 token(s)
+prompt eval duration: 0.11582186026498675s
+prompt eval rate:     1502.307074000612 tokens/s
+eval count:           32 token(s)
+eval duration:        3.065931558609009s
+eval rate:            10.437284521288587 tokens/s
+Predicted: Póvoa de Santa Iria e Forte da Casa is a civil parish in the municipality of Vila Franca de Xira, Portugal.
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: In which district is the municipality of Vila Franca de Xira located?
+Ground Truth: Lisbon District
+storage_time: 0.023849450051784515
+ Lisbon District
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11930140107870102s
+prompt eval rate:     1693.1905088586861 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19786453247070312s
+eval rate:            15.161888603983112 tokens/s
+Predicted: Lisbon District
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the municipality of Póvoa de Santa Iria?...
+Sub-Q 2: ✓ CORRECT - In which district is the municipality of Vila Fran...
+
+✓ Main question 145: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 146/200: What is a notable work written by the author of The Timothy files?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Timothy Files?
+Ground Truth: Lawrence Sanders
+storage_time: 0.021090910769999027
+ Lawrence Sanders
+prompt eval count:    172 token(s)
+prompt eval duration: 0.11583986971527338s
+prompt eval rate:     1484.808299791466 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19731760025024414s
+eval rate:            15.203914887446986 tokens/s
+Predicted: Lawrence Sanders
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What is a notable work written by Lawrence Sanders?
+Ground Truth: A notable work written by Lawrence Sanders is 'The Anderson Tapes', his debut crime fiction novel published in 1970 that won the Edgar Award for best first mystery novel. Another notable work is 'The Timothy Files', a 1987 bestselling fiction collection.
+storage_time: 0.025047698989510536
+ The Anderson Tapes
+prompt eval count:    229 token(s)
+prompt eval duration: 0.12046859180554748s
+prompt eval rate:     1900.9104079977694 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3954453468322754s
+eval rate:            12.643972270890584 tokens/s
+Predicted: The Anderson Tapes
+F1: 0.0784, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Timothy Files?...
+Sub-Q 2: ✓ CORRECT - What is a notable work written by Lawrence Sanders...
+
+✓ Main question 146: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 147/200: In what county is William W. Blair's birthplace located?
+================================================================================
+
+Sub-question 1/2
+Question: Where was William W. Blair born?
+Ground Truth: Holley, New York
+storage_time: 0.021648678928613663
+ Holley, New York
+prompt eval count:    169 token(s)
+prompt eval duration: 0.11598869133740664s
+prompt eval rate:     1457.038596188533 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4948303699493408s
+eval rate:            12.125367326613889 tokens/s
+Predicted: Holley, New York
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: In what county is Holley, New York located?
+Ground Truth: Holley, New York is located in Orleans County.
+storage_time: 0.027188445907086134
+ Orleans County
+prompt eval count:    280 token(s)
+prompt eval duration: 0.13978599710389972s
+prompt eval rate:     2003.061864572046 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1980571746826172s
+eval rate:            15.147141247508161 tokens/s
+Predicted: Orleans County
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was William W. Blair born?...
+Sub-Q 2: ✓ CORRECT - In what county is Holley, New York located?...
+
+✓ Main question 147: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 148/200: How old was Mary when engaged to the person from whom São José dos Campos takes it's name?
+================================================================================
+
+Sub-question 1/2
+Question: Who is São José dos Campos named after?
+Ground Truth: São José dos Campos é nomeada em homenagem a São José (Saint Joseph).
+storage_time: 0.02080744644626975
+ São José dos Campos is named after São José (Saint Joseph).
+prompt eval count:    157 token(s)
+prompt eval duration: 0.11502905655652285s
+prompt eval rate:     1364.8725348177877 tokens/s
+eval count:           14 token(s)
+eval duration:        1.2875771522521973s
+eval rate:            10.873134845171457 tokens/s
+Predicted: São José dos Campos is named after São José (Saint Joseph).
+F1: 0.6667, EM: 0.0000
+
+Sub-question 2/2
+Question: How old was Mary when she was engaged to Joseph according to historical or biblical records?
+Ground Truth: According to apocryphal accounts, Mary was 12–14 years old when she was engaged to Joseph.
+storage_time: 0.02951002772897482
+12–14 years old
+prompt eval count:    329 token(s)
+prompt eval duration: 0.1476216483861208s
+prompt eval rate:     2228.6704124822127 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6930525302886963s
+eval rate:            11.543136559457533 tokens/s
+Predicted: 12–14 years old
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is São José dos Campos named after?...
+Sub-Q 2: ✓ CORRECT - How old was Mary when she was engaged to Joseph ac...
+
+✓ Main question 148: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 149/200: What is the performer of Heartbeat named after?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 150/200: What was the old show that was named after a character that Walt Disney created in 1928 called?
+================================================================================
+
+Sub-question 1/1
+Question: What is the name of the old show named after Mickey Mouse?
+Ground Truth: The Mickey Mouse Club
+storage_time: 0.026816744823008776
+ The Mickey Mouse ClubTerminated

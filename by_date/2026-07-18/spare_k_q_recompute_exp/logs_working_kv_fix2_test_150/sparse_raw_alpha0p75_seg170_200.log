@@ -1,0 +1,657 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_working_kv_raw rate=0.15 start=170 end=200
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_170_200
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:00<00:00, 138.79it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 143.25it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
+storage_time: 0.7932928907684982
+select_time: 1.2664317768067122
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Sebastian Cabot
+prompt eval count:    2313 token(s)
+prompt eval duration: 29.200703833717853s
+prompt eval rate:     79.21041948753286 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4969332218170166s
+eval rate:            3.6044215845911594 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the son of the Italian navigator who explored the eastern coast of the continent Ulises Solís' birthplace is located in for England?
+batch: 171 preprocess: False reprocess_method: FusionRAG
+real answer: Sebastian Cabot
+answer: Sebastian Cabot
+storage_time: 0.6422450421378016
+select_time: 0.6000044862739742
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Colin Firth
+prompt eval count:    2592 token(s)
+prompt eval duration: 31.473743981216103s
+prompt eval rate:     82.35435865357918 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4860310554504395s
+eval rate:            3.620228307393089 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who played the monarch at the end of WW2 in The King's Speech?
+batch: 172 preprocess: False reprocess_method: FusionRAG
+real answer: Colin Firth
+answer: Colin Firth
+storage_time: 0.6040931208990514
+select_time: 0.584743722807616
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Trey Parker, who voices Stan on South Park, was born in Colorado.
+prompt eval count:    2440 token(s)
+prompt eval duration: 29.658417814411223s
+prompt eval rate:     82.27006630186415 tokens/s
+eval count:           21 token(s)
+eval duration:        6.217238187789917s
+eval rate:            3.3777055608456608 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the place of birth of who does the voice of stan on the series that Insecurity is part of?
+batch: 173 preprocess: False reprocess_method: FusionRAG
+real answer: Denver
+answer: Trey Parker, who voices Stan on South Park, was born in Colorado.
+storage_time: 1.0728495931252837
+select_time: 0.7397948820143938
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Thailand
+prompt eval count:    2652 token(s)
+prompt eval duration: 32.76089347386733s
+prompt eval rate:     80.95017317264086 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8637351989746094s
+eval rate:            3.7558983721782275 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where did they film The Beach in the country where Pao Sarasin was born?
+batch: 174 preprocess: False reprocess_method: FusionRAG
+real answer: Ko Phi Phi Leh
+answer: Thailand
+storage_time: 0.6375153409317136
+select_time: 0.5972049771808088
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The competition that the 1965 Federation Cup is part of is named after the International Tennis Federation (ITF).
+prompt eval count:    2452 token(s)
+prompt eval duration: 29.877109225373715s
+prompt eval rate:     82.06951956106889 tokens/s
+eval count:           30 token(s)
+eval duration:        9.01547908782959s
+eval rate:            3.3276101810827092 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the competition that the 1965 Federation Cup is part of named after?
+batch: 175 preprocess: False reprocess_method: FusionRAG
+real answer: International Tennis Federation
+answer: The competition that the 1965 Federation Cup is part of is named after the International Tennis Federation (ITF).
+storage_time: 0.6787836570292711
+select_time: 0.6088706338778138
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Xanana Gusmão
+prompt eval count:    2625 token(s)
+prompt eval duration: 31.82284073671326s
+prompt eval rate:     82.48792185832735 tokens/s
+eval count:           11 token(s)
+eval duration:        3.1078543663024902s
+eval rate:            3.5394193882665865 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Kotamadya is located?
+batch: 176 preprocess: False reprocess_method: FusionRAG
+real answer: Francisco Guterres
+answer: Xanana Gusmão
+storage_time: 0.7764892149716616
+select_time: 0.6766472361050546
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Colin Firth
+prompt eval count:    2612 token(s)
+prompt eval duration: 31.97938149375841s
+prompt eval rate:     81.67762720832478 tokens/s
+eval count:           9 token(s)
+eval duration:        2.490417718887329s
+eval rate:            3.613851576682898 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In the King's Speech, who played the person who was the King of England in 1950?
+batch: 177 preprocess: False reprocess_method: FusionRAG
+real answer: Colin Firth
+answer: Colin Firth
+storage_time: 0.7053513443097472
+select_time: 0.6214840719476342
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Deptford Creek
+prompt eval count:    2593 token(s)
+prompt eval duration: 31.700879226904362s
+prompt eval rate:     81.79583857722581 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1764111518859863s
+eval rate:            3.6757760559476718 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the body of water by the area where Athlete was formed?
+batch: 178 preprocess: False reprocess_method: FusionRAG
+real answer: River Thames
+answer: Deptford Creek
+storage_time: 0.6869882307946682
+select_time: 0.6119668581523001
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The author of The Happy Journey to Trenton and Camden, Thornton Wilder, received the Pulitzer Prize for Drama.
+prompt eval count:    2630 token(s)
+prompt eval duration: 32.17225840315223s
+prompt eval rate:     81.74744735179404 tokens/s
+eval count:           28 token(s)
+eval duration:        8.395732164382935s
+eval rate:            3.335027779802684 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What award did the author of The Happy Journey to Trenton and Camden receive?
+batch: 179 preprocess: False reprocess_method: FusionRAG
+real answer: Pulitzer Prize for Drama
+answer: The author of The Happy Journey to Trenton and Camden, Thornton Wilder, received the Pulitzer Prize for Drama.
+storage_time: 0.7034721709787846
+select_time: 0.6096753119491041
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Massachusetts Institute of Technology
+prompt eval count:    2604 token(s)
+prompt eval duration: 31.873733539599925s
+prompt eval rate:     81.69736365414458 tokens/s
+eval count:           10 token(s)
+eval duration:        2.800529956817627s
+eval rate:            3.57075273401591 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where was the designer of the Lap Engine educated?
+batch: 180 preprocess: False reprocess_method: FusionRAG
+real answer: University of Glasgow
+answer: Massachusetts Institute of Technology
+storage_time: 0.6964618461206555
+select_time: 0.6496450868435204
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Louis Chedid
+prompt eval count:    2594 token(s)
+prompt eval duration: 31.80083284014836s
+prompt eval rate:     81.5701907254797 tokens/s
+eval count:           9 token(s)
+eval duration:        2.489610433578491s
+eval rate:            3.615023410334793 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the father of the Labo M performer?
+batch: 181 preprocess: False reprocess_method: FusionRAG
+real answer: Louis Chedid
+answer: Louis Chedid
+storage_time: 0.6915099928155541
+select_time: 0.6072631892748177
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Roncalli left the place of death of the maker of The Gozzi Altarpiece (Pope Pius XII) because he had to return to his post as Apostolic Nuncio to France. At the 
+prompt eval count:    2555 token(s)
+prompt eval duration: 31.19666954316199s
+prompt eval rate:     81.89976806546747 tokens/s
+eval count:           50 token(s)
+eval duration:        15.241886615753174s
+eval rate:            3.2804337980262073 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Why did Roncalli leave the place of death of the maker of The Gozzi Altarpiece?
+batch: 182 preprocess: False reprocess_method: FusionRAG
+real answer: for the conclave in Rome
+answer: Roncalli left the place of death of the maker of The Gozzi Altarpiece (Pope Pius XII) because he had to return to his post as Apostolic Nuncio to France. At the time
+storage_time: 0.7166649322025478
+select_time: 0.6361324330791831
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The award named after the person who argued that colonies were redundant is given out by the **Royal Swedish Academy of Sciences**.
+prompt eval count:    2669 token(s)
+prompt eval duration: 32.657187833916396s
+prompt eval rate:     81.72779645245778 tokens/s
+eval count:           30 token(s)
+eval duration:        9.020760536193848s
+eval rate:            3.325661941654642 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who gives out the award named after the person who argued that colonies were redundant?
+batch: 183 preprocess: False reprocess_method: FusionRAG
+real answer: University of Cambridge
+answer: The award named after the person who argued that colonies were redundant is given out by the **Royal Swedish Academy of Sciences**.
+storage_time: 0.682902661152184
+select_time: 0.6114592617377639
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Hans Modrow
+prompt eval count:    2579 token(s)
+prompt eval duration: 31.495934835635126s
+prompt eval rate:     81.88358318172757 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4897572994232178s
+eval rate:            3.614810167274119 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In 1990, who became the president of the country that Germany invaded?
+batch: 184 preprocess: False reprocess_method: FusionRAG
+real answer: Lech Wałęsa
+answer: Hans Modrow
+storage_time: 0.7003101701848209
+select_time: 0.6217220961116254
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The mouth of the watercourse of the body of water by Rotterdam Centrum is the Saint-Maurice River.
+prompt eval count:    2571 token(s)
+prompt eval duration: 31.404431202448905s
+prompt eval rate:     81.86742767051022 tokens/s
+eval count:           28 token(s)
+eval duration:        8.398460626602173s
+eval rate:            3.333944307759191 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the name for the mouth of the watercourse of the body of water by Rotterdam Centrum?
+batch: 185 preprocess: False reprocess_method: FusionRAG
+real answer: Het Scheur
+answer: The mouth of the watercourse of the body of water by Rotterdam Centrum is the Saint-Maurice River.
+storage_time: 0.7174220136366785
+select_time: 0.6302299317903817
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The question seems to be based on a misunderstanding or a mix-up of song titles and artists. There is no known song titled "Home Alone Tonight" performed by the singer of "I Don't Want This Night to End" 
+prompt eval count:    2609 token(s)
+prompt eval duration: 31.871859044302255s
+prompt eval rate:     81.85904676515605 tokens/s
+eval count:           50 token(s)
+eval duration:        15.17245626449585s
+eval rate:            3.295445320676388 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who sings Home Alone Tonight with the singer of "I Don't Want This Night to End"?
+batch: 186 preprocess: False reprocess_method: FusionRAG
+real answer: Karen Fairchild
+answer: The question seems to be based on a misunderstanding or a mix-up of song titles and artists. There is no known song titled "Home Alone Tonight" performed by the singer of "I Don't Want This Night to End"
+storage_time: 0.6807933282107115
+select_time: 0.6079650628380477
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Purdue University is part of the University of Purdue system.
+prompt eval count:    2592 token(s)
+prompt eval duration: 31.651270269881934s
+prompt eval rate:     81.89244785118284 tokens/s
+eval count:           18 token(s)
+eval duration:        5.289135932922363s
+eval rate:            3.4032023809330623 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What company is the school where Lawrence Landweber was educated a part of?
+batch: 187 preprocess: False reprocess_method: FusionRAG
+real answer: City University of New York
+answer: Purdue University is part of the University of Purdue system.
+storage_time: 0.6785871549509466
+select_time: 0.6107031321153045
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Appleton
+prompt eval count:    2605 token(s)
+prompt eval duration: 31.71339081507176s
+prompt eval rate:     82.14195748383916 tokens/s
+eval count:           7 token(s)
+eval duration:        1.866635799407959s
+eval rate:            3.7500620111433576 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the capital of the county that shares a border with the county where WAPL is licensed to broadcast?
+batch: 188 preprocess: False reprocess_method: FusionRAG
+real answer: Green Bay
+answer: Appleton
+storage_time: 0.6903975899331272
+select_time: 0.6247521722689271
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+James Meredith
+prompt eval count:    2653 token(s)
+prompt eval duration: 32.42575892060995s
+prompt eval rate:     81.81766867802567 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8667898178100586s
+eval rate:            3.749752614470406 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who was the first black student admitted to where Robert Khayat was educated?
+batch: 189 preprocess: False reprocess_method: FusionRAG
+real answer: James Howard Meredith
+answer: James Meredith
+storage_time: 0.6490693250671029
+select_time: 0.5970640941523015
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Nia Long
+prompt eval count:    2554 token(s)
+prompt eval duration: 31.156649732030928s
+prompt eval rate:     81.97287006036252 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1779963970184326s
+eval rate:            3.6731006584545307 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who did the original voice of the character played by mila kunis in the cleveland show?
+batch: 190 preprocess: False reprocess_method: FusionRAG
+real answer: Lacey Chabert
+answer: Nia Long
+storage_time: 0.6010939036495984
+select_time: 0.5683827176690102
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Jive Records
+prompt eval count:    2145 token(s)
+prompt eval duration: 26.521292727440596s
+prompt eval rate:     80.87841049243607 tokens/s
+eval count:           8 token(s)
+eval duration:        2.177544116973877s
+eval rate:            3.673863568430275 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the record label of the co-writer and recording artist of Permission to Fly?
+batch: 191 preprocess: False reprocess_method: FusionRAG
+real answer: Hollywood Records
+answer: Jive Records
+storage_time: 0.3832854749634862
+select_time: 0.4703760161064565
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Blue Note
+prompt eval count:    1274 token(s)
+prompt eval duration: 16.325473291799426s
+prompt eval rate:     78.03755378044401 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8662073612213135s
+eval rate:            3.7509229389272942 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What record label is the performer who released All Your Faded Things on?
+batch: 192 preprocess: False reprocess_method: FusionRAG
+real answer: Kill Rock Stars
+answer: Blue Note
+storage_time: 0.6591621981933713
+select_time: 0.5978970490396023
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Vanity Fair
+prompt eval count:    2575 token(s)
+prompt eval duration: 31.442571520339698s
+prompt eval rate:     81.89533729244357 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1779723167419434s
+eval rate:            3.673141269291844 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is another notable work made by the author of Miss Sara Sampson?
+batch: 193 preprocess: False reprocess_method: FusionRAG
+real answer: Emilia Galotti
+answer: Vanity Fair
+storage_time: 0.6218095179647207
+select_time: 0.5865599219687283
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2010
+prompt eval count:    2430 token(s)
+prompt eval duration: 29.7016992229037s
+prompt eval rate:     81.81350103115206 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4884400367736816s
+eval rate:            3.6167236770827325 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the majority party in the body which determines rules of the US House and US Senate gain control of the House?
+batch: 194 preprocess: False reprocess_method: FusionRAG
+real answer: the 2010 election
+answer: 2010
+storage_time: 0.6969035700894892
+select_time: 0.6094372463412583
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1999
+prompt eval count:    2548 token(s)
+prompt eval duration: 31.232986859511584s
+prompt eval rate:     81.58041404945044 tokens/s
+eval count:           9 token(s)
+eval duration:        2.488621950149536s
+eval rate:            3.616459301686706 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In what year did Margaret Knox's spouse pass away?
+batch: 195 preprocess: False reprocess_method: FusionRAG
+real answer: 1572
+answer: 1999
+storage_time: 0.6787471533752978
+select_time: 0.6076337369158864
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Moscow
+prompt eval count:    2520 token(s)
+prompt eval duration: 30.880002443213016s
+prompt eval rate:     81.60621115993014 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8583238124847412s
+eval rate:            3.7668354422259642 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: The city where Dmitry Borisovich was born is located where in Russia?
+batch: 196 preprocess: False reprocess_method: FusionRAG
+real answer: Yaroslavl Oblast
+answer: Moscow
+storage_time: 0.7061761422082782
+select_time: 0.627438792027533
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The league that includes the operating group of Al Janoub Stadium is the Qatar Stars League.
+prompt eval count:    2618 token(s)
+prompt eval duration: 32.1445243563503s
+prompt eval rate:     81.44466444664631 tokens/s
+eval count:           23 token(s)
+eval duration:        6.845769882202148s
+eval rate:            3.3597389914896403 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What league includes the operating group of Al Janoub Stadium?
+batch: 197 preprocess: False reprocess_method: FusionRAG
+real answer: Qatar Stars League
+answer: The league that includes the operating group of Al Janoub Stadium is the Qatar Stars League.
+storage_time: 0.6915099089965224
+select_time: 0.6193019663915038
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: The kingdom of Mercia, which was part of the Heptarchy, effectively lost its political independence and was abolished in the late 9th century, with its final dissolution occurring in 879 when the 
+prompt eval count:    2560 token(s)
+prompt eval duration: 31.358553639613092s
+prompt eval rate:     81.63641822963828 tokens/s
+eval count:           50 token(s)
+eval duration:        15.24415636062622s
+eval rate:            3.279945365106845 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When was the kingdom that Heptarchy was part of abolished?
+batch: 198 preprocess: False reprocess_method: FusionRAG
+real answer: 918
+answer: Answer: The kingdom of Mercia, which was part of the Heptarchy, effectively lost its political independence and was abolished in the late 9th century, with its final dissolution occurring in 879 when the
+storage_time: 0.6900540320202708
+select_time: 0.6169735630974174
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+$47,807
+prompt eval count:    2640 token(s)
+prompt eval duration: 32.15693698404357s
+prompt eval rate:     82.09737144150206 tokens/s
+eval count:           12 token(s)
+eval duration:        3.424678325653076s
+eval rate:            3.5039787270273437 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the average salary of a working person with the same nationality as the producer of The Wild Women of Chastity Gulch?
+batch: 199 preprocess: False reprocess_method: FusionRAG
+real answer: $59,039
+answer: $47,807
+storage_time: 0.714272771961987
+select_time: 0.6231021648272872
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Santa Clara County
+prompt eval count:    2641 token(s)
+prompt eval duration: 32.35224099410698s
+prompt eval rate:     81.63267578530535 tokens/s
+eval count:           8 token(s)
+eval duration:        2.168759822845459s
+eval rate:            3.6887440996134973 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: The city that Psycho Donuts is located in is in which county?
+batch: 200 preprocess: False reprocess_method: FusionRAG
+real answer: Santa Clara County
+answer: Santa Clara County
+
+--- Quality Metrics ---
+EM Score: 0.0300
+ROUGE Score: 0.0462
+[setup-v2] auto GLM/EM/F1: /mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/bin/python /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset/scripts/judge_task_csv.py --csv MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_170_200/csv/reprocess_method_FusionRAG_rate_0.15_revert_rope_True.csv --output MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_170_200/metrics/metrics.csv
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[auto-glm] rows=30 em=0.166667 f1=0.295588 glm=10/30

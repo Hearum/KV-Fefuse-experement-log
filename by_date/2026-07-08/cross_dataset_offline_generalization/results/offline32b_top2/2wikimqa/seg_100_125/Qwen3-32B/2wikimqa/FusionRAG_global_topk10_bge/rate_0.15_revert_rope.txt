@@ -1,0 +1,49 @@
+================================================================================
+CONFIGURATION
+================================================================================
+model_type: qwen3
+model_path: /mnt/qjhs-sh-lab-01/models/Qwen3-32B
+draft_model_path: None
+data_path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/data/2wikimqa_reflect.json
+cache_path: /raid/home/hming/fusionrag-crossdataset-qwen3-cache/worker_gpu4/2wikimqa
+model_name: Qwen3-32B
+dataset_name: 2wikimqa
+max_cache_len: 32768
+rate: 0.15
+topk: 10
+preprocess: True
+preprocess_scope: PreprocessScope.GLOBAL
+reprocess_method: FusionRAG
+use_entropy_selection: False
+entropy_top_k: 4
+draft_layer_selection: entropy
+draft_fixed_layer: 3
+draft_threshold_factor: 0.5
+bge_model_path: /mnt/qjhs-sh-lab-01/models/bge-m3
+revert_rope: True
+device: cuda:0
+use_multi_gpu: False
+openai_base_url: http://36.150.226.221:32355/v1
+openai_model: GLM-5.2
+max_samples: None
+start_sample: 100
+end_sample: 125
+vattention_topk_ratio: 0.5
+epsilon: 0.1
+delta: 0.05
+min_rate: 0.05
+max_rate: 0.5
+layerwise_decay: linear
+layerwise_final_rate: 0.05
+use_similarity_rerank: False
+rerank_multiplier: 2.0
+long_decode: False
+long_decode_max_tokens: 1000
+
+================================================================================
+RESULTS
+================================================================================
+Main Questions Accuracy: 16/25 (0.6400)
+Sub Questions Accuracy: 16/25 (0.6400)
+Average F1 Score: 0.3299
+Average EM Score: 0.0400

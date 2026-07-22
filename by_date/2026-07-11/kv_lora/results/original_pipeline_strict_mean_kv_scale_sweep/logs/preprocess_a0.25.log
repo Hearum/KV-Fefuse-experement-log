@@ -1,0 +1,218 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge_staticv_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25_statick_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_strict_mean_kv_scale_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25_statick_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 233.89it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 5 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 60 documents for FAISS index...
+Corpus embeddings shape: (60, 1024)
+FAISS index built with 60 vectors
+Searching for top-10 similar documents for each document...
+Context rank computed: (60, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_strict_mean_kv_scale_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25_statick_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_strict_mean_kv_scale_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25_statick_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/5: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+storage_time: 0.17423689301358536
+use_sparse_attention: True
+ National Cycle Network
+prompt eval count:    34 token(s)
+prompt eval duration: 0.4868021760485135s
+prompt eval rate:     69.84356618120714 tokens/s
+eval count:           4 token(s)
+eval duration:        0.36379051208496094s
+eval rate:            10.995338985272452 tokens/s
+Predicted: National Cycle Network
+F1: 0.2353, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What network is National Cycle Route 57 part of?...
+
+✓ Main question 1: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 2/5: What district is the headquarter of Julia's House located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Julia's House located?
+Ground Truth: Corfe Mullen, Dorset, England
+storage_time: 0.09223613498033956
+use_sparse_attention: True
+111 S. Charles St. in Carlinville, Illinois.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.21637041901703924s
+prompt eval rate:     147.89452340747184 tokens/s
+eval count:           16 token(s)
+eval duration:        1.7941641807556152s
+eval rate:            8.917801487521379 tokens/s
+Predicted: 111 S. Charles St. in Carlinville, Illinois.
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where is the headquarters of Julia's House located...
+
+✗ Main question 2: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 3/5: What body of water includes the terrain feature where Coffee Swamp is located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Coffee Swamp located?
+Ground Truth: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+storage_time: 0.1015782940085046
+use_sparse_attention: True
+ northern edge of Washington Island, in Door County, Wisconsin
+prompt eval count:    28 token(s)
+prompt eval duration: 0.22469825204461813s
+prompt eval rate:     124.61156126145595 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3158442974090576s
+eval rate:            9.11962002163053 tokens/s
+Predicted: northern edge of Washington Island, in Door County, Wisconsin
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Coffee Swamp located?...
+
+✓ Main question 3: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 4/5: Who is the spouse of the child of Peter Andreas Heiberg?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Peter Andreas Heiberg?
+Ground Truth: Johan Ludvig Heiberg is the child of Peter Andreas Heiberg.
+storage_time: 0.15642963600112125
+use_sparse_attention: True
+ Johan Ludvig Heiberg
+prompt eval count:    33 token(s)
+prompt eval duration: 0.35227573598967865s
+prompt eval rate:     93.67661927464363 tokens/s
+eval count:           7 token(s)
+eval duration:        0.7180266380310059s
+eval rate:            9.748941932287652 tokens/s
+Predicted: Johan Ludvig Heiberg
+F1: 0.5714, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the spouse of Johan Ludvig Heiberg?
+Ground Truth: Johanne Luise Heiberg
+storage_time: 0.0958326420513913
+use_sparse_attention: True
+ Johanne Luise Heiberg
+prompt eval count:    34 token(s)
+prompt eval duration: 0.21971033606678247s
+prompt eval rate:     154.74920574362721 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8376767635345459s
+eval rate:            9.550223126930605 tokens/s
+Predicted: Johanne Luise Heiberg
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the child of Peter Andreas Heiberg?...
+Sub-Q 2: ✓ CORRECT - Who is the spouse of Johan Ludvig Heiberg?...
+
+✓ Main question 4: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 5/5: When was the sibling of Alice de Lusignan, Countess of Surrey crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the siblings of Alice de Lusignan, Countess of Surrey?
+Ground Truth: Alice de Lusignan had a uterine half-brother, King Henry III of England.
+storage_time: 0.07688021200010553
+use_sparse_attention: True
+1. John of Gaunt, 1st Duke of Lancaster, 2. Blanche of Lancaster, 3. Edmund of Langley, 4. Thomas of Woodstock, 5. Joan Beaufort, Countess of Westmorland.
+prompt eval count:    39 token(s)
+prompt eval duration: 0.20229374105110765s
+prompt eval rate:     192.78896023850294 tokens/s
+eval count:           54 token(s)
+eval duration:        6.337733268737793s
+eval rate:            8.520396443057393 tokens/s
+Predicted: 1. John of Gaunt, 1st Duke of Lancaster, 2. Blanche of Lancaster, 3. Edmund of Langley, 4. Thomas of Woodstock, 5. Joan Beaufort, Countess of Westmorland.
+F1: 0.0938, EM: 0.0000
+
+Sub-question 2/2
+Question: When was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral and had a second coronation on 17 May 1220 at Westminster Abbey.
+storage_time: 0.14098191203083843
+use_sparse_attention: True
+1216 and 1220
+prompt eval count:    31 token(s)
+prompt eval duration: 0.26788602001033723s
+prompt eval rate:     115.72085769464105 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1988856792449951s
+eval rate:            9.175186750856271 tokens/s
+Predicted: 1216 and 1220
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who were the siblings of Alice de Lusignan, Counte...
+Sub-Q 2: ✓ CORRECT - When was King Henry III of England crowned?...
+
+✗ Main question 5: Some sub-questions INCORRECT
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 3/5 (60.00%)
+Sub Questions: 5/7 (71.43%)
+Average F1: 0.3286
+Average EM: 0.1429
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_strict_mean_kv_scale_sweep/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25_statick_strict_offline_mean_kv_preprocess_ex0to4_m6_scale0.25

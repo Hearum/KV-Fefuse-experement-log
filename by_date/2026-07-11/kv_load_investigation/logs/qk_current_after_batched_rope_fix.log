@@ -1,0 +1,319 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Checking offline cache directories...
+Raw KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+Preprocess KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/preprocess_kv_cache_global_topk10_bge
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 139.80it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading dataset from ./data/result_reflect.json...
+Limited to first 20 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 303 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/2 [00:00<?, ?it/s]Inference Embeddings:  50%|█████     | 1/2 [00:01<00:01,  1.04s/it]Inference Embeddings: 100%|██████████| 2/2 [00:01<00:00,  1.76it/s]
+Corpus embeddings shape: (303, 1024)
+FAISS index built with 303 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/2 [00:00<?, ?it/s]Inference Embeddings:  50%|█████     | 1/2 [00:00<00:00,  1.43it/s]Inference Embeddings: 100%|██████████| 2/2 [00:00<00:00,  2.51it/s]
+Context rank computed: (303, 10)
+Offline cache check passed for 584 files.
+Profiling 16 sub-questions, warmup=4.
+
+[1/16] example=0 sub=0 full_tokens=2132 warmup=True
+storage_time: 0.056748040951788425
+select_time: 0.3227024630177766
+use_sparse_attention: True
+ 
+prompt eval count:    223 token(s)
+prompt eval duration: 0.8777318969951011s
+prompt eval rate:     254.06391264056413 tokens/s
+eval count:           1 token(s)
+eval duration:        1.0251998901367188e-05s
+eval rate:            97541.95348837209 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.8777s fusion_wall=0.9438s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.3227s recompute_prefill=0.4983s
+
+[2/16] example=1 sub=0 full_tokens=2112 warmup=True
+storage_time: 0.023441153985913843
+select_time: 0.10674919898156077
+use_sparse_attention: True
+ 
+prompt eval count:    219 token(s)
+prompt eval duration: 0.22557536099338904s
+prompt eval rate:     970.8507127532348 tokens/s
+eval count:           1 token(s)
+eval duration:        7.152557373046875e-06s
+eval rate:            139810.13333333333 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2256s fusion_wall=0.3040s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1067s recompute_prefill=0.0954s
+
+[3/16] example=2 sub=0 full_tokens=2254 warmup=True
+storage_time: 0.024413538980297744
+select_time: 0.10935929196421057
+use_sparse_attention: True
+ 
+prompt eval count:    237 token(s)
+prompt eval duration: 0.229226850962732s
+prompt eval rate:     1033.9102901977735 tokens/s
+eval count:           1 token(s)
+eval duration:        7.152557373046875e-06s
+eval rate:            139810.13333333333 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2292s fusion_wall=0.2888s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1094s recompute_prefill=0.0955s
+
+[4/16] example=3 sub=0 full_tokens=1972 warmup=True
+storage_time: 0.0214429660118185
+select_time: 0.10610766097670421
+use_sparse_attention: True
+ 
+prompt eval count:    199 token(s)
+prompt eval duration: 0.2228428059606813s
+prompt eval rate:     893.0061670248034 tokens/s
+eval count:           1 token(s)
+eval duration:        6.67572021484375e-06s
+eval rate:            149796.57142857142 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2228s fusion_wall=0.2827s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1061s recompute_prefill=0.0953s
+
+[5/16] example=3 sub=1 full_tokens=2172 warmup=False
+storage_time: 0.02451669197762385
+select_time: 0.10706388601101935
+use_sparse_attention: True
+ 
+prompt eval count:    229 token(s)
+prompt eval duration: 0.2269257259904407s
+prompt eval rate:     1009.1407618087633 tokens/s
+eval count:           1 token(s)
+eval duration:        7.3909759521484375e-06s
+eval rate:            135300.12903225806 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2269s fusion_wall=0.2813s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1071s recompute_prefill=0.0953s
+
+[6/16] example=4 sub=0 full_tokens=2002 warmup=False
+storage_time: 0.021833800012245774
+select_time: 0.10683015396352857
+use_sparse_attention: True
+ 
+prompt eval count:    208 token(s)
+prompt eval duration: 0.2243851349921897s
+prompt eval rate:     926.9776271375551 tokens/s
+eval count:           1 token(s)
+eval duration:        8.106231689453125e-06s
+eval rate:            123361.88235294117 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2244s fusion_wall=0.2951s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1068s recompute_prefill=0.0957s
+
+[7/16] example=4 sub=1 full_tokens=2891 warmup=False
+storage_time: 0.029851230036001652
+select_time: 0.10943382699042559
+use_sparse_attention: True
+
+prompt eval count:    335 token(s)
+prompt eval duration: 0.25759924203157425s
+prompt eval rate:     1300.4696650424873 tokens/s
+eval count:           1 token(s)
+eval duration:        7.62939453125e-06s
+eval rate:            131072.0 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2576s fusion_wall=0.3646s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1094s recompute_prefill=0.1183s
+
+[8/16] example=6 sub=0 full_tokens=2303 warmup=False
+storage_time: 0.024383526004385203
+select_time: 0.10597287601558492
+use_sparse_attention: True
+ 
+prompt eval count:    244 token(s)
+prompt eval duration: 0.22659934003604576s
+prompt eval rate:     1076.7904264910317 tokens/s
+eval count:           1 token(s)
+eval duration:        7.152557373046875e-06s
+eval rate:            139810.13333333333 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2266s fusion_wall=0.2827s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1060s recompute_prefill=0.0962s
+
+[9/16] example=7 sub=0 full_tokens=2406 warmup=False
+storage_time: 0.02388681599404663
+select_time: 0.10757422505412251
+use_sparse_attention: True
+ 
+prompt eval count:    265 token(s)
+prompt eval duration: 0.2445025800843723s
+prompt eval rate:     1083.8331436361714 tokens/s
+eval count:           1 token(s)
+eval duration:        7.152557373046875e-06s
+eval rate:            139810.13333333333 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2445s fusion_wall=0.2998s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1076s recompute_prefill=0.1130s
+
+[10/16] example=7 sub=1 full_tokens=2286 warmup=False
+storage_time: 0.02844975097104907
+select_time: 0.10797879594611004
+use_sparse_attention: True
+ 
+prompt eval count:    247 token(s)
+prompt eval duration: 0.23219355888431892s
+prompt eval rate:     1063.7676651618824 tokens/s
+eval count:           1 token(s)
+eval duration:        8.344650268554688e-06s
+eval rate:            119837.25714285714 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2322s fusion_wall=0.3038s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1080s recompute_prefill=0.0958s
+
+[11/16] example=9 sub=0 full_tokens=2815 warmup=False
+storage_time: 0.026221913984045386
+select_time: 0.1084241449716501
+use_sparse_attention: True
+ 
+prompt eval count:    324 token(s)
+prompt eval duration: 0.25255304091842845s
+prompt eval rate:     1282.89882719982 tokens/s
+eval count:           1 token(s)
+eval duration:        7.867813110351562e-06s
+eval rate:            127100.12121212122 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2526s fusion_wall=0.3507s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1084s recompute_prefill=0.1179s
+
+[12/16] example=9 sub=1 full_tokens=3547 warmup=False
+storage_time: 0.03331912501016632
+select_time: 0.11213740397943184
+use_sparse_attention: True
+ 
+prompt eval count:    441 token(s)
+prompt eval duration: 0.27343239897163585s
+prompt eval rate:     1612.8300876508295 tokens/s
+eval count:           1 token(s)
+eval duration:        8.821487426757812e-06s
+eval rate:            113359.56756756757 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2734s fusion_wall=0.3726s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1121s recompute_prefill=0.1280s
+
+[13/16] example=10 sub=0 full_tokens=2322 warmup=False
+storage_time: 0.023620981024578214
+select_time: 0.10648452601162717
+use_sparse_attention: True
+ 
+prompt eval count:    250 token(s)
+prompt eval duration: 0.22585991804953665s
+prompt eval rate:     1106.8807699875674 tokens/s
+eval count:           1 token(s)
+eval duration:        7.62939453125e-06s
+eval rate:            131072.0 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2259s fusion_wall=0.2801s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1065s recompute_prefill=0.0958s
+
+[14/16] example=10 sub=1 full_tokens=2554 warmup=False
+storage_time: 0.028424050018657
+select_time: 0.10769489302765578
+use_sparse_attention: True
+ 
+prompt eval count:    284 token(s)
+prompt eval duration: 0.24904224002966657s
+prompt eval rate:     1140.3687983458917 tokens/s
+eval count:           1 token(s)
+eval duration:        7.867813110351562e-06s
+eval rate:            127100.12121212122 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2490s fusion_wall=0.3080s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1077s recompute_prefill=0.1129s
+
+[15/16] example=11 sub=0 full_tokens=2049 warmup=False
+storage_time: 0.022298949013929814
+select_time: 0.10689097497379407
+use_sparse_attention: True
+ 
+prompt eval count:    211 token(s)
+prompt eval duration: 0.22461480100173503s
+prompt eval rate:     939.386002431648 tokens/s
+eval count:           1 token(s)
+eval duration:        7.3909759521484375e-06s
+eval rate:            135300.12903225806 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2246s fusion_wall=0.2738s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1069s recompute_prefill=0.0954s
+
+[16/16] example=11 sub=1 full_tokens=2023 warmup=False
+storage_time: 0.029129669012036175
+select_time: 0.1071014929912053
+use_sparse_attention: True
+ 
+prompt eval count:    206 token(s)
+prompt eval duration: 0.23150821699528024s
+prompt eval rate:     889.817228406194 tokens/s
+eval count:           1 token(s)
+eval duration:        6.9141387939453125e-06s
+eval rate:            144631.1724137931 tokens/s
+full_compute=0.0000s full_wall=0.0000s full_exact=0.0000s fusion_compute=0.2315s fusion_wall=0.2811s speedup_compute=0.00x speedup_exact=0.00x speedup_wall=0.00x selection=0.1071s recompute_prefill=0.0953s
+{
+  "config": {
+    "model": "/mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct",
+    "dataset": "musique",
+    "topk": 10,
+    "rate": 0.15,
+    "max_main_questions": 20,
+    "max_sub_questions": 16,
+    "warmup_sub_questions": 4,
+    "raw_kv_cache": "/raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache",
+    "preprocess_kv_cache": "/raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/preprocess_kv_cache_global_topk10_bge"
+  },
+  "num_measured": 12,
+  "full_ttft_compute_s_mean": 0.0,
+  "full_ttft_compute_s_p50": 0.0,
+  "full_ttft_compute_s_p95": 0.0,
+  "full_ttft_wall_s_mean": 0.0,
+  "full_ttft_wall_s_p50": 0.0,
+  "full_ttft_wall_s_p95": 0.0,
+  "full_exact_cache_ttft_s_mean": 0.0,
+  "full_exact_cache_ttft_s_p50": 0.0,
+  "full_exact_cache_ttft_s_p95": 0.0,
+  "fusion_ttft_compute_s_mean": 0.23910134983210204,
+  "fusion_ttft_compute_s_p50": 0.23185088793979958,
+  "fusion_ttft_compute_s_p95": 0.25759924203157425,
+  "fusion_ttft_wall_s_mean": 0.3077995260100579,
+  "fusion_ttft_wall_s_p50": 0.2974404554988723,
+  "fusion_ttft_wall_s_p95": 0.36458180303452536,
+  "speedup_compute_mean": 0.0,
+  "ttft_reduction_pct_compute_mean": 0.0,
+  "speedup_full_exact_over_fusion_compute_mean": 0.0,
+  "ttft_reduction_pct_full_exact_vs_fusion_compute_mean": 0.0,
+  "speedup_wall_mean": 0.0,
+  "ttft_reduction_pct_wall_mean": 0.0,
+  "fusion_storage_time_s_mean": 0.026328041921563756,
+  "fusion_selection_time_s_mean": 0.10779893332801294,
+  "fusion_selection_score_forward_time_s_mean": 0.10701424351039653,
+  "fusion_reprocess_prefill_time_s_mean": 0.10497437458252534,
+  "fusion_selected_doc_tokens_mean": 243.75,
+  "fusion_reprocess_prefill_tokens_mean": 270.3333333333333,
+  "full_tokens_mean": 2447.5,
+  "end_to_end_ttft_s_mean": 0.3077995260100579,
+  "end_to_end_ttft_s_p50": 0.2974404554988723,
+  "end_to_end_ttft_s_p95": 0.36458180303452536,
+  "kv_load_copy_s_mean": 0.026328041921563756,
+  "selection_s_mean": 0.10779893332801294,
+  "online_update_query_prefill_s_mean": 0.10497437458252534,
+  "extra_impl_overhead_s_mean": 0.06869817617795586,
+  "rate1_baseline_candidate_s_mean": 0.0
+}
+Wrote MOTIVATION_EXPERIMENTS/kv_load_investigation/qk_current_after_batched_rope_fix/clean_online_ttft_topk10_rate0.15_n16.csv
+Wrote MOTIVATION_EXPERIMENTS/kv_load_investigation/qk_current_after_batched_rope_fix/clean_online_ttft_topk10_rate0.15_n16_summary.json
+Wrote MOTIVATION_EXPERIMENTS/kv_load_investigation/qk_current_after_batched_rope_fix/README.md

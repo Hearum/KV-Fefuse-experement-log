@@ -1,0 +1,547 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_mean_rate015_cont_from151/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 138.39it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+  Main question 101: 16 unique documents, 2 sub-questions
+  Main question 102: 16 unique documents, 2 sub-questions
+  Main question 103: 19 unique documents, 2 sub-questions
+  Main question 104: 17 unique documents, 2 sub-questions
+  Main question 105: 10 unique documents, 1 sub-questions
+  Main question 106: 13 unique documents, 2 sub-questions
+  Main question 107: 30 unique documents, 4 sub-questions
+  Main question 108: 17 unique documents, 4 sub-questions
+  Main question 109: 13 unique documents, 4 sub-questions
+  Main question 110: 10 unique documents, 1 sub-questions
+  Main question 111: 28 unique documents, 4 sub-questions
+  Main question 112: 15 unique documents, 4 sub-questions
+  Main question 113: 19 unique documents, 2 sub-questions
+  Main question 114: 17 unique documents, 2 sub-questions
+  Main question 115: 20 unique documents, 2 sub-questions
+  Main question 116: 21 unique documents, 3 sub-questions
+  Main question 117: 25 unique documents, 4 sub-questions
+  Main question 118: 19 unique documents, 2 sub-questions
+  Main question 119: 10 unique documents, 1 sub-questions
+  Main question 120: 19 unique documents, 2 sub-questions
+  Main question 121: 10 unique documents, 1 sub-questions
+  Main question 122: 19 unique documents, 2 sub-questions
+  Main question 123: 14 unique documents, 4 sub-questions
+  Main question 124: 18 unique documents, 4 sub-questions
+  Main question 125: 14 unique documents, 4 sub-questions
+  Main question 126: 10 unique documents, 1 sub-questions
+  Main question 127: 14 unique documents, 2 sub-questions
+  Main question 128: 10 unique documents, 1 sub-questions
+  Main question 129: 10 unique documents, 1 sub-questions
+  Main question 130: 10 unique documents, 1 sub-questions
+  Main question 131: 15 unique documents, 2 sub-questions
+  Main question 132: 19 unique documents, 2 sub-questions
+  Main question 133: 14 unique documents, 4 sub-questions
+  Main question 134: 13 unique documents, 2 sub-questions
+  Main question 135: 12 unique documents, 3 sub-questions
+  Main question 136: 19 unique documents, 2 sub-questions
+  Main question 137: 17 unique documents, 2 sub-questions
+  Main question 138: 16 unique documents, 2 sub-questions
+  Main question 139: 18 unique documents, 2 sub-questions
+  Main question 140: 10 unique documents, 1 sub-questions
+  Main question 141: 30 unique documents, 4 sub-questions
+  Main question 142: 17 unique documents, 2 sub-questions
+  Main question 143: 14 unique documents, 2 sub-questions
+  Main question 144: 18 unique documents, 2 sub-questions
+  Main question 145: 16 unique documents, 2 sub-questions
+  Main question 146: 18 unique documents, 2 sub-questions
+  Main question 147: 19 unique documents, 2 sub-questions
+  Main question 148: 20 unique documents, 2 sub-questions
+  Main question 149: 23 unique documents, 4 sub-questions
+  Main question 150: 10 unique documents, 1 sub-questions
+  Main question 151: 18 unique documents, 2 sub-questions
+  Main question 152: 16 unique documents, 2 sub-questions
+  Main question 153: 15 unique documents, 2 sub-questions
+  Main question 154: 10 unique documents, 1 sub-questions
+  Main question 155: 10 unique documents, 1 sub-questions
+  Main question 156: 19 unique documents, 2 sub-questions
+  Main question 157: 17 unique documents, 2 sub-questions
+  Main question 158: 20 unique documents, 4 sub-questions
+  Main question 159: 18 unique documents, 2 sub-questions
+  Main question 160: 18 unique documents, 4 sub-questions
+  Main question 161: 19 unique documents, 2 sub-questions
+  Main question 162: 12 unique documents, 2 sub-questions
+  Main question 163: 10 unique documents, 1 sub-questions
+  Main question 164: 18 unique documents, 2 sub-questions
+  Main question 165: 18 unique documents, 2 sub-questions
+  Main question 166: 10 unique documents, 1 sub-questions
+  Main question 167: 14 unique documents, 2 sub-questions
+  Main question 168: 19 unique documents, 2 sub-questions
+  Main question 169: 29 unique documents, 4 sub-questions
+  Main question 170: 19 unique documents, 2 sub-questions
+  Main question 171: 21 unique documents, 3 sub-questions
+  Main question 172: 16 unique documents, 4 sub-questions
+  Main question 173: 18 unique documents, 4 sub-questions
+  Main question 174: 13 unique documents, 2 sub-questions
+  Main question 175: 19 unique documents, 2 sub-questions
+  Main question 176: 29 unique documents, 4 sub-questions
+  Main question 177: 10 unique documents, 1 sub-questions
+  Main question 178: 25 unique documents, 4 sub-questions
+  Main question 179: 18 unique documents, 2 sub-questions
+  Main question 180: 17 unique documents, 2 sub-questions
+  Main question 181: 17 unique documents, 2 sub-questions
+  Main question 182: 16 unique documents, 3 sub-questions
+  Main question 183: 22 unique documents, 4 sub-questions
+  Main question 184: 19 unique documents, 2 sub-questions
+  Main question 185: 21 unique documents, 4 sub-questions
+  Main question 186: 20 unique documents, 4 sub-questions
+  Main question 187: 13 unique documents, 2 sub-questions
+  Main question 188: 20 unique documents, 3 sub-questions
+  Main question 189: 18 unique documents, 2 sub-questions
+  Main question 190: 20 unique documents, 4 sub-questions
+  Main question 191: 23 unique documents, 4 sub-questions
+  Main question 192: 19 unique documents, 2 sub-questions
+  Main question 193: 26 unique documents, 3 sub-questions
+  Main question 194: 21 unique documents, 4 sub-questions
+  Main question 195: 17 unique documents, 4 sub-questions
+  Main question 196: 26 unique documents, 4 sub-questions
+  Main question 197: 16 unique documents, 4 sub-questions
+  Main question 198: 21 unique documents, 4 sub-questions
+  Main question 199: 25 unique documents, 4 sub-questions
+  Main question 200: 16 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 3408 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:12,  1.04it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:09,  1.22it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.38it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:07,  1.40it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:06,  1.48it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.46it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.53it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:04,  1.49it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:06<00:03,  1.54it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.46it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.40it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.38it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:09<00:00,  1.37it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.71it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.47it/s]
+Corpus embeddings shape: (3408, 1024)
+FAISS index built with 3408 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:09,  1.44it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:08,  1.41it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.51it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:06,  1.48it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:05,  1.53it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.49it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.54it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.51it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:05<00:03,  1.55it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.46it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.41it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.37it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:08<00:00,  1.37it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.70it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.52it/s]
+Context rank computed: (3408, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_mean_rate015_cont_from151/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun/offline_draft_mean_rate015_cont_from151/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 152/200: What award did the author of The Red Tree receive?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Red Tree?
+Ground Truth: Shaun Tan
+storage_time: 0.05435686698183417
+ Shaun Tan
+prompt eval count:    160 token(s)
+prompt eval duration: 0.6936557232402265s
+prompt eval rate:     230.66197630807824 tokens/s
+eval count:           3 token(s)
+eval duration:        0.20514535903930664s
+eval rate:            14.623777082011339 tokens/s
+Predicted: Shaun Tan
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What award did Shaun Tan receive?
+Ground Truth: Shaun Tan received an Academy Award for Best Animated Short Film in 2011.
+storage_time: 0.0914419749751687
+ Academy Award for Best Animated Short Film
+prompt eval count:    217 token(s)
+prompt eval duration: 0.1886030025780201s
+prompt eval rate:     1150.5649275664782 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6934852600097656s
+eval rate:            11.535933726821165 tokens/s
+Predicted: Academy Award for Best Animated Short Film
+F1: 0.5217, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Red Tree?...
+Sub-Q 2: ✓ CORRECT - What award did Shaun Tan receive?...
+
+✓ Main question 152: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 153/200: What was the show named after the character featured in the video game Mickey's Safari in Letterland?
+================================================================================
+
+Sub-question 1/2
+Question: What character is featured in the video game Mickey's Safari in Letterland?
+Ground Truth: Mickey Mouse
+storage_time: 0.02562643773853779
+ Mickey
+prompt eval count:    281 token(s)
+prompt eval duration: 0.1400713576003909s
+prompt eval rate:     2006.1203433300327 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09958577156066895s
+eval rate:            20.083190285688293 tokens/s
+Predicted: Mickey
+F1: 0.6667, EM: 0.0000
+
+Sub-question 2/2
+Question: What television show is named after the character Mickey Mouse?
+Ground Truth: The Mickey Mouse Club
+storage_time: 0.027014439925551414
+ The Mickey Mouse Club
+prompt eval count:    279 token(s)
+prompt eval duration: 0.14021056285127997s
+prompt eval rate:     1989.864346354081 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3962078094482422s
+eval rate:            12.619640200840527 tokens/s
+Predicted: The Mickey Mouse Club
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What character is featured in the video game Micke...
+Sub-Q 2: ✓ CORRECT - What television show is named after the character ...
+
+✓ Main question 153: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 154/200: In which county is Southern Maryland Electric Cooperative headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Southern Maryland Electric Cooperative?
+Ground Truth: The headquarters of Southern Maryland Electric Cooperative is in Hughesville, Maryland.
+storage_time: 0.02449718164280057
+ Hughesville, Maryland
+prompt eval count:    220 token(s)
+prompt eval duration: 0.1226187446154654s
+prompt eval rate:     1794.179190872684 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3966095447540283s
+eval rate:            12.606857465069153 tokens/s
+Predicted: Hughesville, Maryland
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is the headquarters of Southern Maryland Ele...
+
+✓ Main question 154: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 155/200: Where is Amílcar Cabral International Airport?
+================================================================================
+
+Sub-question 1/1
+Question: Amílcar Cabral International Airport location
+Ground Truth: Amílcar Cabral International Airport is located two km west-southwest from Espargos on Sal Island.
+storage_time: 0.025428198277950287
+2 km west-southwest from Espargos on Sal Island, Cabo Verde
+prompt eval count:    242 token(s)
+prompt eval duration: 0.12264470802620053s
+prompt eval rate:     1973.1793070786362 tokens/s
+eval count:           18 token(s)
+eval duration:        1.684788465499878s
+eval rate:            10.683833827565639 tokens/s
+Predicted: 2 km west-southwest from Espargos on Sal Island, Cabo Verde
+F1: 0.6471, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Amílcar Cabral International Airport location...
+
+✓ Main question 155: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 156/200: Where was the author of Hannibal and Scipio educated at?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of the book 'Hannibal and Scipio'?
+Ground Truth: Thomas Nabbes
+storage_time: 0.022300471551716328
+ Hannibal and Scipio is a Caroline era stage play written by Thomas Nabbes.
+prompt eval count:    214 token(s)
+prompt eval duration: 0.11860273033380508s
+prompt eval rate:     1804.3429472298078 tokens/s
+eval count:           19 token(s)
+eval duration:        1.781947135925293s
+eval rate:            10.66249363796871 tokens/s
+Predicted: Hannibal and Scipio is a Caroline era stage play written by Thomas Nabbes.
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was Thomas Nabbes educated?
+Ground Truth: Thomas Nabbes was educated at Exeter College, Oxford in 1621.
+storage_time: 0.025974844582378864
+ Exeter College, Oxford
+prompt eval count:    247 token(s)
+prompt eval duration: 0.12189487740397453s
+prompt eval rate:     2026.336178028317 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4958076477050781s
+eval rate:            12.101467227808852 tokens/s
+Predicted: Exeter College, Oxford
+F1: 0.3810, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of the book 'Hannibal and Scipio...
+Sub-Q 2: ✓ CORRECT - Where was Thomas Nabbes educated?...
+
+✓ Main question 156: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 157/200: Where was Tyler MacDuff's child educated?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Tyler MacDuff?
+Ground Truth: Tyler MacDuff is an actor and the father of Dana MacDuff.
+storage_time: 0.020925728138536215
+ Tyler MacDuff is the older brother of Rachael MacFarlane, best known as the voice of Hayley Smith on American Dad!. He is not directly related to the MacDuff family in Scottish history or any other notable figures mentioned in the documents.
+prompt eval count:    176 token(s)
+prompt eval duration: 0.11784955114126205s
+prompt eval rate:     1493.4295319380137 tokens/s
+eval count:           53 token(s)
+eval duration:        5.149847507476807s
+eval rate:            10.2915668712621 tokens/s
+Predicted: Tyler MacDuff is the older brother of Rachael MacFarlane, best known as the voice of Hayley Smith on American Dad!. He is not directly related to the MacDuff family in Scottish history or any other notable figures mentioned in the documents.
+F1: 0.2903, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was Dana MacDuff educated?
+Ground Truth: He graduated from Blair International Baccalaureate School in Pasadena.
+storage_time: 0.025118289049714804
+ Pasadena, California
+prompt eval count:    245 token(s)
+prompt eval duration: 0.1211307430639863s
+prompt eval rate:     2022.6079177156603 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2979295253753662s
+eval rate:            13.425993932492375 tokens/s
+Predicted: Pasadena, California
+F1: 0.1250, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Tyler MacDuff?...
+Sub-Q 2: ✗ INCORRECT - Where was Dana MacDuff educated?...
+
+✗ Main question 157: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 158/200: What other recognition did the Oscar winner for Best Actor in 2006 receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 159/200: In which county is Kimbrough Memorial Stadium located?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is Kimbrough Memorial Stadium located?
+Ground Truth: Canyon, Texas
+storage_time: 0.023146092891693115
+ Kimbrough Memorial Stadium is located in Canyon, Texas.
+prompt eval count:    231 token(s)
+prompt eval duration: 0.11903157783672214s
+prompt eval rate:     1940.6614967069247 tokens/s
+eval count:           13 token(s)
+eval duration:        1.1902668476104736s
+eval rate:            10.921920597971974 tokens/s
+Predicted: Kimbrough Memorial Stadium is located in Canyon, Texas.
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Canyon, Texas located in?
+Ground Truth: Canyon, Texas is located in Randall County.
+storage_time: 0.022900951094925404
+ Randall County
+prompt eval count:    189 token(s)
+prompt eval duration: 0.11819667927920818s
+prompt eval rate:     1599.0296948490222 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19821524620056152s
+eval rate:            15.135061795218764 tokens/s
+Predicted: Randall County
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is Kimbrough Memorial Stadium locate...
+Sub-Q 2: ✓ CORRECT - Which county is Canyon, Texas located in?...
+
+✓ Main question 159: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 160/200: Who was honored with the highest award in India before becoming president?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 161/200: What military overran much of Erich Zakowski's place of birth?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Erich Zakowski born?
+Ground Truth: Erich Zakowski was born in East Prussia.
+storage_time: 0.02105198008939624
+ Vienna
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11630803905427456s
+prompt eval rate:     1556.2122917018423 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09897613525390625s
+eval rate:            20.20689123564326 tokens/s
+Predicted: Vienna
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which military force overran much of East Prussia during World War II?
+Ground Truth: The Soviet Union overran much of East Prussia during World War II.
+storage_time: 0.029695082921534777
+ Imperial Russian troops
+prompt eval count:    319 token(s)
+prompt eval duration: 0.14360183384269476s
+prompt eval rate:     2221.420099338293 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2976858615875244s
+eval rate:            13.4369834652827 tokens/s
+Predicted: Imperial Russian troops
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Erich Zakowski born?...
+Sub-Q 2: ✗ INCORRECT - Which military force overran much of East Prussia ...
+
+✗ Main question 161: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 162/200: The 1967 Federation Cup is an instance of this tournament which is named after what organization?
+================================================================================
+
+Sub-question 1/2
+Question: What is the Federation Cup in sports?
+Ground Truth: The Federation Cup is the premier international team competition in women's tennis. It was launched in 1963 and is the world's largest annual women's international team sports competition in terms of participating nations.
+storage_time: 0.02171041304245591
+ The Federation Cup is the premier international team competition in women's tennis, now known as the Fed Terminated

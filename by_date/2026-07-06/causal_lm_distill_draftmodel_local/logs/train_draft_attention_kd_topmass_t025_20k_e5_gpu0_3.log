@@ -1,0 +1,133 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+The following values were not passed to `accelerate launch` and had defaults used instead:
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 51.62it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 47.54it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 55.20it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 53.87it/s]
+{'wiki_val_kl': 0.007798260178416967, 'wiki_val_recall_r0p05': 0.546210526315788, 'wiki_val_jaccard_r0p05': 0.38540259156207946, 'wiki_val_recall_r0p1': 0.5545789473684204, 'wiki_val_jaccard_r0p1': 0.3900054377779391, 'wiki_val_recall_r0p15': 0.579192982456138, 'wiki_val_jaccard_r0p15': 0.41262043315151015, 'wiki_val_recall_r0p3': 0.6485565217391315, 'wiki_val_jaccard_r0p3': 0.4828833568098504, 'musique_val_kl': 0.010124501653102249, 'musique_val_recall_r0p05': 0.5030151879414334, 'musique_val_jaccard_r0p05': 0.3559680189966566, 'musique_val_recall_r0p1': 0.48407876593438226, 'musique_val_jaccard_r0p1': 0.3295378547502967, 'musique_val_recall_r0p15': 0.4918182334458937, 'musique_val_jaccard_r0p15': 0.3320646538564098, 'musique_val_recall_r0p3': 0.5615204444917725, 'musique_val_jaccard_r0p3': 0.39474662926001375, 'epoch': 0, 'train_loss': 0.0}
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 174, in <module>
+[rank0]:     main()
+[rank0]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 127, in main
+[rank0]:     scores = model(batch["input_ids"], batch["attention_mask"], batch["doc_lens"])
+[rank0]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank0]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank0]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank0]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank0]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank0]: making sure all `forward` function outputs participate in calculating loss. 
+[rank0]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank0]: Parameter indices which did not receive grad for rank 0: 41 42 43 44 45 46 48 49 50 51
+[rank0]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 174, in <module>
+[rank1]:     main()
+[rank1]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 127, in main
+[rank1]:     scores = model(batch["input_ids"], batch["attention_mask"], batch["doc_lens"])
+[rank1]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank1]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank1]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank1]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank1]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank1]: making sure all `forward` function outputs participate in calculating loss. 
+[rank1]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank1]: Parameter indices which did not receive grad for rank 1: 41 42 43 44 45 46 48 49 50 51
+[rank1]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 174, in <module>
+[rank2]:     main()
+[rank2]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 127, in main
+[rank2]:     scores = model(batch["input_ids"], batch["attention_mask"], batch["doc_lens"])
+[rank2]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank2]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank2]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank2]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank2]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank2]: making sure all `forward` function outputs participate in calculating loss. 
+[rank2]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank2]: Parameter indices which did not receive grad for rank 2: 41 42 43 44 45 46 48 49 50 51
+[rank2]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 174, in <module>
+[rank3]:     main()
+[rank3]:   File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py", line 127, in main
+[rank3]:     scores = model(batch["input_ids"], batch["attention_mask"], batch["doc_lens"])
+[rank3]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank3]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank3]:   File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank3]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank3]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank3]: making sure all `forward` function outputs participate in calculating loss. 
+[rank3]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank3]: Parameter indices which did not receive grad for rank 3: 41 42 43 44 45 46 48 49 50 51
+[rank3]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank0]:[W707 15:03:46.996211096 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W0707 15:03:47.235000 2800700 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2800826 closing signal SIGTERM
+W0707 15:03:47.236000 2800700 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2800827 closing signal SIGTERM
+W0707 15:03:47.236000 2800700 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2800828 closing signal SIGTERM
+E0707 15:03:47.409000 2800700 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 2800825) of binary: /mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/bin/python
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1415, in <module>
+    main()
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1411, in main
+    launch_command(args)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1396, in launch_command
+    multi_gpu_launcher(args)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1023, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/train_draft_attention_kd.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-07-07_15:03:47
+  host      : qjhs-sh-lab-01
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2800825)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

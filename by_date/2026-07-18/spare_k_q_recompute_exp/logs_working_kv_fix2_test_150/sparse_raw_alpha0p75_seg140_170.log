@@ -1,0 +1,657 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_working_kv_raw rate=0.15 start=140 end=170
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_140_170
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:00<00:00, 138.60it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 143.35it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170]
+storage_time: 0.873484511859715
+select_time: 1.2901774910278618
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Casa Loma
+prompt eval count:    2625 token(s)
+prompt eval duration: 33.025984576903284s
+prompt eval rate:     79.48286882674175 tokens/s
+eval count:           9 token(s)
+eval duration:        2.5070102214813232s
+eval rate:            3.5899335084011534 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the name of the castle in the city where the performer of Never Too Loud was formed?
+batch: 141 preprocess: False reprocess_method: FusionRAG
+real answer: Casa Loma
+answer: Casa Loma
+storage_time: 0.723955987021327
+select_time: 0.6374279879964888
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Natalie Wood
+prompt eval count:    2628 token(s)
+prompt eval duration: 32.119222920853645s
+prompt eval rate:     81.82016129330923 tokens/s
+eval count:           9 token(s)
+eval duration:        2.483200788497925s
+eval rate:            3.6243545192509594 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the sibling of the actress that played the little girl in Miracle on 34th street 1947?
+batch: 142 preprocess: False reprocess_method: FusionRAG
+real answer: Lana Wood
+answer: Natalie Wood
+storage_time: 0.6845224709250033
+select_time: 0.6160980919376016
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Milan
+prompt eval count:    2642 token(s)
+prompt eval duration: 32.27080431673676s
+prompt eval rate:     81.86966689980414 tokens/s
+eval count:           7 token(s)
+eval duration:        1.862243890762329s
+eval rate:            3.758906142596863 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What city is the star of 'Three Strangers in Rome' from?
+batch: 143 preprocess: False reprocess_method: FusionRAG
+real answer: La Goulette
+answer: Milan
+storage_time: 0.7077311198227108
+select_time: 0.6325320592150092
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The northern part of Erich Zakowski's birthplace, which is in the now Russian area, became part of the Soviet Union after World War II. Specifically, it was annexed by the Soviet Union and became part of 
+prompt eval count:    2673 token(s)
+prompt eval duration: 32.57429926795885s
+prompt eval rate:     82.05855720829736 tokens/s
+eval count:           50 token(s)
+eval duration:        15.220297813415527s
+eval rate:            3.2850868368639166 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What else happened in the northern part of Erich Zakowski's birthplace in the now Russian area?
+batch: 144 preprocess: False reprocess_method: FusionRAG
+real answer: names were replaced by new Russian names
+answer: The northern part of Erich Zakowski's birthplace, which is in the now Russian area, became part of the Soviet Union after World War II. Specifically, it was annexed by the Soviet Union and became part of
+storage_time: 0.5531536350026727
+select_time: 0.5407017930410802
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Southern Maryland Electric Cooperative is headquartered in Charles County, Maryland.
+prompt eval count:    2027 token(s)
+prompt eval duration: 25.05831999424845s
+prompt eval rate:     80.89129680143164 tokens/s
+eval count:           17 token(s)
+eval duration:        4.966988801956177s
+eval rate:            3.4225968041854244 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In which county is Southern Maryland Electric Cooperative headquartered?
+batch: 145 preprocess: False reprocess_method: FusionRAG
+real answer: Charles County
+answer: Southern Maryland Electric Cooperative is headquartered in Charles County, Maryland.
+storage_time: 0.6762697529047728
+select_time: 0.6098294029943645
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The party that controls the House of Representatives takes control of the branch that determines the rules of the U.S. House and Senate at the beginning of a new Congress, which occurs every two years following a general election. The specific 
+prompt eval count:    2644 token(s)
+prompt eval duration: 32.16199402604252s
+prompt eval rate:     82.20883312953403 tokens/s
+eval count:           50 token(s)
+eval duration:        15.219110012054443s
+eval rate:            3.2853432270610448 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the party that controls the House of Representatives take control of the branch who determines the rules of the US house and Senate?
+batch: 146 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: The party that controls the House of Representatives takes control of the branch that determines the rules of the U.S. House and Senate at the beginning of a new Congress, which occurs every two years following a general election. The specific
+storage_time: 0.6940552261658013
+select_time: 0.6278441622853279
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+15 consecutive wins
+prompt eval count:    2694 token(s)
+prompt eval duration: 32.783259151503444s
+prompt eval rate:     82.1760883367343 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4840903282165527s
+eval rate:            3.6230566569056815 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What series of wins did the sports team that the all time highest goal scorer in spain national team was a member or achieve in 2009?
+batch: 147 preprocess: False reprocess_method: FusionRAG
+real answer: continental treble
+answer: 15 consecutive wins
+storage_time: 0.6855586753226817
+select_time: 0.6244630911387503
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Maria Bello
+prompt eval count:    2592 token(s)
+prompt eval duration: 31.606546144466847s
+prompt eval rate:     82.00832789993932 tokens/s
+eval count:           8 token(s)
+eval duration:        2.173872947692871s
+eval rate:            3.680067875397406 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In Grown Ups, who plays the wife of the actor who produced The Chosen One?
+batch: 148 preprocess: False reprocess_method: FusionRAG
+real answer: Joyce Van Patten
+answer: Maria Bello
+storage_time: 0.6691759289242327
+select_time: 0.6019670478999615
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The performer of "Don't Be Cruel" is not mentioned in the provided passages about *The Wire*. Therefore, the question cannot be answered based on the given information.
+prompt eval count:    2551 token(s)
+prompt eval duration: 31.15774703491479s
+prompt eval rate:     81.87369892763417 tokens/s
+eval count:           40 token(s)
+eval duration:        12.105692625045776s
+eval rate:            3.3042305995150563 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who does the performer of Don't Be Cruel play in the wire?
+batch: 149 preprocess: False reprocess_method: FusionRAG
+real answer: a Western District uniformed officer
+answer: The performer of "Don't Be Cruel" is not mentioned in the provided passages about *The Wire*. Therefore, the question cannot be answered based on the given information.
+storage_time: 0.7237942470237613
+select_time: 0.6335765980184078
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1986
+prompt eval count:    2725 token(s)
+prompt eval duration: 33.22875485289842s
+prompt eval rate:     82.00728592038436 tokens/s
+eval count:           9 token(s)
+eval duration:        2.484670400619507s
+eval rate:            3.6222108162740683 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did Burroughs Corporation merge to form a new corporation?
+batch: 150 preprocess: False reprocess_method: FusionRAG
+real answer: 1986
+answer: 1986
+storage_time: 0.6602433980442584
+select_time: 0.6153430789709091
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+1992
+prompt eval count:    2603 token(s)
+prompt eval duration: 31.669967421796173s
+prompt eval rate:     82.19143282757346 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4829611778259277s
+eval rate:            3.6247042766413164 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the country, whose co-official language was used by the director of Group Portrait with a Lady, first attend the Olympics as an independent team?
+batch: 151 preprocess: False reprocess_method: FusionRAG
+real answer: 2016
+answer: 1992
+storage_time: 0.682980717625469
+select_time: 0.5967956469394267
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Rabbi Menachem Mendel Schneersohn
+prompt eval count:    2532 token(s)
+prompt eval duration: 30.975008035544306s
+prompt eval rate:     81.74332019848035 tokens/s
+eval count:           17 token(s)
+eval duration:        4.967211961746216s
+eval rate:            3.422443038654561 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who followed Menucha Rochel Slonim's father?
+batch: 152 preprocess: False reprocess_method: FusionRAG
+real answer: Menachem Mendel Schneersohn
+answer: Rabbi Menachem Mendel Schneersohn
+storage_time: 0.7572562480345368
+select_time: 0.6282952330075204
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Bart Millard
+prompt eval count:    2654 token(s)
+prompt eval duration: 32.42088065017015s
+prompt eval rate:     81.86082385106562 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4815077781677246s
+eval rate:            3.6268272375294934 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who started out his career on adult contemporary radio along with the performer of All That Echoes?
+batch: 153 preprocess: False reprocess_method: FusionRAG
+real answer: Michael Bublé
+answer: Bart Millard
+storage_time: 0.6788794719614089
+select_time: 0.60613150941208
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Tony Randall
+prompt eval count:    2558 token(s)
+prompt eval duration: 31.306012829300016s
+prompt eval rate:     81.70954295418639 tokens/s
+eval count:           9 token(s)
+eval duration:        2.483894109725952s
+eval rate:            3.62334286504386 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the head of the developer of Simon?
+batch: 154 preprocess: False reprocess_method: FusionRAG
+real answer: ADM Michael S. Rogers
+answer: Answer: Tony Randall
+storage_time: 0.6873109312728047
+select_time: 0.6324952254071832
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2005–06
+prompt eval count:    2680 token(s)
+prompt eval duration: 32.64883458567783s
+prompt eval rate:     82.085625230116 tokens/s
+eval count:           12 token(s)
+eval duration:        3.4144530296325684s
+eval rate:            3.5144721265330534 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When was the last time the team that Terry Twell was a member of beat the 194-95 winner of the FA Cup?
+batch: 155 preprocess: False reprocess_method: FusionRAG
+real answer: 1 December 2010
+answer: 2005–06
+storage_time: 0.6654494572430849
+select_time: 0.6053516017273068
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Sir Nicholas Bacon
+prompt eval count:    2476 token(s)
+prompt eval duration: 30.30299685196951s
+prompt eval rate:     81.70809019633565 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7947065830230713s
+eval rate:            3.5781931673066256 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the father of the artist who painted Head I?
+batch: 156 preprocess: False reprocess_method: FusionRAG
+real answer: Nicholas Bacon
+answer: Answer: Sir Nicholas Bacon
+storage_time: 0.7139952657744288
+select_time: 0.7207751926034689
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Orange River
+prompt eval count:    2655 token(s)
+prompt eval duration: 32.54545029532164s
+prompt eval rate:     81.57822294385805 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8637726306915283s
+eval rate:            3.7558229393049634 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where is the origin of the river Augrabies Falls is part of?
+batch: 157 preprocess: False reprocess_method: FusionRAG
+real answer: Thaba Putsoa
+answer: Orange River
+storage_time: 0.7224147468805313
+select_time: 0.6230216841213405
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The question is not answerable based on the provided information.
+prompt eval count:    2750 token(s)
+prompt eval duration: 33.5473267743364s
+prompt eval rate:     81.97374468906243 tokens/s
+eval count:           17 token(s)
+eval duration:        4.969878435134888s
+eval rate:            3.420606805956734 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: The BBC Footballer of the Year is a member of which team?
+batch: 158 preprocess: False reprocess_method: FusionRAG
+real answer: Egypt national football team
+answer: The question is not answerable based on the provided information.
+storage_time: 0.7180812521837652
+select_time: 0.6254140040837228
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Angers, France
+prompt eval count:    2610 token(s)
+prompt eval duration: 31.851497888565063s
+prompt eval rate:     81.94277107881355 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4837429523468018s
+eval rate:            3.6235633769976943 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where was the person who acted in the film Sous les pieds des femmes born?
+batch: 159 preprocess: False reprocess_method: FusionRAG
+real answer: La Goulette
+answer: Angers, France
+storage_time: 0.7507481407374144
+select_time: 0.611143849324435
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+2 million
+prompt eval count:    2545 token(s)
+prompt eval duration: 31.155271062161773s
+prompt eval rate:     81.68762181276333 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8623991012573242s
+eval rate:            3.7585928790849557 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: How many people were in British Colonies where does the london broil cut come from ?
+batch: 160 preprocess: False reprocess_method: FusionRAG
+real answer: 2 million
+answer: 2 million
+storage_time: 0.6983776008710265
+select_time: 0.6141697787679732
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Jennifer Connelly
+prompt eval count:    2658 token(s)
+prompt eval duration: 32.406805189326406s
+prompt eval rate:     82.01980986621435 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1716079711914062s
+eval rate:            3.6839061682072254 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who is the spouse of the person who voices Jarvis in the Avengers Age of Ultron?
+batch: 161 preprocess: False reprocess_method: FusionRAG
+real answer: Jennifer Connelly
+answer: Jennifer Connelly
+storage_time: 0.6972922021523118
+select_time: 0.6351046748459339
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Clarke County
+prompt eval count:    2637 token(s)
+prompt eval duration: 32.13960205204785s
+prompt eval rate:     82.0483089905582 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1735904216766357s
+eval rate:            3.6805462152474266 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Which county shares a border with the county where the most populous city in the state where Redan High School is located?
+batch: 162 preprocess: False reprocess_method: FusionRAG
+real answer: Presque Isle County
+answer: Clarke County
+storage_time: 0.6891576582565904
+select_time: 0.6232207822613418
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Jay-Z
+prompt eval count:    2652 token(s)
+prompt eval duration: 32.3470372594893s
+prompt eval rate:     81.98587025839628 tokens/s
+eval count:           7 token(s)
+eval duration:        1.862499475479126s
+eval rate:            3.7583903201901614 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: The rapper who owns Aspiro was inspired by what when writing Song Cry?
+batch: 163 preprocess: False reprocess_method: FusionRAG
+real answer: three different relationships he had in the past
+answer: Jay-Z
+storage_time: 0.6946733728982508
+select_time: 0.6150205032899976
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Answer: Minsk Region
+prompt eval count:    2601 token(s)
+prompt eval duration: 31.701115007977933s
+prompt eval rate:     82.04758726453092 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7956485748291016s
+eval rate:            3.5769874976547444 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What administrative territorial entity includes the place that KTRP is licensed to broadcast to?
+batch: 164 preprocess: False reprocess_method: FusionRAG
+real answer: Canyon County
+answer: Answer: Minsk Region
+storage_time: 0.6856157500296831
+select_time: 0.6175489178858697
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Christopher McDonald
+prompt eval count:    2593 token(s)
+prompt eval duration: 31.532250054180622s
+prompt eval rate:     82.23326897206988 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8617784976959229s
+eval rate:            3.7598457650375567 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: In A League of Their Own, who played the husband of the actress who played Thelma in Thelma and Louise?
+batch: 165 preprocess: False reprocess_method: FusionRAG
+real answer: Bill Pullman
+answer: Christopher McDonald
+storage_time: 0.7037427802570164
+select_time: 0.6141211129724979
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Indonesia
+prompt eval count:    2527 token(s)
+prompt eval duration: 30.926869675517082s
+prompt eval rate:     81.70888378012832 tokens/s
+eval count:           7 token(s)
+eval duration:        1.862565279006958s
+eval rate:            3.758257538083233 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What is the former name of the country where Atika Suri studied?
+batch: 166 preprocess: False reprocess_method: FusionRAG
+real answer: Dutch East Indies
+answer: Indonesia
+storage_time: 0.5579898478463292
+select_time: 0.5459342082031071
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Arkhangelsk Oblast
+prompt eval count:    2033 token(s)
+prompt eval duration: 25.064441508613527s
+prompt eval rate:     81.11092358875617 tokens/s
+eval count:           11 token(s)
+eval duration:        3.1050400733947754s
+eval rate:            3.542627386439356 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What province shares a border with the province where Lago District is located?
+batch: 167 preprocess: False reprocess_method: FusionRAG
+real answer: Cabo Delgado Province
+answer: Arkhangelsk Oblast
+storage_time: 0.6611326988786459
+select_time: 0.6154388687573373
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The Association for Computing Machinery (ACM) published Communications of the organization that Andries van Dam is a member of.
+prompt eval count:    2459 token(s)
+prompt eval duration: 30.105331495869905s
+prompt eval rate:     81.67988451936979 tokens/s
+eval count:           29 token(s)
+eval duration:        8.69249701499939s
+eval rate:            3.3362105215519637 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who published Communications of the organization that Andries van Dam is a member of?
+batch: 168 preprocess: False reprocess_method: FusionRAG
+real answer: Association for Computing Machinery
+answer: The Association for Computing Machinery (ACM) published Communications of the organization that Andries van Dam is a member of.
+storage_time: 0.7181884478777647
+select_time: 0.6242302088066936
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+Cedar Springs is located in the northeast of Perm Krai, Russia, and shares a border with the Komi Republic to the north.
+prompt eval count:    2593 token(s)
+prompt eval duration: 31.753850610461086s
+prompt eval rate:     81.65938776400725 tokens/s
+eval count:           33 token(s)
+eval duration:        9.940386772155762s
+eval rate:            3.319790341804107 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What county shares a border with Cedar Springs?
+batch: 169 preprocess: False reprocess_method: FusionRAG
+real answer: Bell County
+answer: Cedar Springs is located in the northeast of Perm Krai, Russia, and shares a border with the Komi Republic to the north.
+storage_time: 0.6853147870860994
+select_time: 0.6071153157390654
+use_sparse_attention: True
+sparse_block_mode: forcing strict document-reprocess/query-prefill split
+strict_reprocess_ablation: kv
+<think>
+
+</think>
+
+The administrative territorial entity that is the owner of Ciudad Deportiva is the Municipality of Nuevo Laredo.
+prompt eval count:    2629 token(s)
+prompt eval duration: 32.13365695439279s
+prompt eval rate:     81.81452872703944 tokens/s
+eval count:           28 token(s)
+eval duration:        8.384871482849121s
+eval rate:            3.3393475448339007 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What administrative territorial entity is the owner of Ciudad Deportiva located?
+batch: 170 preprocess: False reprocess_method: FusionRAG
+real answer: Tamaulipas
+answer: The administrative territorial entity that is the owner of Ciudad Deportiva is the Municipality of Nuevo Laredo.
+
+--- Quality Metrics ---
+EM Score: 0.0200
+ROUGE Score: 0.0383
+[setup-v2] auto GLM/EM/F1: /mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/bin/python /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset/scripts/judge_task_csv.py --csv MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_140_170/csv/reprocess_method_FusionRAG_rate_0.15_revert_rope_True.csv --output MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_working_kv_fix2_test_150/sparse_working_kv_raw/musique-v2/rate_0p15/alpha_0p75/seg_140_170/metrics/metrics.csv
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[auto-glm] rows=30 em=0.133333 f1=0.242011 glm=8/30

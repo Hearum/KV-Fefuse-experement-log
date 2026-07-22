@@ -1,0 +1,1595 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: nopreprocess_staticv_m5n16_scale1
+      Full path: /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/nopreprocess_staticv_m5n16_scale1
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 238.99it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 50 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+[WARNING] Rate=1 results file not found: /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/nopreprocess_staticv_m5n16_scale1/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/nopreprocess_staticv_m5n16_scale1
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/50: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+storage_time: 0.30563201988115907
+use_sparse_attention: True
+ National Cycle Network
+prompt eval count:    34 token(s)
+prompt eval duration: 0.5800901707261801s
+prompt eval rate:     58.61157750257592 tokens/s
+eval count:           4 token(s)
+eval duration:        0.36310410499572754s
+eval rate:            11.016124425382262 tokens/s
+Predicted: National Cycle Network
+F1: 0.2353, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What network is National Cycle Route 57 part of?...
+
+✓ Main question 1: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 2/50: What district is the headquarter of Julia's House located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Julia's House located?
+Ground Truth: Corfe Mullen, Dorset, England
+storage_time: 0.1333040720783174
+use_sparse_attention: True
+ Corfe Mullen, Dorset, England.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.34428338799625635s
+prompt eval rate:     92.94668611878527 tokens/s
+eval count:           11 token(s)
+eval duration:        1.193526268005371s
+eval rate:            9.216387016251659 tokens/s
+Predicted: Corfe Mullen, Dorset, England.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is the headquarters of Julia's House located...
+
+✓ Main question 2: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 3/50: What body of water includes the terrain feature where Coffee Swamp is located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Coffee Swamp located?
+Ground Truth: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+storage_time: 0.08000793308019638
+use_sparse_attention: True
+1. The document titled "Coffee Swamp" states that it is located in the Candaba, Pampanga province, in the Philippines. 2. It is situated in the Central Equatoria and Eastern Equatoria states, between Terekeka and Lafon. 
+
+Answer: Coffee Swamp is located in Candaba, Pampanga province, in the Central Equatoria and Eastern Equatoria states, between Terekeka and Lafon, in the Philippines.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.20280886394903064s
+prompt eval rate:     138.06102679534206 tokens/s
+eval count:           95 token(s)
+eval duration:        11.219337940216064s
+eval rate:            8.467522816963161 tokens/s
+Predicted: 1. The document titled "Coffee Swamp" states that it is located in the Candaba, Pampanga province, in the Philippines. 2. It is situated in the Central Equatoria and Eastern Equatoria states, between Terekeka and Lafon. 
+
+Answer: Coffee Swamp is located in Candaba, Pampanga province, in the Central Equatoria and Eastern Equatoria states, between Terekeka and Lafon, in the Philippines.
+F1: 0.1481, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where is Coffee Swamp located?...
+
+✗ Main question 3: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 4/50: Who is the spouse of the child of Peter Andreas Heiberg?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Peter Andreas Heiberg?
+Ground Truth: Johan Ludvig Heiberg is the child of Peter Andreas Heiberg.
+storage_time: 0.06969251856207848
+use_sparse_attention: True
+1. The question asks for the child of Peter Andreas Heiberg.  
+2. From the document titled "Johan Ludvig Heiberg," it is stated that Johan Ludvig Heiberg was the son of Peter Andreas Heiberg.  
+3. Therefore, the child of Peter Andreas Heiberg is Johan Ludvig Heiberg.  
+
+Answer: Johan Ludvig Heiberg
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19329301174730062s
+prompt eval rate:     170.7252616206434 tokens/s
+eval count:           82 token(s)
+eval duration:        9.676224946975708s
+eval rate:            8.474379259406222 tokens/s
+Predicted: 1. The question asks for the child of Peter Andreas Heiberg.  
+2. From the document titled "Johan Ludvig Heiberg," it is stated that Johan Ludvig Heiberg was the son of Peter Andreas Heiberg.  
+3. Therefore, the child of Peter Andreas Heiberg is Johan Ludvig Heiberg.  
+
+Answer: Johan Ludvig Heiberg
+F1: 0.6154, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the spouse of Johan Ludvig Heiberg?
+Ground Truth: Johanne Luise Heiberg
+storage_time: 0.07853095512837172
+use_sparse_attention: True
+ Johanne Luise Heiberg
+prompt eval count:    34 token(s)
+prompt eval duration: 0.2020202991552651s
+prompt eval rate:     168.29991907827488 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8348672389984131s
+eval rate:            9.582361873005782 tokens/s
+Predicted: Johanne Luise Heiberg
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the child of Peter Andreas Heiberg?...
+Sub-Q 2: ✓ CORRECT - Who is the spouse of Johan Ludvig Heiberg?...
+
+✓ Main question 4: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 5/50: When was the sibling of Alice de Lusignan, Countess of Surrey crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the siblings of Alice de Lusignan, Countess of Surrey?
+Ground Truth: Alice de Lusignan had a uterine half-brother, King Henry III of England.
+storage_time: 0.07233956037089229
+use_sparse_attention: True
+1. Raoul of Eu, 2. William of Eu, 3. Hugh of Lusignan
+prompt eval count:    39 token(s)
+prompt eval duration: 0.20053797913715243s
+prompt eval rate:     194.4768774862692 tokens/s
+eval count:           24 token(s)
+eval duration:        2.74674916267395s
+eval rate:            8.737601644205505 tokens/s
+Predicted: 1. Raoul of Eu, 2. William of Eu, 3. Hugh of Lusignan
+F1: 0.2632, EM: 0.0000
+
+Sub-question 2/2
+Question: When was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral and had a second coronation on 17 May 1220 at Westminster Abbey.
+storage_time: 0.0991269457153976
+use_sparse_attention: True
+1220
+prompt eval count:    31 token(s)
+prompt eval duration: 0.22252893447875977s
+prompt eval rate:     139.30772675747895 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4778895378112793s
+eval rate:            10.462668889760298 tokens/s
+Predicted: 1220
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who were the siblings of Alice de Lusignan, Counte...
+Sub-Q 2: ✗ INCORRECT - When was King Henry III of England crowned?...
+
+✗ Main question 5: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 6/50: What company merged in 2002 with the CEMM developer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 7/50: Which university employed the person that Mach bands are named after?
+================================================================================
+
+Sub-question 1/1
+Question: Which university employed Ernst Mach?
+Ground Truth: Ernst Mach was employed at Charles University in Prague.
+storage_time: 0.08705653296783566
+use_sparse_attention: True
+ The University of Vienna
+prompt eval count:    28 token(s)
+prompt eval duration: 0.2099468600936234s
+prompt eval rate:     133.36708149630684 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47774410247802734s
+eval rate:            10.465853945795098 tokens/s
+Predicted: The University of Vienna
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Which university employed Ernst Mach?...
+
+✗ Main question 7: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 8/50: Who is the employer of the physicist who Mach number is named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the physicist that the Mach number is named after?
+Ground Truth: The Mach number is named after the Austrian physicist and philosopher Ernst Mach.
+storage_time: 0.1460774508304894
+use_sparse_attention: True
+ Ernst Mach
+prompt eval count:    34 token(s)
+prompt eval duration: 0.27020927891135216s
+prompt eval rate:     125.82839544586629 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2406787872314453s
+eval rate:            12.46474620596743 tokens/s
+Predicted: Ernst Mach
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was Ernst Mach's employer or academic institution during his career?
+Ground Truth: Ernst Mach was a professor at Charles University in Prague.
+storage_time: 0.07998686144128442
+use_sparse_attention: True
+ Charles University in Prague
+prompt eval count:    35 token(s)
+prompt eval duration: 0.20855282107368112s
+prompt eval rate:     167.82319136136067 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4776327610015869s
+eval rate:            10.468293652041568 tokens/s
+Predicted: Charles University in Prague
+F1: 0.6250, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the physicist that the Mach number is named...
+Sub-Q 2: ✓ CORRECT - Who was Ernst Mach's employer or academic institut...
+
+✓ Main question 8: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 9/50: What record label did the performer of The Place and the Time belong to?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 10/50: When did a storm disperse the fleet led by the English king who trusted William de Longchamp?
+================================================================================
+
+Sub-question 1/2
+Question: Which English king trusted William de Longchamp?
+Ground Truth: King Richard I of England
+storage_time: 0.11746635008603334
+use_sparse_attention: True
+ Richard I
+prompt eval count:    32 token(s)
+prompt eval duration: 0.24358721636235714s
+prompt eval rate:     131.36978400540207 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2409980297088623s
+eval rate:            12.448234550399231 tokens/s
+Predicted: Richard I
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: What specific naval expedition or fleet did King Richard I lead that was dispersed by a storm?
+Ground Truth: King Richard I led a large fleet from Messina to Acre in April 1191, which was dispersed by a storm.
+storage_time: 0.12139332294464111
+use_sparse_attention: True
+1191 expedition to Acre
+prompt eval count:    40 token(s)
+prompt eval duration: 0.24655859638005495s
+prompt eval rate:     162.23324024096266 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9558210372924805s
+eval rate:            9.415988609639701 tokens/s
+Predicted: 1191 expedition to Acre
+F1: 0.3448, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which English king trusted William de Longchamp?...
+Sub-Q 2: ✓ CORRECT - What specific naval expedition or fleet did King R...
+
+✓ Main question 10: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 11/50: The Unwinding author volunteered for which organisation?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Unwinding?
+Ground Truth: George Packer
+storage_time: 0.07917390717193484
+use_sparse_attention: True
+ George Packer
+prompt eval count:    32 token(s)
+prompt eval duration: 0.23195958137512207s
+prompt eval rate:     137.9550687679937 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35826706886291504s
+eval rate:            11.164855348540376 tokens/s
+Predicted: George Packer
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which organization did George Packer volunteer for?
+Ground Truth: Peace Corps
+storage_time: 0.09655893128365278
+use_sparse_attention: True
+1. The document mentions that George Packer served with the Peace Corps in Togo from 1982–1983.  
+2. Therefore, the organization he volunteered for is the Peace Corps.  
+
+Answer: Peace Corps
+prompt eval count:    31 token(s)
+prompt eval duration: 0.2216143263503909s
+prompt eval rate:     139.8826533939254 tokens/s
+eval count:           50 token(s)
+eval duration:        5.846350431442261s
+eval rate:            8.552343994142905 tokens/s
+Predicted: 1. The document mentions that George Packer served with the Peace Corps in Togo from 1982–1983.  
+2. Therefore, the organization he volunteered for is the Peace Corps.  
+
+Answer: Peace Corps
+F1: 0.0769, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Unwinding?...
+Sub-Q 2: ✓ CORRECT - Which organization did George Packer volunteer for...
+
+✓ Main question 11: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 12/50: Who is the lead singer of the band performing Bang Bang Rock & Roll?
+================================================================================
+
+Sub-question 1/2
+Question: Which band performed the song 'Bang Bang Rock & Roll'?
+Ground Truth: The song 'Bang Bang Rock & Roll' was performed by the British rock band Art Brut.
+storage_time: 0.07150868512690067
+use_sparse_attention: True
+ Art Brut
+prompt eval count:    35 token(s)
+prompt eval duration: 0.20629357313737273s
+prompt eval rate:     169.66112646026636 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2386324405670166s
+eval rate:            12.571635243186861 tokens/s
+Predicted: Art Brut
+F1: 0.1538, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the lead singer of the band Art Brut?
+Ground Truth: Eddie Argos
+storage_time: 0.07491789199411869
+use_sparse_attention: True
+ Eddie Argos
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19967012479901314s
+prompt eval rate:     165.27259665519628 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3581223487854004s
+eval rate:            11.169367155013667 tokens/s
+Predicted: Eddie Argos
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which band performed the song 'Bang Bang Rock & Ro...
+Sub-Q 2: ✓ CORRECT - Who is the lead singer of the band Art Brut?...
+
+✓ Main question 12: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 13/50: What company did the company that initiated a successful price war among PC manufacturers in 1994 merge with in 2002?
+================================================================================
+
+Sub-question 1/2
+Question: Which company initiated a successful price war among PC manufacturers in 1994?
+Ground Truth: Compaq initiated a successful price war among PC manufacturers in 1994.
+storage_time: 0.09352267486974597
+use_sparse_attention: True
+ Compaq
+prompt eval count:    39 token(s)
+prompt eval duration: 0.2177744908258319s
+prompt eval rate:     179.08433559920834 tokens/s
+eval count:           4 token(s)
+eval duration:        0.358273983001709s
+eval rate:            11.164639883943009 tokens/s
+Predicted: Compaq
+F1: 0.1333, EM: 0.0000
+
+Sub-question 2/2
+Question: Which company did Compaq merge with in 2002?
+Ground Truth: Hewlett Packard
+storage_time: 0.11694442201405764
+use_sparse_attention: True
+ Hewlett Packard
+prompt eval count:    37 token(s)
+prompt eval duration: 0.24132971884682775s
+prompt eval rate:     153.31721338259192 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4772367477416992s
+eval rate:            10.476980290516547 tokens/s
+Predicted: Hewlett Packard
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which company initiated a successful price war amo...
+Sub-Q 2: ✓ CORRECT - Which company did Compaq merge with in 2002?...
+
+✓ Main question 13: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 14/50: What year was the father of Katherine of England crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Katherine of England?
+Ground Truth: Katherine of England was the fifth child of King Henry III and Eleanor of Provence. She was born on 25 November 1253, was either deaf-mute or deaf and mentally challenged, was very sickly, possibly had a degenerative disease, and died at Windsor on 3 May 1257 before reaching her fourth year.
+storage_time: 0.07158955419436097
+use_sparse_attention: True
+ Katherine of England (also called Eleanor Plantagenet and Eleanor of Leicester) (1215 – 13 April 1275) was the youngest child of John, King of England and Isabella of Angoulême.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.1943292892538011s
+prompt eval rate:     144.08533117944452 tokens/s
+eval count:           50 token(s)
+eval duration:        5.852013111114502s
+eval rate:            8.54406834889637 tokens/s
+Predicted: Katherine of England (also called Eleanor Plantagenet and Eleanor of Leicester) (1215 – 13 April 1275) was the youngest child of John, King of England and Isabella of Angoulême.
+F1: 0.4138, EM: 0.0000
+
+Sub-question 2/2
+Question: What year was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 and had a second coronation in 1220.
+storage_time: 0.10398518480360508
+use_sparse_attention: True
+1216
+prompt eval count:    32 token(s)
+prompt eval duration: 0.22720313584432006s
+prompt eval rate:     140.84312648715576 tokens/s
+eval count:           5 token(s)
+eval duration:        0.477215051651001s
+eval rate:            10.47745661563211 tokens/s
+Predicted: 1216
+F1: 0.2400, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Katherine of England?...
+Sub-Q 2: ✓ CORRECT - What year was King Henry III of England crowned?...
+
+✗ Main question 14: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 15/50: Who is the sibling of the actress that played the little girl in Miracle on 34th street 1947?
+================================================================================
+
+Sub-question 1/2
+Question: Who played the little girl in the 1947 film Miracle on 34th Street?
+Ground Truth: Natalie Wood played the little girl, Susan Walker, in the 1947 film Miracle on 34th Street.
+storage_time: 0.06609082175418735
+use_sparse_attention: True
+ Natalie Wood
+prompt eval count:    43 token(s)
+prompt eval duration: 0.1911271079443395s
+prompt eval rate:     224.9811680953314 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2386641502380371s
+eval rate:            12.5699649361158 tokens/s
+Predicted: Natalie Wood
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the sibling of actress Natalie Wood?
+Ground Truth: Lana Wood is the sibling of actress Natalie Wood.
+storage_time: 0.08902682224288583
+use_sparse_attention: True
+1. The question asks for the sibling of actress Natalie Wood.  
+2. From the document titled "Miracle on 34th Street," we learn that Natalie Wood played Susan Walker.  
+3. In the document titled "Kiss and Tell (1945 film)," it is mentioned that Natalie Wood was 17 years old in 1945.  
+4. The document titled "Miracle on 34th Street" also mentions that Natalie Wood's character, Susan, is shaken after seeing Kris Kringle speak Dutch with a girl who does not know English.  
+5. The document titled "Dana MacDuff" states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+6. The document titled "Miracle on 34th Street" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+7. The document titled "Dana MacDuff" also states: "Actress / director / singer Phylicia Rashād is the older sister of performer Debbie Allen, who is married to former NBA basketball player, Norm Nixon."  
+8. The document titled "Miracle on 34th Street" also states: "Actress / director / singer Phylicia Rashād is the older sister of performer Debbie Allen, who is married to former NBA basketball player, Norm Nixon."  
+9. The document titled "Dana MacDuff" also states: "Phylicia Rashād is the former spouse of both Victor Willis, former lead singer of the group Village People, and former NFL football player turned sportscaster, Ahmad Rashād."  
+10. The document titled "Miracle on 34th Street" also states: "Phylicia Rashād is the former spouse of both Victor Willis, former lead singer of the group Village People, and former NFL football player turned sportscaster, Ahmad Rashād."  
+11. The document titled "Dana MacDuff" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+12. The document titled "Miracle on 34th Street" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+
+prompt eval count:    31 token(s)
+prompt eval duration: 0.21269876509904861s
+prompt eval rate:     145.7460271833927 tokens/s
+eval count:           500 token(s)
+eval duration:        59.559154987335205s
+eval rate:            8.39501500829421 tokens/s
+Predicted: 1. The question asks for the sibling of actress Natalie Wood.  
+2. From the document titled "Miracle on 34th Street," we learn that Natalie Wood played Susan Walker.  
+3. In the document titled "Kiss and Tell (1945 film)," it is mentioned that Natalie Wood was 17 years old in 1945.  
+4. The document titled "Miracle on 34th Street" also mentions that Natalie Wood's character, Susan, is shaken after seeing Kris Kringle speak Dutch with a girl who does not know English.  
+5. The document titled "Dana MacDuff" states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+6. The document titled "Miracle on 34th Street" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+7. The document titled "Dana MacDuff" also states: "Actress / director / singer Phylicia Rashād is the older sister of performer Debbie Allen, who is married to former NBA basketball player, Norm Nixon."  
+8. The document titled "Miracle on 34th Street" also states: "Actress / director / singer Phylicia Rashād is the older sister of performer Debbie Allen, who is married to former NBA basketball player, Norm Nixon."  
+9. The document titled "Dana MacDuff" also states: "Phylicia Rashād is the former spouse of both Victor Willis, former lead singer of the group Village People, and former NFL football player turned sportscaster, Ahmad Rashād."  
+10. The document titled "Miracle on 34th Street" also states: "Phylicia Rashād is the former spouse of both Victor Willis, former lead singer of the group Village People, and former NFL football player turned sportscaster, Ahmad Rashād."  
+11. The document titled "Dana MacDuff" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+12. The document titled "Miracle on 34th Street" also states: "Phylicia and Ahmad Rashād are the parents of actress Condola Rashād."  
+1
+F1: 0.7000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played the little girl in the 1947 film Miracl...
+Sub-Q 2: ✗ INCORRECT - Who is the sibling of actress Natalie Wood?...
+
+✗ Main question 15: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 16/50: What is the capital of the county that Pine Springs is located in?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Pine Springs located?
+Ground Truth: Culberson County, Texas
+storage_time: 0.05740672303363681
+use_sparse_attention: True
+ Pine Springs is located in Fishing Creek Township in Columbia County, Pennsylvania.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.1809739121235907s
+prompt eval rate:     165.76974906478455 tokens/s
+eval count:           15 token(s)
+eval duration:        1.672623872756958s
+eval rate:            8.967945659699183 tokens/s
+Predicted: Pine Springs is located in Fishing Creek Township in Columbia County, Pennsylvania.
+F1: 0.1176, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the county seat of Culberson County, Texas?
+Ground Truth: Van Horn
+storage_time: 0.07498741336166859
+use_sparse_attention: True
+ Van Horn
+prompt eval count:    35 token(s)
+prompt eval duration: 0.1988955782726407s
+prompt eval rate:     175.97173503788477 tokens/s
+eval count:           3 token(s)
+eval duration:        0.238966703414917s
+eval rate:            12.554050238501684 tokens/s
+Predicted: Van Horn
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - In which county is Pine Springs located?...
+Sub-Q 2: ✓ CORRECT - What is the county seat of Culberson County, Texas...
+
+✗ Main question 16: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 17/50: In 2002, what company merged with the top PC manufacturer from 1994?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the top PC manufacturer in 1994?
+Ground Truth: Compaq was the top PC manufacturer in 1994.
+storage_time: 0.08735216595232487
+use_sparse_attention: True
+ Compaq
+prompt eval count:    35 token(s)
+prompt eval duration: 0.21106209605932236s
+prompt eval rate:     165.8279750531933 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3578925132751465s
+eval rate:            11.176540027046652 tokens/s
+Predicted: Compaq
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: What company did Compaq merge with in 2002?
+Ground Truth: Compaq merged with Hewlett Packard (HP) in 2002.
+storage_time: 0.10746404994279146
+use_sparse_attention: True
+ Hewlett Packard
+prompt eval count:    37 token(s)
+prompt eval duration: 0.2316784020513296s
+prompt eval rate:     159.7041401891336 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47723817825317383s
+eval rate:            10.476948885986886 tokens/s
+Predicted: Hewlett Packard
+F1: 0.4211, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the top PC manufacturer in 1994?...
+Sub-Q 2: ✓ CORRECT - What company did Compaq merge with in 2002?...
+
+✓ Main question 17: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 18/50: In the King's Speech, who played the person who was the King of England in 1950?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the King of England in 1950?
+Ground Truth: George VI was the King of the United Kingdom in 1950.
+storage_time: 0.07615575008094311
+use_sparse_attention: True
+ George VI
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19988761702552438s
+prompt eval rate:     175.09839038968943 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23855876922607422s
+eval rate:            12.575517595653755 tokens/s
+Predicted: George VI
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.11869650892913342
+use_sparse_attention: True
+ Colin Firth
+prompt eval count:    38 token(s)
+prompt eval duration: 0.24844807758927345s
+prompt eval rate:     152.94946279608735 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35824060440063477s
+eval rate:            11.165680134702543 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the King of England in 1950?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 18: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 19/50: Whose sister played Susie in miracle on 34th street?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Susie in Miracle on 34th Street?
+Ground Truth: Natalie Wood played Susan Walker in Miracle on 34th Street.
+storage_time: 0.07211168203502893
+use_sparse_attention: True
+ Natalie Wood
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19765910180285573s
+prompt eval rate:     177.07254399500832 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23890018463134766s
+eval rate:            12.55754575756971 tokens/s
+Predicted: Natalie Wood
+F1: 0.2500, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is Natalie Wood's brother?
+Ground Truth: Natalie Wood's sister is Lana Wood. The documents do not mention a brother.
+storage_time: 0.0763178477063775
+use_sparse_attention: True
+ John Wood
+prompt eval count:    29 token(s)
+prompt eval duration: 0.19928506668657064s
+prompt eval rate:     145.52018614425484 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2384810447692871s
+eval rate:            12.57961614057117 tokens/s
+Predicted: John Wood
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Susie in Miracle on 34th Street?...
+Sub-Q 2: ✗ INCORRECT - Who is Natalie Wood's brother?...
+
+✗ Main question 19: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 20/50: What team was Anna Benson's husband on?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Anna Benson's husband?
+Ground Truth: Kris Benson, a former Major League Baseball pitcher.
+storage_time: 0.06966683315113187
+use_sparse_attention: True
+ Kris Benson
+prompt eval count:    29 token(s)
+prompt eval duration: 0.19663586653769016s
+prompt eval rate:     147.48072419657697 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2386646270751953s
+eval rate:            12.569939822103589 tokens/s
+Predicted: Kris Benson
+F1: 0.5455, EM: 0.0000
+
+Sub-question 2/2
+Question: What team did Kris Benson play for in Major League Baseball?
+Ground Truth: Kris Benson played for the Pittsburgh Pirates, New York Mets, and Baltimore Orioles.
+storage_time: 0.08327816100791097
+use_sparse_attention: True
+ Pittsburgh Pirates, New York Mets, and Baltimore Orioles
+prompt eval count:    34 token(s)
+prompt eval duration: 0.2067786599509418s
+prompt eval rate:     164.4270255357419 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1930387020111084s
+eval rate:            9.220153530189148 tokens/s
+Predicted: Pittsburgh Pirates, New York Mets, and Baltimore Orioles
+F1: 0.8125, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Anna Benson's husband?...
+Sub-Q 2: ✓ CORRECT - What team did Kris Benson play for in Major League...
+
+✓ Main question 20: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 21/50: What is the record label for the singer who originally sang You Belong To Me.
+================================================================================
+
+Sub-question 1/2
+Question: Who originally sang the song You Belong To Me?
+Ground Truth: Joni James
+storage_time: 0.07760543329641223
+use_sparse_attention: True
+ The original version of the song "You Belong to Me" was recorded by Sue Thompson.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.20123427361249924s
+prompt eval rate:     163.9879698800487 tokens/s
+eval count:           20 token(s)
+eval duration:        2.269334077835083s
+eval rate:            8.813158095735185 tokens/s
+Predicted: The original version of the song "You Belong to Me" was recorded by Sue Thompson.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label was Joni James signed to when she released 'You Belong To Me' in 1952?
+Ground Truth: MGM Records
+storage_time: 0.17101438995450735
+use_sparse_attention: True
+ M-G-M Records
+prompt eval count:    48 token(s)
+prompt eval duration: 0.36716777086257935s
+prompt eval rate:     130.7304284557292 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47736263275146484s
+eval rate:            10.474217412411523 tokens/s
+Predicted: M-G-M Records
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who originally sang the song You Belong To Me?...
+Sub-Q 2: ✓ CORRECT - What record label was Joni James signed to when sh...
+
+✗ Main question 21: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 22/50: When did the crowning of the person under whom the Chapter House was built happen?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the person under whom the Chapter House was built?
+Ground Truth: Henry III
+storage_time: 0.0869342559017241
+use_sparse_attention: True
+ Henry III
+prompt eval count:    34 token(s)
+prompt eval duration: 0.21068814676254988s
+prompt eval rate:     161.3759507710642 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23860526084899902s
+eval rate:            12.57306728831325 tokens/s
+Predicted: Henry III
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: When was Henry III crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral, and then again at Westminster Abbey in 1220.
+storage_time: 0.1072717527858913
+use_sparse_attention: True
+1220
+prompt eval count:    28 token(s)
+prompt eval duration: 0.22999435663223267s
+prompt eval rate:     121.74211754583516 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4771456718444824s
+eval rate:            10.47898009987538 tokens/s
+Predicted: 1220
+F1: 0.1818, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the person under whom the Chapter House wa...
+Sub-Q 2: ✗ INCORRECT - When was Henry III crowned?...
+
+✗ Main question 22: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 23/50: What group was the performer of Be the One a member of?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 24/50: What month did the person who retained trust in Longchamp go away to the Holy Land?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 25/50: What record label does the artist who sang you belong to me belong to?
+================================================================================
+
+Sub-question 1/2
+Question: Who sang the song 'You Belong to Me'?
+Ground Truth: Joni James sang the song 'You Belong to Me'.
+storage_time: 0.07971244910731912
+use_sparse_attention: True
+ Patti Page
+prompt eval count:    34 token(s)
+prompt eval duration: 0.20386809390038252s
+prompt eval rate:     166.77450281461725 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3581361770629883s
+eval rate:            11.168935885794324 tokens/s
+Predicted: Patti Page
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label is Joni James signed to?
+Ground Truth: Joni James was signed to MGM Records.
+storage_time: 0.09474737709388137
+use_sparse_attention: True
+ M-G-M Records
+prompt eval count:    32 token(s)
+prompt eval duration: 0.21777410013601184s
+prompt eval rate:     146.94125692639415 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47721028327941895s
+eval rate:            10.477561308276274 tokens/s
+Predicted: M-G-M Records
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who sang the song 'You Belong to Me'?...
+Sub-Q 2: ✓ CORRECT - What record label is Joni James signed to?...
+
+✗ Main question 25: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 26/50: What place does the administrative territorial entity that Juba is located in share a border with?
+================================================================================
+
+Sub-question 1/2
+Question: What is the administrative territorial entity that contains Juba?
+Ground Truth: Central Equatoria
+storage_time: 0.06632533809170127
+use_sparse_attention: True
+1. The document titled "The Citizen (South Sudan)" states that Juba is the national capital of South Sudan.  
+2. The capital of a country is typically located within its administrative territorial entity.  
+3. Therefore, the administrative territorial entity that contains Juba is South Sudan.  
+
+Answer: South Sudan
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19410895183682442s
+prompt eval rate:     170.00761524765272 tokens/s
+eval count:           64 token(s)
+eval duration:        7.5227015018463135s
+eval rate:            8.507582014824374 tokens/s
+Predicted: 1. The document titled "The Citizen (South Sudan)" states that Juba is the national capital of South Sudan.  
+2. The capital of a country is typically located within its administrative territorial entity.  
+3. Therefore, the administrative territorial entity that contains Juba is South Sudan.  
+
+Answer: South Sudan
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What places share a border with Central Equatoria?
+Ground Truth: Eastern Equatoria shares a border with Central Equatoria.
+storage_time: 0.07099604420363903
+use_sparse_attention: True
+1. The Badigeru swamp lies in South Sudan, in the Central Equatoria and adjacent parts of southern Uganda. 2. The Citizen is a newspaper based in Juba, the national capital of South Sudan and the state capital of Central Equatoria.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.19418495893478394s
+prompt eval rate:     164.79134210774296 tokens/s
+eval count:           53 token(s)
+eval duration:        6.214649438858032s
+eval rate:            8.528236471169157 tokens/s
+Predicted: 1. The Badigeru swamp lies in South Sudan, in the Central Equatoria and adjacent parts of southern Uganda. 2. The Citizen is a newspaper based in Juba, the national capital of South Sudan and the state capital of Central Equatoria.
+F1: 0.1961, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the administrative territorial entity that...
+Sub-Q 2: ✗ INCORRECT - What places share a border with Central Equatoria?...
+
+✗ Main question 26: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 27/50: Who played the monarch at the end of WW2 in The King's Speech?
+================================================================================
+
+Sub-question 1/1
+Question: Who played King George VI in The King's Speech?
+Ground Truth: Colin Firth
+storage_time: 0.2144924676977098
+use_sparse_attention: True
+ Colin Firth played King George VI in The King's Speech.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.34130765264853835s
+prompt eval rate:     96.68696187712428 tokens/s
+eval count:           14 token(s)
+eval duration:        1.5519745349884033s
+eval rate:            9.020766568250819 tokens/s
+Predicted: Colin Firth played King George VI in The King's Speech.
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played King George VI in The King's Speech?...
+
+✓ Main question 27: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 28/50: Who is the spouse of a cast member from King of the Mountain?
+================================================================================
+
+Sub-question 1/2
+Question: Who are the cast members of King of the Mountain?
+Ground Truth: The cast includes Harry Hamlin as Steve and Deborah Van Valkenburgh as Tina.
+storage_time: 0.1413005730137229
+use_sparse_attention: True
+1. Logan Bartholomew as Sharp Claw 2. Diane Salinger as Diane Louise Salinger 3. Johann Urb as Fyn Anders 4. Jeff Kober as Jeff Huff 5. Graham Phillips as Mr. Taylorsen
+prompt eval count:    33 token(s)
+prompt eval duration: 0.28662040876224637s
+prompt eval rate:     115.13485778109307 tokens/s
+eval count:           52 token(s)
+eval duration:        6.087198972702026s
+eval rate:            8.54251688390562 tokens/s
+Predicted: 1. Logan Bartholomew as Sharp Claw 2. Diane Salinger as Diane Louise Salinger 3. Johann Urb as Fyn Anders 4. Jeff Kober as Jeff Huff 5. Graham Phillips as Mr. Taylorsen
+F1: 0.0779, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is Harry Hamlin's spouse?
+Ground Truth: Lisa Rinna
+storage_time: 0.08011842099949718
+use_sparse_attention: True
+ Lisa Rinna
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2031357423402369s
+prompt eval rate:     147.6844973434182 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35794520378112793s
+eval rate:            11.174894810005256 tokens/s
+Predicted: Lisa Rinna
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the cast members of King of the Mountain?...
+Sub-Q 2: ✓ CORRECT - Who is Harry Hamlin's spouse?...
+
+✗ Main question 28: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 29/50: Who is the spouse of the actress who played the fairy god mother in Shrek 2?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 30/50: Who has played for both West Ham Ajax and the team that Adam Hammill is on?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 31/50: Who is the spouse of Young Man Luther's author?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 32/50: When did the military instruction start in the university that Paulo Manalo attended?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 33/50: Who played king whose regal Name did Albert Adopt in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: What was the regnal name adopted by King George VI?
+Ground Truth: Albert assumed the regnal name 'George VI'.
+storage_time: 0.08562078280374408
+use_sparse_attention: True
+ Albert Frederick Arthur George
+prompt eval count:    34 token(s)
+prompt eval duration: 0.20934014255180955s
+prompt eval rate:     162.4150991087882 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4781532287597656s
+eval rate:            10.45689895887351 tokens/s
+Predicted: Albert Frederick Arthur George
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.10647756792604923
+use_sparse_attention: True
+ Colin Firth
+prompt eval count:    37 token(s)
+prompt eval duration: 0.231099849101156s
+prompt eval rate:     160.10395568802178 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3578028678894043s
+eval rate:            11.17934024284117 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What was the regnal name adopted by King George VI...
+Sub-Q 2: ✓ CORRECT - Who played King George VI in the film 'The King's ...
+
+✗ Main question 33: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 34/50: What administrative territorial entity contains the place where KPRM is licensed to broadcast to?
+================================================================================
+
+Sub-question 1/1
+Question: Where is KPRM licensed to broadcast?
+Ground Truth: Park Rapids, Minnesota
+storage_time: 0.06070361193269491
+use_sparse_attention: True
+ Park Rapids, Minnesota.
+prompt eval count:    31 token(s)
+prompt eval duration: 0.20433932077139616s
+prompt eval rate:     151.70844203148317 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5963270664215088s
+eval rate:            10.061592602202882 tokens/s
+Predicted: Park Rapids, Minnesota.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is KPRM licensed to broadcast?...
+
+✓ Main question 34: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 35/50: Who is the child of the person who followed Tihomir of Serbia?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 36/50: What year did the author of Prince Prigio die?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of Prince Prigio?
+Ground Truth: The author of Prince Prigio is Andrew Lang.
+storage_time: 0.07188152009621263
+use_sparse_attention: True
+ Andrew Lang
+prompt eval count:    32 token(s)
+prompt eval duration: 0.19961399398744106s
+prompt eval rate:     160.30940196514135 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23950481414794922s
+eval rate:            12.525844253580686 tokens/s
+Predicted: Andrew Lang
+F1: 0.3636, EM: 0.0000
+
+Sub-question 2/2
+Question: What year did Andrew Lang die?
+Ground Truth: Andrew Lang died in 1912.
+storage_time: 0.07344483537599444
+use_sparse_attention: True
+1912
+prompt eval count:    29 token(s)
+prompt eval duration: 0.19632154237478971s
+prompt eval rate:     147.716850882504 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4776754379272461s
+eval rate:            10.467358383960997 tokens/s
+Predicted: 1912
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of Prince Prigio?...
+Sub-Q 2: ✓ CORRECT - What year did Andrew Lang die?...
+
+✓ Main question 36: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 37/50: In which county is Mark Dismore's birthplace located?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Mark Dismore born?
+Ground Truth: Greenfield, Indiana
+storage_time: 0.19923229701817036
+use_sparse_attention: True
+1957
+prompt eval count:    30 token(s)
+prompt eval duration: 0.4303862168453634s
+prompt eval rate:     69.70483446215685 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4865546226501465s
+eval rate:            10.276338497754265 tokens/s
+Predicted: 1957
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Greenfield, Indiana located in?
+Ground Truth: Greenfield, Indiana is located in Hancock County.
+storage_time: 0.10191372316330671
+use_sparse_attention: True
+ Hancock County
+prompt eval count:    32 token(s)
+prompt eval duration: 0.2252580770291388s
+prompt eval rate:     142.05927894812208 tokens/s
+eval count:           3 token(s)
+eval duration:        0.238936185836792s
+eval rate:            12.555653675869687 tokens/s
+Predicted: Hancock County
+F1: 0.1818, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Mark Dismore born?...
+Sub-Q 2: ✓ CORRECT - Which county is Greenfield, Indiana located in?...
+
+✗ Main question 37: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 38/50: Who was the sibling of Nannina de' Medici?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the parents of Nannina de' Medici?
+Ground Truth: Nannina de' Medici's parents were Piero di Cosimo de' Medici and Lucrezia Tornabuoni.
+storage_time: 0.06727143516764045
+use_sparse_attention: True
+ Piero di Cosimo de' Medici and Lucrezia Tornabuoni
+prompt eval count:    35 token(s)
+prompt eval duration: 0.2270723721012473s
+prompt eval rate:     154.1358804513398 tokens/s
+eval count:           19 token(s)
+eval duration:        2.153643846511841s
+eval rate:            8.822257231980783 tokens/s
+Predicted: Piero di Cosimo de' Medici and Lucrezia Tornabuoni
+F1: 0.7368, EM: 0.0000
+
+Sub-question 2/2
+Question: Based on Nannina de' Medici's parents Piero di Cosimo de' Medici and Lucrezia Tornabuoni, who were her siblings?
+Ground Truth: Nannina de' Medici's siblings were Lorenzo de' Medici and Giuliano de' Medici.
+storage_time: 0.07939576962962747
+use_sparse_attention: True
+1. Lorenzo de' Medici.
+prompt eval count:    57 token(s)
+prompt eval duration: 0.20579138165339828s
+prompt eval rate:     276.9795291816524 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9575917720794678s
+eval rate:            9.398576995347362 tokens/s
+Predicted: 1. Lorenzo de' Medici.
+F1: 0.4615, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who were the parents of Nannina de' Medici?...
+Sub-Q 2: ✗ INCORRECT - Based on Nannina de' Medici's parents Piero di Cos...
+
+✗ Main question 38: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 39/50: What county is the NRHEG High School located in?
+================================================================================
+
+Sub-question 1/2
+Question: Where is NRHEG High School located?
+Ground Truth: NRHEG High School is located in New Richland, Minnesota.
+storage_time: 0.06965313712134957
+use_sparse_attention: True
+ New Richland, Minnesota
+prompt eval count:    31 token(s)
+prompt eval duration: 0.23483778396621346s
+prompt eval rate:     132.00601486028341 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5981156826019287s
+eval rate:            10.031504229915425 tokens/s
+Predicted: New Richland, Minnesota
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is New Richland, Minnesota located in?
+Ground Truth: New Richland is located in Waseca County, Minnesota.
+storage_time: 0.07338553993031383
+use_sparse_attention: True
+ New Richland, Minnesota is located in Waseca County.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19654011819511652s
+prompt eval rate:     167.9046512388836 tokens/s
+eval count:           14 token(s)
+eval duration:        1.554948329925537s
+eval rate:            9.00351460596149 tokens/s
+Predicted: New Richland, Minnesota is located in Waseca County.
+F1: 1.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is NRHEG High School located?...
+Sub-Q 2: ✓ CORRECT - Which county is New Richland, Minnesota located in...
+
+✓ Main question 39: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 40/50: Who founded the political party of Dimuthu Bandara Abayakoon?
+================================================================================
+
+Sub-question 1/2
+Question: What is the name of the political party of Dimuthu Bandara Abayakoon?
+Ground Truth: Janatha Vimukthi Peramuna
+storage_time: 0.12017135508358479
+use_sparse_attention: True
+ The political party of Dimuthu Bandara Abayakoon is not explicitly mentioned in the provided documents. However, as the wife of Mahinda Rajapaksa, who was the President of Sri Lanka from 2005 to 2015 and a member of the Sri Lanka Freedom Party (SLFP), it can be inferred that she is associated with the SLFP.
+prompt eval count:    41 token(s)
+prompt eval duration: 0.32055662106722593s
+prompt eval rate:     127.90252113183347 tokens/s
+eval count:           81 token(s)
+eval duration:        9.577460765838623s
+eval rate:            8.457356493582823 tokens/s
+Predicted: The political party of Dimuthu Bandara Abayakoon is not explicitly mentioned in the provided documents. However, as the wife of Mahinda Rajapaksa, who was the President of Sri Lanka from 2005 to 2015 and a member of the Sri Lanka Freedom Party (SLFP), it can be inferred that she is associated with the SLFP.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who founded the Janatha Vimukthi Peramuna political party?
+Ground Truth: The Janatha Vimukthi Peramuna was founded by Rohana Wijeweera.
+storage_time: 0.1680082674138248
+use_sparse_attention: True
+ Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+prompt eval count:    37 token(s)
+prompt eval duration: 0.29231436736881733s
+prompt eval rate:     126.57605691107395 tokens/s
+eval count:           39 token(s)
+eval duration:        4.540229558944702s
+eval rate:            8.589874034709574 tokens/s
+Predicted: Patabendi Don Jinadasa Nandasiri Wijeweera, known as Rohana Wijeweera, founded the Janatha Vimukthi Peramuna political party.
+F1: 0.5833, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the name of the political party of Dimuthu...
+Sub-Q 2: ✓ CORRECT - Who founded the Janatha Vimukthi Peramuna politica...
+
+✗ Main question 40: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 41/50: When did military instruction start at the place where Larry Alcala was educated?
+================================================================================
+
+Sub-question 1/2
+Question: Where did Larry Alcala study?
+Ground Truth: Larry Alcala estudió en la Universidad de Filipinas, donde obtuvo un título de Licenciado en Bellas Artes en Pintura.
+storage_time: 0.07220382196828723
+use_sparse_attention: True
+1. Larry Alcala obtained a degree of Bachelor of Fine Arts in Painting at the University of the Philippines (UP) in 1950.
+prompt eval count:    29 token(s)
+prompt eval duration: 0.2028512228280306s
+prompt eval rate:     142.96191857115437 tokens/s
+eval count:           32 token(s)
+eval duration:        3.7084662914276123s
+eval rate:            8.628904103556318 tokens/s
+Predicted: 1. Larry Alcala obtained a degree of Bachelor of Fine Arts in Painting at the University of the Philippines (UP) in 1950.
+F1: 0.1091, EM: 0.0000
+
+Sub-question 2/2
+Question: When did military instruction begin at the University of the Philippines?
+Ground Truth: Military instruction began at the University of the Philippines in 1912.
+storage_time: 0.08683416619896889
+use_sparse_attention: True
+1912
+prompt eval count:    34 token(s)
+prompt eval duration: 0.21075406344607472s
+prompt eval rate:     161.32547787720128 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4775698184967041s
+eval rate:            10.469673346902484 tokens/s
+Predicted: 1912
+F1: 0.3750, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where did Larry Alcala study?...
+Sub-Q 2: ✓ CORRECT - When did military instruction begin at the Univers...
+
+✓ Main question 41: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 42/50: Who has played for West Ham Ajax and the team that David Currie plays for?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 43/50: Who is the spouse of the creator of Absolutely Fabulous?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 44/50: What county shares a border with Cedar Springs?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Cedar Springs located?
+Ground Truth: Cedar Springs is an unincorporated community in west Falls County, Texas, United States, located on Farm-to-market road #2027.
+storage_time: 0.07139123603701591
+use_sparse_attention: True
+ Cedar Springs is located in northern Clear Springs, in Door County, Wisconsin, United States.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.1947704697959125s
+prompt eval rate:     143.75895909343652 tokens/s
+eval count:           19 token(s)
+eval duration:        2.1492860317230225s
+eval rate:            8.840144922343459 tokens/s
+Predicted: Cedar Springs is located in northern Clear Springs, in Door County, Wisconsin, United States.
+F1: 0.3902, EM: 0.0000
+
+Sub-question 2/2
+Question: Which counties share a border with Falls County, Texas?
+Ground Truth: Bell County shares a border with Falls County.
+storage_time: 0.07183432020246983
+use_sparse_attention: True
+ Falls County, Texas, borders Bell County, Coryell County, Hill County, Johnson County, and McLennan County.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.1954542021267116s
+prompt eval rate:     168.8375058757055 tokens/s
+eval count:           26 token(s)
+eval duration:        2.992051839828491s
+eval rate:            8.689689013372963 tokens/s
+Predicted: Falls County, Texas, borders Bell County, Coryell County, Hill County, Johnson County, and McLennan County.
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where is Cedar Springs located?...
+Sub-Q 2: ✓ CORRECT - Which counties share a border with Falls County, T...
+
+✗ Main question 44: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 45/50: Bancroft's county borders what county?
+================================================================================
+
+Sub-question 1/3
+Question: Where is Bancroft located?
+Ground Truth: Bancroft is located in Ontario, Canada.
+storage_time: 0.08082086825743318
+use_sparse_attention: True
+ Bancroft is located in Ontario, Canada.
+prompt eval count:    29 token(s)
+prompt eval duration: 0.20381513610482216s
+prompt eval rate:     142.28580150732915 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1947553157806396s
+eval rate:            9.20690609592536 tokens/s
+Predicted: Bancroft is located in Ontario, Canada.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/3
+Question: Which county is Bancroft, Ontario located in?
+Ground Truth: Bancroft, Ontario is located in Hastings County.
+storage_time: 0.07103064795956016
+use_sparse_attention: True
+ Bancroft, Ontario is located in Hastings County.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19466994982212782s
+prompt eval rate:     169.51768894044756 tokens/s
+eval count:           12 token(s)
+eval duration:        1.312814712524414s
+eval rate:            9.140665385235648 tokens/s
+Predicted: Bancroft, Ontario is located in Hastings County.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 3/3
+Question: Which counties border Hastings County in Ontario?
+Ground Truth: Renfrew County and Haliburton County border Hastings County in Ontario.
+storage_time: 0.08262468408793211
+use_sparse_attention: True
+ The counties that border Hastings County in Ontario are Haliburton County, Northumberland County, Prince Edward County, and Renfrew County.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20594366639852524s
+prompt eval rate:     145.67090372153746 tokens/s
+eval count:           29 token(s)
+eval duration:        3.3455145359039307s
+eval rate:            8.668322821130543 tokens/s
+Predicted: The counties that border Hastings County in Ontario are Haliburton County, Northumberland County, Prince Edward County, and Renfrew County.
+F1: 0.7317, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Bancroft located?...
+Sub-Q 2: ✓ CORRECT - Which county is Bancroft, Ontario located in?...
+Sub-Q 3: ✓ CORRECT - Which counties border Hastings County in Ontario?...
+
+✓ Main question 45: ALL 3 sub-questions CORRECT
+
+================================================================================
+Main Question 46/50: Who is the father of Empress Wang's husband?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Empress Wang's husband?
+Ground Truth: Empress Wang's husband was Yang Pu (Emperor Rui), the final ruler of the Chinese state Wu during the Five Dynasties and Ten Kingdoms period.
+storage_time: 0.07998179411515594
+use_sparse_attention: True
+ Emperor Ming
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20303318509832025s
+prompt eval rate:     147.7590965510012 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23851704597473145s
+eval rate:            12.577717402712679 tokens/s
+Predicted: Emperor Ming
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the father of Yang Pu (Emperor Rui of Wu)?
+Ground Truth: Yang Pu's father was Yang Xingmi, a late-Tang Dynasty warlord and military governor of Huainan Circuit.
+storage_time: 0.17254215804859996
+use_sparse_attention: True
+ Yang Xingmi
+prompt eval count:    37 token(s)
+prompt eval duration: 0.29735824931412935s
+prompt eval rate:     124.42903496150593 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47729015350341797s
+eval rate:            10.475807982416704 tokens/s
+Predicted: Yang Xingmi
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Empress Wang's husband?...
+Sub-Q 2: ✓ CORRECT - Who was the father of Yang Pu (Emperor Rui of Wu)?...
+
+✗ Main question 46: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 47/50: Who played the king that was king of england in 1951 in the king's speech?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the king of England in 1951?
+Ground Truth: George VI was the King of the United Kingdom in 1951.
+storage_time: 0.08221108699217439
+use_sparse_attention: True
+ George VI
+prompt eval count:    35 token(s)
+prompt eval duration: 0.2061141631565988s
+prompt eval rate:     169.8088062653324 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2385714054107666s
+eval rate:            12.574851520175567 tokens/s
+Predicted: George VI
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.1065373714081943
+use_sparse_attention: True
+ Colin Firth
+prompt eval count:    38 token(s)
+prompt eval duration: 0.23090832773596048s
+prompt eval rate:     164.56747304260207 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35837697982788086s
+eval rate:            11.161431188803187 tokens/s
+Predicted: Colin Firth
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the king of England in 1951?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 47: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 48/50: Who is the spouse of the person who sang holding out for a hero in shrek 2?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 49/50: Who is the employer of the person Mach's principle was named after?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 50/50: Who has played for West Ham Ajax and the team from the city where Malcolm Graham died?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 18/36 (50.00%)
+Sub Questions: 47/67 (70.15%)
+Average F1: 0.4638
+Average EM: 0.2239
+================================================================================
+
+Results saved to /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/nopreprocess_staticv_m5n16_scale1

@@ -1,0 +1,151 @@
+{
+  "task": "calibrated gates for functional predicted-K adapter",
+  "train_dir": "MOTIVATION_EXPERIMENTS/structured_kv_adapter/results/qwen3_8b/wikitext_delta_fullprefix_alltarget_96_stride384",
+  "train_count": 64,
+  "train_k_predictor_mean_explained": 0.5895653486382577,
+  "rank": 64,
+  "alpha": 0.01,
+  "scales": [
+    0.0,
+    0.1,
+    0.3,
+    0.6,
+    1.0
+  ],
+  "calib_start": 96,
+  "calib_count_requested": 4,
+  "calib_processed": 4,
+  "test_start": 100,
+  "test_count_requested": 4,
+  "test_processed": 4,
+  "summary": {
+    "calib": {
+      "cachedK_cachedV": {
+        "logit_rel_error": 0.2378817391767433,
+        "output_rel_error": 0.8656054524128753
+      },
+      "fullK_cachedV": {
+        "logit_rel_error": 0.0,
+        "output_rel_error": 0.6732147419849922
+      },
+      "cachedK_fullV": {
+        "logit_rel_error": 0.2378817391767433,
+        "output_rel_error": 1.767718587970387
+      },
+      "fullK_fullV": {
+        "logit_rel_error": 0.0,
+        "output_rel_error": 0.0
+      },
+      "predK_s0_cachedV": {
+        "logit_rel_error": 0.23788181329008812,
+        "output_rel_error": 0.8656038476758572
+      },
+      "predK_s0.1_cachedV": {
+        "logit_rel_error": 0.2252838490339723,
+        "output_rel_error": 0.8020820700925559
+      },
+      "predK_s0.3_cachedV": {
+        "logit_rel_error": 0.20570855972372118,
+        "output_rel_error": 0.6376070823827756
+      },
+      "predK_s0.6_cachedV": {
+        "logit_rel_error": 0.19427694922902974,
+        "output_rel_error": 0.6749588228697004
+      },
+      "predK_s1_cachedV": {
+        "logit_rel_error": 0.2161819663095468,
+        "output_rel_error": 1.0098927569849543
+      }
+    },
+    "test": {
+      "cachedK_cachedV": {
+        "logit_rel_error": 0.23097431475270794,
+        "output_rel_error": 0.882261717276306
+      },
+      "fullK_cachedV": {
+        "logit_rel_error": 0.0,
+        "output_rel_error": 0.29445505283252743
+      },
+      "cachedK_fullV": {
+        "logit_rel_error": 0.23097431475270794,
+        "output_rel_error": 1.8361344155377493
+      },
+      "fullK_fullV": {
+        "logit_rel_error": 0.0,
+        "output_rel_error": 0.0
+      },
+      "predK_s0_cachedV": {
+        "logit_rel_error": 0.23097333598292039,
+        "output_rel_error": 0.8822573987946378
+      },
+      "predK_s0.1_cachedV": {
+        "logit_rel_error": 0.2182757328748063,
+        "output_rel_error": 0.8181951384281204
+      },
+      "predK_s0.3_cachedV": {
+        "logit_rel_error": 0.19846641024956224,
+        "output_rel_error": 0.6302331476176524
+      },
+      "predK_s0.6_cachedV": {
+        "logit_rel_error": 0.18678685199111147,
+        "output_rel_error": 0.5175198631737612
+      },
+      "predK_s1_cachedV": {
+        "logit_rel_error": 0.2088197966990477,
+        "output_rel_error": 0.8186769884244498
+      }
+    },
+    "test_selected": {
+      "predK_global_calib_best": {
+        "scale": 0.3,
+        "logit_rel_error": 0.19846641024956224,
+        "output_rel_error": 0.6302331476176524,
+        "recovery_vs_cached_to_fullK": 0.42876099388417055
+      },
+      "predK_layerwise_calib_best": {
+        "layer_scales": [
+          0.1,
+          0.6,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.3,
+          0.6,
+          0.6,
+          0.3,
+          0.3,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.6,
+          0.3,
+          0.3,
+          0.6,
+          0.6
+        ],
+        "logit_rel_error": 0.18755920414513555,
+        "output_rel_error": 0.5116355898683851,
+        "recovery_vs_cached_to_fullK": 0.6305238606959855
+      }
+    }
+  },
+  "notes": "Global/layer-wise scales are chosen only on calibration split and then evaluated on separate test split. Full K/V/hidden are teacher references only."
+}

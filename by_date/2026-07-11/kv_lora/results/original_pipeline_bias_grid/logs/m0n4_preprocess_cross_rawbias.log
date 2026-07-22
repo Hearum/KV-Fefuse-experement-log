@@ -1,0 +1,952 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge_staticv_m0n4_scale1
+      Full path: /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_m0n4_scale1
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 247.54it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 50 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 835 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:00<00:02,  1.03it/s]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.21it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.38it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.94it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+Corpus embeddings shape: (835, 1024)
+FAISS index built with 835 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/4 [00:00<?, ?it/s]Inference Embeddings:  25%|██▌       | 1/4 [00:00<00:02,  1.44it/s]Inference Embeddings:  50%|█████     | 2/4 [00:01<00:01,  1.41it/s]Inference Embeddings:  75%|███████▌  | 3/4 [00:02<00:00,  1.51it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  2.09it/s]Inference Embeddings: 100%|██████████| 4/4 [00:02<00:00,  1.81it/s]
+Context rank computed: (835, 10)
+[WARNING] Rate=1 results file not found: /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_m0n4_scale1/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_bias_grid/Qwen3-32B/musique/FusionRAG_global_topk10_bge_staticv_m0n4_scale1
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/50: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+storage_time: 0.10698130307719111
+use_sparse_attention: True
+ the United Kingdom's National Cycle Network
+prompt eval count:    34 token(s)
+prompt eval duration: 0.3225324051454663s
+prompt eval rate:     105.41576430022762 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8409698009490967s
+eval rate:            9.512826728107726 tokens/s
+Predicted: the United Kingdom's National Cycle Network
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What network is National Cycle Route 57 part of?...
+
+✓ Main question 1: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 2/50: What district is the headquarter of Julia's House located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Julia's House located?
+Ground Truth: Corfe Mullen, Dorset, England
+storage_time: 0.07611070480197668
+use_sparse_attention: True
+3% of the cost is provided by the government.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.20009654108434916s
+prompt eval rate:     159.92280439525763 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3127567768096924s
+eval rate:            9.141068788967003 tokens/s
+Predicted: 3% of the cost is provided by the government.
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where is the headquarters of Julia's House located...
+
+✗ Main question 2: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 3/50: What body of water includes the terrain feature where Coffee Swamp is located?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Coffee Swamp located?
+Ground Truth: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+storage_time: 0.08022754220291972
+use_sparse_attention: True
+ Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.20308090560138226s
+prompt eval rate:     137.87608400250022 tokens/s
+eval count:           19 token(s)
+eval duration:        2.1520090103149414s
+eval rate:            8.828959316122656 tokens/s
+Predicted: Coffee Swamp is located on the northern edge of Washington Island, in Door County, Wisconsin.
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Coffee Swamp located?...
+
+✓ Main question 3: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 4/50: Who is the spouse of the child of Peter Andreas Heiberg?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Peter Andreas Heiberg?
+Ground Truth: Johan Ludvig Heiberg is the child of Peter Andreas Heiberg.
+storage_time: 0.07494131103157997
+use_sparse_attention: True
+ Johan Ludvig Heiberg
+prompt eval count:    33 token(s)
+prompt eval duration: 0.23647609818726778s
+prompt eval rate:     139.5489872040555 tokens/s
+eval count:           7 token(s)
+eval duration:        0.7167525291442871s
+eval rate:            9.766271781917707 tokens/s
+Predicted: Johan Ludvig Heiberg
+F1: 0.5714, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the spouse of Johan Ludvig Heiberg?
+Ground Truth: Johanne Luise Heiberg
+storage_time: 0.15965697495266795
+use_sparse_attention: True
+ Johanne Luise Heiberg
+prompt eval count:    34 token(s)
+prompt eval duration: 0.3263320713303983s
+prompt eval rate:     104.18834980389146 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8351991176605225s
+eval rate:            9.578554180479514 tokens/s
+Predicted: Johanne Luise Heiberg
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the child of Peter Andreas Heiberg?...
+Sub-Q 2: ✓ CORRECT - Who is the spouse of Johan Ludvig Heiberg?...
+
+✓ Main question 4: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 5/50: When was the sibling of Alice de Lusignan, Countess of Surrey crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who were the siblings of Alice de Lusignan, Countess of Surrey?
+Ground Truth: Alice de Lusignan had a uterine half-brother, King Henry III of England.
+storage_time: 0.07182805426418781
+use_sparse_attention: True
+1. Aldrea (Andalite companion), 2. Dak Hamee (Hork-Bajir companion), 3. Esplin 9466 (Yeerks).
+prompt eval count:    39 token(s)
+prompt eval duration: 0.1976872431114316s
+prompt eval rate:     197.2813186433918 tokens/s
+eval count:           42 token(s)
+eval duration:        4.9045634269714355s
+eval rate:            8.56345332777865 tokens/s
+Predicted: 1. Aldrea (Andalite companion), 2. Dak Hamee (Hork-Bajir companion), 3. Esplin 9466 (Yeerks).
+F1: 0.0400, EM: 0.0000
+
+Sub-question 2/2
+Question: When was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral and had a second coronation on 17 May 1220 at Westminster Abbey.
+storage_time: 0.1038620239123702
+use_sparse_attention: True
+1220
+prompt eval count:    31 token(s)
+prompt eval duration: 0.22776329889893532s
+prompt eval rate:     136.10621267720367 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4772188663482666s
+eval rate:            10.47737286302315 tokens/s
+Predicted: 1220
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who were the siblings of Alice de Lusignan, Counte...
+Sub-Q 2: ✗ INCORRECT - When was King Henry III of England crowned?...
+
+✗ Main question 5: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 6/50: What company merged in 2002 with the CEMM developer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 7/50: Which university employed the person that Mach bands are named after?
+================================================================================
+
+Sub-question 1/1
+Question: Which university employed Ernst Mach?
+Ground Truth: Ernst Mach was employed at Charles University in Prague.
+storage_time: 0.0834376779384911
+use_sparse_attention: True
+ Charles University in Prague
+prompt eval count:    28 token(s)
+prompt eval duration: 0.20658685872331262s
+prompt eval rate:     135.53621064300688 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4773592948913574s
+eval rate:            10.474290651736348 tokens/s
+Predicted: Charles University in Prague
+F1: 0.6250, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which university employed Ernst Mach?...
+
+✓ Main question 7: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 8/50: Who is the employer of the physicist who Mach number is named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the physicist that the Mach number is named after?
+Ground Truth: The Mach number is named after the Austrian physicist and philosopher Ernst Mach.
+storage_time: 0.20713445078581572
+use_sparse_attention: True
+ Ernst Mach
+prompt eval count:    34 token(s)
+prompt eval duration: 0.3319687768816948s
+prompt eval rate:     102.41927062952891 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23914003372192383s
+eval rate:            12.544950978339545 tokens/s
+Predicted: Ernst Mach
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was Ernst Mach's employer or academic institution during his career?
+Ground Truth: Ernst Mach was a professor at Charles University in Prague.
+storage_time: 0.141676832921803
+use_sparse_attention: True
+ Vinko Dvořák studied mathematics and physics at the Charles University in Prague and later founded the Physics Cabinet at the Faculty of Philosophy in Zagreb. However, the provided documents do not explicitly mention Ernst Mach's employer or academic institution.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.3072496149688959s
+prompt eval rate:     113.91389376856725 tokens/s
+eval count:           50 token(s)
+eval duration:        5.861929178237915s
+eval rate:            8.529615162466003 tokens/s
+Predicted: Vinko Dvořák studied mathematics and physics at the Charles University in Prague and later founded the Physics Cabinet at the Faculty of Philosophy in Zagreb. However, the provided documents do not explicitly mention Ernst Mach's employer or academic institution.
+F1: 0.3273, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the physicist that the Mach number is named...
+Sub-Q 2: ✗ INCORRECT - Who was Ernst Mach's employer or academic institut...
+
+✗ Main question 8: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 9/50: What record label did the performer of The Place and the Time belong to?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 10/50: When did a storm disperse the fleet led by the English king who trusted William de Longchamp?
+================================================================================
+
+Sub-question 1/2
+Question: Which English king trusted William de Longchamp?
+Ground Truth: King Richard I of England
+storage_time: 0.09141178941354156
+use_sparse_attention: True
+ Richard I
+prompt eval count:    32 token(s)
+prompt eval duration: 0.2185012362897396s
+prompt eval rate:     146.45226060674082 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23892498016357422s
+eval rate:            12.556242540843249 tokens/s
+Predicted: Richard I
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/2
+Question: What specific naval expedition or fleet did King Richard I lead that was dispersed by a storm?
+Ground Truth: King Richard I led a large fleet from Messina to Acre in April 1191, which was dispersed by a storm.
+storage_time: 0.18685264512896538
+use_sparse_attention: True
+1191 fleet en route to Acre
+prompt eval count:    40 token(s)
+prompt eval duration: 0.3121646228246391s
+prompt eval rate:     128.13751807638468 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1944265365600586s
+eval rate:            9.209440399473989 tokens/s
+Predicted: 1191 fleet en route to Acre
+F1: 0.3871, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which English king trusted William de Longchamp?...
+Sub-Q 2: ✓ CORRECT - What specific naval expedition or fleet did King R...
+
+✓ Main question 10: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 11/50: The Unwinding author volunteered for which organisation?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Unwinding?
+Ground Truth: George Packer
+storage_time: 0.08264066511765122
+use_sparse_attention: True
+1. The question asks for the author of The Unwinding.
+2. Referring to the provided document titled "The Unwinding," it is described as a 2013 non-fiction book by American journalist George Packer.
+3. Therefore, the author of The Unwinding is George Packer.
+
+Answer: George Packer
+prompt eval count:    32 token(s)
+prompt eval duration: 0.29638833412900567s
+prompt eval rate:     107.9664626276138 tokens/s
+eval count:           71 token(s)
+eval duration:        8.364547967910767s
+eval rate:            8.488205252977208 tokens/s
+Predicted: 1. The question asks for the author of The Unwinding.
+2. Referring to the provided document titled "The Unwinding," it is described as a 2013 non-fiction book by American journalist George Packer.
+3. Therefore, the author of The Unwinding is George Packer.
+
+Answer: George Packer
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which organization did George Packer volunteer for?
+Ground Truth: Peace Corps
+storage_time: 0.09809118416160345
+use_sparse_attention: True
+1. The text mentions that George Packer served with the Peace Corps in Togo from 1982 to 1983.  
+2. During his time there, he worked as an English teacher in the village of Lavie.  
+3. Therefore, the organization George Packer volunteered for was the Peace Corps.  
+
+Answer: Peace Corps
+prompt eval count:    31 token(s)
+prompt eval duration: 0.2251026970334351s
+prompt eval rate:     137.7149203831862 tokens/s
+eval count:           74 token(s)
+eval duration:        8.728269338607788s
+eval rate:            8.478198498375331 tokens/s
+Predicted: 1. The text mentions that George Packer served with the Peace Corps in Togo from 1982 to 1983.  
+2. During his time there, he worked as an English teacher in the village of Lavie.  
+3. Therefore, the organization George Packer volunteered for was the Peace Corps.  
+
+Answer: Peace Corps
+F1: 0.0741, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Unwinding?...
+Sub-Q 2: ✓ CORRECT - Which organization did George Packer volunteer for...
+
+✓ Main question 11: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 12/50: Who is the lead singer of the band performing Bang Bang Rock & Roll?
+================================================================================
+
+Sub-question 1/2
+Question: Which band performed the song 'Bang Bang Rock & Roll'?
+Ground Truth: The song 'Bang Bang Rock & Roll' was performed by the British rock band Art Brut.
+storage_time: 0.07262406079098582
+use_sparse_attention: True
+ Art Brut
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19682931061834097s
+prompt eval rate:     177.81904478579537 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2389528751373291s
+eval rate:            12.554776745313752 tokens/s
+Predicted: Art Brut
+F1: 0.1538, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the lead singer of the band Art Brut?
+Ground Truth: Eddie Argos
+storage_time: 0.07840989017859101
+use_sparse_attention: True
+ Eddie Argos
+prompt eval count:    33 token(s)
+prompt eval duration: 0.20285728015005589s
+prompt eval rate:     162.6759462395903 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35806775093078613s
+eval rate:            11.171070250258849 tokens/s
+Predicted: Eddie Argos
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which band performed the song 'Bang Bang Rock & Ro...
+Sub-Q 2: ✓ CORRECT - Who is the lead singer of the band Art Brut?...
+
+✓ Main question 12: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 13/50: What company did the company that initiated a successful price war among PC manufacturers in 1994 merge with in 2002?
+================================================================================
+
+Sub-question 1/2
+Question: Which company initiated a successful price war among PC manufacturers in 1994?
+Ground Truth: Compaq initiated a successful price war among PC manufacturers in 1994.
+storage_time: 0.09928988944739103
+use_sparse_attention: True
+ Compaq
+prompt eval count:    39 token(s)
+prompt eval duration: 0.22368991747498512s
+prompt eval rate:     174.3484929505654 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35790276527404785s
+eval rate:            11.176219878986352 tokens/s
+Predicted: Compaq
+F1: 0.1333, EM: 0.0000
+
+Sub-question 2/2
+Question: Which company did Compaq merge with in 2002?
+Ground Truth: Hewlett Packard
+storage_time: 0.10090074595063925
+use_sparse_attention: True
+ Hewlett Packard
+prompt eval count:    37 token(s)
+prompt eval duration: 0.22561675170436502s
+prompt eval rate:     163.99491491874076 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47675228118896484s
+eval rate:            10.487626797569968 tokens/s
+Predicted: Hewlett Packard
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which company initiated a successful price war amo...
+Sub-Q 2: ✓ CORRECT - Which company did Compaq merge with in 2002?...
+
+✓ Main question 13: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 14/50: What year was the father of Katherine of England crowned?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Katherine of England?
+Ground Truth: Katherine of England was the fifth child of King Henry III and Eleanor of Provence. She was born on 25 November 1253, was either deaf-mute or deaf and mentally challenged, was very sickly, possibly had a degenerative disease, and died at Windsor on 3 May 1257 before reaching her fourth year.
+storage_time: 0.068743578158319
+use_sparse_attention: True
+ Katherine of England is not explicitly mentioned in the provided documents. However, there are references to several historical figures named Katherine, such as Katherine Seymour, who was a daughter of Lady Katherine Grey and a member of the English nobility. There is also mention of Katherine Applegate, though she is a modern author and not a historical figure from England. Without further clarification, it is not possible to definitively identify a specific historical figure named Katherine of England from the provided information.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.19187058601528406s
+prompt eval rate:     145.9316958450816 tokens/s
+eval count:           95 token(s)
+eval duration:        11.232176780700684s
+eval rate:            8.457844089778805 tokens/s
+Predicted: Katherine of England is not explicitly mentioned in the provided documents. However, there are references to several historical figures named Katherine, such as Katherine Seymour, who was a daughter of Lady Katherine Grey and a member of the English nobility. There is also mention of Katherine Applegate, though she is a modern author and not a historical figure from England. Without further clarification, it is not possible to definitively identify a specific historical figure named Katherine of England from the provided information.
+F1: 0.1290, EM: 0.0000
+
+Sub-question 2/2
+Question: What year was King Henry III of England crowned?
+Ground Truth: Henry III was first crowned in 1216 and had a second coronation in 1220.
+storage_time: 0.09852775512263179
+use_sparse_attention: True
+1207
+prompt eval count:    32 token(s)
+prompt eval duration: 0.22199633019044995s
+prompt eval rate:     144.14652698333933 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47766900062561035s
+eval rate:            10.467499447214335 tokens/s
+Predicted: 1207
+F1: 0.1600, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Katherine of England?...
+Sub-Q 2: ✗ INCORRECT - What year was King Henry III of England crowned?...
+
+✗ Main question 14: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 15/50: Who is the sibling of the actress that played the little girl in Miracle on 34th street 1947?
+================================================================================
+
+Sub-question 1/2
+Question: Who played the little girl in the 1947 film Miracle on 34th Street?
+Ground Truth: Natalie Wood played the little girl, Susan Walker, in the 1947 film Miracle on 34th Street.
+storage_time: 0.06621709885075688
+use_sparse_attention: True
+1947 film Miracle on 34th Street is not correct, the film was released in 1947, but the character of the little girl, Susan Walker, was played by Natalie Wood in the 1947 film.
+prompt eval count:    43 token(s)
+prompt eval duration: 0.19126897398382425s
+prompt eval rate:     224.81429739690316 tokens/s
+eval count:           53 token(s)
+eval duration:        6.20975661277771s
+eval rate:            8.534956086836448 tokens/s
+Predicted: 1947 film Miracle on 34th Street is not correct, the film was released in 1947, but the character of the little girl, Susan Walker, was played by Natalie Wood in the 1947 film.
+F1: 0.6567, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the sibling of actress Natalie Wood?
+Ground Truth: Lana Wood is the sibling of actress Natalie Wood.
+storage_time: 0.08897503698244691
+use_sparse_attention: True
+ Natalie Wood's sibling is Lana Wood.
+prompt eval count:    31 token(s)
+prompt eval duration: 0.2122038840316236s
+prompt eval rate:     146.08592176088652 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9545862674713135s
+eval rate:            9.42816831404969 tokens/s
+Predicted: Natalie Wood's sibling is Lana Wood.
+F1: 0.5882, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played the little girl in the 1947 film Miracl...
+Sub-Q 2: ✓ CORRECT - Who is the sibling of actress Natalie Wood?...
+
+✓ Main question 15: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 16/50: What is the capital of the county that Pine Springs is located in?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Pine Springs located?
+Ground Truth: Culberson County, Texas
+storage_time: 0.06095814285799861
+use_sparse_attention: True
+ Pine Springs is located in Bell County, Kentucky.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.247750760987401s
+prompt eval rate:     121.08943633689022 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1935131549835205s
+eval rate:            9.21648827586813 tokens/s
+Predicted: Pine Springs is located in Bell County, Kentucky.
+F1: 0.1538, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the county seat of Culberson County, Texas?
+Ground Truth: Van Horn
+storage_time: 0.07086640037596226
+use_sparse_attention: True
+ Culberson County's county seat is not explicitly mentioned in the provided documents. However, the documents reference Allamoore, which is likely the county seat, as it is mentioned in the name of the Culberson County-Allamoore Independent School District.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.1948439572006464s
+prompt eval rate:     179.63092365219057 tokens/s
+eval count:           54 token(s)
+eval duration:        6.32456636428833s
+eval rate:            8.538134773146037 tokens/s
+Predicted: Culberson County's county seat is not explicitly mentioned in the provided documents. However, the documents reference Allamoore, which is likely the county seat, as it is mentioned in the name of the Culberson County-Allamoore Independent School District.
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - In which county is Pine Springs located?...
+Sub-Q 2: ✗ INCORRECT - What is the county seat of Culberson County, Texas...
+
+✗ Main question 16: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 17/50: In 2002, what company merged with the top PC manufacturer from 1994?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the top PC manufacturer in 1994?
+Ground Truth: Compaq was the top PC manufacturer in 1994.
+storage_time: 0.1599988928064704
+use_sparse_attention: True
+1994 saw Compaq become the largest PC manufacturer, as Dell surpassed Compaq to become the largest PC manufacturer in 1999. Therefore, the top PC manufacturer in 1994 was Compaq.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.34332037763670087s
+prompt eval rate:     101.94559449377266 tokens/s
+eval count:           51 token(s)
+eval duration:        5.965002536773682s
+eval rate:            8.549870630496764 tokens/s
+Predicted: 1994 saw Compaq become the largest PC manufacturer, as Dell surpassed Compaq to become the largest PC manufacturer in 1999. Therefore, the top PC manufacturer in 1994 was Compaq.
+F1: 0.4400, EM: 0.0000
+
+Sub-question 2/2
+Question: What company did Compaq merge with in 2002?
+Ground Truth: Compaq merged with Hewlett Packard (HP) in 2002.
+storage_time: 0.10731965769082308
+use_sparse_attention: True
+ Hewlett Packard
+prompt eval count:    37 token(s)
+prompt eval duration: 0.2319827899336815s
+prompt eval rate:     159.49459013997307 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47714757919311523s
+eval rate:            10.478938211224493 tokens/s
+Predicted: Hewlett Packard
+F1: 0.4211, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the top PC manufacturer in 1994?...
+Sub-Q 2: ✓ CORRECT - What company did Compaq merge with in 2002?...
+
+✓ Main question 17: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 18/50: In the King's Speech, who played the person who was the King of England in 1950?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the King of England in 1950?
+Ground Truth: George VI was the King of the United Kingdom in 1950.
+storage_time: 0.07509439392015338
+use_sparse_attention: True
+ George VI
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19872064469382167s
+prompt eval rate:     176.12664277496765 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23860406875610352s
+eval rate:            12.573130104778482 tokens/s
+Predicted: George VI
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which actor played King George VI in the film 'The King's Speech'?
+Ground Truth: Colin Firth
+storage_time: 0.09991836361587048
+use_sparse_attention: True
+ Colin Firth played King George VI in the film 'The King's Speech'.
+prompt eval count:    38 token(s)
+prompt eval duration: 0.23117547761648893s
+prompt eval rate:     164.37729638020048 tokens/s
+eval count:           17 token(s)
+eval duration:        1.908808708190918s
+eval rate:            8.906078396987107 tokens/s
+Predicted: Colin Firth played King George VI in the film 'The King's Speech'.
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the King of England in 1950?...
+Sub-Q 2: ✓ CORRECT - Which actor played King George VI in the film 'The...
+
+✓ Main question 18: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 19/50: Whose sister played Susie in miracle on 34th street?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Susie in Miracle on 34th Street?
+Ground Truth: Natalie Wood played Susan Walker in Miracle on 34th Street.
+storage_time: 0.13656239118427038
+use_sparse_attention: True
+ Natalie Wood played Susan (Susie) in *Miracle on 34th Street*.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.26050459081307054s
+prompt eval rate:     134.3546380152465 tokens/s
+eval count:           20 token(s)
+eval duration:        2.2663016319274902s
+eval rate:            8.82495062362462 tokens/s
+Predicted: Natalie Wood played Susan (Susie) in *Miracle on 34th Street*.
+F1: 0.8966, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is Natalie Wood's brother?
+Ground Truth: Natalie Wood's sister is Lana Wood. The documents do not mention a brother.
+storage_time: 0.08095182199031115
+use_sparse_attention: True
+ Natalie Wood's brother is Lana Wood.
+prompt eval count:    29 token(s)
+prompt eval duration: 0.2044105683453381s
+prompt eval rate:     141.87133392734577 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9548933506011963s
+eval rate:            9.4251363194996 tokens/s
+Predicted: Natalie Wood's brother is Lana Wood.
+F1: 0.7368, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Susie in Miracle on 34th Street?...
+Sub-Q 2: ✗ INCORRECT - Who is Natalie Wood's brother?...
+
+✗ Main question 19: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 20/50: What team was Anna Benson's husband on?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Anna Benson's husband?
+Ground Truth: Kris Benson, a former Major League Baseball pitcher.
+storage_time: 0.06980286678299308
+use_sparse_attention: True
+1. From the provided information, Anna Benson is described as the ex-wife of a former Major League Baseball pitcher named Kris Benson.  
+2. Kris Benson is identified as a former Major League Baseball pitcher who was married to Anna Benson.  
+3. Therefore, Anna Benson's husband is Kris Benson.  
+
+Answer: Kris Benson
+prompt eval count:    29 token(s)
+prompt eval duration: 0.19283525412902236s
+prompt eval rate:     150.3874389098824 tokens/s
+eval count:           66 token(s)
+eval duration:        7.755866050720215s
+eval rate:            8.509687966293745 tokens/s
+Predicted: 1. From the provided information, Anna Benson is described as the ex-wife of a former Major League Baseball pitcher named Kris Benson.  
+2. Kris Benson is identified as a former Major League Baseball pitcher who was married to Anna Benson.  
+3. Therefore, Anna Benson's husband is Kris Benson.  
+
+Answer: Kris Benson
+F1: 0.5161, EM: 0.0000
+
+Sub-question 2/2
+Question: What team did Kris Benson play for in Major League Baseball?
+Ground Truth: Kris Benson played for the Pittsburgh Pirates, New York Mets, and Baltimore Orioles.
+storage_time: 0.1721546920016408
+use_sparse_attention: True
+1996 by the Pittsburgh Pirates. He followed a strong rookie season in 1999 with an even stronger season in 2000, but those would prove to be the two best seasons of his career, as he underwent Tommy John surgery after the 2000 season. He posted three more good seasons from 2004 to 2006 with the Pirates, the New York Mets, and the Baltimore Orioles.
+prompt eval count:    34 token(s)
+prompt eval duration: 0.351948379073292s
+prompt eval rate:     96.60507626011717 tokens/s
+eval count:           95 token(s)
+eval duration:        11.218791961669922s
+eval rate:            8.467934901063911 tokens/s
+Predicted: 1996 by the Pittsburgh Pirates. He followed a strong rookie season in 1999 with an even stronger season in 2000, but those would prove to be the two best seasons of his career, as he underwent Tommy John surgery after the 2000 season. He posted three more good seasons from 2004 to 2006 with the Pirates, the New York Mets, and the Baltimore Orioles.
+F1: 0.2692, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Anna Benson's husband?...
+Sub-Q 2: ✓ CORRECT - What team did Kris Benson play for in Major League...
+
+✓ Main question 20: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 21/50: What is the record label for the singer who originally sang You Belong To Me.
+================================================================================
+
+Sub-question 1/2
+Question: Who originally sang the song You Belong To Me?
+Ground Truth: Joni James
+storage_time: 0.07847629813477397
+use_sparse_attention: True
+ "You Belong to Me" was originally sung by Marian Paroo, portrayed by Barbara Cook in the 1957 Broadway production of The Music Man.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.2249939483590424s
+prompt eval rate:     146.6706115461338 tokens/s
+eval count:           34 token(s)
+eval duration:        3.941288948059082s
+eval rate:            8.626619476032976 tokens/s
+Predicted: "You Belong to Me" was originally sung by Marian Paroo, portrayed by Barbara Cook in the 1957 Broadway production of The Music Man.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label was Joni James signed to when she released 'You Belong To Me' in 1952?
+Ground Truth: MGM Records
+storage_time: 0.09970902092754841
+use_sparse_attention: True
+ Columbia Records
+prompt eval count:    48 token(s)
+prompt eval duration: 0.23277973663061857s
+prompt eval rate:     206.20351536941442 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23855137825012207s
+eval rate:            12.575907219678639 tokens/s
+Predicted: Columbia Records
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who originally sang the song You Belong To Me?...
+Sub-Q 2: ✗ INCORRECT - What record label was Joni James signed to when sh...
+
+✗ Main question 21: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 22/50: When did the crowning of the person under whom the Chapter House was built happen?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the person under whom the Chapter House was built?
+Ground Truth: Henry III
+storage_time: 0.15604017581790686
+use_sparse_attention: True
+ Henry III
+prompt eval count:    34 token(s)
+prompt eval duration: 0.2798040099442005s
+prompt eval rate:     121.51362665167092 tokens/s
+eval count:           3 token(s)
+eval duration:        0.2385108470916748s
+eval rate:            12.578044296857117 tokens/s
+Predicted: Henry III
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: When was Henry III crowned?
+Ground Truth: Henry III was first crowned in 1216 at Gloucester Cathedral, and then again at Westminster Abbey in 1220.
+storage_time: 0.09888069098815322
+use_sparse_attention: True
+1220
+prompt eval count:    28 token(s)
+prompt eval duration: 0.22163365595042706s
+prompt eval rate:     126.33460328905453 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47730588912963867s
+eval rate:            10.4754626202443 tokens/s
+Predicted: 1220
+F1: 0.1818, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the person under whom the Chapter House wa...
+Sub-Q 2: ✗ INCORRECT - When was Henry III crowned?...
+
+✗ Main question 22: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 23/50: What group was the performer of Be the One a member of?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 24/50: What month did the person who retained trust in Longchamp go away to the Holy Land?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 25/50: What record label does the artist who sang you belong to me belong to?
+================================================================================
+
+Sub-question 1/2
+Question: Who sang the song 'You Belong to Me'?
+Ground Truth: Joni James sang the song 'You Belong to Me'.
+storage_time: 0.08721458213403821
+use_sparse_attention: True
+ Patti Page and Sue Thompson.
+prompt eval count:    34 token(s)
+prompt eval duration: 0.2110982909798622s
+prompt eval rate:     161.06241240599832 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8355963230133057s
+eval rate:            9.574000961553551 tokens/s
+Predicted: Patti Page and Sue Thompson.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label is Joni James signed to?
+Ground Truth: Joni James was signed to MGM Records.
+storage_time: 0.09790277807042003
+use_sparse_attention: True
+ M-G-M Records
+prompt eval count:    32 token(s)
+prompt eval duration: 0.222698625177145s
+prompt eval rate:     143.69195128414327 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47785329818725586s
+eval rate:            10.463462361707203 tokens/s
+Predicted: M-G-M Records
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who sang the song 'You Belong to Me'?...
+Sub-Q 2: ✓ CORRECT - What record label is Joni James signed to?...
+
+✗ Main question 25: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 26/50: What place does the administrative territorial entity that Juba is located in share a border with?
+================================================================================
+
+Sub-question 1/2
+Question: What is the administrative territorial entity that contains Juba?
+Ground Truth: Central Equatoria
+storage_time: 0.05870039016008377
+use_sparse_attention: True
+ Juba is the state capital of Central Equatoria.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.1891978089697659s
+prompt eval rate:     174.42062452886782 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3129465579986572s
+eval rate:            9.139747483927882 tokens/s
+Predicted: Juba is the state capital of Central Equatoria.
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: What places share a border with Central Equatoria?
+Ground Truth: Eastern Equatoria shares a border with Central Equatoria.
+storage_time: 0.07127878675237298
+use_sparse_attention: True
+1. The Didessa River which separates it from the Illubabor Zone, 2. The Silt'e Zone, 3. The Gedeb Asasa, 4. The Gojeb River which separates it from the Southern Nations, Nationalities and Peoples Region, 5. The Shabelle River, 6. The Hadiya Zone, 7. The Enemorina 

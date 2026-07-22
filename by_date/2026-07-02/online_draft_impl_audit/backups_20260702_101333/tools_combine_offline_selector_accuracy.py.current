@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+import csv
+import json
+import re
+from collections import OrderedDict, defaultdict
+from pathlib import Path
+
+
+ROOT = Path("/raid/home/hming/FusionRAG-pca-analysis")
+BASE = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_rerun_baselines"
+QK = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_offline_qk_reflect_rerun"
+DRAFT = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_offline_draft_reflect_rerun"
+FULL = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_offline_full_attention_reflect_rerun"
+ONLINE_DRAFT = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_online_draft_reflect"
+OUT = ROOT / "MOTIVATION_EXPERIMENTS/full_accuracy_offline_selector_reflect_summary"
+
+
+def result_csv(run_dir: Path, rate: str = "0.15") -> Path:
+    return run_dir / "Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge" / f"rate_{rate}_revert_rope.csv"
+
+
+RUNS = [
+    ("rate1_full_attention", 1.0, [ROOT / "MOTIVATION_EXPERIMENTS/full_attention_rate1_baseline_rerun/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1.0_revert_rope.csv"], [ROOT / "MOTIVATION_EXPERIMENTS/full_attention_rate1_baseline_rerun/run_rate1_full_attention.log"]),
+    ("online_qk_rate015", 0.15, [result_csv(BASE / "online_qk_rate015")], [BASE / "online_qk_rate015/run.log"]),
+    (
+        "online_draft_rate015",
+        0.15,
+        sorted(ONLINE_DRAFT.glob("online_draft_rate015_seg*/Qwen2.5-7B-Instruct/musique/DraftModel_global_topk10_bge/rate_0.15_draft_Qwen2.5-3B-Instruct_revert_rope.csv")),
+        sorted(ONLINE_DRAFT.glob("online_draft_rate015_seg*/run.log")),
+    ),
+    ("rate0_no_doc_recompute", 0.0, [result_csv(BASE / "rate0_no_doc_recompute", "0.0")], [BASE / "rate0_no_doc_recompute/run.log"]),
+    ("offline_qk_frequency", 0.15, [result_csv(QK / "offline_qk_freq_rate015"), result_csv(QK / "offline_qk_freq_rate015_cont_from43")], [QK / "offline_qk_freq_rate015/run.log", QK / "offline_qk_freq_rate015_cont_from43/run.log"]),
+    ("offline_qk_mean", 0.15, [result_csv(QK / "offline_qk_mean_rate015"), result_csv(QK / "offline_qk_mean_rate015_cont_from51")], [QK / "offline_qk_mean_rate015/run.log", QK / "offline_qk_mean_rate015_cont_from51/run.log"]),
+    ("offline_draft_frequency", 0.15, [result_csv(DRAFT / "offline_draft_freq_rate015"), result_csv(DRAFT / "offline_draft_freq_rate015_cont_from136"), result_csv(DRAFT / "offline_draft_freq_rate015_cont_from149")], [DRAFT / "offline_draft_freq_rate015/run.log", DRAFT / "offline_draft_freq_rate015_cont_from136/run.log", DRAFT / "offline_draft_freq_rate015_cont_from149/run.log"]),
+    ("offline_draft_mean", 0.15, [result_csv(DRAFT / "offline_draft_mean_rate015"), result_csv(DRAFT / "offline_draft_mean_rate015_cont_from151"), result_csv(DRAFT / "offline_draft_mean_rate015_cont_from161")], [DRAFT / "offline_draft_mean_rate015/run.log", DRAFT / "offline_draft_mean_rate015_cont_from151/run.log", DRAFT / "offline_draft_mean_rate015_cont_from161/run.log"]),
+    ("offline_fullattn_frequency", 0.15, [result_csv(FULL / "offline_full_attention_freq_rate015"), result_csv(FULL / "offline_full_attention_freq_rate015_cont_from90"), result_csv(FULL / "offline_full_attention_freq_rate015_cont_from123"), result_csv(FULL / "offline_full_attention_freq_rate015_cont_from177"), result_csv(FULL / "offline_full_attention_freq_rate015_cont_from176")], [FULL / "offline_full_attention_freq_rate015/run.log", FULL / "offline_full_attention_freq_rate015_cont_from90/run.log", FULL / "offline_full_attention_freq_rate015_cont_from123/run.log", FULL / "offline_full_attention_freq_rate015_cont_from177/run.log", FULL / "offline_full_attention_freq_rate015_cont_from176/run.log"]),
+    ("offline_fullattn_mean", 0.15, [result_csv(FULL / "offline_full_attention_mean_rate015"), result_csv(FULL / "offline_full_attention_mean_rate015_cont_from81"), result_csv(FULL / "offline_full_attention_mean_rate015_cont_from121")], [FULL / "offline_full_attention_mean_rate015/run.log", FULL / "offline_full_attention_mean_rate015_cont_from81/run.log", FULL / "offline_full_attention_mean_rate015_cont_from121/run.log"]),
+]
+
+
+def mean(xs):
+    return sum(xs) / len(xs) if xs else 0.0
+
+
+def read_rows(paths):
+    out = OrderedDict()
+    for path in paths:
+        if not path.exists():
+            continue
+        with path.open("r", newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                out[(row["Main Question"], row["Sub Question"])] = row
+    return list(out.values())
+
+
+def parse_timing(paths):
+    text = ""
+    for path in paths:
+        if path.exists():
+            text += "\n" + path.read_text(encoding="utf-8", errors="ignore")
+    prompt = [float(x) for x in re.findall(r"^prompt eval duration:\s*([0-9.]+)s", text, re.M)]
+    storage = [float(x) for x in re.findall(r"^storage_time:\s*([0-9.]+)", text, re.M)]
+    select = [float(x) for x in re.findall(r"^select_time:\s*([0-9.]+)", text, re.M)]
+    select.extend(float(x) for x in re.findall(r"^draft_select_time:\s*([0-9.]+)", text, re.M))
+    terminated = text.count("Terminated") + text.count("Killed")
+    finished = text.count("FINAL RESULTS")
+    return {
+        "n_timing": len(prompt),
+        "prompt_eval_mean_s": mean(prompt),
+        "storage_time_mean_s": mean(storage),
+        "selection_time_mean_s": mean(select),
+        "terminated_count": terminated,
+        "finished_segments": finished,
+    }
+
+
+def summarize(label, rate, rows, logs):
+    by_main = defaultdict(list)
+    for row in rows:
+        by_main[row["Main Question"]].append(row)
+    main_total = len(by_main)
+    main_correct = sum(1 for group in by_main.values() if all(str(r["Correct"]).lower() == "true" for r in group))
+    sub_total = len(rows)
+    sub_correct = sum(1 for row in rows if str(row["Correct"]).lower() == "true")
+    result = {
+        "label": label,
+        "rate": rate,
+        "main_correct": main_correct,
+        "main_total": main_total,
+        "main_acc": main_correct / main_total if main_total else 0.0,
+        "sub_correct": sub_correct,
+        "sub_total": sub_total,
+        "sub_acc": sub_correct / sub_total if sub_total else 0.0,
+        "avg_f1": mean([float(r.get("F1") or 0.0) for r in rows]),
+        "avg_em": mean([float(r.get("EM") or 0.0) for r in rows]),
+    }
+    result.update(parse_timing(logs))
+    return result
+
+
+def write_csv(path, rows):
+    fields = []
+    for row in rows:
+        for key in row:
+            if key not in fields:
+                fields.append(key)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    rows = [summarize(label, rate, read_rows(csvs), logs) for label, rate, csvs, logs in RUNS]
+    write_csv(OUT / "summary.csv", rows)
+    (OUT / "summary.json").write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+    lines = [
+        "# Selector Full Accuracy Summary\n\n",
+        "统一按 CSV/Judge 落盘结果计算；续跑/分段按 `(Main Question, Sub Question)` 去重合并。`online_draft_rate015` 使用完整 corpus、online draft selector、rate=0.15。\n\n",
+        "| label | Main Acc | Sub Acc | F1 | EM | prefill(s) | storage(s) | selection(s) | rows | terminated |\n",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n",
+    ]
+    for r in rows:
+        lines.append(
+            f"| {r['label']} | {r['main_correct']}/{r['main_total']} ({r['main_acc']:.2%}) | "
+            f"{r['sub_correct']}/{r['sub_total']} ({r['sub_acc']:.2%}) | "
+            f"{r['avg_f1']:.4f} | {r['avg_em']:.4f} | {r['prompt_eval_mean_s']:.4f} | "
+            f"{r['storage_time_mean_s']:.4f} | {r['selection_time_mean_s']:.4f} | {r['sub_total']} | {r['terminated_count']} |\n"
+        )
+    (OUT / "README.md").write_text("".join(lines), encoding="utf-8")
+    print("".join(lines))
+
+
+if __name__ == "__main__":
+    main()

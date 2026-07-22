@@ -1,0 +1,108 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_block_raw rate=0.15 start=150 end=200
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_final_k8/sparse_block_raw/musique-v2/rate_0p15/seg_150_200
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  59%|█████▉    | 10/17 [00:00<00:00, 93.46it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 101.49it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
+storage_time: 1.3643652526661754
+select_time: 1.5735196927562356
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking about when the country, whose co-official language was used by the director of "Group Portrait with a Lady," first attended the Olympics as an independent team. 
+
+First, 
+prompt eval count:    2603 token(s)
+prompt eval duration: 33.604890739545226s
+prompt eval rate:     77.45896334478682 tokens/s
+eval count:           50 token(s)
+eval duration:        15.180657148361206s
+eval rate:            3.2936650575365665 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the country, whose co-official language was used by the director of Group Portrait with a Lady, first attend the Olympics as an independent team?
+batch: 151 preprocess: False reprocess_method: FusionRAG
+real answer: 2016
+answer: <think>
+Okay, let's tackle this question. The user is asking about when the country, whose co-official language was used by the director of "Group Portrait with a Lady," first attended the Olympics as an independent team. 
+
+First,
+storage_time: 0.9190506460145116
+select_time: 0.6272399928420782
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking, "Who followed Menucha Rochel Slonim's father?" based on the provided passages. 
+
+First, I need to look through the passages to find information about 
+prompt eval count:    2532 token(s)
+prompt eval duration: 31.26509879436344s
+prompt eval rate:     80.98487123464571 tokens/s
+eval count:           50 token(s)
+eval duration:        15.169111490249634s
+eval rate:            3.296171963146219 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who followed Menucha Rochel Slonim's father?
+batch: 152 preprocess: False reprocess_method: FusionRAG
+real answer: Menachem Mendel Schneersohn
+answer: <think>
+Okay, let's tackle this question. The user is asking, "Who followed Menucha Rochel Slonim's father?" based on the provided passages. 
+
+First, I need to look through the passages to find information about Men
+storage_time: 0.7973935008049011
+select_time: 0.6490321354940534
+use_sparse_attention: True
+Traceback (most recent call last):
+  File "/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset/scripts/run_setup_v2_task.py", line 185, in <module>
+    main()
+  File "/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset/scripts/run_setup_v2_task.py", line 181, in main
+    upc.main(**kwargs_main)
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/unified_process_cache.py", line 285, in main
+    current_results = run_experiment(
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/unified_process_cache.py", line 576, in run_experiment
+    generated_tokens, example_prefill_time, _extra = load_kv_and_generate(
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/util/utils.py", line 1686, in load_kv_and_generate
+    logits = model(
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/hming/FusionRAG-pca-analysis/models/modeling_qwen3.py", line 1288, in forward
+    outputs = self.model(
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/hming/FusionRAG-pca-analysis/models/modeling_qwen3.py", line 1069, in forward
+    hidden_states= self.forward_chunk(hidden_states, causal_mask,
+  File "/home/hming/FusionRAG-pca-analysis/models/modeling_qwen3.py", line 1093, in forward_chunk
+    layer_outputs = decoder_layer(
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/hming/FusionRAG-pca-analysis/models/modeling_qwen3.py", line 799, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/hming/FusionRAG-pca-analysis/models/modeling_qwen3.py", line 557, in forward
+    attn_output = selected_query_sparse_attention(
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/operators/sparse_attention.py", line 385, in selected_query_sparse_attention
+    return selected_query_block_attention(
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/operators/sparse_attention.py", line 438, in selected_query_block_attention
+    return selected_query_block_attention_batched(
+  File "/home/hming/FusionRAG-pca-analysis/ktransformers/operators/sparse_attention.py", line 563, in selected_query_block_attention_batched
+    kk = key[bi, head_index, safe_indices[hs:he]].float()
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.18 GiB. GPU 0 has a total capacity of 95.22 GiB of which 5.06 GiB is free. Including non-PyTorch memory, this process has 90.16 GiB memory in use. Of the allocated memory 86.79 GiB is allocated by PyTorch, and 2.94 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

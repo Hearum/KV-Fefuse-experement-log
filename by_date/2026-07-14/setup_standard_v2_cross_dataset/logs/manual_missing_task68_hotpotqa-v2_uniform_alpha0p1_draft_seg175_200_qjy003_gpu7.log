@@ -1,0 +1,526 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=hotpotqa-v2 method=uniform_alpha0p1_draft rate=0.15 start=175 end=200
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/uniform_alpha0p1_draft/hotpotqa-v2/rate_0p15/seg_175_200
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:11,  1.17s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:08,  1.01it/s]Inference Embeddings:  27%|██▋       | 3/11 [00:02<00:07,  1.08it/s]Inference Embeddings:  36%|███▋      | 4/11 [00:03<00:06,  1.12it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.14it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.14it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.19it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.18it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:07<00:01,  1.18it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:08<00:00,  1.17it/s]Inference Embeddings: 100%|██████████| 11/11 [00:08<00:00,  1.60it/s]Inference Embeddings: 100%|██████████| 11/11 [00:08<00:00,  1.23it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 10.521959066390991
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 224.15it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 55.98it/s]
+>>> [runner] ONLY_EXAMPLES active: [176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
+storage_time: 0.18032456515356898
+draft_select_time: 0.3397979694418609, draft_score_forward_time: 0.3382273390889168
+reprocess_attention_ablation: uniform, doc_tokens=268
+use_sparse_attention: False
+<think>
+
+</think>
+
+Macbeth
+prompt eval count:    341 token(s)
+prompt eval duration: 1.977206312585622s
+prompt eval rate:     172.46556306714862 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8591067790985107s
+eval rate:            3.765249031792747 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Jeff Rona's credits include a 2016 Indian epic historical drama film that was written and directed by Jayaraj, and was adapted from What William Shakespeare play?
+batch: 176 preprocess: True reprocess_method: DraftModel
+real answer: Macbeth
+answer: Macbeth
+storage_time: 0.0861002579331398
+draft_select_time: 0.15530718630179763, draft_score_forward_time: 0.15403334517031908
+reprocess_attention_ablation: uniform, doc_tokens=253
+use_sparse_attention: False
+<think>
+
+</think>
+
+music bands
+prompt eval count:    302 token(s)
+prompt eval duration: 1.5948985093273222s
+prompt eval rate:     189.35374146620404 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8531694412231445s
+eval rate:            3.777312448763347 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Autolux and Polvo are both types of what?
+batch: 177 preprocess: True reprocess_method: DraftModel
+real answer: rock band
+answer: music bands
+storage_time: 0.07889612019062042
+draft_select_time: 0.13481048587709665, draft_score_forward_time: 0.13357966393232346
+reprocess_attention_ablation: uniform, doc_tokens=215
+use_sparse_attention: False
+<think>
+
+</think>
+
+James Norman Hall
+prompt eval count:    276 token(s)
+prompt eval duration: 1.5307317799888551s
+prompt eval rate:     180.30591878219806 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1625332832336426s
+eval rate:            3.6993650280552335 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Who was the American author best known for the novel "Mutiny on the Bounty", James Norman Hall or Harold Lamb?
+batch: 178 preprocess: True reprocess_method: DraftModel
+real answer: James Norman Hall
+answer: James Norman Hall
+storage_time: 0.21820331225171685
+draft_select_time: 0.15295726992189884, draft_score_forward_time: 0.15158504014834762
+reprocess_attention_ablation: uniform, doc_tokens=244
+use_sparse_attention: False
+<think>
+
+</think>
+
+Walt Mink
+prompt eval count:    293 token(s)
+prompt eval duration: 1.738223696127534s
+prompt eval rate:     168.5628844277949 tokens/s
+eval count:           9 token(s)
+eval duration:        2.47210431098938s
+eval rate:            3.64062307564928 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which band was formed first Walt Mink or Sunrise Avenue?
+batch: 179 preprocess: True reprocess_method: DraftModel
+real answer: Walt Mink
+answer: Walt Mink
+storage_time: 0.08490193402394652
+draft_select_time: 0.1393363308161497, draft_score_forward_time: 0.13820792641490698
+reprocess_attention_ablation: uniform, doc_tokens=228
+use_sparse_attention: False
+<think>
+
+</think>
+
+Edwin Arlington Robinson
+prompt eval count:    280 token(s)
+prompt eval duration: 1.5433576218783855s
+prompt eval rate:     181.42263078288903 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4704127311706543s
+eval rate:            3.643115940280623 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which one was an American poet, Frank O'Connor or Edwin Arlington Robinson?
+batch: 180 preprocess: True reprocess_method: DraftModel
+real answer: Edwin Arlington Robinson
+answer: Edwin Arlington Robinson
+storage_time: 0.20262479316443205
+draft_select_time: 0.22707886714488268, draft_score_forward_time: 0.2257903628051281
+reprocess_attention_ablation: uniform, doc_tokens=248
+use_sparse_attention: False
+<think>
+
+</think>
+
+United States
+prompt eval count:    297 token(s)
+prompt eval duration: 1.8205805537290871s
+prompt eval rate:     163.13477554819323 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8538386821746826s
+eval rate:            3.77594882839995 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What country does Games and Official Xbox Magazine have in common?
+batch: 181 preprocess: True reprocess_method: DraftModel
+real answer: United States
+answer: United States
+storage_time: 0.07649376383051276
+draft_select_time: 0.13527704309672117, draft_score_forward_time: 0.13422529492527246
+reprocess_attention_ablation: uniform, doc_tokens=205
+use_sparse_attention: False
+<think>
+
+</think>
+
+Anthony Mann
+prompt eval count:    259 token(s)
+prompt eval duration: 1.4789351602084935s
+prompt eval rate:     175.1260007663131 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8549633026123047s
+eval rate:            3.773659559810187 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which actor is known for being in westerns, Anthony Mann or Luis Valdez?
+batch: 182 preprocess: True reprocess_method: DraftModel
+real answer: Anthony Mann
+answer: Anthony Mann
+storage_time: 0.10722296498715878
+draft_select_time: 0.1748135811649263, draft_score_forward_time: 0.17309976695105433
+reprocess_attention_ablation: uniform, doc_tokens=314
+use_sparse_attention: False
+<think>
+
+</think>
+
+George Kennedy
+prompt eval count:    370 token(s)
+prompt eval duration: 1.746451664250344s
+prompt eval rate:     211.85813931977367 tokens/s
+eval count:           7 token(s)
+eval duration:        1.850494623184204s
+eval rate:            3.7827724070631885 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What actor, who starred in The Flight of the Phoenix, also starred in Cool Hand Luke?
+batch: 183 preprocess: True reprocess_method: DraftModel
+real answer: George Kennedy
+answer: George Kennedy
+storage_time: 0.08338510477915406
+draft_select_time: 0.13335578609257936, draft_score_forward_time: 0.13232802972197533
+reprocess_attention_ablation: uniform, doc_tokens=202
+use_sparse_attention: False
+<think>
+
+</think>
+
+yes
+prompt eval count:    263 token(s)
+prompt eval duration: 1.4852672470733523s
+prompt eval rate:     177.0725103635247 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5421457290649414s
+eval rate:            3.89068288872934 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Did both Wickard v. Filburn and Strickland v. Washington reach the Supreme Court of the United States?
+batch: 184 preprocess: True reprocess_method: DraftModel
+real answer: yes
+answer: yes
+storage_time: 0.20222355984151363
+draft_select_time: 0.13823286071419716, draft_score_forward_time: 0.137092474848032
+reprocess_attention_ablation: uniform, doc_tokens=220
+use_sparse_attention: False
+<think>
+
+</think>
+
+Tizer
+prompt eval count:    273 token(s)
+prompt eval duration: 1.6953329807147384s
+prompt eval rate:     161.03031269108294 tokens/s
+eval count:           7 token(s)
+eval duration:        1.852492094039917s
+eval rate:            3.7786935893121094 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Which soda, Shasta or Tizer, was sold in the United Kingdom?
+batch: 185 preprocess: True reprocess_method: DraftModel
+real answer: Tizer
+answer: Tizer
+storage_time: 0.088658656924963
+draft_select_time: 0.17547598807141185, draft_score_forward_time: 0.1740229190327227
+reprocess_attention_ablation: uniform, doc_tokens=267
+use_sparse_attention: False
+<think>
+
+</think>
+
+Nestlé Smarties Book Prize
+prompt eval count:    330 token(s)
+prompt eval duration: 1.7064075451344252s
+prompt eval rate:     193.3887370229623 tokens/s
+eval count:           12 token(s)
+eval duration:        3.3952760696411133s
+eval rate:            3.5343223213270023 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What prize was won for a book by a British author and illustrator from Dartmoor, focusing on futuristic steampunk London?
+batch: 186 preprocess: True reprocess_method: DraftModel
+real answer: Nestlé Smarties Book Prize
+answer: Nestlé Smarties Book Prize
+storage_time: 0.09869317570701241
+draft_select_time: 0.16689360700547695, draft_score_forward_time: 0.16547483811154962
+reprocess_attention_ablation: uniform, doc_tokens=236
+use_sparse_attention: False
+<think>
+
+</think>
+
+Prince George's County
+prompt eval count:    298 token(s)
+prompt eval duration: 1.591301460750401s
+prompt eval rate:     187.26809932008348 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4684531688690186s
+eval rate:            3.646007999464526 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The 1987–88 Georgetown Hoyas play their game in the community that is in what Maryland county?
+batch: 187 preprocess: True reprocess_method: DraftModel
+real answer: Prince George's County
+answer: Prince George's County
+storage_time: 0.09171395795419812
+draft_select_time: 0.12859196728095412, draft_score_forward_time: 0.12736069224774837
+reprocess_attention_ablation: uniform, doc_tokens=183
+use_sparse_attention: False
+<think>
+
+</think>
+
+Vermont Republic
+prompt eval count:    239 token(s)
+prompt eval duration: 1.2791494419798255s
+prompt eval rate:     186.84290682258646 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4698173999786377s
+eval rate:            3.6439940863959595 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What republic was started because of a dispute in the area The Green Mountain Boys were a militia?
+batch: 188 preprocess: True reprocess_method: DraftModel
+real answer: Vermont Republic
+answer: Vermont Republic
+storage_time: 0.10126341786235571
+draft_select_time: 0.14648648584261537, draft_score_forward_time: 0.1452030367217958
+reprocess_attention_ablation: uniform, doc_tokens=236
+use_sparse_attention: False
+<think>
+
+</think>
+
+June 18, 1908
+prompt eval count:    292 token(s)
+prompt eval duration: 1.5738635915331542s
+prompt eval rate:     185.5306912052987 tokens/s
+eval count:           15 token(s)
+eval duration:        4.319932222366333s
+eval rate:            3.4722766996986443 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What day was the book published that was illustarted alongside Dorothy and the Wizard in Oz?
+batch: 189 preprocess: True reprocess_method: DraftModel
+real answer: July 20, 1910
+answer: June 18, 1908
+storage_time: 0.0873050163500011
+draft_select_time: 0.1596637018956244, draft_score_forward_time: 0.15836689993739128
+reprocess_attention_ablation: uniform, doc_tokens=245
+use_sparse_attention: False
+<think>
+
+</think>
+
+Léon Nagant
+prompt eval count:    309 token(s)
+prompt eval duration: 1.5881823124364018s
+prompt eval rate:     194.56204591900325 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7785918712615967s
+eval rate:            3.5989452439661758 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: The TT-30 pistol was developed in the early 1930's as a replacement to a revolver designed by who?
+batch: 190 preprocess: True reprocess_method: DraftModel
+real answer: Léon Nagant
+answer: Léon Nagant
+storage_time: 0.09720521420240402
+draft_select_time: 0.1737958351150155, draft_score_forward_time: 0.1723731691017747
+reprocess_attention_ablation: uniform, doc_tokens=276
+use_sparse_attention: False
+<think>
+
+</think>
+
+1,200
+prompt eval count:    330 token(s)
+prompt eval duration: 1.7824019193649292s
+prompt eval rate:     185.14342720051556 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7769393920898438s
+eval rate:            3.6010868758911916 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Hae Min Lee's body was found in a park that covers how many acres ?
+batch: 191 preprocess: True reprocess_method: DraftModel
+real answer: 1216 acre
+answer: 1,200
+storage_time: 0.07882323581725359
+draft_select_time: 0.13570496626198292, draft_score_forward_time: 0.1345718284137547
+reprocess_attention_ablation: uniform, doc_tokens=216
+use_sparse_attention: False
+<think>
+
+</think>
+
+Being John Malkovich
+prompt eval count:    275 token(s)
+prompt eval duration: 1.5079748001880944s
+prompt eval rate:     182.36379014138592 tokens/s
+eval count:           9 token(s)
+eval duration:        2.46980357170105s
+eval rate:            3.6440144888936854 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Charlie Kaufman wrote which acclaimed fantasy film in 1999 journeying into an actor's mind?
+batch: 192 preprocess: True reprocess_method: DraftModel
+real answer: Being John Malkovich
+answer: Being John Malkovich
+storage_time: 0.1288766749203205
+draft_select_time: 0.13918803771957755, draft_score_forward_time: 0.13809094298630953
+reprocess_attention_ablation: uniform, doc_tokens=220
+use_sparse_attention: False
+<think>
+
+</think>
+
+Iowa
+prompt eval count:    271 token(s)
+prompt eval duration: 1.5609120135195553s
+prompt eval rate:     173.61644836658493 tokens/s
+eval count:           7 token(s)
+eval duration:        1.850506067276001s
+eval rate:            3.782749013249227 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Daniel Shaw is played by an actor who grew up in what state?
+batch: 193 preprocess: True reprocess_method: DraftModel
+real answer: Iowa
+answer: Iowa
+storage_time: 0.08454217482358217
+draft_select_time: 0.16070369724184275, draft_score_forward_time: 0.15942289307713509
+reprocess_attention_ablation: uniform, doc_tokens=252
+use_sparse_attention: False
+<think>
+
+</think>
+
+Ishtar Gate
+prompt eval count:    311 token(s)
+prompt eval duration: 1.5968945282511413s
+prompt eval rate:     194.7529999621174 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1599228382110596s
+eval rate:            3.7038360160245087 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: What is the name of the eighth gate to the city of Babylon, currently housed at Pergamon Museum?
+batch: 194 preprocess: True reprocess_method: DraftModel
+real answer: Ishtar Gate
+answer: Ishtar Gate
+storage_time: 0.2106378977186978
+draft_select_time: 0.17674075486138463, draft_score_forward_time: 0.1756170350126922
+reprocess_attention_ablation: uniform, doc_tokens=199
+use_sparse_attention: False
+<think>
+
+</think>
+
+war zones and natural disasters
+prompt eval count:    261 token(s)
+prompt eval duration: 1.707074104808271s
+prompt eval rate:     152.8931868070918 tokens/s
+eval count:           10 token(s)
+eval duration:        2.778740644454956s
+eval rate:            3.598752557189978 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Gentleman's Intermission included a cameo appearance by the photojournalist who has specialized in reportage on what two topics?
+batch: 195 preprocess: True reprocess_method: DraftModel
+real answer: human suffering in war zones and natural disasters
+answer: war zones and natural disasters
+storage_time: 0.30841820826753974
+draft_select_time: 0.16845767479389906, draft_score_forward_time: 0.16697010397911072
+reprocess_attention_ablation: uniform, doc_tokens=278
+use_sparse_attention: False
+<think>
+
+</think>
+
+They are both American indie pop/rock bands.
+prompt eval count:    327 token(s)
+prompt eval duration: 1.977862760424614s
+prompt eval rate:     165.3299746286737 tokens/s
+eval count:           15 token(s)
+eval duration:        4.317645072937012s
+eval rate:            3.4741160393242976 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: what does Echosmith and Guster have in common?
+batch: 196 preprocess: True reprocess_method: DraftModel
+real answer: band
+answer: They are both American indie pop/rock bands.
+storage_time: 0.08549547614529729
+draft_select_time: 0.15335680497810245, draft_score_forward_time: 0.15208248468115926
+reprocess_attention_ablation: uniform, doc_tokens=255
+use_sparse_attention: False
+<think>
+
+</think>
+
+The Theatre
+prompt eval count:    315 token(s)
+prompt eval duration: 1.5965422452427447s
+prompt eval rate:     197.30138738177024 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8499369621276855s
+eval rate:            3.783912718814496 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Of the four public Elizabethan theatres built, including The Rose, which one was built in Shoreditch?
+batch: 197 preprocess: True reprocess_method: DraftModel
+real answer: The Theatre
+answer: The Theatre
+storage_time: 0.17383871413767338
+draft_select_time: 0.14717847295105457, draft_score_forward_time: 0.14596908818930387
+reprocess_attention_ablation: uniform, doc_tokens=223
+use_sparse_attention: False
+<think>
+
+</think>
+
+Olivier Megaton
+prompt eval count:    289 token(s)
+prompt eval duration: 1.624592951964587s
+prompt eval rate:     177.8907138865266 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7792186737060547s
+eval rate:            3.598133567037789 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Maggie Grace, an American actress, appeared in  "Taken 2", a 2012 American action thriller film directed by who?
+batch: 198 preprocess: True reprocess_method: DraftModel
+real answer: Olivier Megaton
+answer: Olivier Megaton
+storage_time: 0.14044390805065632
+draft_select_time: 0.14711829600855708, draft_score_forward_time: 0.14602243714034557
+reprocess_attention_ablation: uniform, doc_tokens=229
+use_sparse_attention: False
+<think>
+
+</think>
+
+Brandenburg Gate
+prompt eval count:    307 token(s)
+prompt eval duration: 1.6039200252853334s
+prompt eval rate:     191.40605214738525 tokens/s
+eval count:           8 token(s)
+eval duration:        2.175973415374756s
+eval rate:            3.6765155049572167 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: which landmark built on the site of a former city gate that marked the start of the road from Berlin to the town of Brandenburg an der Havel, is Frederick William II of Prussia responsible for?
+batch: 199 preprocess: True reprocess_method: DraftModel
+real answer: Brandenburg Gate
+answer: Brandenburg Gate
+storage_time: 0.1013852022588253
+draft_select_time: 0.17052880069240928, draft_score_forward_time: 0.16911066323518753
+reprocess_attention_ablation: uniform, doc_tokens=292
+use_sparse_attention: False
+<think>
+
+</think>
+
+science and technology
+prompt eval count:    346 token(s)
+prompt eval duration: 1.7141709038987756s
+prompt eval rate:     201.84685156715963 tokens/s
+eval count:           8 token(s)
+eval duration:        2.159278392791748s
+eval rate:            3.7049414409490464 tokens/s
+Qwen3-32B hotpotqa-v2 0.15 10
+question: Watch Mr. Wizard was created by the host of programs dedicated to what educational fields?
+batch: 200 preprocess: True reprocess_method: DraftModel
+real answer: science and technology
+answer: science and technology
+
+--- Quality Metrics ---
+EM Score: 0.0769
+ROUGE Score: 0.0799

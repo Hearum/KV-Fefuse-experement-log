@@ -1,0 +1,136 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Cache directories created under: /raid/home/hming/fusionrag-reflect-qwen3-smoke-cache-preprocess/Qwen3-32B/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-qwen3-smoke-cache-preprocess/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/qwen3_reflect_support_smoke/rate0_preprocess/Qwen3-32B/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 262.45it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from /raid/home/hming/FusionRAG-pca-analysis/data/result_reflect.json...
+Limited to first 1 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 10 documents for FAISS index...
+Corpus embeddings shape: (10, 1024)
+FAISS index built with 10 vectors
+Searching for top-10 similar documents for each document...
+Context rank computed: (10, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/qwen3_reflect_support_smoke/rate0_preprocess/Qwen3-32B/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/qwen3_reflect_support_smoke/rate0_preprocess/Qwen3-32B/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 1/1: What is the network which National Cycle Route 57 is part of an example of?
+================================================================================
+Generating system KV cache...
+example_id: 0, chunk_id: 0
+example_id: 0, chunk_id: 1
+  Generated KV cache for document 1/10
+example_id: 0, chunk_id: 2
+  Generated KV cache for document 2/10
+example_id: 0, chunk_id: 3
+  Generated KV cache for document 3/10
+example_id: 0, chunk_id: 4
+  Generated KV cache for document 4/10
+example_id: 0, chunk_id: 5
+  Generated KV cache for document 5/10
+example_id: 0, chunk_id: 6
+  Generated KV cache for document 6/10
+example_id: 0, chunk_id: 7
+  Generated KV cache for document 7/10
+example_id: 0, chunk_id: 8
+  Generated KV cache for document 8/10
+example_id: 0, chunk_id: 9
+  Generated KV cache for document 9/10
+example_id: 0, chunk_id: 10
+  Generated KV cache for document 10/10
+  Preprocessing document 1/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc2 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc7 (✓ cached)
+  Preprocessing document 2/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc1 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc7 (✓ cached)
+  Preprocessing document 3/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc4 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc7 (✓ cached), Q1-Doc2 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc8 (✓ cached)
+  Preprocessing document 4/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc3 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc2 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc7 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc8 (✓ cached)
+  Preprocessing document 5/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc6 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc7 (✓ cached), Q1-Doc2 (✓ cached)
+  Preprocessing document 6/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc5 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc2 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc7 (✓ cached)
+  Preprocessing document 7/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc3 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc2 (✓ cached)
+  Preprocessing document 8/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc9 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc7 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc2 (✓ cached)
+  Preprocessing document 9/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc8 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc1 (✓ cached), Q1-Doc10 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc2 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc7 (✓ cached)
+  Preprocessing document 10/10 with FusionRAG...
+    Retrieved similar docs: Q1-Doc1 (✓ cached), Q1-Doc5 (✓ cached), Q1-Doc6 (✓ cached), Q1-Doc9 (✓ cached), Q1-Doc8 (✓ cached), Q1-Doc4 (✓ cached), Q1-Doc3 (✓ cached), Q1-Doc2 (✓ cached), Q1-Doc7 (✓ cached)
+
+Sub-question 1/1
+Question: What network is National Cycle Route 57 part of?
+Ground Truth: National Cycle Route 57 is part of the United Kingdom's National Cycle Network (NCN).
+storage_time: 0.07588528899941593
+use_sparse_attention: True
+<think>
+
+</think>
+
+Answer: The National Cycle Network
+prompt eval count:    31 token(s)
+prompt eval duration: 0.39546296799744596s
+prompt eval rate:     78.3891350357746 tokens/s
+eval count:           11 token(s)
+eval duration:        3.090033769607544s
+eval rate:            3.5598316459166326 tokens/s
+Predicted: <think>
+
+</think>
+
+Answer: The National Cycle Network
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What network is National Cycle Route 57 part of?...
+
+✓ Main question 1: ALL 1 sub-questions CORRECT
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 1/1 (100.00%)
+Sub Questions: 1/1 (100.00%)
+Average F1: 0.0000
+Average EM: 0.0000
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/qwen3_reflect_support_smoke/rate0_preprocess/Qwen3-32B/musique/FusionRAG_global_topk10_bge

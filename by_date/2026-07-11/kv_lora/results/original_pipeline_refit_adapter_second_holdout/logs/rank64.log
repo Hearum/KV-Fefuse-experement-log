@@ -1,0 +1,1737 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-qwen3-full-cache/Qwen3-32B/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_refit50_pt_rank64_scale0.5
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_refit_adapter_second_holdout/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_refit50_pt_rank64_scale0.5
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen3-32B...
+Loading qwen3 model...
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 261.52it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+Limited to first 100 main questions
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 1676 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/7 [00:00<?, ?it/s]Inference Embeddings:  14%|█▍        | 1/7 [00:01<00:06,  1.06s/it]Inference Embeddings:  29%|██▊       | 2/7 [00:01<00:04,  1.16it/s]Inference Embeddings:  43%|████▎     | 3/7 [00:02<00:02,  1.34it/s]Inference Embeddings:  57%|█████▋    | 4/7 [00:03<00:02,  1.38it/s]Inference Embeddings:  71%|███████▏  | 5/7 [00:03<00:01,  1.45it/s]Inference Embeddings:  86%|████████▌ | 6/7 [00:04<00:00,  1.44it/s]Inference Embeddings: 100%|██████████| 7/7 [00:04<00:00,  1.79it/s]Inference Embeddings: 100%|██████████| 7/7 [00:04<00:00,  1.49it/s]
+Corpus embeddings shape: (1676, 1024)
+FAISS index built with 1676 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/7 [00:00<?, ?it/s]Inference Embeddings:  14%|█▍        | 1/7 [00:00<00:04,  1.44it/s]Inference Embeddings:  29%|██▊       | 2/7 [00:01<00:03,  1.40it/s]Inference Embeddings:  43%|████▎     | 3/7 [00:02<00:02,  1.51it/s]Inference Embeddings:  57%|█████▋    | 4/7 [00:02<00:02,  1.48it/s]Inference Embeddings:  71%|███████▏  | 5/7 [00:03<00:01,  1.53it/s]Inference Embeddings:  86%|████████▌ | 6/7 [00:04<00:00,  1.49it/s]Inference Embeddings: 100%|██████████| 7/7 [00:04<00:00,  1.79it/s]Inference Embeddings: 100%|██████████| 7/7 [00:04<00:00,  1.60it/s]
+Context rank computed: (1676, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_refit_adapter_second_holdout/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_refit50_pt_rank64_scale0.5/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_refit_adapter_second_holdout/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_refit50_pt_rank64_scale0.5
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 51/100: When was John's eldest son crowned?
+================================================================================
+
+Sub-question 1/4
+Question: Who is John's eldest son?
+Ground Truth: Henry III
+storage_time: 0.13666175602702424
+use_sparse_attention: True
+1. The first document refers to John Bigelow Jr. as the eldest son of John Bigelow, Senior.  
+2. The second document refers to John Wedgwood as the eldest son of Josiah Wedgwood.  
+3. The question is ambiguous as it does not specify which "John" is being referred to.  
+4. Based on the provided documents, the possible answers are John Bigelow Jr. or John Wedgwood.  
+Answer: John Bigelow Jr. or John Wedgwood (depending on which John is being referred to).
+prompt eval count:    29 token(s)
+prompt eval duration: 0.380328860017471s
+prompt eval rate:     76.24980128688588 tokens/s
+eval count:           115 token(s)
+eval duration:        13.612897872924805s
+eval rate:            8.447870620459714 tokens/s
+Predicted: 1. The first document refers to John Bigelow Jr. as the eldest son of John Bigelow, Senior.  
+2. The second document refers to John Wedgwood as the eldest son of Josiah Wedgwood.  
+3. The question is ambiguous as it does not specify which "John" is being referred to.  
+4. Based on the provided documents, the possible answers are John Bigelow Jr. or John Wedgwood.  
+Answer: John Bigelow Jr. or John Wedgwood (depending on which John is being referred to).
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/4
+Question: When was John's eldest son crowned?
+Ground Truth: John I of Cyprus (John II of Jerusalem) was crowned on May 11, 1284.
+storage_time: 0.09684738400392234
+use_sparse_attention: True
+1204
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2197317109676078s
+prompt eval rate:     136.53013426187954 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47537994384765625s
+eval rate:            10.517902710683849 tokens/s
+Predicted: 1204
+F1: 0.1667, EM: 0.0000
+
+Sub-question 3/4
+Question: When was John's eldest son crowned?
+Ground Truth: John I of Cyprus (John II of Jerusalem) was crowned on May 11, 1284.
+storage_time: 0.09791388502344489
+use_sparse_attention: True
+1204
+prompt eval count:    30 token(s)
+prompt eval duration: 0.22082304902141914s
+prompt eval rate:     135.85538345270334 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47617149353027344s
+eval rate:            10.500418584343745 tokens/s
+Predicted: 1204
+F1: 0.1667, EM: 0.0000
+
+Sub-question 4/4
+Question: When was John's eldest son crowned?
+Ground Truth: John I of Cyprus (John II of Jerusalem) was crowned on May 11, 1284.
+storage_time: 0.15822943701641634
+use_sparse_attention: True
+1284
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2812725330586545s
+prompt eval rate:     106.65812148015185 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47611021995544434s
+eval rate:            10.501769948286162 tokens/s
+Predicted: 1284
+F1: 0.2500, EM: 0.0000
+
+⏳ Waiting for 4 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is John's eldest son?...
+Sub-Q 2: ✗ INCORRECT - When was John's eldest son crowned?...
+Sub-Q 3: ✗ INCORRECT - When was John's eldest son crowned?...
+Sub-Q 4: ✓ CORRECT - When was John's eldest son crowned?...
+
+✗ Main question 51: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 52/100: What character in A League of their Own was played by the actress who played Thelma in the movie Thelma and Louise?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Thelma in Thelma and Louise?
+Ground Truth: Geena Davis played Thelma in Thelma and Louise.
+storage_time: 0.12944896798580885
+use_sparse_attention: True
+ Geena Davis
+prompt eval count:    34 token(s)
+prompt eval duration: 0.2535331419785507s
+prompt eval rate:     134.10475543618062 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3569486141204834s
+eval rate:            11.206094776011238 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/2
+Question: What character did Geena Davis play in the movie A League of Their Own?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.09182648599380627
+use_sparse_attention: True
+ Geena Davis played the character of Dottie Hinson in the movie A League of Their Own.
+prompt eval count:    38 token(s)
+prompt eval duration: 0.2170899580232799s
+prompt eval rate:     175.04264290255665 tokens/s
+eval count:           21 token(s)
+eval duration:        2.381809949874878s
+eval rate:            8.816824365480201 tokens/s
+Predicted: Geena Davis played the character of Dottie Hinson in the movie A League of Their Own.
+F1: 0.7200, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in Thelma and Louise?...
+Sub-Q 2: ✓ CORRECT - What character did Geena Davis play in the movie A...
+
+✓ Main question 52: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 53/100: In A League of Their Own, who played the husband of the actress who played Thelma in Thelma and Louise?
+================================================================================
+
+Sub-question 1/3
+Question: Who played Thelma in Thelma and Louise?
+Ground Truth: Geena Davis played Thelma in Thelma and Louise.
+storage_time: 0.15730893798172474
+use_sparse_attention: True
+ Geena Davis
+prompt eval count:    34 token(s)
+prompt eval duration: 0.3484887049999088s
+prompt eval rate:     97.56413769567911 tokens/s
+eval count:           4 token(s)
+eval duration:        0.356630802154541s
+eval rate:            11.216081100775629 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/3
+Question: Which character did Geena Davis play in the film A League of Their Own?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.083388342987746
+use_sparse_attention: True
+ Geena Davis played the character Dottie Hinson in the film A League of Their Own.
+prompt eval count:    38 token(s)
+prompt eval duration: 0.20773098297649994s
+prompt eval rate:     182.9288989803646 tokens/s
+eval count:           20 token(s)
+eval duration:        2.26196551322937s
+eval rate:            8.841867784025732 tokens/s
+Predicted: Geena Davis played the character Dottie Hinson in the film A League of Their Own.
+F1: 0.7500, EM: 0.0000
+
+Sub-question 3/3
+Question: Who played the husband of Dottie Hinson in the film A League of Their Own?
+Ground Truth: Bill Pullman played Bob, the husband of Dottie Hinson.
+storage_time: 0.09779595298459753
+use_sparse_attention: True
+1. The question asks who played the husband of Dottie Hinson in the film *A League of Their Own*.  
+2. From the reference material, the film *A League of Their Own* is described as a 1991 American road film directed by Ridley Scott and written by Callie Khouri.  
+3. It stars Geena Davis as Dottie Hinson.  
+4. The text does not explicitly name the actor who played Dottie's husband.  
+Answer: The reference material does not provide the name of the actor who played Dottie Hinson's husband.
+prompt eval count:    40 token(s)
+prompt eval duration: 0.22193761600647122s
+prompt eval rate:     180.23082666091938 tokens/s
+eval count:           121 token(s)
+eval duration:        14.270115375518799s
+eval rate:            8.479258703652981 tokens/s
+Predicted: 1. The question asks who played the husband of Dottie Hinson in the film *A League of Their Own*.  
+2. From the reference material, the film *A League of Their Own* is described as a 1991 American road film directed by Ridley Scott and written by Callie Khouri.  
+3. It stars Geena Davis as Dottie Hinson.  
+4. The text does not explicitly name the actor who played Dottie's husband.  
+Answer: The reference material does not provide the name of the actor who played Dottie Hinson's husband.
+F1: 0.5385, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in Thelma and Louise?...
+Sub-Q 2: ✓ CORRECT - Which character did Geena Davis play in the film A...
+Sub-Q 3: ✗ INCORRECT - Who played the husband of Dottie Hinson in the fil...
+
+✗ Main question 53: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 54/100: Who is the child of Chiang Hsiao-wen's father?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Chiang Hsiao-wen's father?
+Ground Truth: Chiang Hsiao-wen's father is Chiang Ching-kuo.
+storage_time: 0.0868396179866977
+use_sparse_attention: True
+ Chiang Ching-kuo
+prompt eval count:    34 token(s)
+prompt eval duration: 0.21097700495738536s
+prompt eval rate:     161.15500363116615 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8315246105194092s
+eval rate:            9.620881810104004 tokens/s
+Predicted: Chiang Ching-kuo
+F1: 0.5556, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Chiang Hsiao-wen's father?...
+
+✓ Main question 54: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 55/100: The actor who played Thelma in "Thelma and Louise" also played which character in "A League of Their Own"?
+================================================================================
+
+Sub-question 1/2
+Question: Who played Thelma in the movie 'Thelma and Louise'?
+Ground Truth: Geena Davis played Thelma in the movie 'Thelma & Louise'.
+storage_time: 0.07721739599946886
+use_sparse_attention: True
+ Geena Davis
+prompt eval count:    38 token(s)
+prompt eval duration: 0.20129308599280193s
+prompt eval rate:     188.77945962515 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3565831184387207s
+eval rate:            11.217580959844025 tokens/s
+Predicted: Geena Davis
+F1: 0.3529, EM: 0.0000
+
+Sub-question 2/2
+Question: Which character did Geena Davis play in the movie 'A League of Their Own'?
+Ground Truth: Geena Davis played the character Dottie Hinson.
+storage_time: 0.11366006400203332
+use_sparse_attention: True
+ Geena Davis played the character Dottie Hinson in the movie 'A League of Their Own'.
+prompt eval count:    40 token(s)
+prompt eval duration: 0.2908548580016941s
+prompt eval rate:     137.52563830227317 tokens/s
+eval count:           21 token(s)
+eval duration:        2.3780391216278076s
+eval rate:            8.830805098624765 tokens/s
+Predicted: Geena Davis played the character Dottie Hinson in the movie 'A League of Their Own'.
+F1: 0.7500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who played Thelma in the movie 'Thelma and Louise'...
+Sub-Q 2: ✓ CORRECT - Which character did Geena Davis play in the movie ...
+
+✓ Main question 55: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 56/100: What is the movie starring Preity Zinta, Madhuri Dixit and the spouse of Kajol?
+================================================================================
+
+Sub-question 1/1
+Question: Movies starring Preity Zinta, Madhuri Dixit, and Ajay Devgn
+Ground Truth: The movie 'Yeh Raaste Hain Pyaar Ke' (2001) stars Preity Zinta, Madhuri Dixit, and Ajay Devgn.
+storage_time: 0.12224973901174963
+use_sparse_attention: True
+1. Yeh Raaste Hain Pyaar Ke (2001) - This Indian romantic drama film directed by Deepak Shivdasani stars Preity Zinta, Madhuri Dixit, and Ajay Devgn in pivotal roles. The film explores themes of love and relationships through the lives of its characters.
+prompt eval count:    41 token(s)
+prompt eval duration: 0.2475785730057396s
+prompt eval rate:     165.60399190542833 tokens/s
+eval count:           67 token(s)
+eval duration:        7.875940799713135s
+eval rate:            8.506920214844726 tokens/s
+Predicted: 1. Yeh Raaste Hain Pyaar Ke (2001) - This Indian romantic drama film directed by Deepak Shivdasani stars Preity Zinta, Madhuri Dixit, and Ajay Devgn in pivotal roles. The film explores themes of love and relationships through the lives of its characters.
+F1: 0.6818, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Movies starring Preity Zinta, Madhuri Dixit, and A...
+
+✓ Main question 56: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 57/100: The territory containing Bansaan Island is located at which island?
+================================================================================
+
+Sub-question 1/1
+Question: Where is Bansaan Island located?
+Ground Truth: Bansaan Island is a boomerang-shaped island located off the mid-northern coast of Bohol Island, Philippines, and is part of the municipality of Talibon.
+storage_time: 0.08264941698871553
+use_sparse_attention: True
+ mid-northern coast of Bohol Island
+prompt eval count:    29 token(s)
+prompt eval duration: 0.2054834070149809s
+prompt eval rate:     141.13061692560768 tokens/s
+eval count:           10 token(s)
+eval duration:        1.0690453052520752s
+eval rate:            9.354140512914983 tokens/s
+Predicted: mid-northern coast of Bohol Island
+F1: 0.3784, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Bansaan Island located?...
+
+✓ Main question 57: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 58/100: In which district was Ernie Watts born?
+================================================================================
+
+Sub-question 1/1
+Question: Where was Ernie Watts born?
+Ground Truth: Woolhampton in Berkshire
+storage_time: 0.08249670104123652
+use_sparse_attention: True
+1872 in Woolhampton, Berkshire.
+prompt eval count:    29 token(s)
+prompt eval duration: 0.20527035900158808s
+prompt eval rate:     141.27709495444319 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3075377941131592s
+eval rate:            9.177554984664157 tokens/s
+Predicted: 1872 in Woolhampton, Berkshire.
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Ernie Watts born?...
+
+✓ Main question 58: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 59/100: In which county was James Finch born?
+================================================================================
+
+Sub-question 1/2
+Question: Where was James Finch born?
+Ground Truth: Lynn Haven, Florida
+storage_time: 0.0923858680180274
+use_sparse_attention: True
+8 July 1988
+prompt eval count:    28 token(s)
+prompt eval duration: 0.2570151920663193s
+prompt eval rate:     108.94297638551646 tokens/s
+eval count:           8 token(s)
+eval duration:        0.8318498134613037s
+eval rate:            9.617120627475078 tokens/s
+Predicted: 8 July 1988
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Lynn Haven, Florida located in?
+Ground Truth: Bay County
+storage_time: 0.07782022200990468
+use_sparse_attention: True
+ Lynn Haven, Florida is located in Bay County.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.20083409402286634s
+prompt eval rate:     159.33549607546504 tokens/s
+eval count:           11 token(s)
+eval duration:        1.189401388168335s
+eval rate:            9.248349724006863 tokens/s
+Predicted: Lynn Haven, Florida is located in Bay County.
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was James Finch born?...
+Sub-Q 2: ✓ CORRECT - Which county is Lynn Haven, Florida located in?...
+
+✗ Main question 59: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 60/100: Who was married to the star of No Escape?
+================================================================================
+
+Sub-question 1/2
+Question: Who starred in the movie No Escape?
+Ground Truth: Valerie Hobson, Leslie Perrins, and Robert Cochran starred in the movie No Escape.
+storage_time: 0.08556420897366479
+use_sparse_attention: True
+1936 film "No Escape" starred Valerie Hobson, Leslie Perrins, and Robert Cochran.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20850725896889344s
+prompt eval rate:     143.87988287964404 tokens/s
+eval count:           24 token(s)
+eval duration:        2.7343993186950684s
+eval rate:            8.777064796612613 tokens/s
+Predicted: 1936 film "No Escape" starred Valerie Hobson, Leslie Perrins, and Robert Cochran.
+F1: 0.8205, EM: 0.0000
+
+Sub-question 2/2
+Question: Which of the actors from No Escape (Valerie Hobson, Leslie Perrins, or Robert Cochran) was married and to whom?
+Ground Truth: Valerie Hobson was married to John Profumo.
+storage_time: 0.07711807597661391
+use_sparse_attention: True
+1. The question asks which of the actors from No Escape (Valerie Hobson, Leslie Perrins, or Robert Cochran) was married and to whom.  
+2. The provided document states: "No Escape (1936 film): No Escape is a 1936 British thriller film directed by Norman Lee and starring Valerie Hobson, Leslie Perrins and Robert Cochran."  
+3. The document does not provide any information about the marital status or spouses of Valerie Hobson, Leslie Perrins, or Robert Cochran.  
+4. Therefore, based on the given information, the answer is: There is no information provided about which of the actors from No Escape was married and to whom.
+prompt eval count:    50 token(s)
+prompt eval duration: 0.2026211719494313s
+prompt eval rate:     246.76592045612406 tokens/s
+eval count:           146 token(s)
+eval duration:        17.246426820755005s
+eval rate:            8.46552167109178 tokens/s
+Predicted: 1. The question asks which of the actors from No Escape (Valerie Hobson, Leslie Perrins, or Robert Cochran) was married and to whom.  
+2. The provided document states: "No Escape (1936 film): No Escape is a 1936 British thriller film directed by Norman Lee and starring Valerie Hobson, Leslie Perrins and Robert Cochran."  
+3. The document does not provide any information about the marital status or spouses of Valerie Hobson, Leslie Perrins, or Robert Cochran.  
+4. Therefore, based on the given information, the answer is: There is no information provided about which of the actors from No Escape was married and to whom.
+F1: 0.3333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who starred in the movie No Escape?...
+Sub-Q 2: ✗ INCORRECT - Which of the actors from No Escape (Valerie Hobson...
+
+✗ Main question 60: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 61/100: Who is the other child of Chian Hsiao-chang's father?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the father of Chian Hsiao-chang?
+Ground Truth: Chiang Ching-kuo
+storage_time: 0.07594767597038299
+use_sparse_attention: True
+ Chiang Ching-kuo
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19978891499340534s
+prompt eval rate:     175.18489452307844 tokens/s
+eval count:           8 token(s)
+eval duration:        0.834252119064331s
+eval rate:            9.5894272452943 tokens/s
+Predicted: Chiang Ching-kuo
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What are all the children of Chiang Ching-kuo?
+Ground Truth: Chiang Ching-kuo had four legitimate children with his wife Faina Ipatyevna Vakhreva (Chiang Fang-liang): Chiang Hsiao-wen (eldest son), Chiang Hsiao-chang (daughter), Chiang Hsiao-wu (second son), and Chiang Hsiao-yung (youngest son). He also had two half-brothers with other mothers: Winston Chang and John Chiang.
+storage_time: 0.10427259100833908
+use_sparse_attention: True
+1. Chiang Hsiao-wen (also known as Alan Chiang) 2. Chiang Hsiao-chang 3. Chiang Hsiao-wu 4. Chiang Hsiao-yung 5. Winston Chang 6. John Chiang
+prompt eval count:    36 token(s)
+prompt eval duration: 0.22777010704157874s
+prompt eval rate:     158.05410318145178 tokens/s
+eval count:           59 token(s)
+eval duration:        6.8906707763671875s
+eval rate:            8.562301394858576 tokens/s
+Predicted: 1. Chiang Hsiao-wen (also known as Alan Chiang) 2. Chiang Hsiao-chang 3. Chiang Hsiao-wu 4. Chiang Hsiao-yung 5. Winston Chang 6. John Chiang
+F1: 0.5366, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the father of Chian Hsiao-chang?...
+Sub-Q 2: ✓ CORRECT - What are all the children of Chiang Ching-kuo?...
+
+✓ Main question 61: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 62/100: Where was the spouse of Frances Tupper born?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 63/100: What is the birthplace of the person after whom São José dos Campos was named?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 64/100: In which county did Snappy Tomato Pizza form?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Snappy Tomato Pizza founded?
+Ground Truth: Fort Mitchell, Kentucky
+storage_time: 0.08149428898468614
+use_sparse_attention: True
+ Fort Mitchell, Kentucky
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20432089496171102s
+prompt eval rate:     146.82786117211305 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47622251510620117s
+eval rate:            10.499293589436784 tokens/s
+Predicted: Fort Mitchell, Kentucky
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which county is Fort Mitchell, Kentucky located in?
+Ground Truth: Kenton County
+storage_time: 0.06695864500943571
+use_sparse_attention: True
+ Fort Mitchell, Kentucky is located in Kenton County.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.18973761901725084s
+prompt eval rate:     168.65395574027193 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3080437183380127s
+eval rate:            9.174005296433885 tokens/s
+Predicted: Fort Mitchell, Kentucky is located in Kenton County.
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Snappy Tomato Pizza founded?...
+Sub-Q 2: ✓ CORRECT - Which county is Fort Mitchell, Kentucky located in...
+
+✓ Main question 64: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 65/100: Where are the headquarters for the publisher of In the Shadow of Greatness?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the publisher of In the Shadow of Greatness?
+Ground Truth: The United States Naval Institute
+storage_time: 0.1376382159651257
+use_sparse_attention: True
+ United States Naval Institute
+prompt eval count:    34 token(s)
+prompt eval duration: 0.32096186897251755s
+prompt eval rate:     105.93158654279665 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47638821601867676s
+eval rate:            10.495641646610284 tokens/s
+Predicted: United States Naval Institute
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where are the headquarters of the United States Naval Institute located?
+Ground Truth: Annapolis, Maryland
+storage_time: 0.07397759397281334
+use_sparse_attention: True
+ Annapolis, Maryland
+prompt eval count:    34 token(s)
+prompt eval duration: 0.19742781401146203s
+prompt eval rate:     172.2148430313171 tokens/s
+eval count:           6 token(s)
+eval duration:        0.59405517578125s
+eval rate:            10.100071920271242 tokens/s
+Predicted: Annapolis, Maryland
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the publisher of In the Shadow of Greatness...
+Sub-Q 2: ✓ CORRECT - Where are the headquarters of the United States Na...
+
+✓ Main question 65: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 66/100: In the movie A League of their Own, who played the husband of the person who also played Thelma in the movie Thelma and Louise?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 67/100: What political party was the socialist candidate part of who ran for president in 1912?
+================================================================================
+
+Sub-question 1/1
+Question: Who was the socialist candidate in the 1912 US presidential election?
+Ground Truth: Eugene V. Debs was the Socialist Party candidate in the 1912 US presidential election.
+storage_time: 0.08662629401078448
+use_sparse_attention: True
+1912 United States presidential election: Roosevelt had served as president from 1901 to 1909, and Taft had won the 1908 Republican president nomination with Roosevelt's support. Displeased with Taft's actions as president, Roosevelt challenged Taft at the 1912 Republican National Convention. After Taft and his conservative allies narrowly prevailed at the Republican convention, Roosevelt rallied his progressive supporters and launched a third party bid. With the support of William Jennings Bryan and other progressives, Wilson won the Democratic Party's presidential nomination on the 46th ballot. Meanwhile, the Socialist Party renominated its perennial standard - bearer, Eugene V. Debs.
+prompt eval count:    38 token(s)
+prompt eval duration: 0.21084287198027596s
+prompt eval rate:     180.22900012268303 tokens/s
+eval count:           145 token(s)
+eval duration:        17.141961336135864s
+eval rate:            8.458775349955715 tokens/s
+Predicted: 1912 United States presidential election: Roosevelt had served as president from 1901 to 1909, and Taft had won the 1908 Republican president nomination with Roosevelt's support. Displeased with Taft's actions as president, Roosevelt challenged Taft at the 1912 Republican National Convention. After Taft and his conservative allies narrowly prevailed at the Republican convention, Roosevelt rallied his progressive supporters and launched a third party bid. With the support of William Jennings Bryan and other progressives, Wilson won the Democratic Party's presidential nomination on the 46th ballot. Meanwhile, the Socialist Party renominated its perennial standard - bearer, Eugene V. Debs.
+F1: 0.1842, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the socialist candidate in the 1912 US pre...
+
+✓ Main question 67: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 68/100: What league does the team that occupies the Rabat Ajax Football Ground belong to?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 69/100: Which county does Lloyd Dane's birthplace belong to?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Lloyd Dane born?
+Ground Truth: Lloyd Dane was born in Eldon, Missouri.
+storage_time: 0.06951813597697765
+use_sparse_attention: True
+ Eldon, Missouri.
+prompt eval count:    28 token(s)
+prompt eval duration: 0.19848589395405725s
+prompt eval rate:     141.06795924994574 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5950727462768555s
+eval rate:            10.082800863490599 tokens/s
+Predicted: Eldon, Missouri.
+F1: 0.3636, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county does Eldon, Missouri belong to?
+Ground Truth: Miller County
+storage_time: 0.07283214997733012
+use_sparse_attention: True
+ Miller County
+prompt eval count:    32 token(s)
+prompt eval duration: 0.1959311319515109s
+prompt eval rate:     163.32269242398584 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23759937286376953s
+eval rate:            12.626295952894145 tokens/s
+Predicted: Miller County
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where was Lloyd Dane born?...
+Sub-Q 2: ✓ CORRECT - Which county does Eldon, Missouri belong to?...
+
+✓ Main question 69: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 70/100: The actor who plays the girl in Spiderman Homecoming is signed to which record label?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 71/100: What is the record label for the band which performed Pythons?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 72/100: Who is the voice of the character in Spongebob Squarepants with the same name as the creature that annelid larvae live like?
+================================================================================
+
+Sub-question 1/2
+Question: What creature do annelid larvae live like?
+Ground Truth: Annelid larvae live like plankton.
+storage_time: 0.08559621998574585
+use_sparse_attention: True
+ Annelid larvae live like trochophores.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.20851288398262113s
+prompt eval rate:     153.4677348890685 tokens/s
+eval count:           11 token(s)
+eval duration:        1.1906392574310303s
+eval rate:            9.238734512864987 tokens/s
+Predicted: Annelid larvae live like trochophores.
+F1: 0.6154, EM: 0.0000
+
+Sub-question 2/2
+Question: Which character in Spongebob Squarepants has the same name as the creature that annelid larvae live like (plankton)?
+Ground Truth: Plankton
+storage_time: 0.1163518339744769
+use_sparse_attention: True
+1. The creature that annelid larvae live like is plankton. 2. In the SpongeBob SquarePants series, there is a character named Plankton. 3. Therefore, the character in SpongeBob SquarePants with the same name as the creature that annelid larvae live like is Plankton.
+prompt eval count:    48 token(s)
+prompt eval duration: 0.24250761099392548s
+prompt eval rate:     197.9319321289357 tokens/s
+eval count:           69 token(s)
+eval duration:        8.077882289886475s
+eval rate:            8.541842716176756 tokens/s
+Predicted: 1. The creature that annelid larvae live like is plankton. 2. In the SpongeBob SquarePants series, there is a character named Plankton. 3. Therefore, the character in SpongeBob SquarePants with the same name as the creature that annelid larvae live like is Plankton.
+F1: 0.0392, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What creature do annelid larvae live like?...
+Sub-Q 2: ✓ CORRECT - Which character in Spongebob Squarepants has the s...
+
+✗ Main question 72: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 73/100: Who is part of the band that performed Full Cooperation?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song Full Cooperation?
+Ground Truth: The song 'Full Cooperation' was performed by the American hip hop group Def Squad.
+storage_time: 0.09362205798970535
+use_sparse_attention: True
+ Def Squad
+prompt eval count:    29 token(s)
+prompt eval duration: 0.21626094699604437s
+prompt eval rate:     134.09725797848486 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23797917366027832s
+eval rate:            12.606145125466234 tokens/s
+Predicted: Def Squad
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Who are the members of the American hip hop group Def Squad?
+Ground Truth: The American hip hop group Def Squad consists of Erick Sermon, Redman, and Keith Murray. Jamal is considered an honorary member.
+storage_time: 0.07675627298885956
+use_sparse_attention: True
+ Erick Sermon, Redman, and Keith Murray.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.20011092600179836s
+prompt eval rate:     174.90299355111406 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3066508769989014s
+eval rate:            9.183784445590733 tokens/s
+Predicted: Erick Sermon, Redman, and Keith Murray.
+F1: 0.5625, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song Full Cooperation?...
+Sub-Q 2: ✓ CORRECT - Who are the members of the American hip hop group ...
+
+✓ Main question 73: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 74/100: When is the next episode of the series that Steven the Sword Fighter is a part of being released?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 75/100: What film features Anil Devgan's sibling?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Anil Devgan's sibling?
+Ground Truth: Anil Devgan's sibling is Ajay Devgan.
+storage_time: 0.08867301803547889
+use_sparse_attention: True
+ Ajay Devgan
+prompt eval count:    31 token(s)
+prompt eval duration: 0.21189829905051738s
+prompt eval rate:     146.29659671128118 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4752025604248047s
+eval rate:            10.521828829226589 tokens/s
+Predicted: Ajay Devgan
+F1: 0.4615, EM: 0.0000
+
+Sub-question 2/2
+Question: Which films feature Ajay Devgan?
+Ground Truth: The films featuring Ajay Devgan are: U Me Aur Hum, Yeh Raaste Hain Pyaar Ke, and Dil Kya Kare.
+storage_time: 0.09655020898208022
+use_sparse_attention: True
+1. *Yeh Raaste Hain Pyaar Ke* (2001)  
+2. *Raju Chacha* (directed by Anil Devgan)  
+3. *Blackmail* (2005) (directed by Anil Devgan)
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2194104979862459s
+prompt eval rate:     136.73001189706338 tokens/s
+eval count:           60 token(s)
+eval duration:        7.012624025344849s
+eval rate:            8.555998408463012 tokens/s
+Predicted: 1. *Yeh Raaste Hain Pyaar Ke* (2001)  
+2. *Raju Chacha* (directed by Anil Devgan)  
+3. *Blackmail* (2005) (directed by Anil Devgan)
+F1: 0.4615, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Anil Devgan's sibling?...
+Sub-Q 2: ✗ INCORRECT - Which films feature Ajay Devgan?...
+
+✗ Main question 75: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 76/100: What political party was the candidate who garnered a million votes during the 1920 election despite being in prison, a member of?
+================================================================================
+
+Sub-question 1/1
+Question: Who was the candidate that received a million votes in the 1920 election while in prison?
+Ground Truth: Eugene V. Debs was the Socialist Party candidate who received 913,664 votes in the 1920 election while in prison.
+storage_time: 0.08691294898744673
+use_sparse_attention: True
+ Eugene V. Debs
+prompt eval count:    43 token(s)
+prompt eval duration: 0.21936610201373696s
+prompt eval rate:     196.01934667785312 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5953361988067627s
+eval rate:            10.078338948691261 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.2941, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was the candidate that received a million vote...
+
+✓ Main question 76: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 77/100: What's the place of birth of the former member of The Sunnyboys?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 78/100: Who was the US physicist who directed the project that developed the first atomic bomb at the same place where Feynman worked on Water Boiler?
+================================================================================
+
+Sub-question 1/2
+Question: Where did Richard Feynman work on the Water Boiler reactor?
+Ground Truth: Richard Feynman worked on the Water Boiler reactor at Los Alamos.
+storage_time: 0.09970011602854356
+use_sparse_attention: True
+ Los Alamos
+prompt eval count:    35 token(s)
+prompt eval duration: 0.22319610405247658s
+prompt eval rate:     156.8127730032913 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35719919204711914s
+eval rate:            11.198233616027744 tokens/s
+Predicted: Los Alamos
+F1: 0.2667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which atomic bomb development project took place at Los Alamos and who was its director?
+Ground Truth: The Manhattan Project took place at Los Alamos, and its director was Robert Oppenheimer.
+storage_time: 0.11518204200547189
+use_sparse_attention: True
+ The Manhattan Project; its director was Major General Leslie Groves.
+prompt eval count:    39 token(s)
+prompt eval duration: 0.24247414199635386s
+prompt eval rate:     160.84189299074393 tokens/s
+eval count:           14 token(s)
+eval duration:        1.5474333763122559s
+eval rate:            9.047239263614633 tokens/s
+Predicted: The Manhattan Project; its director was Major General Leslie Groves.
+F1: 0.3571, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where did Richard Feynman work on the Water Boiler...
+Sub-Q 2: ✗ INCORRECT - Which atomic bomb development project took place a...
+
+✗ Main question 78: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 79/100: What award was received by the person who authored Missing Person?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of Missing Person?
+Ground Truth: Patrick Modiano
+storage_time: 0.06551866402151063
+use_sparse_attention: True
+ Patrick Modiano
+prompt eval count:    30 token(s)
+prompt eval duration: 0.18931316700764s
+prompt eval rate:     158.46758296948943 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35643696784973145s
+eval rate:            11.222180527824321 tokens/s
+Predicted: Patrick Modiano
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What award did Patrick Modiano receive?
+Ground Truth: Patrick Modiano received the 2014 Nobel Prize in Literature, the 2012 Austrian State Prize for European Literature, the 2010 Prix mondial Cino Del Duca, the 1978 Prix Goncourt, and the 1972 Grand Prix du roman de l'Académie française.
+storage_time: 0.09401555702788755
+use_sparse_attention: True
+2014 Nobel Prize in Literature
+prompt eval count:    30 token(s)
+prompt eval duration: 0.21684508107136935s
+prompt eval rate:     138.34761596517941 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9528255462646484s
+eval rate:            9.445590575612295 tokens/s
+Predicted: 2014 Nobel Prize in Literature
+F1: 0.2286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of Missing Person?...
+Sub-Q 2: ✓ CORRECT - What award did Patrick Modiano receive?...
+
+✓ Main question 79: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 80/100: What preity zinta and madhuri dixit movie had a cast member from U Me Aur Hum ?
+================================================================================
+
+Sub-question 1/3
+Question: Who are the cast members of the movie U Me Aur Hum?
+Ground Truth: The cast includes Ajay Devgan, Kajol, Karan Khanna, Isha Sharvani, Sumeet Raghavan, and Divya Dutta.
+storage_time: 0.07603080896660686
+use_sparse_attention: True
+ The movie U Me Aur Hum stars Madhuri Dixit, Ajay Devgn, and Preity Zinta in lead roles.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.1995089709525928s
+prompt eval rate:     175.43070786684916 tokens/s
+eval count:           28 token(s)
+eval duration:        3.2086944580078125s
+eval rate:            8.726290510497657 tokens/s
+Predicted: The movie U Me Aur Hum stars Madhuri Dixit, Ajay Devgn, and Preity Zinta in lead roles.
+F1: 0.1961, EM: 0.0000
+
+Sub-question 2/3
+Question: Which Bollywood movies feature both Preity Zinta and Madhuri Dixit in their cast?
+Ground Truth: The only Bollywood movie featuring both Preity Zinta and Madhuri Dixit is 'Yeh Raaste Hain Pyaar Ke'.
+storage_time: 0.08910285303136334
+use_sparse_attention: True
+1. Yeh Raaste Hain Pyaar Ke  
+2. Dil Kya Kare
+prompt eval count:    41 token(s)
+prompt eval duration: 0.21366065106121823s
+prompt eval rate:     191.8930780953796 tokens/s
+eval count:           19 token(s)
+eval duration:        2.140174627304077s
+eval rate:            8.877780232323289 tokens/s
+Predicted: 1. Yeh Raaste Hain Pyaar Ke  
+2. Dil Kya Kare
+F1: 0.5143, EM: 0.0000
+
+Sub-question 3/3
+Question: What is the cast list for the movie 'Yeh Raaste Hain Pyaar Ke'?
+Ground Truth: The cast includes Madhuri Dixit, Ajay Devgn, and Preity Zinta.
+storage_time: 0.16708617698168382
+use_sparse_attention: True
+ Madhuri Dixit, Ajay Devgn, and Preity Zinta.
+prompt eval count:    42 token(s)
+prompt eval duration: 0.342709853022825s
+prompt eval rate:     122.55264804774299 tokens/s
+eval count:           18 token(s)
+eval duration:        2.032625436782837s
+eval rate:            8.85554203655432 tokens/s
+Predicted: Madhuri Dixit, Ajay Devgn, and Preity Zinta.
+F1: 0.9333, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the cast members of the movie U Me Aur Hum...
+Sub-Q 2: ✗ INCORRECT - Which Bollywood movies feature both Preity Zinta a...
+Sub-Q 3: ✓ CORRECT - What is the cast list for the movie 'Yeh Raaste Ha...
+
+✗ Main question 80: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 81/100: Who married the publisher of abolitionist newspaper The North Star?
+================================================================================
+
+Sub-question 1/1
+Question: Who was Frederick Douglass married to?
+Ground Truth: Frederick Douglass was married first to Anna Murray Douglass and second to Helen Pitts Douglass.
+storage_time: 0.08230014599394053
+use_sparse_attention: True
+1. Helen Pitts Douglass.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2050929680117406s
+prompt eval rate:     146.27512727926705 tokens/s
+eval count:           9 token(s)
+eval duration:        0.9510436058044434s
+eval rate:            9.4632884812756 tokens/s
+Predicted: 1. Helen Pitts Douglass.
+F1: 0.4516, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was Frederick Douglass married to?...
+
+✗ Main question 81: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 82/100: What political party does the person that Adversary in the House is based on a member of?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the book 'Adversary in the House' based on?
+Ground Truth: The book 'Adversary in the House' is based on the life of Eugene V. Debs and his wife Kate.
+storage_time: 0.07786236400716007
+use_sparse_attention: True
+ Eugene V. Debs and his wife Kate
+prompt eval count:    37 token(s)
+prompt eval duration: 0.20217054802924395s
+prompt eval rate:     183.0137987984677 tokens/s
+eval count:           10 token(s)
+eval duration:        1.0703339576721191s
+eval rate:            9.342878386993446 tokens/s
+Predicted: Eugene V. Debs and his wife Kate
+F1: 0.6897, EM: 0.0000
+
+Sub-question 2/2
+Question: What political party did Eugene V. Debs belong to?
+Ground Truth: Eugene V. Debs belonged to the Socialist Party of America.
+storage_time: 0.10160125902621076
+use_sparse_attention: True
+ Socialist Party
+prompt eval count:    34 token(s)
+prompt eval duration: 0.22510767803760245s
+prompt eval rate:     151.0388286014863 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23795342445373535s
+eval rate:            12.60750925054782 tokens/s
+Predicted: Socialist Party
+F1: 0.1538, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the book 'Adversary in the House' based on?...
+Sub-Q 2: ✓ CORRECT - What political party did Eugene V. Debs belong to?...
+
+✓ Main question 82: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 83/100: What event caused the Liberal Party of Australia's longest-serving leader to become Prime Minister?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the longest-serving leader of the Liberal Party of Australia?
+Ground Truth: Robert Menzies
+storage_time: 0.07861338899238035
+use_sparse_attention: True
+ Robert Menzies
+prompt eval count:    35 token(s)
+prompt eval duration: 0.20209892699494958s
+prompt eval rate:     173.1825127447344 tokens/s
+eval count:           5 token(s)
+eval duration:        0.47560596466064453s
+eval rate:            10.512904318951533 tokens/s
+Predicted: Robert Menzies
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What specific political event or circumstance caused Robert Menzies to become Prime Minister of Australia?
+Ground Truth: Robert Menzies became Prime Minister following the death of the incumbent Prime Minister, Joseph Lyons, in 1939.
+storage_time: 0.10606062499573454
+use_sparse_attention: True
+1939, following the death of Joseph Lyons.
+prompt eval count:    40 token(s)
+prompt eval duration: 0.3108325430075638s
+prompt eval rate:     128.68665427682274 tokens/s
+eval count:           13 token(s)
+eval duration:        1.429506778717041s
+eval rate:            9.094045718109353 tokens/s
+Predicted: 1939, following the death of Joseph Lyons.
+F1: 0.6061, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the longest-serving leader of the Liberal P...
+Sub-Q 2: ✓ CORRECT - What specific political event or circumstance caus...
+
+✓ Main question 83: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 84/100: Who is the uncle of Liu Bin?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 85/100: Who founded the publisher of The Final Testament of the Holy Bible?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the publisher of The Final Testament of the Holy Bible?
+Ground Truth: The Final Testament of the Holy Bible was published by Gagosian Gallery.
+storage_time: 0.07788449502550066
+use_sparse_attention: True
+ Gagosian Gallery
+prompt eval count:    35 token(s)
+prompt eval duration: 0.2013401230215095s
+prompt eval rate:     173.83519725107595 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4755113124847412s
+eval rate:            10.51499694901674 tokens/s
+Predicted: Gagosian Gallery
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who founded the Gagosian Gallery?
+Ground Truth: The Gagosian Gallery was founded by Larry Gagosian.
+storage_time: 0.0833187279640697
+use_sparse_attention: True
+ Larry Gagosian
+prompt eval count:    30 token(s)
+prompt eval duration: 0.20619179593631998s
+prompt eval rate:     145.49560453542566 tokens/s
+eval count:           5 token(s)
+eval duration:        0.475217342376709s
+eval rate:            10.521501540733873 tokens/s
+Predicted: Larry Gagosian
+F1: 0.5333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the publisher of The Final Testament of the...
+Sub-Q 2: ✓ CORRECT - Who founded the Gagosian Gallery?...
+
+✓ Main question 85: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 86/100: The Nicole and Natalie album's band is named after who?
+================================================================================
+
+Sub-question 1/1
+Question: What is the name of the band that released the album 'Nicole and Natalie'?
+Ground Truth: Nina Sky
+storage_time: 0.1804251570138149
+use_sparse_attention: True
+ Nina Sky
+prompt eval count:    40 token(s)
+prompt eval duration: 0.31774163496447727s
+prompt eval rate:     125.8884439380187 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23766493797302246s
+eval rate:            12.622812710979407 tokens/s
+Predicted: Nina Sky
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the name of the band that released the alb...
+
+✓ Main question 86: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 87/100: Of which river is the river Kichi Sipi Bridge crosses a tributary?
+================================================================================
+
+Sub-question 1/2
+Question: Which river does the Kichi Sipi Bridge cross?
+Ground Truth: The Kichi Sipi Bridge crosses the Nelson River.
+storage_time: 0.06845493399305269
+use_sparse_attention: True
+ The Kichi Sipi Bridge crosses the Nelson River.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.19172514299862087s
+prompt eval rate:     172.12139985331697 tokens/s
+eval count:           12 token(s)
+eval duration:        1.3061456680297852s
+eval rate:            9.187336675932192 tokens/s
+Predicted: The Kichi Sipi Bridge crosses the Nelson River.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Into which larger river does the Nelson River flow as a tributary?
+Ground Truth: The Nelson River flows directly into Hudson Bay, not into a larger river as a tributary.
+storage_time: 0.0877575189806521
+use_sparse_attention: True
+ Hudson Bay
+prompt eval count:    37 token(s)
+prompt eval duration: 0.21156265796162188s
+prompt eval rate:     174.88908655473554 tokens/s
+eval count:           3 token(s)
+eval duration:        0.23746752738952637s
+eval rate:            12.633306258665819 tokens/s
+Predicted: Hudson Bay
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which river does the Kichi Sipi Bridge cross?...
+Sub-Q 2: ✗ INCORRECT - Into which larger river does the Nelson River flow...
+
+✗ Main question 87: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 88/100: Who is the spouse of the screenwriter of The Actress?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 89/100: Who is the child of the actor who is a cast member of Love in Pawn?
+================================================================================
+
+Sub-question 1/3
+Question: Who are the cast members of Love in Pawn?
+Ground Truth: Bernard Braden and Barbara Kelly
+storage_time: 0.13347791600972414
+use_sparse_attention: True
+1. Bernard Braden  
+2. Barbara Kelly  
+3. Charles Saunders
+prompt eval count:    32 token(s)
+prompt eval duration: 0.2560834909672849s
+prompt eval rate:     124.95924621743013 tokens/s
+eval count:           16 token(s)
+eval duration:        1.7819695472717285s
+eval rate:            8.978829085208938 tokens/s
+Predicted: 1. Bernard Braden  
+2. Barbara Kelly  
+3. Charles Saunders
+F1: 0.5000, EM: 0.0000
+
+Sub-question 2/3
+Question: Which of the cast members of 'Love in Pawn' (Bernard Braden and Barbara Kelly) are actors?
+Ground Truth: Both Bernard Braden and Barbara Kelly are actors.
+storage_time: 0.06769377802265808
+use_sparse_attention: True
+ Bernard Braden and Barbara Kelly
+prompt eval count:    45 token(s)
+prompt eval duration: 0.19272845203522593s
+prompt eval rate:     233.48913730586665 tokens/s
+eval count:           7 token(s)
+eval duration:        0.7131156921386719s
+eval rate:            9.816079041826479 tokens/s
+Predicted: Bernard Braden and Barbara Kelly
+F1: 0.8421, EM: 0.0000
+
+Sub-question 3/3
+Question: Who is the child of Bernard Braden or Barbara Kelly?
+Ground Truth: Kim Braden is the daughter of Bernard Braden and Barbara Kelly.
+storage_time: 0.07556497398763895
+use_sparse_attention: True
+ Steven Bert Bradley
+prompt eval count:    34 token(s)
+prompt eval duration: 0.19921647501178086s
+prompt eval rate:     170.6686156252357 tokens/s
+eval count:           4 token(s)
+eval duration:        0.35639166831970215s
+eval rate:            11.223606934637397 tokens/s
+Predicted: Steven Bert Bradley
+F1: 0.1053, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the cast members of Love in Pawn?...
+Sub-Q 2: ✓ CORRECT - Which of the cast members of 'Love in Pawn' (Berna...
+Sub-Q 3: ✗ INCORRECT - Who is the child of Bernard Braden or Barbara Kell...
+
+✗ Main question 89: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 90/100: Who is the spouse of the first nominated African American presidential candidate?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the first nominated African American presidential candidate?
+Ground Truth: Frederick Douglass was the first African American to be nominated as a presidential candidate, receiving one vote at the 1888 Republican National Convention.
+storage_time: 0.08314943895675242
+use_sparse_attention: True
+ The first nominated African American presidential candidate was Frederick Douglass, who was nominated by the Equal Rights Party in 1872. However, the question may also refer to the first major party nomination, in which case the answer is Shirley Chisholm, who was the first African American woman to be nominated for president by a major party (the Democratic Party) in 1972.
+prompt eval count:    32 token(s)
+prompt eval duration: 0.20613304694416001s
+prompt eval rate:     155.23954297667066 tokens/s
+eval count:           82 token(s)
+eval duration:        9.637470245361328s
+eval rate:            8.508456878449813 tokens/s
+Predicted: The first nominated African American presidential candidate was Frederick Douglass, who was nominated by the Equal Rights Party in 1872. However, the question may also refer to the first major party nomination, in which case the answer is Shirley Chisholm, who was the first African American woman to be nominated for president by a major party (the Democratic Party) in 1972.
+F1: 0.3226, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the spouse of Frederick Douglass?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.09503677301108837
+use_sparse_attention: True
+1. Helen Pitts Douglass was the second wife of Frederick Douglass.  
+2. The question asks for the spouse of Frederick Douglass.  
+3. Therefore, the answer is Helen Pitts Douglass.  
+
+Answer: Helen Pitts Douglass
+prompt eval count:    31 token(s)
+prompt eval duration: 0.2177835520124063s
+prompt eval rate:     142.34316464006451 tokens/s
+eval count:           53 token(s)
+eval duration:        6.184319734573364s
+eval rate:            8.570061425463523 tokens/s
+Predicted: 1. Helen Pitts Douglass was the second wife of Frederick Douglass.  
+2. The question asks for the spouse of Frederick Douglass.  
+3. Therefore, the answer is Helen Pitts Douglass.  
+
+Answer: Helen Pitts Douglass
+F1: 0.5909, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was the first nominated African American presi...
+Sub-Q 2: ✗ INCORRECT - Who was the spouse of Frederick Douglass?...
+
+✗ Main question 90: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 91/100: What event caused the founder of Australia's liberal party to become Prime Minister?
+================================================================================
+
+Sub-question 1/3
+Question: Who founded the Liberal Party of Australia?
+Ground Truth: Robert Menzies founded the Liberal Party of Australia.
+storage_time: 0.20907448400976136
+use_sparse_attention: True
+ The Liberal Party of Australia was founded by Robert Menzies.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.3400318970088847s
+prompt eval rate:     88.22701712367922 tokens/s
+eval count:           14 token(s)
+eval duration:        2.483135461807251s
+eval rate:            5.638033130021292 tokens/s
+Predicted: The Liberal Party of Australia was founded by Robert Menzies.
+F1: 0.7000, EM: 0.0000
+
+Sub-question 2/3
+Question: When did Robert Menzies serve as Prime Minister of Australia?
+Ground Truth: Robert Menzies served as Prime Minister of Australia from 1939 to 1941 and again from 1949 to 1966 (his tenure ended before the 1972 election, making him the longest-serving PM).
+storage_time: 0.2536894420045428
+use_sparse_attention: True
+1939 to 1941
+prompt eval count:    35 token(s)
+prompt eval duration: 0.39563400502083823s
+prompt eval rate:     88.465600923653 tokens/s
+eval count:           11 token(s)
+eval duration:        1.4754514694213867s
+eval rate:            7.455345179407196 tokens/s
+Predicted: 1939 to 1941
+F1: 0.2951, EM: 0.0000
+
+Sub-question 3/3
+Question: What specific political event or circumstance led to Robert Menzies first becoming Prime Minister of Australia in 1939?
+Ground Truth: Robert Menzies first became Prime Minister of Australia in 1939 following the death of the previous Prime Minister, Joseph Lyons.
+storage_time: 0.10726349201286212
+use_sparse_attention: True
+1939 World War II outbreak and the death of Joseph Lyons, who led the United Australia Party (UAP) government, caused a leadership succession where Menzies assumed the role of Prime Minister.
+prompt eval count:    47 token(s)
+prompt eval duration: 0.23216732701985165s
+prompt eval rate:     202.44019950309902 tokens/s
+eval count:           43 token(s)
+eval duration:        5.013086318969727s
+eval rate:            8.577550288189975 tokens/s
+Predicted: 1939 World War II outbreak and the death of Joseph Lyons, who led the United Australia Party (UAP) government, caused a leadership succession where Menzies assumed the role of Prime Minister.
+F1: 0.5333, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who founded the Liberal Party of Australia?...
+Sub-Q 2: ✗ INCORRECT - When did Robert Menzies serve as Prime Minister of...
+Sub-Q 3: ✓ CORRECT - What specific political event or circumstance led ...
+
+✗ Main question 91: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 92/100: What is the river that the Kettle Generating Station is located on a tributary of?
+================================================================================
+
+Sub-question 1/2
+Question: On which river is the Kettle Generating Station located?
+Ground Truth: The Kettle Generating Station is located on the Lower Nelson River.
+storage_time: 0.0718429209664464
+use_sparse_attention: True
+ The Kettle Generating Station is located on the Kettle River.
+prompt eval count:    33 token(s)
+prompt eval duration: 0.20002743793884292s
+prompt eval rate:     164.97736680549562 tokens/s
+eval count:           14 token(s)
+eval duration:        1.5491232872009277s
+eval rate:            9.037369792107542 tokens/s
+Predicted: The Kettle Generating Station is located on the Kettle River.
+F1: 0.7778, EM: 0.0000
+
+Sub-question 2/2
+Question: Is the Lower Nelson River a tributary of a larger river system, and if so, which main river does it flow into?
+Ground Truth: Yes, the Lower Nelson River is part of the Nelson River system, and it flows into Hudson Bay.
+storage_time: 0.08245062601054087
+use_sparse_attention: True
+ Yes, the Lower Nelson River is part of a larger river system and flows into Hudson Bay.
+prompt eval count:    49 token(s)
+prompt eval duration: 0.20801789301913232s
+prompt eval rate:     235.55665952011762 tokens/s
+eval count:           20 token(s)
+eval duration:        2.258883476257324s
+eval rate:            8.853931692456042 tokens/s
+Predicted: Yes, the Lower Nelson River is part of a larger river system and flows into Hudson Bay.
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - On which river is the Kettle Generating Station lo...
+Sub-Q 2: ✓ CORRECT - Is the Lower Nelson River a tributary of a larger ...
+
+✗ Main question 92: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 93/100: Who is the sibling of the author of Kapalkundala?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 94/100: Who was the spouse of a leading speaker against slavery and publisher of an antislavery newspaper?
+================================================================================
+
+Sub-question 1/2
+Question: Who was a leading speaker against slavery and publisher of an antislavery newspaper?
+Ground Truth: Frederick Douglass
+storage_time: 0.08124174101976678
+use_sparse_attention: True
+1. Mary B. Thistlethwaite Birdsall was a leading speaker against slavery. She was a journalist, suffragist, and temperance worker who contributed to the anti-slavery cause.  
+2. She wrote for and published in abolitionist newspapers such as "The Liberator" and "The North Star," which were prominent in publicizing the antislavery movement.
+prompt eval count:    38 token(s)
+prompt eval duration: 0.2052677920437418s
+prompt eval rate:     185.12402565280354 tokens/s
+eval count:           79 token(s)
+eval duration:        9.277641773223877s
+eval rate:            8.515094884133296 tokens/s
+Predicted: 1. Mary B. Thistlethwaite Birdsall was a leading speaker against slavery. She was a journalist, suffragist, and temperance worker who contributed to the anti-slavery cause.  
+2. She wrote for and published in abolitionist newspapers such as "The Liberator" and "The North Star," which were prominent in publicizing the antislavery movement.
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was Frederick Douglass's spouse?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.09033994399942458
+use_sparse_attention: True
+1. The documents mention Helen Pitts Douglass as the second wife of Frederick Douglass.  
+2. Additionally, Charles Remond Douglass is identified as the son of Frederick Douglass and his first wife, Anna Murray Douglass.  
+3. Therefore, Frederick Douglass had two spouses: Anna Murray Douglass (first wife) and Helen Pitts Douglass (second wife).  
+Answer: Anna Murray Douglass and Helen Pitts Douglass.
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2130558200296946s
+prompt eval rate:     140.80816940752317 tokens/s
+eval count:           93 token(s)
+eval duration:        10.937714099884033s
+eval rate:            8.502690703991433 tokens/s
+Predicted: 1. The documents mention Helen Pitts Douglass as the second wife of Frederick Douglass.  
+2. Additionally, Charles Remond Douglass is identified as the son of Frederick Douglass and his first wife, Anna Murray Douglass.  
+3. Therefore, Frederick Douglass had two spouses: Anna Murray Douglass (first wife) and Helen Pitts Douglass (second wife).  
+Answer: Anna Murray Douglass and Helen Pitts Douglass.
+F1: 0.5217, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was a leading speaker against slavery and publ...
+Sub-Q 2: ✓ CORRECT - Who was Frederick Douglass's spouse?...
+
+✗ Main question 94: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 95/100: What is the record label of the co-writer and recording artist of Permission to Fly?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 96/100: Where is Ulrich Walter's employer headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Ulrich Walter's employer?
+Ground Truth: Ulrich Walter's employers were the German astronaut team and the German Aerospace Center (DLR).
+storage_time: 0.07777400099439546
+use_sparse_attention: True
+1. The text mentions that Ulrich Walter was selected in 1987 to join the German astronaut team.  
+2. It also states that he completed basic training at the German Aerospace Center.  
+3. Based on this information, Ulrich Walter's employer is the German Aerospace Center.  
+
+Answer: German Aerospace Center
+prompt eval count:    30 token(s)
+prompt eval duration: 0.2007946550147608s
+prompt eval rate:     149.40636740452402 tokens/s
+eval count:           67 token(s)
+eval duration:        7.869841575622559s
+eval rate:            8.513513182722466 tokens/s
+Predicted: 1. The text mentions that Ulrich Walter was selected in 1987 to join the German astronaut team.  
+2. It also states that he completed basic training at the German Aerospace Center.  
+3. Based on this information, Ulrich Walter's employer is the German Aerospace Center.  
+
+Answer: German Aerospace Center
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Ulrich Walter's employer?...
+
+✗ Main question 96: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 97/100: Who is the city where Lesnoye Sanatorium is located named after?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Lesnoye Sanatorium located?
+Ground Truth: Lesnoye Sanatorium is located in the city of Tolyatti, Russia.
+storage_time: 0.07447794900508597
+use_sparse_attention: True
+ Lesnoye Sanatorium is located in the city of Tolyatti, Russia.
+prompt eval count:    31 token(s)
+prompt eval duration: 0.19802855502348393s
+prompt eval rate:     156.54308034679016 tokens/s
+eval count:           18 token(s)
+eval duration:        2.0215539932250977s
+eval rate:            8.904041178382576 tokens/s
+Predicted: Lesnoye Sanatorium is located in the city of Tolyatti, Russia.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.10581550502683967
+use_sparse_attention: True
+1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+prompt eval count:    33 token(s)
+prompt eval duration: 0.26231969898799434s
+prompt eval rate:     125.80069330405232 tokens/s
+eval count:           32 token(s)
+eval duration:        3.681483268737793s
+eval rate:            8.692148697709902 tokens/s
+Predicted: 1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+F1: 0.7907, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Lesnoye Sanatorium located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 97: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 98/100: Whom is the birth place of Ravil Aryapov named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Ravil Aryapov and where was he born?
+Ground Truth: Ravil Aryapov is a Russian professional football coach and former player. He was born in Stavropol, which is now the city of Tolyatti.
+storage_time: 0.07279875600943342
+use_sparse_attention: True
+1. From the given text, we identify the individual in question: "Ravil Aryapov."  
+2. The text states, "Ravil Aryapov (born February 1, 1948 in Stavropol, now Tolyatti)."  
+3. Therefore, Ravil Aryapov was born in Stavropol, now known as Tolyatti.  
+
+Answer: Ravil Aryapov was born in Stavropol, now Tolyatti.
+prompt eval count:    35 token(s)
+prompt eval duration: 0.19643428298877552s
+prompt eval rate:     178.17663733371808 tokens/s
+eval count:           102 token(s)
+eval duration:        12.004018545150757s
+eval rate:            8.497154483421285 tokens/s
+Predicted: 1. From the given text, we identify the individual in question: "Ravil Aryapov."  
+2. The text states, "Ravil Aryapov (born February 1, 1948 in Stavropol, now Tolyatti)."  
+3. Therefore, Ravil Aryapov was born in Stavropol, now known as Tolyatti.  
+
+Answer: Ravil Aryapov was born in Stavropol, now Tolyatti.
+F1: 0.2500, EM: 0.0000
+
+Sub-question 2/2
+Question: Whom is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.07672823796747252
+use_sparse_attention: True
+1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+prompt eval count:    34 token(s)
+prompt eval duration: 0.20021000696578994s
+prompt eval rate:     169.8216813199033 tokens/s
+eval count:           32 token(s)
+eval duration:        3.6887736320495605s
+eval rate:            8.67496983874831 tokens/s
+Predicted: 1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+F1: 0.7907, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Ravil Aryapov and where was he born?...
+Sub-Q 2: ✓ CORRECT - Whom is the city of Tolyatti named after?...
+
+✗ Main question 98: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 99/100: Who is the city that AvtoVAZ's headquarters is located in named after?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is AvtoVAZ's headquarters located?
+Ground Truth: Tolyatti
+storage_time: 0.07333267398644239
+use_sparse_attention: True
+ Tolyatti
+prompt eval count:    34 token(s)
+prompt eval duration: 0.19656431098701432s
+prompt eval rate:     172.97137933775858 tokens/s
+eval count:           4 token(s)
+eval duration:        0.3564777374267578s
+eval rate:            11.220897071649091 tokens/s
+Predicted: Tolyatti
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.08389286103192717
+use_sparse_attention: True
+1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+prompt eval count:    33 token(s)
+prompt eval duration: 0.20715274999383837s
+prompt eval rate:     159.30273675334536 tokens/s
+eval count:           32 token(s)
+eval duration:        3.6855475902557373s
+eval rate:            8.68256323283009 tokens/s
+Predicted: 1964, the city was renamed Tolyatti (after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party).
+F1: 0.7907, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is AvtoVAZ's headquarters located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 99: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 100/100: What team drafted the winner of the NBA scoring title this year?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 20/37 (54.05%)
+Sub Questions: 49/71 (69.01%)
+Average F1: 0.5150
+Average EM: 0.1549
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/kv_lora/results/original_pipeline_refit_adapter_second_holdout/Qwen3-32B/musique/FusionRAG_global_topk10_bge_linearadapter_shared_preprocess_residual_adapter_refit50_pt_rank64_scale0.5

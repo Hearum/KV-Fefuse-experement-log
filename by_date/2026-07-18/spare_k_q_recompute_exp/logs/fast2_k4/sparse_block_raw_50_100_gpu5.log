@@ -1,0 +1,190 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[setup-v2] dataset=musique-v2 method=sparse_block_raw rate=0.15 start=50 end=100
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/results_fast2_k4/sparse_block_raw/musique-v2/rate_0p15/seg_50_100
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:  41%|████      | 7/17 [00:00<00:00, 64.71it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 92.78it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+storage_time: 2.094462251290679
+select_time: 1.541731537785381
+use_sparse_attention: True
+
+Okay, let's tackle this question. The user is asking about Mary Philips and Humphrey Bogart's involvement in a movie where he won an Oscar. The answer needs to be derived from the provided passages.
+
+First, I'll look 
+prompt eval count:    2622 token(s)
+prompt eval duration: 21.29873783700168s
+prompt eval rate:     123.10588637064095 tokens/s
+eval count:           50 token(s)
+eval duration:        15.25528597831726s
+eval rate:            3.277552454347058 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: with what movie did Mary Philips' husband win his only oscar?
+batch: 51 preprocess: False reprocess_method: FusionRAG
+real answer: The African Queen
+answer: <|im_start|>
+Okay, let's tackle this question. The user is asking about Mary Philips and Humphrey Bogart's involvement in a movie where he won an Oscar. The answer needs to be derived from the provided passages.
+
+First, I'll look
+storage_time: 0.7566056372597814
+select_time: 0.6699853260070086
+use_sparse_attention: True
+<think>
+Okay, let's see. The user is asking about the all-time top goal scorer in the Premier League and which team they played for. From the provided documents, I remember that there's a section under "Goalscoring" where 
+prompt eval count:    2758 token(s)
+prompt eval duration: 19.079056441318244s
+prompt eval rate:     144.55641496123377 tokens/s
+eval count:           50 token(s)
+eval duration:        15.154001951217651s
+eval rate:            3.299458463906454 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: The all time top goal scorer in premier league in one season is a member of what team?
+batch: 52 preprocess: False reprocess_method: FusionRAG
+real answer: Egypt national football team
+answer: <think>
+Okay, let's see. The user is asking about the all-time top goal scorer in the Premier League and which team they played for. From the provided documents, I remember that there's a section under "Goalscoring" where
+storage_time: 0.46011711610481143
+select_time: 0.5244891098700464
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking where the province of Gonbad-e Qabus County is located. From the provided passages, I need to find the relevant information.
+
+Looking at Passage 20, which is 
+prompt eval count:    1646 token(s)
+prompt eval duration: 12.000594716984779s
+prompt eval rate:     137.1598690580201 tokens/s
+eval count:           50 token(s)
+eval duration:        15.157920122146606s
+eval rate:            3.2986055868540354 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Where is the province of Gonbad-e Qabus County located?
+batch: 53 preprocess: False reprocess_method: FusionRAG
+real answer: in the north-east of the country south of the Caspian Sea
+answer: <think>
+Okay, let's tackle this question. The user is asking where the province of Gonbad-e Qabus County is located. From the provided passages, I need to find the relevant information.
+
+Looking at Passage 20, which is
+storage_time: 0.6947992327623069
+select_time: 0.6622819788753986
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking who wrote the song "Turn Me On" from the album "Feel the Same Way," which is part of the "Goodies" series. 
+
+First, I need to 
+prompt eval count:    2612 token(s)
+prompt eval duration: 18.176417768467218s
+prompt eval rate:     143.7026829638206 tokens/s
+eval count:           50 token(s)
+eval duration:        15.15363883972168s
+eval rate:            3.299537525530622 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who wrote the song turn me on that is performed by performer of Feelin' the Same Way?
+batch: 54 preprocess: False reprocess_method: FusionRAG
+real answer: John D. Loudermilk
+answer: <think>
+Okay, let's tackle this question. The user is asking who wrote the song "Turn Me On" from the album "Feel the Same Way," which is part of the "Goodies" series. 
+
+First, I need to
+storage_time: 0.7093706000596285
+select_time: 0.626742749940604
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking which institute the actor who played the voice of John Smith in Pocahontas attended. 
+
+First, I need to look through the provided passages to find mentions of the 
+prompt eval count:    2586 token(s)
+prompt eval duration: 18.008860582951456s
+prompt eval rate:     143.5959808833271 tokens/s
+eval count:           50 token(s)
+eval duration:        15.152873039245605s
+eval rate:            3.2997042785550375 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: What institute did the actor playing the voice of John Smith in Pocahontas attend?
+batch: 55 preprocess: False reprocess_method: FusionRAG
+real answer: National Institute of Dramatic Art
+answer: <think>
+Okay, let's tackle this question. The user is asking which institute the actor who played the voice of John Smith in Pocahontas attended. 
+
+First, I need to look through the provided passages to find mentions of the
+storage_time: 0.6503091081976891
+select_time: 0.584009638056159
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking who led the Muslim forces during the siege of Jerusalem as mentioned in the provided passages. 
+
+First, I need to look through the passages to find references to the leadership of the 
+prompt eval count:    2417 token(s)
+prompt eval duration: 16.81418168451637s
+prompt eval rate:     143.74770329892036 tokens/s
+eval count:           50 token(s)
+eval duration:        15.15013074874878s
+eval rate:            3.3003015504753583 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Who led the muslim forces to retake the proposed embassy destination?
+batch: 56 preprocess: False reprocess_method: FusionRAG
+real answer: Abu Ubaidah
+answer: <think>
+Okay, let's tackle this question. The user is asking who led the Muslim forces during the siege of Jerusalem as mentioned in the provided passages. 
+
+First, I need to look through the passages to find references to the leadership of the
+storage_time: 0.6280858991667628
+select_time: 0.5876195412129164
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking which is the body of water near George Mills' place of birth. The answer needs to be based on the provided passages.
+
+First, I need to look through the passages to 
+prompt eval count:    2251 token(s)
+prompt eval duration: 15.85582956019789s
+prompt eval rate:     141.96671271306894 tokens/s
+eval count:           50 token(s)
+eval duration:        15.15433955192566s
+eval rate:            3.2993849602404155 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: Which is the body of water near George Mills' place of birth?
+batch: 57 preprocess: False reprocess_method: FusionRAG
+real answer: River Thames
+answer: <think>
+Okay, let's tackle this question. The user is asking which is the body of water near George Mills' place of birth. The answer needs to be based on the provided passages.
+
+First, I need to look through the passages to
+storage_time: 0.7105751992203295
+select_time: 0.6375349406152964
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking about when the party who gained control of Congress in the 1946 midterm elections took control of the determiner of rules of the US House and Senate. 
+
+
+prompt eval count:    2613 token(s)
+prompt eval duration: 18.15597235923633s
+prompt eval rate:     143.9195846027333 tokens/s
+eval count:           50 token(s)
+eval duration:        15.155962944030762s
+eval rate:            3.2990315550812763 tokens/s
+Qwen3-32B musique-v2 0.15 10
+question: When did the party who gained control of congress in the midterm elections in 1946 take control of the determiner of rules of the US House and US Senate?
+batch: 58 preprocess: False reprocess_method: FusionRAG
+real answer: January 2015
+answer: <think>
+Okay, let's tackle this question. The user is asking about when the party who gained control of Congress in the 1946 midterm elections took control of the determiner of rules of the US House and Senate. 
+
+First
+storage_time: 0.6769900140352547
+select_time: 0.6152469688095152
+use_sparse_attention: True
+<think>
+Okay, let's tackle this question. The user is asking about the woman who portrayed Corliss Archer in the film "Kiss and Tell" and what government position she held. 
+
+First, I need to look at the provided 

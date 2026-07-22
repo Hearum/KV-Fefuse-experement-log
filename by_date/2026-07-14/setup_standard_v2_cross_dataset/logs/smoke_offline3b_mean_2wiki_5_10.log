@@ -1,0 +1,35 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=2wikimqa-v2 method=offline3b_mean rate=0.15 start=5 end=10
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/offline3b_mean/2wikimqa-v2/rate_0p15/seg_5_10
+[setup-v2] offline_fixed_set_dir=/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/fixed_sets_2wikimqa_3b/chunk_fixed_sets_npz
+[setup-v2] offline_fixed_set_method=offline3b_mean_score_global
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:13,  1.35s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:10,  1.12s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:08,  1.02s/it]Inference Embeddings:  36%|███▋      | 4/11 [00:04<00:06,  1.02it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:05<00:05,  1.04it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.06it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.08it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.09it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.09it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:09<00:00,  1.07it/s]Inference Embeddings: 100%|██████████| 11/11 [00:10<00:00,  1.14it/s]Inference Embeddings: 100%|██████████| 11/11 [00:10<00:00,  1.06it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 11.535865068435669
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 249.28it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [6, 7, 8, 9, 10]
+Traceback (most recent call last):
+  File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/scripts/run_setup_v2_task.py", line 139, in <module>
+    main()
+  File "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/scripts/run_setup_v2_task.py", line 135, in main
+    upc.main(**kwargs_main)
+  File "/raid/home/hming/FusionRAG-pca-analysis/ktransformers/unified_process_cache.py", line 279, in main
+    current_results = run_experiment(
+  File "/raid/home/hming/FusionRAG-pca-analysis/ktransformers/unified_process_cache.py", line 536, in run_experiment
+    offline_local_sets = _load_offline_fixed_local_indices(
+  File "/raid/home/hming/FusionRAG-pca-analysis/ktransformers/unified_process_cache.py", line 44, in _load_offline_fixed_local_indices
+    raise KeyError(f"{npz_path} missing key {key}; available={list(data.keys())[:8]}")
+KeyError: "/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/fixed_sets_2wikimqa_3b/chunk_fixed_sets_npz/example005_rate0p15_chunk_local_sets.npz missing key chunk10_offline3b_mean_score_global; available=['chunk00_offline3b_mean_score_global', 'chunk01_offline3b_mean_score_global', 'chunk02_offline3b_mean_score_global', 'chunk03_offline3b_mean_score_global', 'chunk04_offline3b_mean_score_global', 'chunk05_offline3b_mean_score_global', 'chunk06_offline3b_mean_score_global', 'chunk07_offline3b_mean_score_global']"

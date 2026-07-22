@@ -1,0 +1,236 @@
+waiting training pid=3611977
+training finished; start epoch scaling eval
+[eval] step=500 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_final_step000500.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.50it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_final_step000500.pt`
+- loaded step/epoch: step=500, epoch=0
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4533 | 0.2996 | 0.4906 | 0.3296 | 0.5280 | 0.3627 | 0.6077 | 0.4392 |
+| musique | 0.0105 | 0.4738 | 0.3285 | 0.4399 | 0.2905 | 0.4454 | 0.2918 | 0.5174 | 0.3533 |
+
+[eval] step=1250 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step001250.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.25it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step001250.pt`
+- loaded step/epoch: step=1250, epoch=0
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4048 | 0.2613 | 0.4779 | 0.3196 | 0.5243 | 0.3601 | 0.6054 | 0.4372 |
+| musique | 0.0104 | 0.4749 | 0.3259 | 0.4821 | 0.3244 | 0.4953 | 0.3339 | 0.5596 | 0.3925 |
+
+[eval] step=2500 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step002500.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 55.83it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step002500.pt`
+- loaded step/epoch: step=2500, epoch=1
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.3982 | 0.2558 | 0.4736 | 0.3156 | 0.5207 | 0.3566 | 0.6016 | 0.4333 |
+| musique | 0.0104 | 0.4694 | 0.3205 | 0.4817 | 0.3240 | 0.4949 | 0.3336 | 0.5598 | 0.3928 |
+
+[eval] step=3750 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step003750.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 58.38it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step003750.pt`
+- loaded step/epoch: step=3750, epoch=2
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.3993 | 0.2566 | 0.4751 | 0.3169 | 0.5222 | 0.3580 | 0.6029 | 0.4346 |
+| musique | 0.0104 | 0.4694 | 0.3207 | 0.4806 | 0.3231 | 0.4943 | 0.3330 | 0.5607 | 0.3937 |
+
+[eval] step=5000 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step005000.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.49it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step005000.pt`
+- loaded step/epoch: step=5000, epoch=3
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.3995 | 0.2567 | 0.4752 | 0.3170 | 0.5224 | 0.3582 | 0.6027 | 0.4344 |
+| musique | 0.0104 | 0.4689 | 0.3203 | 0.4810 | 0.3234 | 0.4945 | 0.3332 | 0.5607 | 0.3937 |
+
+[eval] step=6250 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step006250.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 49.01it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step006250.pt`
+- loaded step/epoch: step=6250, epoch=4
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4000 | 0.2571 | 0.4757 | 0.3175 | 0.5227 | 0.3585 | 0.6032 | 0.4349 |
+| musique | 0.0104 | 0.4686 | 0.3199 | 0.4816 | 0.3239 | 0.4947 | 0.3334 | 0.5606 | 0.3937 |
+
+[eval] step=7500 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step007500.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 51.10it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step007500.pt`
+- loaded step/epoch: step=7500, epoch=5
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4008 | 0.2577 | 0.4761 | 0.3178 | 0.5228 | 0.3586 | 0.6033 | 0.4350 |
+| musique | 0.0104 | 0.4698 | 0.3212 | 0.4812 | 0.3237 | 0.4952 | 0.3337 | 0.5605 | 0.3935 |
+
+[eval] step=8750 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step008750.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.29it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step008750.pt`
+- loaded step/epoch: step=8750, epoch=6
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4007 | 0.2577 | 0.4761 | 0.3177 | 0.5229 | 0.3587 | 0.6033 | 0.4350 |
+| musique | 0.0104 | 0.4679 | 0.3192 | 0.4821 | 0.3243 | 0.4947 | 0.3333 | 0.5605 | 0.3935 |
+
+[eval] step=10000 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step010000.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 56.09it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step010000.pt`
+- loaded step/epoch: step=10000, epoch=7
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4003 | 0.2574 | 0.4758 | 0.3175 | 0.5228 | 0.3586 | 0.6031 | 0.4348 |
+| musique | 0.0104 | 0.4690 | 0.3206 | 0.4815 | 0.3238 | 0.4949 | 0.3335 | 0.5603 | 0.3933 |
+
+[eval] step=11250 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step011250.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 57.54it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_step011250.pt`
+- loaded step/epoch: step=11250, epoch=8
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4008 | 0.2578 | 0.4762 | 0.3178 | 0.5229 | 0.3586 | 0.6032 | 0.4349 |
+| musique | 0.0104 | 0.4691 | 0.3206 | 0.4818 | 0.3241 | 0.4951 | 0.3337 | 0.5604 | 0.3934 |
+
+[eval] step=12500 ckpt=MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_final_step012500.pt
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 57.61it/s]
+/raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/causal_lm_distill_draftmodel_local/scripts/eval_cd_layer4_against_full_draft.py:27: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(checkpoint_path, map_location="cpu")
+# CD 4-layer vs Full DraftModel Validation
+
+评估目标：复用 HS/native layer4 训练 pipeline 的验证缓存，用完整 3B DraftModel 缓存分数作为 teacher，比较 CD 4-layer causal distillation checkpoint 的 token ranking/selection 与 full draft 的重合度。
+
+- CD checkpoint: `MOTIVATION_EXPERIMENTS/prefill_logits_draft_distill/outputs/first4_wikitext_attn_kd_s256_step500/training_state_final_step012500.pt`
+- loaded step/epoch: step=12500, epoch=9
+- score mode: `attn_prob`
+- wiki val limit: 5000
+- musique val limit: all
+
+| split | KL | R@5% | J@5% | R@10% | J@10% | R@15% | J@15% | R@30% | J@30% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| wiki | 0.0081 | 0.4003 | 0.2574 | 0.4758 | 0.3175 | 0.5228 | 0.3585 | 0.6032 | 0.4349 |
+| musique | 0.0104 | 0.4671 | 0.3187 | 0.4818 | 0.3241 | 0.4949 | 0.3335 | 0.5609 | 0.3938 |
+
+Traceback (most recent call last):
+  File "<stdin>", line 33, in <module>
+KeyError: 12500

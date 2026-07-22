@@ -1,0 +1,1237 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_fixed_rerun/random_rate015_cont_from153/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 138.72it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+  Main question 101: 16 unique documents, 2 sub-questions
+  Main question 102: 16 unique documents, 2 sub-questions
+  Main question 103: 19 unique documents, 2 sub-questions
+  Main question 104: 17 unique documents, 2 sub-questions
+  Main question 105: 10 unique documents, 1 sub-questions
+  Main question 106: 13 unique documents, 2 sub-questions
+  Main question 107: 30 unique documents, 4 sub-questions
+  Main question 108: 17 unique documents, 4 sub-questions
+  Main question 109: 13 unique documents, 4 sub-questions
+  Main question 110: 10 unique documents, 1 sub-questions
+  Main question 111: 28 unique documents, 4 sub-questions
+  Main question 112: 15 unique documents, 4 sub-questions
+  Main question 113: 19 unique documents, 2 sub-questions
+  Main question 114: 17 unique documents, 2 sub-questions
+  Main question 115: 20 unique documents, 2 sub-questions
+  Main question 116: 21 unique documents, 3 sub-questions
+  Main question 117: 25 unique documents, 4 sub-questions
+  Main question 118: 19 unique documents, 2 sub-questions
+  Main question 119: 10 unique documents, 1 sub-questions
+  Main question 120: 19 unique documents, 2 sub-questions
+  Main question 121: 10 unique documents, 1 sub-questions
+  Main question 122: 19 unique documents, 2 sub-questions
+  Main question 123: 14 unique documents, 4 sub-questions
+  Main question 124: 18 unique documents, 4 sub-questions
+  Main question 125: 14 unique documents, 4 sub-questions
+  Main question 126: 10 unique documents, 1 sub-questions
+  Main question 127: 14 unique documents, 2 sub-questions
+  Main question 128: 10 unique documents, 1 sub-questions
+  Main question 129: 10 unique documents, 1 sub-questions
+  Main question 130: 10 unique documents, 1 sub-questions
+  Main question 131: 15 unique documents, 2 sub-questions
+  Main question 132: 19 unique documents, 2 sub-questions
+  Main question 133: 14 unique documents, 4 sub-questions
+  Main question 134: 13 unique documents, 2 sub-questions
+  Main question 135: 12 unique documents, 3 sub-questions
+  Main question 136: 19 unique documents, 2 sub-questions
+  Main question 137: 17 unique documents, 2 sub-questions
+  Main question 138: 16 unique documents, 2 sub-questions
+  Main question 139: 18 unique documents, 2 sub-questions
+  Main question 140: 10 unique documents, 1 sub-questions
+  Main question 141: 30 unique documents, 4 sub-questions
+  Main question 142: 17 unique documents, 2 sub-questions
+  Main question 143: 14 unique documents, 2 sub-questions
+  Main question 144: 18 unique documents, 2 sub-questions
+  Main question 145: 16 unique documents, 2 sub-questions
+  Main question 146: 18 unique documents, 2 sub-questions
+  Main question 147: 19 unique documents, 2 sub-questions
+  Main question 148: 20 unique documents, 2 sub-questions
+  Main question 149: 23 unique documents, 4 sub-questions
+  Main question 150: 10 unique documents, 1 sub-questions
+  Main question 151: 18 unique documents, 2 sub-questions
+  Main question 152: 16 unique documents, 2 sub-questions
+  Main question 153: 15 unique documents, 2 sub-questions
+  Main question 154: 10 unique documents, 1 sub-questions
+  Main question 155: 10 unique documents, 1 sub-questions
+  Main question 156: 19 unique documents, 2 sub-questions
+  Main question 157: 17 unique documents, 2 sub-questions
+  Main question 158: 20 unique documents, 4 sub-questions
+  Main question 159: 18 unique documents, 2 sub-questions
+  Main question 160: 18 unique documents, 4 sub-questions
+  Main question 161: 19 unique documents, 2 sub-questions
+  Main question 162: 12 unique documents, 2 sub-questions
+  Main question 163: 10 unique documents, 1 sub-questions
+  Main question 164: 18 unique documents, 2 sub-questions
+  Main question 165: 18 unique documents, 2 sub-questions
+  Main question 166: 10 unique documents, 1 sub-questions
+  Main question 167: 14 unique documents, 2 sub-questions
+  Main question 168: 19 unique documents, 2 sub-questions
+  Main question 169: 29 unique documents, 4 sub-questions
+  Main question 170: 19 unique documents, 2 sub-questions
+  Main question 171: 21 unique documents, 3 sub-questions
+  Main question 172: 16 unique documents, 4 sub-questions
+  Main question 173: 18 unique documents, 4 sub-questions
+  Main question 174: 13 unique documents, 2 sub-questions
+  Main question 175: 19 unique documents, 2 sub-questions
+  Main question 176: 29 unique documents, 4 sub-questions
+  Main question 177: 10 unique documents, 1 sub-questions
+  Main question 178: 25 unique documents, 4 sub-questions
+  Main question 179: 18 unique documents, 2 sub-questions
+  Main question 180: 17 unique documents, 2 sub-questions
+  Main question 181: 17 unique documents, 2 sub-questions
+  Main question 182: 16 unique documents, 3 sub-questions
+  Main question 183: 22 unique documents, 4 sub-questions
+  Main question 184: 19 unique documents, 2 sub-questions
+  Main question 185: 21 unique documents, 4 sub-questions
+  Main question 186: 20 unique documents, 4 sub-questions
+  Main question 187: 13 unique documents, 2 sub-questions
+  Main question 188: 20 unique documents, 3 sub-questions
+  Main question 189: 18 unique documents, 2 sub-questions
+  Main question 190: 20 unique documents, 4 sub-questions
+  Main question 191: 23 unique documents, 4 sub-questions
+  Main question 192: 19 unique documents, 2 sub-questions
+  Main question 193: 26 unique documents, 3 sub-questions
+  Main question 194: 21 unique documents, 4 sub-questions
+  Main question 195: 17 unique documents, 4 sub-questions
+  Main question 196: 26 unique documents, 4 sub-questions
+  Main question 197: 16 unique documents, 4 sub-questions
+  Main question 198: 21 unique documents, 4 sub-questions
+  Main question 199: 25 unique documents, 4 sub-questions
+  Main question 200: 16 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 3408 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:12,  1.05it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:09,  1.22it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.38it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:07,  1.40it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:06,  1.48it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.46it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.53it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.50it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:06<00:03,  1.54it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.46it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.41it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.38it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:09<00:00,  1.37it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.71it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.48it/s]
+Corpus embeddings shape: (3408, 1024)
+FAISS index built with 3408 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:08,  1.45it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:08,  1.40it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.51it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:06,  1.48it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:05,  1.54it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.50it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.56it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.52it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:05<00:03,  1.56it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.48it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.42it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.39it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:08<00:00,  1.39it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.74it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.53it/s]
+Context rank computed: (3408, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_fixed_rerun/random_rate015_cont_from153/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_fixed_rerun/random_rate015_cont_from153/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 154/200: In which county is Southern Maryland Electric Cooperative headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Where is the headquarters of Southern Maryland Electric Cooperative?
+Ground Truth: The headquarters of Southern Maryland Electric Cooperative is in Hughesville, Maryland.
+storage_time: 0.06222542002797127
+ Hughesville, Maryland
+prompt eval count:    220 token(s)
+prompt eval duration: 0.6970258429646492s
+prompt eval rate:     315.62674787534047 tokens/s
+eval count:           5 token(s)
+eval duration:        0.4005448818206787s
+eval rate:            12.482995606565925 tokens/s
+Predicted: Hughesville, Maryland
+F1: 0.5000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is the headquarters of Southern Maryland Ele...
+
+✓ Main question 154: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 155/200: Where is Amílcar Cabral International Airport?
+================================================================================
+
+Sub-question 1/1
+Question: Amílcar Cabral International Airport location
+Ground Truth: Amílcar Cabral International Airport is located two km west-southwest from Espargos on Sal Island.
+storage_time: 0.025389104150235653
+2 km west-southwest from Espargos on Sal Island, Cabo Verde
+prompt eval count:    242 token(s)
+prompt eval duration: 0.13155594421550632s
+prompt eval rate:     1839.5215924532567 tokens/s
+eval count:           18 token(s)
+eval duration:        1.6863062381744385s
+eval rate:            10.674217762182058 tokens/s
+Predicted: 2 km west-southwest from Espargos on Sal Island, Cabo Verde
+F1: 0.6471, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Amílcar Cabral International Airport location...
+
+✓ Main question 155: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 156/200: Where was the author of Hannibal and Scipio educated at?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of the book 'Hannibal and Scipio'?
+Ground Truth: Thomas Nabbes
+storage_time: 0.022885228041559458
+ Thomas Nabbes
+prompt eval count:    214 token(s)
+prompt eval duration: 0.11888303933665156s
+prompt eval rate:     1800.08856767194 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29775476455688477s
+eval rate:            13.433874033729584 tokens/s
+Predicted: Thomas Nabbes
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where was Thomas Nabbes educated?
+Ground Truth: Thomas Nabbes was educated at Exeter College, Oxford in 1621.
+storage_time: 0.027736148796975613
+ Exeter College, Oxford
+prompt eval count:    247 token(s)
+prompt eval duration: 0.12464532069861889s
+prompt eval rate:     1981.6227245082362 tokens/s
+eval count:           6 token(s)
+eval duration:        0.4954073429107666s
+eval rate:            12.11124559589083 tokens/s
+Predicted: Exeter College, Oxford
+F1: 0.3810, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of the book 'Hannibal and Scipio...
+Sub-Q 2: ✓ CORRECT - Where was Thomas Nabbes educated?...
+
+✓ Main question 156: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 157/200: Where was Tyler MacDuff's child educated?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Tyler MacDuff?
+Ground Truth: Tyler MacDuff is an actor and the father of Dana MacDuff.
+storage_time: 0.021695243660360575
+ Tyler MacDuff is not directly mentioned in the provided documents. However, based on the names and information given, it's likely that Tyler MacDuff is related to David Gardiner Tyler, who was the ninth child and fourth son of John Tyler, the tenth President of the United States. There is no direct information linking Tyler MacDuff to Dana Andrews or any other specific individual in the provided documents.
+prompt eval count:    176 token(s)
+prompt eval duration: 0.11804202571511269s
+prompt eval rate:     1490.9944058802023 tokens/s
+eval count:           83 token(s)
+eval duration:        8.124133110046387s
+eval rate:            10.216474653444727 tokens/s
+Predicted: Tyler MacDuff is not directly mentioned in the provided documents. However, based on the names and information given, it's likely that Tyler MacDuff is related to David Gardiner Tyler, who was the ninth child and fourth son of John Tyler, the tenth President of the United States. There is no direct information linking Tyler MacDuff to Dana Andrews or any other specific individual in the provided documents.
+F1: 0.2697, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was Dana MacDuff educated?
+Ground Truth: He graduated from Blair International Baccalaureate School in Pasadena.
+storage_time: 0.025465321261435747
+ Pasadena, California
+prompt eval count:    245 token(s)
+prompt eval duration: 0.12140990607440472s
+prompt eval rate:     2017.9572484790035 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2971203327178955s
+eval rate:            13.462558968651427 tokens/s
+Predicted: Pasadena, California
+F1: 0.1250, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is Tyler MacDuff?...
+Sub-Q 2: ✗ INCORRECT - Where was Dana MacDuff educated?...
+
+✗ Main question 157: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 158/200: What other recognition did the Oscar winner for Best Actor in 2006 receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 159/200: In which county is Kimbrough Memorial Stadium located?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is Kimbrough Memorial Stadium located?
+Ground Truth: Canyon, Texas
+storage_time: 0.02334397193044424
+ Kimbrough Memorial Stadium is located in Canyon, Texas.
+prompt eval count:    231 token(s)
+prompt eval duration: 0.11915532685816288s
+prompt eval rate:     1938.6460185281685 tokens/s
+eval count:           13 token(s)
+eval duration:        1.187021017074585s
+eval rate:            10.951785868154651 tokens/s
+Predicted: Kimbrough Memorial Stadium is located in Canyon, Texas.
+F1: 0.1667, EM: 0.0000
+
+Sub-question 2/2
+Question: Which county is Canyon, Texas located in?
+Ground Truth: Canyon, Texas is located in Randall County.
+storage_time: 0.023244504816830158
+ Randall County
+prompt eval count:    189 token(s)
+prompt eval duration: 0.11856067506596446s
+prompt eval rate:     1594.1204779311918 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1978907585144043s
+eval rate:            15.15987923095273 tokens/s
+Predicted: Randall County
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is Kimbrough Memorial Stadium locate...
+Sub-Q 2: ✓ CORRECT - Which county is Canyon, Texas located in?...
+
+✓ Main question 159: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 160/200: Who was honored with the highest award in India before becoming president?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 161/200: What military overran much of Erich Zakowski's place of birth?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Erich Zakowski born?
+Ground Truth: Erich Zakowski was born in East Prussia.
+storage_time: 0.02150902757421136
+ Germany
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11859354982152581s
+prompt eval rate:     1526.221284988864 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09896993637084961s
+eval rate:            20.20815687408157 tokens/s
+Predicted: Germany
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which military force overran much of East Prussia during World War II?
+Ground Truth: The Soviet Union overran much of East Prussia during World War II.
+storage_time: 0.03017408400774002
+ Soviet Union
+prompt eval count:    319 token(s)
+prompt eval duration: 0.14451712276786566s
+prompt eval rate:     2207.350893031561 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1981818675994873s
+eval rate:            15.137610904256919 tokens/s
+Predicted: Soviet Union
+F1: 0.2667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Erich Zakowski born?...
+Sub-Q 2: ✓ CORRECT - Which military force overran much of East Prussia ...
+
+✗ Main question 161: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 162/200: The 1967 Federation Cup is an instance of this tournament which is named after what organization?
+================================================================================
+
+Sub-question 1/2
+Question: What is the Federation Cup in sports?
+Ground Truth: The Federation Cup is the premier international team competition in women's tennis. It was launched in 1963 and is the world's largest annual women's international team sports competition in terms of participating nations.
+storage_time: 0.022174101788550615
+1967 Federation Cup is the fifth edition of what is now known as the Fed Cup, a premier international team competition in women's tennis.
+prompt eval count:    193 token(s)
+prompt eval duration: 0.11791194975376129s
+prompt eval rate:     1636.8145926095456 tokens/s
+eval count:           31 token(s)
+eval duration:        2.9735124111175537s
+eval rate:            10.425381069234911 tokens/s
+Predicted: 1967 Federation Cup is the fifth edition of what is now known as the Fed Cup, a premier international team competition in women's tennis.
+F1: 0.4561, EM: 0.0000
+
+Sub-question 2/2
+Question: Which organization is the Federation Cup in women's tennis named after?
+Ground Truth: The International Tennis Federation (ITF)
+storage_time: 0.028981983195990324
+ International Tennis Federation (ITF)
+prompt eval count:    296 token(s)
+prompt eval duration: 0.1425085491500795s
+prompt eval rate:     2077.0683707422677 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6934189796447754s
+eval rate:            11.537036387579468 tokens/s
+Predicted: International Tennis Federation (ITF)
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the Federation Cup in sports?...
+Sub-Q 2: ✓ CORRECT - Which organization is the Federation Cup in women'...
+
+✗ Main question 162: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 163/200: What is another notable work made by the author of Miss Sara Sampson?
+================================================================================
+
+Sub-question 1/1
+Question: What are notable works by Gotthold Ephraim Lessing?
+Ground Truth: Notable works by Gotthold Ephraim Lessing include the plays 'Emilia Galotti', a classic bourgeois tragedy, and 'Miss Sara Sampson', considered one of the first bourgeois tragedies.
+storage_time: 0.02485937438905239
+ Emilia Galotti, Miss Sara Sampson
+prompt eval count:    233 token(s)
+prompt eval duration: 0.12059752130880952s
+prompt eval rate:     1932.0463428378905 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8919541835784912s
+eval rate:            11.21133818766377 tokens/s
+Predicted: Emilia Galotti, Miss Sara Sampson
+F1: 0.3902, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What are notable works by Gotthold Ephraim Lessing...
+
+✓ Main question 163: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 164/200: What record label is the performer of Almost Made Ya signed to?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the performer of the song Almost Made Ya?
+Ground Truth: The performers of the song 'Almost Made Ya' are the duo Ali & Gipp, featuring LeToya Luckett.
+storage_time: 0.022365501150488853
+ Nicole Scherzinger
+prompt eval count:    212 token(s)
+prompt eval duration: 0.11805009702220559s
+prompt eval rate:     1795.8477404734547 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49546360969543457s
+eval rate:            12.109870195488721 tokens/s
+Predicted: Nicole Scherzinger
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label is the duo Ali & Gipp signed to?
+Ground Truth: Ali & Gipp are signed to Derrty Entertainment and Universal Records.
+storage_time: 0.027476119343191385
+ Derrty Entertainment and Universal Records
+prompt eval count:    305 token(s)
+prompt eval duration: 0.1486657364293933s
+prompt eval rate:     2051.582343890352 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6929960250854492s
+eval rate:            11.544077758618554 tokens/s
+Predicted: Derrty Entertainment and Universal Records
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the performer of the song Almost Made Ya?...
+Sub-Q 2: ✓ CORRECT - What record label is the duo Ali & Gipp signed to?...
+
+✗ Main question 164: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 165/200: According to the agency that published U.S. and World Population Clock, what is the total area in square miles?
+================================================================================
+
+Sub-question 1/2
+Question: Which agency publishes the U.S. and World Population Clock?
+Ground Truth: The United States Census Bureau publishes the U.S. and World Population Clock.
+storage_time: 0.024856629781425
+ the United States Census Bureau
+prompt eval count:    274 token(s)
+prompt eval duration: 0.13793339673429728s
+prompt eval rate:     1986.4659791407112 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49584317207336426s
+eval rate:            12.10060022589612 tokens/s
+Predicted: the United States Census Bureau
+F1: 0.5714, EM: 0.0000
+
+Sub-question 2/2
+Question: What total area in square miles does the United States Census Bureau report?
+Ground Truth: 3.8 million square miles
+storage_time: 0.03256750199943781
+3.8 million square miles
+prompt eval count:    401 token(s)
+prompt eval duration: 0.16037880815565586s
+prompt eval rate:     2500.330340469976 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5947086811065674s
+eval rate:            11.77046884026509 tokens/s
+Predicted: 3.8 million square miles
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which agency publishes the U.S. and World Populati...
+Sub-Q 2: ✓ CORRECT - What total area in square miles does the United St...
+
+✓ Main question 165: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 166/200: According to the developer of Topologically Integrated Geographic Encoding and Referencing, what is the total area of Atlantic City in square miles?
+================================================================================
+
+Sub-question 1/1
+Question: What is the total area of Atlantic City in square miles according to TIGER?
+Ground Truth: The total area of Atlantic City is 17.037 square miles.
+storage_time: 0.02665783790871501
+17.037 square miles
+prompt eval count:    277 token(s)
+prompt eval duration: 0.139913538005203s
+prompt eval rate:     1979.7941210642468 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7921359539031982s
+eval rate:            11.361686028330222 tokens/s
+Predicted: 17.037 square miles
+F1: 0.6000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the total area of Atlantic City in square ...
+
+✓ Main question 166: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 167/200: Who is the child of Sigrid Eskilsdotter's child?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the child of Sigrid Eskilsdotter?
+Ground Truth: Christina Gyllenstierna
+storage_time: 0.022993331775069237
+ Margareta von Ascheberg
+prompt eval count:    220 token(s)
+prompt eval duration: 0.11831324687227607s
+prompt eval rate:     1859.4705649275172 tokens/s
+eval count:           8 token(s)
+eval duration:        0.6923339366912842s
+eval rate:            11.555117517758266 tokens/s
+Predicted: Margareta von Ascheberg
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who are the children of Christina Gyllenstierna?
+Ground Truth: Christina Gyllenstierna's children include a daughter (mother of King Gustav Vasa) and a child who was the parent of Sigrid Sture.
+storage_time: 0.0275691831484437
+ Sigrid Sture
+prompt eval count:    257 token(s)
+prompt eval duration: 0.14031481323763728s
+prompt eval rate:     1831.59563890624 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3957984447479248s
+eval rate:            12.632692387622665 tokens/s
+Predicted: Sigrid Sture
+F1: 0.2000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the child of Sigrid Eskilsdotter?...
+Sub-Q 2: ✗ INCORRECT - Who are the children of Christina Gyllenstierna?...
+
+✗ Main question 167: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 168/200: Who is the child of the Victim of Romance performer?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song 'Victim of Romance'?
+Ground Truth: Michelle Phillips
+storage_time: 0.02207063604146242
+ Michelle Phillips
+prompt eval count:    207 token(s)
+prompt eval duration: 0.1218747440725565s
+prompt eval rate:     1698.4651050981106 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19762444496154785s
+eval rate:            15.18030828920843 tokens/s
+Predicted: Michelle Phillips
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is Michelle Phillips' child?
+Ground Truth: Chynna Phillips
+storage_time: 0.023628957103937864
+ Chifundo "Mercy" James
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11906829988583922s
+prompt eval rate:     1696.5052847288016 tokens/s
+eval count:           9 token(s)
+eval duration:        0.7913973331451416s
+eval rate:            11.372290028110832 tokens/s
+Predicted: Chifundo "Mercy" James
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song 'Victim of Romance'?...
+Sub-Q 2: ✗ INCORRECT - Who is Michelle Phillips' child?...
+
+✗ Main question 168: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 169/200: What recognition did the Jack Goes Boating director receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 170/200: What happened to the Curonians who lived in the area where Erich Zakowski was born?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Erich Zakowski born?
+Ground Truth: Erich Zakowski was born in East Prussia.
+storage_time: 0.021228143945336342
+ Germany
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11650303704664111s
+prompt eval rate:     1553.6075675652817 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09907722473144531s
+eval rate:            20.186273943594188 tokens/s
+Predicted: Germany
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which specific Curonian population historically inhabited East Prussia?
+Ground Truth: The Curonians who lived in the area around the Curonian Lagoon in East Prussia.
+storage_time: 0.025577089749276638
+219 Curonians lived along the Curonian Spit in East Prussia in 1955.
+prompt eval count:    254 token(s)
+prompt eval duration: 0.12163409171625972s
+prompt eval rate:     2088.2303342430923 tokens/s
+eval count:           24 token(s)
+eval duration:        2.2732503414154053s
+eval rate:            10.557570172872715 tokens/s
+Predicted: 219 Curonians lived along the Curonian Spit in East Prussia in 1955.
+F1: 0.5714, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Erich Zakowski born?...
+Sub-Q 2: ✗ INCORRECT - Which specific Curonian population historically in...
+
+✗ Main question 170: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 171/200: Who developed the eponymous character from the series that contains Mickey's Safari in Letterland?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 172/200: What league does the team that plays in Stadio Ciro Vigorito play for?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 173/200: What kind of recognition did the actor who played the game maker in hunger games receive?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 174/200: What is the competition that the 1965 Federation Cup is part of named after?
+================================================================================
+
+Sub-question 1/2
+Question: What is the 1965 Federation Cup?
+Ground Truth: The 1965 Federation Cup was the third edition of the women's international team tennis competition, now known as the Fed Cup. It was held from 15–18 January at the Kooyong Lawn Tennis Club in Melbourne, Australia. Eleven nations participated, and Australia defended their title by defeating the United States in the final.
+storage_time: 0.024719147011637688
+1965 Federation Cup was the fifth edition of what is now known as the Fed Cup, with 17 nations participating in the tournament held at the Blau-Weiss Tennis Club in West Berlin from 6–11 June. United States and Australia both reached the final for the third consecutive time, with Australia defending their title by winning both singles rubbers.
+prompt eval count:    250 token(s)
+prompt eval duration: 0.1207422069273889s
+prompt eval rate:     2070.527004283955 tokens/s
+eval count:           77 token(s)
+eval duration:        7.519209146499634s
+eval rate:            10.240438655153685 tokens/s
+Predicted: 1965 Federation Cup was the fifth edition of what is now known as the Fed Cup, with 17 nations participating in the tournament held at the Blau-Weiss Tennis Club in West Berlin from 6–11 June. United States and Australia both reached the final for the third consecutive time, with Australia defending their title by winning both singles rubbers.
+F1: 0.5785, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the Fed Cup (formerly Federation Cup) tennis competition named after?
+Ground Truth: The Fed Cup (formerly the Federation Cup) is named in honor of the 50th anniversary of the International Tennis Federation (ITF).
+storage_time: 0.024931253865361214
+ Federation
+prompt eval count:    243 token(s)
+prompt eval duration: 0.12069569248706102s
+prompt eval rate:     2013.327857794514 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09839105606079102s
+eval rate:            20.32705085271468 tokens/s
+Predicted: Federation
+F1: 0.0000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the 1965 Federation Cup?...
+Sub-Q 2: ✗ INCORRECT - What is the Fed Cup (formerly Federation Cup) tenn...
+
+✗ Main question 174: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 175/200: What county was Tim Dubois born in?
+================================================================================
+
+Sub-question 1/2
+Question: Where was Tim Dubois born?
+Ground Truth: Tim DuBois was born in Southwest City, Missouri.
+storage_time: 0.02081230515614152
+ Timothy Wallace Credeur II, who is likely the Tim Dubois referred to in the question, was born in Anoka, Minnesota. This information is derived from the document that provides details about Troy Dusosky, who is described as Tim Dubois in the question, but the birthplace is given for Tim Credeur, suggesting they are the same person.
+prompt eval count:    154 token(s)
+prompt eval duration: 0.11522842943668365s
+prompt eval rate:     1336.4757356570651 tokens/s
+eval count:           76 token(s)
+eval duration:        7.385479927062988s
+eval rate:            10.290461926720477 tokens/s
+Predicted: Timothy Wallace Credeur II, who is likely the Tim Dubois referred to in the question, was born in Anoka, Minnesota. This information is derived from the document that provides details about Troy Dusosky, who is described as Tim Dubois in the question, but the birthplace is given for Tim Credeur, suggesting they are the same person.
+F1: 0.1389, EM: 0.0000
+
+Sub-question 2/2
+Question: What county is Southwest City, Missouri located in?
+Ground Truth: Southwest City is located in McDonald County, Missouri.
+storage_time: 0.02360426913946867
+ McDonald County
+prompt eval count:    204 token(s)
+prompt eval duration: 0.11895947391167283s
+prompt eval rate:     1714.869722368389 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19705772399902344s
+eval rate:            15.223965542273628 tokens/s
+Predicted: McDonald County
+F1: 0.4286, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Where was Tim Dubois born?...
+Sub-Q 2: ✓ CORRECT - What county is Southwest City, Missouri located in...
+
+✗ Main question 175: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 176/200: Where is Assomada located?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 177/200: Who is the father of the performer of Qui de noux deux?
+================================================================================
+
+Sub-question 1/1
+Question: Who performed the song 'Qui de nous deux'?
+Ground Truth: Matthieu Chedid, in his persona as -M-.
+storage_time: 0.02272001514211297
+ Matthieu Chedid in his persona as -M-
+prompt eval count:    196 token(s)
+prompt eval duration: 0.11844789842143655s
+prompt eval rate:     1654.735986134881 tokens/s
+eval count:           13 token(s)
+eval duration:        1.1819994449615479s
+eval rate:            10.998313117163018 tokens/s
+Predicted: Matthieu Chedid in his persona as -M-
+F1: 1.0000, EM: 1.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who performed the song 'Qui de nous deux'?...
+
+✓ Main question 177: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 178/200: Who is the child of the creator of A Distinguished Member of the Humane Society?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 179/200: What record label did the person who is part of The Bruce Lee Band start?
+================================================================================
+
+Sub-question 1/2
+Question: Who are the members of The Bruce Lee Band?
+Ground Truth: The Bruce Lee Band is Mike Park and his backing band, which has included members from Less Than Jake and the Rx Bandits.
+storage_time: 0.022408376913517714
+ Mike Park
+prompt eval count:    188 token(s)
+prompt eval duration: 0.11722662905231118s
+prompt eval rate:     1603.7311788271838 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19670748710632324s
+eval rate:            15.251071751928063 tokens/s
+Predicted: Mike Park
+F1: 0.0800, EM: 0.0000
+
+Sub-question 2/2
+Question: What record label did Mike Park start?
+Ground Truth: Mike Park started the record label Asian Man Records.
+storage_time: 0.021826621145009995
+ Asian Man Records
+prompt eval count:    160 token(s)
+prompt eval duration: 0.11628978280350566s
+prompt eval rate:     1375.8732378952957 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2953183650970459s
+eval rate:            13.544704538390432 tokens/s
+Predicted: Asian Man Records
+F1: 0.3636, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the members of The Bruce Lee Band?...
+Sub-Q 2: ✓ CORRECT - What record label did Mike Park start?...
+
+✗ Main question 179: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 180/200: Who is the father of the performer of Je dis aime?
+================================================================================
+
+Sub-question 1/2
+Question: Who performed the song 'Je dis aime'?
+Ground Truth: The work 'Je dis aime' is a studio album performed by French singer-songwriter Matthieu Chedid, under his persona -M-.
+storage_time: 0.02109559392556548
+ Mylene Farmer
+prompt eval count:    179 token(s)
+prompt eval duration: 0.1160028469748795s
+prompt eval rate:     1543.0655769919385 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29561948776245117s
+eval rate:            13.530907689056857 tokens/s
+Predicted: Mylene Farmer
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the father of Matthieu Chedid?
+Ground Truth: Louis Chedid
+storage_time: 0.024989104364067316
+ Andréé Chedid
+prompt eval count:    191 token(s)
+prompt eval duration: 0.11985903326421976s
+prompt eval rate:     1593.5386328284128 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49281740188598633s
+eval rate:            12.174894752170509 tokens/s
+Predicted: Andréé Chedid
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who performed the song 'Je dis aime'?...
+Sub-Q 2: ✗ INCORRECT - Who is the father of Matthieu Chedid?...
+
+✗ Main question 180: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 181/200: Who is the father of the Labo M performer?
+================================================================================
+
+Sub-question 1/2
+Question: What is Labo M?
+Ground Truth: Labo M is the third studio album by French singer-songwriter Matthieu Chedid (under his persona -M-). It is an all-instrumental work released in 2003.
+storage_time: 0.023813956882804632
+ Labo M is the third studio album by French singer-songwriter Matthieu Chedid in his persona as -M-, released in 2003.
+prompt eval count:    250 token(s)
+prompt eval duration: 0.11943665193393826s
+prompt eval rate:     2093.1598127706875 tokens/s
+eval count:           34 token(s)
+eval duration:        3.24906325340271s
+eval rate:            10.46455465722071 tokens/s
+Predicted: Labo M is the third studio album by French singer-songwriter Matthieu Chedid in his persona as -M-, released in 2003.
+F1: 0.8571, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the father of French singer-songwriter Matthieu Chedid?
+Ground Truth: Louis Chedid
+storage_time: 0.02675055479630828
+ Andréé Chedid
+prompt eval count:    224 token(s)
+prompt eval duration: 0.12221182882785797s
+prompt eval rate:     1832.883135359313 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49213624000549316s
+eval rate:            12.191745927780138 tokens/s
+Predicted: Andréé Chedid
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is Labo M?...
+Sub-Q 2: ✗ INCORRECT - Who is the father of French singer-songwriter Matt...
+
+✗ Main question 181: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 182/200: Where was the designer of the Lap Engine educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 183/200: Who is the spouse of the Rabbit Hole's producer?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 184/200: Where did the producer of Julius Caesar study or work?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the producer of Julius Caesar?
+Ground Truth: John Houseman
+storage_time: 0.024148765951395035
+romeo and julietDocumentDocument: Caesar Must Die () is a 2012 Italian drama film directed by Paolo and Vittorio Taviani. The film competed at the 62nd Berlin International Film Festival where it won the Golden Bear. The film is set in Rebibbia Prison (suburb of Rome), and follows convicts in their rehearsals ahead of a prison performance of "Julius Caesar".
+prompt eval count:    256 token(s)
+prompt eval duration: 0.12020638398826122s
+prompt eval rate:     2129.670584093102 tokens/s
+eval count:           88 token(s)
+eval duration:        8.57291030883789s
+eval rate:            10.264892181279443 tokens/s
+Predicted: romeo and julietDocumentDocument: Caesar Must Die () is a 2012 Italian drama film directed by Paolo and Vittorio Taviani. The film competed at the 62nd Berlin International Film Festival where it won the Golden Bear. The film is set in Rebibbia Prison (suburb of Rome), and follows convicts in their rehearsals ahead of a prison performance of "Julius Caesar".
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Where did John Houseman study or work?
+Ground Truth: John Houseman was educated at Clifton College in England and worked in the grain trade in London.
+storage_time: 0.026370046194642782
+ Houseman was educated in England at Clifton College, became a British subject, and worked in the grain trade in London before emigrating to the United States in 1925.
+prompt eval count:    258 token(s)
+prompt eval duration: 0.13912692805752158s
+prompt eval rate:     1854.4217399332697 tokens/s
+eval count:           40 token(s)
+eval duration:        3.8395514488220215s
+eval rate:            10.4178835817585 tokens/s
+Predicted: Houseman was educated in England at Clifton College, became a British subject, and worked in the grain trade in London before emigrating to the United States in 1925.
+F1: 0.6667, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the producer of Julius Caesar?...
+Sub-Q 2: ✓ CORRECT - Where did John Houseman study or work?...
+
+✗ Main question 184: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 185/200: Who did the original voice for the character whose series Mickey's safari in Letterland is from?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 186/200: Where was the creator of the Lap Engine educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 187/200: What is the competition the 1972 Federation Cup is part of named after?
+================================================================================
+
+Sub-question 1/2
+Question: What is the Federation Cup in sports?
+Ground Truth: The Federation Cup is the premier international team competition in women's tennis. It was launched in 1963 and is the world's largest annual women's international team sports competition in terms of participating nations.
+storage_time: 0.02169292327016592
+1967 Federation Cup is the fifth edition of what is now known as the Fed Cup, a premier international team competition in women's tennis.
+prompt eval count:    193 token(s)
+prompt eval duration: 0.11711656814441085s
+prompt eval rate:     1647.93080140481 tokens/s
+eval count:           31 token(s)
+eval duration:        2.955172061920166s
+eval rate:            10.490082929336202 tokens/s
+Predicted: 1967 Federation Cup is the fifth edition of what is now known as the Fed Cup, a premier international team competition in women's tennis.
+F1: 0.4561, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the Federation Cup in women's tennis named after?
+Ground Truth: The Federation Cup was named in honor of the International Tennis Federation (ITF), as it was launched to celebrate the ITF's 50th anniversary.
+storage_time: 0.028320210054516792
+ The Federation Cup in women's tennis was named after the International Tennis Federation (ITF).
+prompt eval count:    276 token(s)
+prompt eval duration: 0.14126578625291586s
+prompt eval rate:     1953.7639461112128 tokens/s
+eval count:           19 token(s)
+eval duration:        1.773733377456665s
+eval rate:            10.711869236651493 tokens/s
+Predicted: The Federation Cup in women's tennis was named after the International Tennis Federation (ITF).
+F1: 0.5263, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - What is the Federation Cup in sports?...
+Sub-Q 2: ✓ CORRECT - What is the Federation Cup in women's tennis named...
+
+✗ Main question 187: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 188/200: What instrument is played by the person from The Blackout All-Stars?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 189/200: What is the seat of the county where Van Hook Township is located?
+================================================================================
+
+Sub-question 1/2
+Question: In which county is Van Hook Township located?
+Ground Truth: Van Hook Township is located in Mountrail County, North Dakota.
+storage_time: 0.019996115937829018
+ Mountrail County
+prompt eval count:    149 token(s)
+prompt eval duration: 0.11442049872130156s
+prompt eval rate:     1302.214215679352 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3937413692474365s
+eval rate:            12.698691045740434 tokens/s
+Predicted: Mountrail County
+F1: 0.4000, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the county seat of Mountrail County, North Dakota?
+Ground Truth: Stanley, North Dakota
+storage_time: 0.023227330297231674
+ Stanley
+prompt eval count:    202 token(s)
+prompt eval duration: 0.11884915921837091s
+prompt eval rate:     1699.633395208539 tokens/s
+eval count:           2 token(s)
+eval duration:        0.09833979606628418s
+eval rate:            20.337646405651846 tokens/s
+Predicted: Stanley
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which county is Van Hook Township located?...
+Sub-Q 2: ✓ CORRECT - What is the county seat of Mountrail County, North...
+
+✓ Main question 189: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 190/200: Where was Mary's betrothed born?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 191/200: Where was the person who wrote about the rioting being a dividing factor in Birmingham educated?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 192/200: Where did the producer of On Dangerous Ground study or work?
+================================================================================
+
+Sub-question 1/2
+Question: Who produced the film On Dangerous Ground?
+Ground Truth: John Houseman produced the 1951 film 'On Dangerous Ground'.
+storage_time: 0.021132364869117737
+ John Houseman
+prompt eval count:    180 token(s)
+prompt eval duration: 0.11602935660630465s
+prompt eval rate:     1551.3315359556118 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2954418659210205s
+eval rate:            13.539042571134136 tokens/s
+Predicted: John Houseman
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Where did John Houseman study or work?
+Ground Truth: John Houseman was educated at Clifton College in England and worked in the grain trade in London.
+storage_time: 0.025241823866963387
+ England, grain trade in London, United States
+prompt eval count:    249 token(s)
+prompt eval duration: 0.12126887077465653s
+prompt eval rate:     2053.288683315071 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8862035274505615s
+eval rate:            11.284089591437413 tokens/s
+Predicted: England, grain trade in London, United States
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who produced the film On Dangerous Ground?...
+Sub-Q 2: ✗ INCORRECT - Where did John Houseman study or work?...
+
+✗ Main question 192: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 193/200: Who is the sibling of the actress who played Susan Walker in Miracle on 34th street?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 194/200: According to the organization that creates census county division, what is the total area in square miles?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 195/200: Where did the founder of the Acting Company study?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 196/200: What else happened in the northern part of Erich Zakowski's birthplace in the now Russian area?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 197/200: According to the agency that considers if Los Angeles County is to be a separate metropolitan area, what is the total area in square miles?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 198/200: What is the capital of the county which contains Hickory Grove Estates, Mississippi?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 199/200: Who is the child of the cast member of Green Ice?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 200/200: Who is the father of Edward Baring, 1st Baron Revelstoke's father?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+FINAL RESULTS
+================================================================================
+Main Questions: 9/24 (37.50%)
+Sub Questions: 23/43 (53.49%)
+Average F1: 0.4207
+Average EM: 0.1163
+================================================================================
+
+Results saved to /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_fixed_rerun/random_rate015_cont_from153/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge

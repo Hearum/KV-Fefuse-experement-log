@@ -1,0 +1,203 @@
+# Qwen3 DraftModel Rate=0.15 Recompute Attention Ablation
+
+目标：selection 仍使用原 online DraftModel，rate=0.15；只替换被选中 doc token 在主模型重算时的 attention 分布，测试效果是否依赖真实 main-model attention。
+
+对标 baseline：qwen3_rate015_online_offline 中的正常 online DraftModel/QK 结果。
+
+| label | Main Acc | Sub Acc | F1 | EM | prefill(s) | selection(s) | ablation calls | doc tokens/call | finished | missing csv | traceback/killed | note |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| online_draft_rate015_baseline | 99/135 (73.33%) | 209/248 (84.27%) |  |  | 0.0000 | 0.0000 |  |  |  |  | / | normal online DraftModel selector/recompute baseline from qwen3_rate015_online_offline |
+| online_qk_rate015_baseline | 84/135 (62.22%) | 189/248 (76.21%) |  |  | 0.0000 | 0.0000 |  |  |  |  | / | normal online QK selector baseline from qwen3_rate015_online_offline |
+| uniform_draft_rate015 | 10/135 (7.41%) | 47/248 (18.95%) | 0.2443 | 0.0282 | 1.5665 | 0.1480 | 250 | 213.5 | 8 | 0 | 0/0 | selected doc-token recompute uses uniform attention over allowed prior tokens |
+| random_draft_rate015 | 7/81 (8.64%) | 32/146 (21.92%) | 0.2386 | 0.0205 | 1.7315 | 0.1532 | 154 | 212.1 | 4 | 0 | 0/0 | selected doc-token recompute uses random softmax attention over allowed prior tokens |
+
+## Interpretation
+
+- 如果 uniform/random 接近 normal DraftModel，说明主要收益来自 selection 或 token mixing 的粗粒度上下文，真实 attention 权重不是关键。
+- 如果明显掉到 QK/rate0 附近，说明选中 token 以后仍需要真实 main-model attention，未来 adapter 至少要近似这一层 attention 聚合，而不能只加静态 bias。
+
+## Alpha Blend Sweep on Samples 0-50
+
+目的：验证 full uniform replacement 是否因为覆盖太强导致崩溃。这里保持 DraftModel selection/rate=0.15 不变，只把 selected doc token 重算 attention output 替换为 `mixed=(1-alpha)*real + alpha*uniform/random`。
+
+| label | Main Acc | Sub Acc | F1 | EM | missing csv | note |
+|---|---:|---:|---:|---:|---:|---|
+| baseline_online_draft_rate015_0_50 | 23/36 (63.89%) | 53/67 (79.10%) | 0.1790 | 0.0299 | 0 | normal DraftModel rate=0.15 baseline, same 0-50 subset |
+| uniform_alpha0p05_0_50 | 28/36 (77.78%) | 58/67 (86.57%) | 0.5410 | 0.2537 | 0 | blend: 95% real attention + 5% uniform |
+| uniform_alpha0p1_0_50 | 28/36 (77.78%) | 58/67 (86.57%) | 0.5599 | 0.2687 | 0 | blend: 90% real attention + 10% uniform |
+| uniform_alpha0p25_0_50 | 31/36 (86.11%) | 62/67 (92.54%) | 0.5431 | 0.2537 | 0 | blend: 75% real attention + 25% uniform |
+| uniform_alpha0p5_0_50 | 9/36 (25.00%) | 34/67 (50.75%) | 0.3259 | 0.0597 | 0 | blend: 50% real attention + 50% uniform |
+| uniform_alpha0p75_0_50 | 2/36 (5.56%) | 13/67 (19.40%) | 0.2763 | 0.0149 | 0 | blend: 25% real attention + 75% uniform |
+| uniform_alpha1p0_0_50 | 1/36 (2.78%) | 14/67 (20.90%) | 0.2365 | 0.0149 | 0 | full replacement by uniform, subset 0-50 from full run |
+| random_alpha0p25_0_50 | 30/36 (83.33%) | 61/67 (91.04%) | 0.5026 | 0.2090 | 0 | blend: 75% real attention + 25% random |
+
+观察：如果小 alpha 基本接近 baseline，而大 alpha 快速下降，则说明之前 alpha=1 的 uniform ablation 的确过强；但下降曲线本身仍能说明真实 attention output 对 selected token recompute 很敏感。
+
+## Musique Full Results
+
+Full musique/reflect result after alpha sweep. Baseline is normal online DraftModel at rate=0.15.
+
+| Method | Main Acc | Sub Acc | Interpretation |
+|---|---:|---:|---|
+| baseline Draft | 99/135 (73.33%) | 209/248 (84.27%) | normal DraftModel recompute |
+| uniform alpha=0.1 | 107/135 (79.26%) | 217/248 (87.50%) | small uniform mix improves over baseline |
+| uniform alpha=0.25 | 107/135 (79.26%) | 219/248 (88.31%) | best uniform sub accuracy |
+| uniform alpha=0.5 | 37/135 (27.41%) | 122/248 (49.19%) | degradation cliff starts |
+| uniform alpha=1.0 | 10/135 (7.41%) | 47/248 (18.95%) | full replacement destroys recompute |
+| random alpha=0.05 | 105/135 (77.78%) | 215/248 (86.69%) | small random mix improves over baseline |
+| random alpha=0.1 | 105/135 (77.78%) | 215/248 (86.69%) | similar to alpha=0.05 |
+| random alpha=0.25 | 106/135 (78.52%) | 218/248 (87.90%) | best random setting so far |
+| random alpha=0.5 | 38/135 (28.15%) | 123/248 (49.60%) | degradation cliff starts |
+| random alpha=0.75 | 14/135 (10.37%) | 49/248 (19.76%) | close to broken |
+
+Conclusion: full attention replacement was too aggressive, but the full musique sweep still shows a sharp robustness boundary. Mixing 10%-25% noisy/uniform attention output into selected-token recompute improves end-to-end accuracy, while 50% or higher destroys performance. This suggests the real recompute attention output is necessary at large scale, but a small smoothing/noise component may regularize the selected-token update.
+
+## Attention-Output Change / Outcome Flip Analysis
+
+Question: why can small uniform/random mixing improve accuracy?
+
+The current ablation changes only the selected doc-token recompute path:
+
+`mixed = (1 - alpha) * real_attention_output + alpha * ablated_attention_output`
+
+Selection is unchanged. Query decoding is unchanged. Therefore any answer
+change comes from changing the KV written back for selected document tokens.
+
+### Outcome flips against normal DraftModel
+
+Generated by:
+
+```bash
+python3 MOTIVATION_EXPERIMENTS/qwen3_draft_attention_ablation_rate015/scripts/analyze_attention_ablation_outcomes.py
+```
+
+Files:
+
+- `attention_ablation_outcome_summary.csv`
+- `attention_ablation_outcome_flips.csv`
+
+| method | paired sub-Q | wrong -> right | right -> wrong | same right | same wrong | net sub gain |
+|---|---:|---:|---:|---:|---:|---:|
+| uniform alpha=0.1 | 248 | 21 | 13 | 196 | 18 | +8 |
+| uniform alpha=0.25 | 248 | 23 | 13 | 196 | 16 | +10 |
+| random alpha=0.05 | 248 | 20 | 14 | 195 | 19 | +6 |
+| random alpha=0.1 | 248 | 20 | 14 | 195 | 19 | +6 |
+| random alpha=0.25 | 248 | 22 | 13 | 196 | 17 | +9 |
+| uniform alpha=0.5 | 248 | 13 | 100 | 109 | 26 | -87 |
+| random alpha=0.5 | 248 | 12 | 98 | 111 | 27 | -86 |
+
+Interpretation:
+
+- The gain is a net flip effect, not a uniform improvement on every case.
+- `uniform alpha=0.25` improves because it fixes 23 previously wrong
+  sub-questions while breaking 13 previously correct sub-questions.
+- `alpha=0.5` still fixes a few wrong cases, but it destroys around 100
+  previously correct sub-questions. This is the degradation cliff observed in
+  the full accuracy table.
+- Uniform and random have very similar flip profiles at alpha=0.25. This
+  suggests the benefit is not caused by a specific useful uniform attention
+  pattern. A more likely explanation is that a small non-real component
+  smooths or damps overly sharp / brittle recompute updates.
+
+### Qualitative flip pattern
+
+Several wrong-to-right cases are not clearly new factual retrieval successes.
+Some baseline predictions already contain the answer but include extra
+formatting, extra entities, or `<think>` wrappers. The alpha-mixed outputs are
+often shorter and cleaner, which makes the GLM judge more likely to mark them
+correct. This means the observed gain may include a generation-format /
+calibration effect, not only a better document-KV factual update.
+
+Right-to-wrong cases at high alpha usually become obvious topic drift or
+irrelevant numeric/entity answers. This supports the view that full replacement
+or large mixing corrupts the selected-token KV update rather than providing a
+usable alternative attention mechanism.
+
+### Pending layer-distribution trace
+
+The previous runs did not record real attention probability distributions, only
+final answer accuracy and `doc_tokens`. A trace hook has been added behind an
+environment variable:
+
+- `FUSIONRAG_REPROCESS_ATTENTION_TRACE_JSONL=/path/to/trace.jsonl`
+- `FUSIONRAG_REPROCESS_ATTENTION_TRACE_LAYERS=0,8,16,24,32,40,48,56,63`
+
+The trace records, per selected-token recompute layer:
+
+- real attention normalized entropy;
+- real top-1/top-5/top-10 attention mass;
+- allowed context length;
+- relative L2 between ablated and real attention output;
+- cosine similarity between ablated and real attention output;
+- effective mixed-output perturbation size.
+
+A launcher has been queued:
+
+```bash
+nohup MOTIVATION_EXPERIMENTS/qwen3_draft_attention_ablation_rate015/scripts/launch_attention_trace_after_cross.sh \
+  > MOTIVATION_EXPERIMENTS/qwen3_draft_attention_ablation_rate015/attention_trace_after_cross.nohup.log 2>&1 &
+```
+
+It waits for qjy000 cross-dataset fixed workers to finish before running
+MuSiQue samples 0-10 with `uniform alpha=0.25`, so it will not steal GPUs from
+the current cross-dataset queue.
+
+Expected decision criterion:
+
+- If real attention has low entropy / high top-k mass in the layers where
+  `ablated_vs_real_rel_l2` is large, then alpha mixing works as a small
+  smoothing perturbation but cannot replace real attention.
+- If real attention is already diffuse and ablated output is close in cosine,
+  the improvement may be mainly calibration/noise regularization rather than
+  better context routing.
+
+## 2026-07-13 MuSiQue Results With Full Attention Baseline
+
+This table summarizes the MuSiQue/Qwen3-32B DraftModel rate=0.15 attention-ablation sweep, with the full attention/full recompute baseline added for context.
+
+Primary full attention baseline source:
+
+- `MOTIVATION_EXPERIMENTS/qwen3_hybrid70_online_baselines/summary.csv`
+- Row: `full_rate1`
+- This source uses the same 135 main-question / 248 sub-question denominator as the attention-ablation table.
+
+MuSiQue comparison:
+
+| Method | Rate | Main Acc | Sub Acc | F1 | EM | Note |
+|---|---:|---:|---:|---:|---:|---|
+| full attention / full recompute | 1.00 | 105/135 = 77.78% | 215/248 = 86.69% | 0.1934 | 0.0081 | full document-token recompute baseline from `qwen3_hybrid70_online_baselines` |
+| native online DraftModel | 0.15 | 99/135 = 73.33% | 209/248 = 84.27% | 0.1905 | 0.0081 | normal DraftModel selector/recompute baseline |
+| uniform alpha=0.1 | 0.15 | 107/135 = 79.26% | 217/248 = 87.50% | 0.6022 | 0.2500 | small uniform mix |
+| uniform alpha=0.25 | 0.15 | 107/135 = 79.26% | 219/248 = 88.31% | 0.5783 | 0.2339 | best uniform sub accuracy |
+| uniform alpha=0.5 | 0.15 | 37/135 = 27.41% | 122/248 = 49.19% | 0.3702 | 0.1129 | degradation cliff |
+| uniform alpha=1.0 | 0.15 | 10/135 = 7.41% | 47/248 = 18.95% | 0.2443 | 0.0282 | full uniform replacement destroys recompute |
+| random alpha=0.05 | 0.15 | 105/135 = 77.78% | 215/248 = 86.69% | 0.5941 | 0.2419 | matches full attention main/sub, higher F1/EM |
+| random alpha=0.1 | 0.15 | 105/135 = 77.78% | 215/248 = 86.69% | 0.5898 | 0.2419 | similar to random alpha=0.05 |
+| random alpha=0.25 | 0.15 | 106/135 = 78.52% | 218/248 = 87.90% | 0.5685 | 0.2177 | best random sub accuracy |
+| random alpha=0.5 | 0.15 | 38/135 = 28.15% | 123/248 = 49.60% | 0.3730 | 0.1169 | degradation cliff |
+| random alpha=0.75 | 0.15 | 14/135 = 10.37% | 49/248 = 19.76% | 0.2686 | 0.0363 | close to broken |
+
+Delta against full attention / full recompute:
+
+| Method | Main delta | Sub delta |
+|---|---:|---:|
+| native online DraftModel | -4.44 pp | -2.42 pp |
+| uniform alpha=0.1 | +1.48 pp | +0.81 pp |
+| uniform alpha=0.25 | +1.48 pp | +1.61 pp |
+| random alpha=0.05 | +0.00 pp | +0.00 pp |
+| random alpha=0.1 | +0.00 pp | +0.00 pp |
+| random alpha=0.25 | +0.74 pp | +1.21 pp |
+
+There is another later full-attention rerun in `MOTIVATION_EXPERIMENTS/full_accuracy_rerun_baselines/full_accuracy_rerun_summary.csv` with denominator 135 main / 250 sub:
+
+- `rate1_full_attention`: 104/135 = 77.04% main, 218/250 = 87.20% sub, F1=0.5666, EM=0.2280.
+
+Because that rerun uses 250 sub-questions rather than 248, the table above keeps the 248-denominator full baseline for direct comparison with the attention-ablation sweep.
+
+Interpretation:
+
+- On MuSiQue, small alpha perturbations can match or exceed full attention/full recompute accuracy while using only rate=0.15 selected-token recompute.
+- The best MuSiQue main accuracy is `uniform alpha=0.1` / `uniform alpha=0.25` at 79.26%.
+- The best MuSiQue sub accuracy is `uniform alpha=0.25` at 88.31%.
+- Random alpha=0.25 also beats full attention on both main and sub, but uniform alpha=0.25 is stronger on sub accuracy.
+- Large alpha values remain destructive, so this is a small-regularization effect, not evidence that true attention can be replaced wholesale.

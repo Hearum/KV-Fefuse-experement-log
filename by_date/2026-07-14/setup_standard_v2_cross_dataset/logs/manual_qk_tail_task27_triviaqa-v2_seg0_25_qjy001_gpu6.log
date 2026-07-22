@@ -1,0 +1,500 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[setup-v2] dataset=triviaqa-v2 method=online_qk rate=0.15 start=0 end=25
+[setup-v2] shared_cache=/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2
+[setup-v2] result_dir=/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset/results/online_qk/triviaqa-v2/rate_0p15/seg_0_25
+Inference Embeddings:   0%|          | 0/11 [00:00<?, ?it/s]Inference Embeddings:   9%|▉         | 1/11 [00:01<00:14,  1.48s/it]Inference Embeddings:  18%|█▊        | 2/11 [00:02<00:09,  1.02s/it]Inference Embeddings:  27%|██▋       | 3/11 [00:03<00:07,  1.07it/s]Inference Embeddings:  36%|███▋      | 4/11 [00:03<00:06,  1.11it/s]Inference Embeddings:  45%|████▌     | 5/11 [00:04<00:05,  1.13it/s]Inference Embeddings:  55%|█████▍    | 6/11 [00:05<00:04,  1.14it/s]Inference Embeddings:  64%|██████▎   | 7/11 [00:06<00:03,  1.15it/s]Inference Embeddings:  73%|███████▎  | 8/11 [00:07<00:02,  1.16it/s]Inference Embeddings:  82%|████████▏ | 9/11 [00:08<00:01,  1.16it/s]Inference Embeddings:  91%|█████████ | 10/11 [00:08<00:00,  1.22it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.42it/s]Inference Embeddings: 100%|██████████| 11/11 [00:09<00:00,  1.18it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+embedding time: 10.236022710800171
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 17/17 [00:00<00:00, 236.27it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+>>> [runner] ONLY_EXAMPLES active: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+storage_time: 0.14844747306779027
+select_time: 0.6188504109159112
+use_sparse_attention: True
+<think>
+
+</think>
+
+Eagles
+prompt eval count:    274 token(s)
+prompt eval duration: 1.6420861552469432s
+prompt eval rate:     166.8609159906076 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1730597019195557s
+eval rate:            3.6814451038474743 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Glenn Frey died in January. Of what pop band was he a member?
+batch: 1 preprocess: True reprocess_method: FusionRAG
+real answer: Eagle
+answer: Eagles
+storage_time: 0.08096310310065746
+select_time: 0.35967836109921336
+use_sparse_attention: True
+<think>
+
+</think>
+
+Clarence Odbody
+prompt eval count:    272 token(s)
+prompt eval duration: 1.313816413283348s
+prompt eval rate:     207.03044751910733 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7827839851379395s
+eval rate:            3.593523627204686 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: What role did Henry Travers play in a famous and still-popular 1946 film?
+batch: 2 preprocess: True reprocess_method: FusionRAG
+real answer: Clarence Odbody
+answer: Clarence Odbody
+storage_time: 0.1389530231244862
+select_time: 0.34616253431886435
+use_sparse_attention: True
+<think>
+
+</think>
+
+Viz
+prompt eval count:    308 token(s)
+prompt eval duration: 1.3701952104456723s
+prompt eval rate:     224.78548870406527 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8716282844543457s
+eval rate:            3.7400588878366836 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which magazine features a strip entitled Sid the Sexist?
+batch: 3 preprocess: True reprocess_method: FusionRAG
+real answer: Viz
+answer: Viz
+storage_time: 0.15866885893046856
+select_time: 0.35811592172831297
+use_sparse_attention: True
+<think>
+
+</think>
+
+curly endive
+prompt eval count:    294 token(s)
+prompt eval duration: 1.3990666954778135s
+prompt eval rate:     210.14008906815712 tokens/s
+eval count:           9 token(s)
+eval duration:        2.495126247406006s
+eval rate:            3.6070319124559806 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: The vegetable we call chicory is known as what in the USA?
+batch: 4 preprocess: True reprocess_method: FusionRAG
+real answer: Cichorium endivia
+answer: curly endive
+storage_time: 0.12268878007307649
+select_time: 0.3995511019602418
+use_sparse_attention: True
+<think>
+
+</think>
+
+Aldo Moro
+prompt eval count:    270 token(s)
+prompt eval duration: 1.395157374907285s
+prompt eval rate:     193.52655467842317 tokens/s
+eval count:           10 token(s)
+eval duration:        2.780792236328125s
+eval rate:            3.5960974967351103 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which former Italian Prime Minister was kidnapped and murdered in 1978?
+batch: 5 preprocess: True reprocess_method: FusionRAG
+real answer: Aldo Moro
+answer: Aldo Moro
+storage_time: 0.08145377831533551
+select_time: 0.34118395671248436
+use_sparse_attention: True
+<think>
+
+</think>
+
+yes
+prompt eval count:    262 token(s)
+prompt eval duration: 1.29306046012789s
+prompt eval rate:     202.62006926890865 tokens/s
+eval count:           6 token(s)
+eval duration:        1.5463871955871582s
+eval rate:            3.8800114338258083 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Is the mountain range in Ireland in which the river Liffey rises?
+batch: 6 preprocess: True reprocess_method: FusionRAG
+real answer: Wicklow Mountains
+answer: yes
+storage_time: 0.08569588465616107
+select_time: 0.34467850904911757
+use_sparse_attention: True
+<think>
+
+</think>
+
+Benjamin Spock
+prompt eval count:    275 token(s)
+prompt eval duration: 1.3041878240182996s
+prompt eval rate:     210.85919906283482 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4703195095062256s
+eval rate:            3.6432534193922734 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: What was the name of the American pediatrician whose book Baby and Child Care, was published in 1946?
+batch: 7 preprocess: True reprocess_method: FusionRAG
+real answer: Benjamin Spock
+answer: Benjamin Spock
+storage_time: 0.09127341769635677
+select_time: 0.3418866149149835
+use_sparse_attention: True
+<think>
+
+</think>
+
+Spirit of Ecstasy
+prompt eval count:    289 token(s)
+prompt eval duration: 1.313456307630986s
+prompt eval rate:     220.03015884194468 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4711740016937256s
+eval rate:            3.641993641010897 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: What is the correct name for the "Flying Lady" ornament on a Rolls Royce radiator.
+batch: 8 preprocess: True reprocess_method: FusionRAG
+real answer: Spirit of Ecstasy
+answer: Spirit of Ecstasy
+storage_time: 0.08540319791063666
+select_time: 0.38023501308634877
+use_sparse_attention: True
+<think>
+
+</think>
+
+Alan-a-Dale
+prompt eval count:    295 token(s)
+prompt eval duration: 1.3482875120826066s
+prompt eval rate:     218.7960634185018 tokens/s
+eval count:           9 token(s)
+eval duration:        2.470496892929077s
+eval rate:            3.642991831222016 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Who was the minstrel in Robin Hood’s band of men?
+batch: 9 preprocess: True reprocess_method: FusionRAG
+real answer: Allen-a-Dale
+answer: Alan-a-Dale
+storage_time: 0.08868924900889397
+select_time: 0.3428483991883695
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Widower
+prompt eval count:    272 token(s)
+prompt eval duration: 1.3049607682041824s
+prompt eval rate:     208.43538489997056 tokens/s
+eval count:           8 token(s)
+eval duration:        2.162601947784424s
+eval rate:            3.699247569898827 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which recent ITV three-part drama was based on real-life wife killer Malcolm Webster?
+batch: 10 preprocess: True reprocess_method: FusionRAG
+real answer: The Widower
+answer: The Widower
+storage_time: 0.09082229621708393
+select_time: 0.34567930921912193
+use_sparse_attention: True
+<think>
+
+</think>
+
+Oliver McCall
+prompt eval count:    267 token(s)
+prompt eval duration: 1.3088287003338337s
+prompt eval rate:     203.99919403654442 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4711453914642334s
+eval rate:            3.642035806993618 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Who did Frank Bruno beat to win the WBC World Title in 1995?
+batch: 11 preprocess: True reprocess_method: FusionRAG
+real answer: Oliver McCall
+answer: Oliver McCall
+storage_time: 0.09714767290279269
+select_time: 0.35378415090963244
+use_sparse_attention: True
+<think>
+
+</think>
+
+Severn Bridge
+prompt eval count:    298 token(s)
+prompt eval duration: 1.3338329610414803s
+prompt eval rate:     223.4162812765673 tokens/s
+eval count:           8 token(s)
+eval duration:        2.160552978515625s
+eval rate:            3.7027557664872806 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: In 1966, what replaced the Aust ferry?
+batch: 12 preprocess: True reprocess_method: FusionRAG
+real answer: Severn Bridge
+answer: Severn Bridge
+storage_time: 0.12492413306608796
+select_time: 0.34316994482651353
+use_sparse_attention: True
+<think>
+
+</think>
+
+Isle of Ely
+prompt eval count:    307 token(s)
+prompt eval duration: 1.3533365265466273s
+prompt eval rate:     226.84675539157018 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7816965579986572s
+eval rate:            3.5949284156265713 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which county was absorbed into Cambridgeshire in 1974?
+batch: 13 preprocess: True reprocess_method: FusionRAG
+real answer: Huntingdonshire District Council
+answer: Isle of Ely
+storage_time: 0.15268491301685572
+select_time: 0.3485030778683722
+use_sparse_attention: True
+<think>
+
+</think>
+
+Worcestershire
+prompt eval count:    266 token(s)
+prompt eval duration: 1.3716744757257402s
+prompt eval rate:     193.9235618270595 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4696059226989746s
+eval rate:            3.6443061288758614 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Bewdley, Tenbury Wells, and Droitwich Spa are all towns in which English county?
+batch: 14 preprocess: True reprocess_method: FusionRAG
+real answer: Worcestershire county
+answer: Worcestershire
+storage_time: 0.12406582944095135
+select_time: 0.36696804827079177
+use_sparse_attention: True
+<think>
+
+</think>
+
+baboon
+prompt eval count:    272 token(s)
+prompt eval duration: 1.3642859677784145s
+prompt eval rate:     199.3716907042013 tokens/s
+eval count:           7 token(s)
+eval duration:        1.886826515197754s
+eval rate:            3.709933024375771 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: The hamadryas is a species of which monkey?
+batch: 15 preprocess: True reprocess_method: FusionRAG
+real answer: Baboon
+answer: baboon
+storage_time: 0.11342651396989822
+select_time: 0.3786022230051458
+use_sparse_attention: True
+<think>
+
+</think>
+
+Coventry
+prompt eval count:    256 token(s)
+prompt eval duration: 1.2082430287264287s
+prompt eval rate:     211.87790362824737 tokens/s
+eval count:           8 token(s)
+eval duration:        2.161527156829834s
+eval rate:            3.701086972107748 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: The Sentinel serves which Midlands city?
+batch: 16 preprocess: True reprocess_method: FusionRAG
+real answer: Stoke-on-Trent
+answer: Coventry
+storage_time: 0.09477581176906824
+select_time: 0.34892452135682106
+use_sparse_attention: True
+<think>
+
+</think>
+
+The Dukeries
+prompt eval count:    320 token(s)
+prompt eval duration: 1.3302675471641123s
+prompt eval rate:     240.553113305802 tokens/s
+eval count:           9 token(s)
+eval duration:        2.4703681468963623s
+eval rate:            3.643181689865584 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: What name is given to the area of large country houses around Worksop?
+batch: 17 preprocess: True reprocess_method: FusionRAG
+real answer: The Dukeries
+answer: The Dukeries
+storage_time: 0.11151506379246712
+select_time: 0.3361733090132475
+use_sparse_attention: True
+<think>
+
+</think>
+
+Answer: The provided passages do not specify the number of calories in a pint of Guinness.
+prompt eval count:    245 token(s)
+prompt eval duration: 1.161621002946049s
+prompt eval rate:     210.91216444833765 tokens/s
+eval count:           23 token(s)
+eval duration:        6.795743703842163s
+eval rate:            3.3844713694832707 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: How many calories are in a pint of Guinness?
+batch: 18 preprocess: True reprocess_method: FusionRAG
+real answer: 198
+answer: Answer: The provided passages do not specify the number of calories in a pint of Guinness.
+storage_time: 0.13797201495617628
+select_time: 0.3425101530738175
+use_sparse_attention: True
+<think>
+
+</think>
+
+Roper
+prompt eval count:    302 token(s)
+prompt eval duration: 1.3645412283949554s
+prompt eval rate:     221.31980603856738 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8531675338745117s
+eval rate:            3.7773163365131612 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: What was George's surname in George And Mildred?
+batch: 19 preprocess: True reprocess_method: FusionRAG
+real answer: Roper
+answer: Roper
+storage_time: 0.09221299784258008
+select_time: 0.34612353006377816
+use_sparse_attention: True
+<think>
+
+</think>
+
+Treebeard
+prompt eval count:    292 token(s)
+prompt eval duration: 1.3196601415984333s
+prompt eval rate:     221.26909102999514 tokens/s
+eval count:           8 token(s)
+eval duration:        2.161935329437256s
+eval rate:            3.7003882082274737 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Name the Ent who befriends Merry and Pippin in Fanghorn forest.
+batch: 20 preprocess: True reprocess_method: FusionRAG
+real answer: Treebeard
+answer: Treebeard
+storage_time: 0.09068462392315269
+select_time: 0.3415254740975797
+use_sparse_attention: True
+<think>
+
+</think>
+
+Simon Templar
+prompt eval count:    301 token(s)
+prompt eval duration: 1.315822240896523s
+prompt eval rate:     228.75430331297372 tokens/s
+eval count:           8 token(s)
+eval duration:        2.177816390991211s
+eval rate:            3.6734042562508593 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which fictional character drove a white Volvo P1800?
+batch: 21 preprocess: True reprocess_method: FusionRAG
+real answer: The Saint
+answer: Simon Templar
+storage_time: 0.09827993717044592
+select_time: 0.3869492500089109
+use_sparse_attention: True
+<think>
+
+</think>
+
+decimalisation
+prompt eval count:    283 token(s)
+prompt eval duration: 1.3632468413561583s
+prompt eval rate:     207.59263210063375 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8606288433074951s
+eval rate:            3.7621689168037644 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which word was introduced on coins in 1971 before being dropped in 1982?
+batch: 22 preprocess: True reprocess_method: FusionRAG
+real answer: New
+answer: decimalisation
+storage_time: 0.21379460534080863
+select_time: 0.3467634692788124
+use_sparse_attention: True
+<think>
+
+</think>
+
+Gary Barlow
+prompt eval count:    306 token(s)
+prompt eval duration: 1.444459080696106s
+prompt eval rate:     211.8440072753976 tokens/s
+eval count:           8 token(s)
+eval duration:        2.1624948978424072s
+eval rate:            3.6994306936778742 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Which band member is organising this year's Diamond Jubilee concert at Buckingham Palace?
+batch: 23 preprocess: True reprocess_method: FusionRAG
+real answer: Gary Barlow
+answer: Gary Barlow
+storage_time: 0.19803426694124937
+select_time: 0.34210160886868834
+use_sparse_attention: True
+<think>
+
+</think>
+
+Neil Jordan
+prompt eval count:    248 token(s)
+prompt eval duration: 1.251864050514996s
+prompt eval rate:     198.1045784468185 tokens/s
+eval count:           7 token(s)
+eval duration:        1.8526339530944824s
+eval rate:            3.778404248884565 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: Who wrote the screenplay for The Crying Game?
+batch: 24 preprocess: True reprocess_method: FusionRAG
+real answer: Neil Jordan
+answer: Neil Jordan
+storage_time: 0.09053174592554569
+select_time: 0.34420610684901476
+use_sparse_attention: True
+<think>
+
+</think>
+
+Play Misty for Me
+prompt eval count:    303 token(s)
+prompt eval duration: 1.3180435206741095s
+prompt eval rate:     229.8861875555001 tokens/s
+eval count:           10 token(s)
+eval duration:        2.7785205841064453s
+eval rate:            3.599037580358951 tokens/s
+Qwen3-32B triviaqa-v2 0.15 10
+question: The First Time Ever I Saw Your Face was featured in which Clint Eastwood film?
+batch: 25 preprocess: True reprocess_method: FusionRAG
+real answer: Play Misty for Me
+answer: Play Misty for Me
+
+--- Quality Metrics ---
+EM Score: 0.0667
+ROUGE Score: 0.0704

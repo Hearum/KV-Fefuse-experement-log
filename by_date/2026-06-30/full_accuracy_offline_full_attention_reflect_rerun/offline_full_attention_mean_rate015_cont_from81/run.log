@@ -1,0 +1,1337 @@
+/mnt/qjhs-sh-lab-01/wjh/FusionRAG/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Cache directories created under: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique
+  - KV cache: /raid/home/hming/fusionrag-reflect-full-cache/Qwen2.5-7B-Instruct/musique/kv_cache
+  - Preprocess cache:
+      Scope: global
+      TopK: 10
+      Recall: BGE Similarity
+      Path: preprocess_kv_cache_global_topk10_bge
+  - Results directory: FusionRAG_global_topk10_bge
+      Full path: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_full_attention_reflect_rerun/offline_full_attention_mean_rate015_cont_from81/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+Loading tokenizer and config from /mnt/qjhs-sh-lab-01/models/Qwen2.5-7B-Instruct...
+Loading qwen model...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 97.35it/s]
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Preparing data organized by main questions...
+Loading dataset from ./data/result_reflect.json...
+
+================================================================================
+Building document corpus with scope: global
+================================================================================
+  Main question 1: 10 unique documents, 1 sub-questions
+  Main question 2: 10 unique documents, 1 sub-questions
+  Main question 3: 10 unique documents, 1 sub-questions
+  Main question 4: 11 unique documents, 2 sub-questions
+  Main question 5: 19 unique documents, 2 sub-questions
+  Main question 6: 19 unique documents, 2 sub-questions
+  Main question 7: 10 unique documents, 1 sub-questions
+  Main question 8: 15 unique documents, 2 sub-questions
+  Main question 9: 19 unique documents, 2 sub-questions
+  Main question 10: 15 unique documents, 2 sub-questions
+  Main question 11: 17 unique documents, 2 sub-questions
+  Main question 12: 19 unique documents, 2 sub-questions
+  Main question 13: 14 unique documents, 2 sub-questions
+  Main question 14: 18 unique documents, 2 sub-questions
+  Main question 15: 17 unique documents, 2 sub-questions
+  Main question 16: 19 unique documents, 2 sub-questions
+  Main question 17: 14 unique documents, 2 sub-questions
+  Main question 18: 14 unique documents, 2 sub-questions
+  Main question 19: 17 unique documents, 2 sub-questions
+  Main question 20: 16 unique documents, 2 sub-questions
+  Main question 21: 17 unique documents, 2 sub-questions
+  Main question 22: 15 unique documents, 2 sub-questions
+  Main question 23: 21 unique documents, 3 sub-questions
+  Main question 24: 19 unique documents, 3 sub-questions
+  Main question 25: 18 unique documents, 2 sub-questions
+  Main question 26: 17 unique documents, 2 sub-questions
+  Main question 27: 10 unique documents, 1 sub-questions
+  Main question 28: 19 unique documents, 2 sub-questions
+  Main question 29: 25 unique documents, 4 sub-questions
+  Main question 30: 17 unique documents, 4 sub-questions
+  Main question 31: 29 unique documents, 4 sub-questions
+  Main question 32: 14 unique documents, 2 sub-questions
+  Main question 33: 14 unique documents, 2 sub-questions
+  Main question 34: 10 unique documents, 1 sub-questions
+  Main question 35: 24 unique documents, 4 sub-questions
+  Main question 36: 17 unique documents, 2 sub-questions
+  Main question 37: 19 unique documents, 2 sub-questions
+  Main question 38: 12 unique documents, 2 sub-questions
+  Main question 39: 18 unique documents, 2 sub-questions
+  Main question 40: 15 unique documents, 2 sub-questions
+  Main question 41: 16 unique documents, 2 sub-questions
+  Main question 42: 30 unique documents, 4 sub-questions
+  Main question 43: 21 unique documents, 4 sub-questions
+  Main question 44: 17 unique documents, 2 sub-questions
+  Main question 45: 20 unique documents, 3 sub-questions
+  Main question 46: 16 unique documents, 2 sub-questions
+  Main question 47: 15 unique documents, 2 sub-questions
+  Main question 48: 20 unique documents, 4 sub-questions
+  Main question 49: 13 unique documents, 4 sub-questions
+  Main question 50: 14 unique documents, 4 sub-questions
+  Main question 51: 13 unique documents, 4 sub-questions
+  Main question 52: 16 unique documents, 2 sub-questions
+  Main question 53: 25 unique documents, 3 sub-questions
+  Main question 54: 10 unique documents, 1 sub-questions
+  Main question 55: 18 unique documents, 2 sub-questions
+  Main question 56: 10 unique documents, 1 sub-questions
+  Main question 57: 10 unique documents, 1 sub-questions
+  Main question 58: 10 unique documents, 1 sub-questions
+  Main question 59: 19 unique documents, 2 sub-questions
+  Main question 60: 18 unique documents, 2 sub-questions
+  Main question 61: 14 unique documents, 2 sub-questions
+  Main question 62: 22 unique documents, 4 sub-questions
+  Main question 63: 25 unique documents, 4 sub-questions
+  Main question 64: 19 unique documents, 2 sub-questions
+  Main question 65: 19 unique documents, 2 sub-questions
+  Main question 66: 27 unique documents, 4 sub-questions
+  Main question 67: 10 unique documents, 1 sub-questions
+  Main question 68: 13 unique documents, 4 sub-questions
+  Main question 69: 19 unique documents, 2 sub-questions
+  Main question 70: 19 unique documents, 2 sub-questions
+  Main question 71: 19 unique documents, 2 sub-questions
+  Main question 72: 18 unique documents, 2 sub-questions
+  Main question 73: 19 unique documents, 2 sub-questions
+  Main question 74: 21 unique documents, 4 sub-questions
+  Main question 75: 14 unique documents, 2 sub-questions
+  Main question 76: 10 unique documents, 1 sub-questions
+  Main question 77: 18 unique documents, 2 sub-questions
+  Main question 78: 14 unique documents, 2 sub-questions
+  Main question 79: 19 unique documents, 2 sub-questions
+  Main question 80: 18 unique documents, 3 sub-questions
+  Main question 81: 10 unique documents, 1 sub-questions
+  Main question 82: 18 unique documents, 2 sub-questions
+  Main question 83: 14 unique documents, 2 sub-questions
+  Main question 84: 14 unique documents, 4 sub-questions
+  Main question 85: 20 unique documents, 2 sub-questions
+  Main question 86: 10 unique documents, 1 sub-questions
+  Main question 87: 19 unique documents, 2 sub-questions
+  Main question 88: 19 unique documents, 4 sub-questions
+  Main question 89: 24 unique documents, 3 sub-questions
+  Main question 90: 18 unique documents, 2 sub-questions
+  Main question 91: 15 unique documents, 3 sub-questions
+  Main question 92: 18 unique documents, 2 sub-questions
+  Main question 93: 22 unique documents, 4 sub-questions
+  Main question 94: 14 unique documents, 2 sub-questions
+  Main question 95: 21 unique documents, 4 sub-questions
+  Main question 96: 10 unique documents, 1 sub-questions
+  Main question 97: 17 unique documents, 2 sub-questions
+  Main question 98: 18 unique documents, 2 sub-questions
+  Main question 99: 17 unique documents, 2 sub-questions
+  Main question 100: 17 unique documents, 4 sub-questions
+  Main question 101: 16 unique documents, 2 sub-questions
+  Main question 102: 16 unique documents, 2 sub-questions
+  Main question 103: 19 unique documents, 2 sub-questions
+  Main question 104: 17 unique documents, 2 sub-questions
+  Main question 105: 10 unique documents, 1 sub-questions
+  Main question 106: 13 unique documents, 2 sub-questions
+  Main question 107: 30 unique documents, 4 sub-questions
+  Main question 108: 17 unique documents, 4 sub-questions
+  Main question 109: 13 unique documents, 4 sub-questions
+  Main question 110: 10 unique documents, 1 sub-questions
+  Main question 111: 28 unique documents, 4 sub-questions
+  Main question 112: 15 unique documents, 4 sub-questions
+  Main question 113: 19 unique documents, 2 sub-questions
+  Main question 114: 17 unique documents, 2 sub-questions
+  Main question 115: 20 unique documents, 2 sub-questions
+  Main question 116: 21 unique documents, 3 sub-questions
+  Main question 117: 25 unique documents, 4 sub-questions
+  Main question 118: 19 unique documents, 2 sub-questions
+  Main question 119: 10 unique documents, 1 sub-questions
+  Main question 120: 19 unique documents, 2 sub-questions
+  Main question 121: 10 unique documents, 1 sub-questions
+  Main question 122: 19 unique documents, 2 sub-questions
+  Main question 123: 14 unique documents, 4 sub-questions
+  Main question 124: 18 unique documents, 4 sub-questions
+  Main question 125: 14 unique documents, 4 sub-questions
+  Main question 126: 10 unique documents, 1 sub-questions
+  Main question 127: 14 unique documents, 2 sub-questions
+  Main question 128: 10 unique documents, 1 sub-questions
+  Main question 129: 10 unique documents, 1 sub-questions
+  Main question 130: 10 unique documents, 1 sub-questions
+  Main question 131: 15 unique documents, 2 sub-questions
+  Main question 132: 19 unique documents, 2 sub-questions
+  Main question 133: 14 unique documents, 4 sub-questions
+  Main question 134: 13 unique documents, 2 sub-questions
+  Main question 135: 12 unique documents, 3 sub-questions
+  Main question 136: 19 unique documents, 2 sub-questions
+  Main question 137: 17 unique documents, 2 sub-questions
+  Main question 138: 16 unique documents, 2 sub-questions
+  Main question 139: 18 unique documents, 2 sub-questions
+  Main question 140: 10 unique documents, 1 sub-questions
+  Main question 141: 30 unique documents, 4 sub-questions
+  Main question 142: 17 unique documents, 2 sub-questions
+  Main question 143: 14 unique documents, 2 sub-questions
+  Main question 144: 18 unique documents, 2 sub-questions
+  Main question 145: 16 unique documents, 2 sub-questions
+  Main question 146: 18 unique documents, 2 sub-questions
+  Main question 147: 19 unique documents, 2 sub-questions
+  Main question 148: 20 unique documents, 2 sub-questions
+  Main question 149: 23 unique documents, 4 sub-questions
+  Main question 150: 10 unique documents, 1 sub-questions
+  Main question 151: 18 unique documents, 2 sub-questions
+  Main question 152: 16 unique documents, 2 sub-questions
+  Main question 153: 15 unique documents, 2 sub-questions
+  Main question 154: 10 unique documents, 1 sub-questions
+  Main question 155: 10 unique documents, 1 sub-questions
+  Main question 156: 19 unique documents, 2 sub-questions
+  Main question 157: 17 unique documents, 2 sub-questions
+  Main question 158: 20 unique documents, 4 sub-questions
+  Main question 159: 18 unique documents, 2 sub-questions
+  Main question 160: 18 unique documents, 4 sub-questions
+  Main question 161: 19 unique documents, 2 sub-questions
+  Main question 162: 12 unique documents, 2 sub-questions
+  Main question 163: 10 unique documents, 1 sub-questions
+  Main question 164: 18 unique documents, 2 sub-questions
+  Main question 165: 18 unique documents, 2 sub-questions
+  Main question 166: 10 unique documents, 1 sub-questions
+  Main question 167: 14 unique documents, 2 sub-questions
+  Main question 168: 19 unique documents, 2 sub-questions
+  Main question 169: 29 unique documents, 4 sub-questions
+  Main question 170: 19 unique documents, 2 sub-questions
+  Main question 171: 21 unique documents, 3 sub-questions
+  Main question 172: 16 unique documents, 4 sub-questions
+  Main question 173: 18 unique documents, 4 sub-questions
+  Main question 174: 13 unique documents, 2 sub-questions
+  Main question 175: 19 unique documents, 2 sub-questions
+  Main question 176: 29 unique documents, 4 sub-questions
+  Main question 177: 10 unique documents, 1 sub-questions
+  Main question 178: 25 unique documents, 4 sub-questions
+  Main question 179: 18 unique documents, 2 sub-questions
+  Main question 180: 17 unique documents, 2 sub-questions
+  Main question 181: 17 unique documents, 2 sub-questions
+  Main question 182: 16 unique documents, 3 sub-questions
+  Main question 183: 22 unique documents, 4 sub-questions
+  Main question 184: 19 unique documents, 2 sub-questions
+  Main question 185: 21 unique documents, 4 sub-questions
+  Main question 186: 20 unique documents, 4 sub-questions
+  Main question 187: 13 unique documents, 2 sub-questions
+  Main question 188: 20 unique documents, 3 sub-questions
+  Main question 189: 18 unique documents, 2 sub-questions
+  Main question 190: 20 unique documents, 4 sub-questions
+  Main question 191: 23 unique documents, 4 sub-questions
+  Main question 192: 19 unique documents, 2 sub-questions
+  Main question 193: 26 unique documents, 3 sub-questions
+  Main question 194: 21 unique documents, 4 sub-questions
+  Main question 195: 17 unique documents, 4 sub-questions
+  Main question 196: 26 unique documents, 4 sub-questions
+  Main question 197: 16 unique documents, 4 sub-questions
+  Main question 198: 21 unique documents, 4 sub-questions
+  Main question 199: 25 unique documents, 4 sub-questions
+  Main question 200: 16 unique documents, 4 sub-questions
+
+================================================================================
+Computing document similarity with BGE + FAISS (scope: global)...
+================================================================================
+Loading BGE model from /mnt/qjhs-sh-lab-01/models/bge-m3...
+Encoding 3408 documents for FAISS index...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:01<00:23,  1.77s/it]Inference Embeddings:  14%|█▍        | 2/14 [00:03<00:19,  1.62s/it]Inference Embeddings:  21%|██▏       | 3/14 [00:04<00:16,  1.46s/it]Inference Embeddings:  29%|██▊       | 4/14 [00:06<00:14,  1.46s/it]Inference Embeddings:  36%|███▌      | 5/14 [00:07<00:12,  1.39s/it]Inference Embeddings:  43%|████▎     | 6/14 [00:08<00:11,  1.42s/it]Inference Embeddings:  50%|█████     | 7/14 [00:09<00:09,  1.36s/it]Inference Embeddings:  57%|█████▋    | 8/14 [00:11<00:08,  1.39s/it]Inference Embeddings:  64%|██████▍   | 9/14 [00:12<00:06,  1.35s/it]Inference Embeddings:  71%|███████▏  | 10/14 [00:14<00:05,  1.43s/it]Inference Embeddings:  79%|███████▊  | 11/14 [00:15<00:03,  1.31s/it]Inference Embeddings:  86%|████████▌ | 12/14 [00:16<00:02,  1.15s/it]Inference Embeddings:  93%|█████████▎| 13/14 [00:16<00:01,  1.02s/it]Inference Embeddings: 100%|██████████| 14/14 [00:17<00:00,  1.27it/s]Inference Embeddings: 100%|██████████| 14/14 [00:17<00:00,  1.22s/it]
+Corpus embeddings shape: (3408, 1024)
+FAISS index built with 3408 vectors
+Searching for top-10 similar documents for each document...
+Inference Embeddings:   0%|          | 0/14 [00:00<?, ?it/s]Inference Embeddings:   7%|▋         | 1/14 [00:00<00:09,  1.44it/s]Inference Embeddings:  14%|█▍        | 2/14 [00:01<00:08,  1.39it/s]Inference Embeddings:  21%|██▏       | 3/14 [00:02<00:07,  1.49it/s]Inference Embeddings:  29%|██▊       | 4/14 [00:02<00:06,  1.47it/s]Inference Embeddings:  36%|███▌      | 5/14 [00:03<00:05,  1.52it/s]Inference Embeddings:  43%|████▎     | 6/14 [00:04<00:05,  1.48it/s]Inference Embeddings:  50%|█████     | 7/14 [00:04<00:04,  1.54it/s]Inference Embeddings:  57%|█████▋    | 8/14 [00:05<00:03,  1.50it/s]Inference Embeddings:  64%|██████▍   | 9/14 [00:05<00:03,  1.54it/s]Inference Embeddings:  71%|███████▏  | 10/14 [00:06<00:02,  1.46it/s]Inference Embeddings:  79%|███████▊  | 11/14 [00:07<00:02,  1.41it/s]Inference Embeddings:  86%|████████▌ | 12/14 [00:08<00:01,  1.38it/s]Inference Embeddings:  93%|█████████▎| 13/14 [00:08<00:00,  1.38it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.72it/s]Inference Embeddings: 100%|██████████| 14/14 [00:09<00:00,  1.51it/s]
+Context rank computed: (3408, 10)
+[WARNING] Rate=1 results file not found: /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_full_attention_reflect_rerun/offline_full_attention_mean_rate015_cont_from81/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge/rate_1_revert_rope.csv
+[WARNING] No rate=1 files found in /raid/home/hming/FusionRAG-pca-analysis/MOTIVATION_EXPERIMENTS/full_accuracy_offline_full_attention_reflect_rerun/offline_full_attention_mean_rate015_cont_from81/Qwen2.5-7B-Instruct/musique/FusionRAG_global_topk10_bge
+[WARNING] Continuing without rate=1 baseline comparison...
+
+================================================================================
+Answering sub-questions with on-demand KV cache generation
+================================================================================
+
+================================================================================
+Main Question 82/200: What political party does the person that Adversary in the House is based on a member of?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the book 'Adversary in the House' based on?
+Ground Truth: The book 'Adversary in the House' is based on the life of Eugene V. Debs and his wife Kate.
+storage_time: 0.06275045406073332
+ Eugene V. Debs
+prompt eval count:    225 token(s)
+prompt eval duration: 0.7144456133246422s
+prompt eval rate:     314.9295003057995 tokens/s
+eval count:           6 token(s)
+eval duration:        0.5032646656036377s
+eval rate:            11.922156292859022 tokens/s
+Predicted: Eugene V. Debs
+F1: 0.4167, EM: 0.0000
+
+Sub-question 2/2
+Question: What political party did Eugene V. Debs belong to?
+Ground Truth: Eugene V. Debs belonged to the Socialist Party of America.
+storage_time: 0.07093997905030847
+ Socialist Party of America
+prompt eval count:    265 token(s)
+prompt eval duration: 0.18497882829979062s
+prompt eval rate:     1432.5963810870346 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39577627182006836s
+eval rate:            12.633400120240529 tokens/s
+Predicted: Socialist Party of America
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the book 'Adversary in the House' based on?...
+Sub-Q 2: ✓ CORRECT - What political party did Eugene V. Debs belong to?...
+
+✓ Main question 82: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 83/200: What event caused the Liberal Party of Australia's longest-serving leader to become Prime Minister?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the longest-serving leader of the Liberal Party of Australia?
+Ground Truth: Robert Menzies
+storage_time: 0.023623280227184296
+ Robert Menzies
+prompt eval count:    221 token(s)
+prompt eval duration: 0.12054219748824835s
+prompt eval rate:     1833.3828701069206 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39675188064575195s
+eval rate:            12.602334718267794 tokens/s
+Predicted: Robert Menzies
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What specific political event or circumstance caused Robert Menzies to become Prime Minister of Australia?
+Ground Truth: Robert Menzies became Prime Minister following the death of the incumbent Prime Minister, Joseph Lyons, in 1939.
+storage_time: 0.026561114005744457
+ Menzies became Prime Minister after Joseph Lyons' death in 1939, when he assumed the Prime Ministership on the eve of World War II.
+prompt eval count:    273 token(s)
+prompt eval duration: 0.13972883997485042s
+prompt eval rate:     1953.7842012367444 tokens/s
+eval count:           34 token(s)
+eval duration:        3.2753591537475586s
+eval rate:            10.380541004518028 tokens/s
+Predicted: Menzies became Prime Minister after Joseph Lyons' death in 1939, when he assumed the Prime Ministership on the eve of World War II.
+F1: 0.6923, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the longest-serving leader of the Liberal P...
+Sub-Q 2: ✓ CORRECT - What specific political event or circumstance caus...
+
+✓ Main question 83: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 84/200: Who is the uncle of Liu Bin?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 85/200: Who founded the publisher of The Final Testament of the Holy Bible?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the publisher of The Final Testament of the Holy Bible?
+Ground Truth: The Final Testament of the Holy Bible was published by Gagosian Gallery.
+storage_time: 0.023832335136830807
+ Gagosian Gallery
+prompt eval count:    216 token(s)
+prompt eval duration: 0.12179409712553024s
+prompt eval rate:     1773.4849643605799 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3959829807281494s
+eval rate:            12.626805300585897 tokens/s
+Predicted: Gagosian Gallery
+F1: 0.2857, EM: 0.0000
+
+Sub-question 2/2
+Question: Who founded the Gagosian Gallery?
+Ground Truth: The Gagosian Gallery was founded by Larry Gagosian.
+storage_time: 0.024769905023276806
+ Larry Gagosian
+prompt eval count:    205 token(s)
+prompt eval duration: 0.12044329103082418s
+prompt eval rate:     1702.0458196175978 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3960144519805908s
+eval rate:            12.625801848880647 tokens/s
+Predicted: Larry Gagosian
+F1: 0.5333, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the publisher of The Final Testament of the...
+Sub-Q 2: ✓ CORRECT - Who founded the Gagosian Gallery?...
+
+✓ Main question 85: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 86/200: The Nicole and Natalie album's band is named after who?
+================================================================================
+
+Sub-question 1/1
+Question: What is the name of the band that released the album 'Nicole and Natalie'?
+Ground Truth: Nina Sky
+storage_time: 0.030329248402267694
+ Nicole and Natalie is the second studio album by the New York City-based duo Nina Sky.
+prompt eval count:    334 token(s)
+prompt eval duration: 0.14947921643033624s
+prompt eval rate:     2234.424343237432 tokens/s
+eval count:           19 token(s)
+eval duration:        1.7840368747711182s
+eval rate:            10.650004082700136 tokens/s
+Predicted: Nicole and Natalie is the second studio album by the New York City-based duo Nina Sky.
+F1: 0.2000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the name of the band that released the alb...
+
+✓ Main question 86: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 87/200: Of which river is the river Kichi Sipi Bridge crosses a tributary?
+================================================================================
+
+Sub-question 1/2
+Question: Which river does the Kichi Sipi Bridge cross?
+Ground Truth: The Kichi Sipi Bridge crosses the Nelson River.
+storage_time: 0.020706390030682087
+ The Nelson River
+prompt eval count:    147 token(s)
+prompt eval duration: 0.11487708194181323s
+prompt eval rate:     1279.62860402789 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29689693450927734s
+eval rate:            13.472688785458002 tokens/s
+Predicted: The Nelson River
+F1: 0.2000, EM: 0.0000
+
+Sub-question 2/2
+Question: Into which larger river does the Nelson River flow as a tributary?
+Ground Truth: The Nelson River flows directly into Hudson Bay, not into a larger river as a tributary.
+storage_time: 0.02530474867671728
+ The Nelson River flows as a tributary into the Hudson Bay.
+prompt eval count:    233 token(s)
+prompt eval duration: 0.12259792257100344s
+prompt eval rate:     1900.5216003155065 tokens/s
+eval count:           15 token(s)
+eval duration:        1.3858168125152588s
+eval rate:            10.82394142179224 tokens/s
+Predicted: The Nelson River flows as a tributary into the Hudson Bay.
+F1: 0.8148, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which river does the Kichi Sipi Bridge cross?...
+Sub-Q 2: ✗ INCORRECT - Into which larger river does the Nelson River flow...
+
+✗ Main question 87: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 88/200: Who is the spouse of the screenwriter of The Actress?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 89/200: Who is the child of the actor who is a cast member of Love in Pawn?
+================================================================================
+
+Sub-question 1/3
+Question: Who are the cast members of Love in Pawn?
+Ground Truth: Bernard Braden and Barbara Kelly
+storage_time: 0.023550742771476507
+ Bernard Braden, Barbara Kelly, Delfine Bafort, Sage Stallone, Lisa Love, Hope Tomaselli
+prompt eval count:    230 token(s)
+prompt eval duration: 0.1189010376110673s
+prompt eval rate:     1934.3817734572203 tokens/s
+eval count:           24 token(s)
+eval duration:        2.2777793407440186s
+eval rate:            10.536578135861303 tokens/s
+Predicted: Bernard Braden, Barbara Kelly, Delfine Bafort, Sage Stallone, Lisa Love, Hope Tomaselli
+F1: 0.4667, EM: 0.0000
+
+Sub-question 2/3
+Question: Which of the cast members of 'Love in Pawn' (Bernard Braden and Barbara Kelly) are actors?
+Ground Truth: Both Bernard Braden and Barbara Kelly are actors.
+storage_time: 0.020476968958973885
+ Bernard Braden and Barbara Kelly are actors.
+prompt eval count:    174 token(s)
+prompt eval duration: 0.11491202097386122s
+prompt eval rate:     1514.2018957231585 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8911371231079102s
+eval rate:            11.221617572303824 tokens/s
+Predicted: Bernard Braden and Barbara Kelly are actors.
+F1: 0.9524, EM: 0.0000
+
+Sub-question 3/3
+Question: Who is the child of Bernard Braden or Barbara Kelly?
+Ground Truth: Kim Braden is the daughter of Bernard Braden and Barbara Kelly.
+storage_time: 0.023482433054596186
+ Christina Giles and Katherine Giles are the children of Bernard Braden or Barbara Kelly, as they are described as the twin sisters Petunia and Zinnia Larkin in The Darling Buds of May TV series, and their parents are mentioned to include Barbara Larkin, who is likely a reference to Barbara Kelly.
+prompt eval count:    185 token(s)
+prompt eval duration: 0.1182050327770412s
+prompt eval rate:     1565.0771854100979 tokens/s
+eval count:           64 token(s)
+eval duration:        6.23825216293335s
+eval rate:            10.259283903314664 tokens/s
+Predicted: Christina Giles and Katherine Giles are the children of Bernard Braden or Barbara Kelly, as they are described as the twin sisters Petunia and Zinnia Larkin in The Darling Buds of May TV series, and their parents are mentioned to include Barbara Larkin, who is likely a reference to Barbara Kelly.
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who are the cast members of Love in Pawn?...
+Sub-Q 2: ✓ CORRECT - Which of the cast members of 'Love in Pawn' (Berna...
+Sub-Q 3: ✗ INCORRECT - Who is the child of Bernard Braden or Barbara Kell...
+
+✗ Main question 89: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 90/200: Who is the spouse of the first nominated African American presidential candidate?
+================================================================================
+
+Sub-question 1/2
+Question: Who was the first nominated African American presidential candidate?
+Ground Truth: Frederick Douglass was the first African American to be nominated as a presidential candidate, receiving one vote at the 1888 Republican National Convention.
+storage_time: 0.022679483983665705
+ Barack Obama
+prompt eval count:    215 token(s)
+prompt eval duration: 0.11803233018144965s
+prompt eval rate:     1821.5348258352872 tokens/s
+eval count:           3 token(s)
+eval duration:        0.197998046875s
+eval rate:            15.151664611590629 tokens/s
+Predicted: Barack Obama
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was the spouse of Frederick Douglass?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.027859621215611696
+ Helen Pitts
+prompt eval count:    261 token(s)
+prompt eval duration: 0.14047278044745326s
+prompt eval rate:     1858.0112045097053 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2968771457672119s
+eval rate:            13.473586825496128 tokens/s
+Predicted: Helen Pitts
+F1: 0.2424, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was the first nominated African American presi...
+Sub-Q 2: ✗ INCORRECT - Who was the spouse of Frederick Douglass?...
+
+✗ Main question 90: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 91/200: What event caused the founder of Australia's liberal party to become Prime Minister?
+================================================================================
+
+Sub-question 1/3
+Question: Who founded the Liberal Party of Australia?
+Ground Truth: Robert Menzies founded the Liberal Party of Australia.
+storage_time: 0.024607528932392597
+ Joseph Lyons founded the Liberal Party of Australia as part of the United Australia Party (UAP), which was formed in 1931 with Lyons as its leader.
+prompt eval count:    262 token(s)
+prompt eval duration: 0.13747358694672585s
+prompt eval rate:     1905.8206439432688 tokens/s
+eval count:           35 token(s)
+eval duration:        3.3665995597839355s
+eval rate:            10.396246829618864 tokens/s
+Predicted: Joseph Lyons founded the Liberal Party of Australia as part of the United Australia Party (UAP), which was formed in 1931 with Lyons as its leader.
+F1: 0.2439, EM: 0.0000
+
+Sub-question 2/3
+Question: When did Robert Menzies serve as Prime Minister of Australia?
+Ground Truth: Robert Menzies served as Prime Minister of Australia from 1939 to 1941 and again from 1949 to 1966 (his tenure ended before the 1972 election, making him the longest-serving PM).
+storage_time: 0.02141848113387823
+1939 to 1941
+prompt eval count:    201 token(s)
+prompt eval duration: 0.11649924423545599s
+prompt eval rate:     1725.333081077848 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9897534847259521s
+eval rate:            11.113878526071302 tokens/s
+Predicted: 1939 to 1941
+F1: 0.2951, EM: 0.0000
+
+Sub-question 3/3
+Question: What specific political event or circumstance led to Robert Menzies first becoming Prime Minister of Australia in 1939?
+Ground Truth: Robert Menzies first became Prime Minister of Australia in 1939 following the death of the previous Prime Minister, Joseph Lyons.
+storage_time: 0.028185591101646423
+ Menzies first became Prime Minister of Australia in 1939 following the death of Joseph Lyons, the leader of the United Australia Party (UAP) and Prime Minister at the time.
+prompt eval count:    298 token(s)
+prompt eval duration: 0.14157333690673113s
+prompt eval rate:     2104.916126942202 tokens/s
+eval count:           41 token(s)
+eval duration:        3.9603376388549805s
+eval rate:            10.352652662174023 tokens/s
+Predicted: Menzies first became Prime Minister of Australia in 1939 following the death of Joseph Lyons, the leader of the United Australia Party (UAP) and Prime Minister at the time.
+F1: 0.7797, EM: 0.0000
+
+⏳ Waiting for 3 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who founded the Liberal Party of Australia?...
+Sub-Q 2: ✗ INCORRECT - When did Robert Menzies serve as Prime Minister of...
+Sub-Q 3: ✓ CORRECT - What specific political event or circumstance led ...
+
+✗ Main question 91: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 92/200: What is the river that the Kettle Generating Station is located on a tributary of?
+================================================================================
+
+Sub-question 1/2
+Question: On which river is the Kettle Generating Station located?
+Ground Truth: The Kettle Generating Station is located on the Lower Nelson River.
+storage_time: 0.021581026259809732
+ Kettle River
+prompt eval count:    168 token(s)
+prompt eval duration: 0.11607194086536765s
+prompt eval rate:     1447.3782272225803 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2970240116119385s
+eval rate:            13.466924705151431 tokens/s
+Predicted: Kettle River
+F1: 0.3333, EM: 0.0000
+
+Sub-question 2/2
+Question: Is the Lower Nelson River a tributary of a larger river system, and if so, which main river does it flow into?
+Ground Truth: Yes, the Lower Nelson River is part of the Nelson River system, and it flows into Hudson Bay.
+storage_time: 0.02610840229317546
+ Fraser River
+prompt eval count:    222 token(s)
+prompt eval duration: 0.12156687257811427s
+prompt eval rate:     1826.1553932577413 tokens/s
+eval count:           3 token(s)
+eval duration:        0.1982717514038086s
+eval rate:            15.130748474047994 tokens/s
+Predicted: Fraser River
+F1: 0.1000, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - On which river is the Kettle Generating Station lo...
+Sub-Q 2: ✗ INCORRECT - Is the Lower Nelson River a tributary of a larger ...
+
+✗ Main question 92: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 93/200: Who is the sibling of the author of Kapalkundala?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 94/200: Who was the spouse of a leading speaker against slavery and publisher of an antislavery newspaper?
+================================================================================
+
+Sub-question 1/2
+Question: Who was a leading speaker against slavery and publisher of an antislavery newspaper?
+Ground Truth: Frederick Douglass
+storage_time: 0.02211183588951826
+ Mary Birdsall
+prompt eval count:    215 token(s)
+prompt eval duration: 0.11734362272545695s
+prompt eval rate:     1832.2256890178414 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2970438003540039s
+eval rate:            13.466027552950015 tokens/s
+Predicted: Mary Birdsall
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Who was Frederick Douglass's spouse?
+Ground Truth: Frederick Douglass had two spouses: his first wife was Anna Murray Douglass, and his second wife was Helen Pitts Douglass.
+storage_time: 0.025752287823706865
+ Helen Pitts
+prompt eval count:    246 token(s)
+prompt eval duration: 0.1213064338080585s
+prompt eval rate:     2027.9221165568383 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29686808586120605s
+eval rate:            13.473998016311223 tokens/s
+Predicted: Helen Pitts
+F1: 0.2424, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who was a leading speaker against slavery and publ...
+Sub-Q 2: ✗ INCORRECT - Who was Frederick Douglass's spouse?...
+
+✗ Main question 94: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 95/200: What is the record label of the co-writer and recording artist of Permission to Fly?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 96/200: Where is Ulrich Walter's employer headquartered?
+================================================================================
+
+Sub-question 1/1
+Question: Who is Ulrich Walter's employer?
+Ground Truth: Ulrich Walter's employers were the German astronaut team and the German Aerospace Center (DLR).
+storage_time: 0.022580584976822138
+ German Aerospace Center
+prompt eval count:    175 token(s)
+prompt eval duration: 0.11703435285016894s
+prompt eval rate:     1495.2874582392103 tokens/s
+eval count:           4 token(s)
+eval duration:        0.29739975929260254s
+eval rate:            13.449910011744569 tokens/s
+Predicted: German Aerospace Center
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Ulrich Walter's employer?...
+
+✓ Main question 96: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 97/200: Who is the city where Lesnoye Sanatorium is located named after?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Lesnoye Sanatorium located?
+Ground Truth: Lesnoye Sanatorium is located in the city of Tolyatti, Russia.
+storage_time: 0.022850391920655966
+ Lesnoye Sanatorium is located in Tolyatti, Russia.
+prompt eval count:    181 token(s)
+prompt eval duration: 0.11761098308488727s
+prompt eval rate:     1538.9719161633134 tokens/s
+eval count:           15 token(s)
+eval duration:        1.3882615566253662s
+eval rate:            10.804880340029378 tokens/s
+Predicted: Lesnoye Sanatorium is located in Tolyatti, Russia.
+F1: 0.9231, EM: 0.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.024131488986313343
+ Palmiro Togliatti
+prompt eval count:    200 token(s)
+prompt eval duration: 0.11946858605369925s
+prompt eval rate:     1674.080246585518 tokens/s
+eval count:           7 token(s)
+eval duration:        0.594355583190918s
+eval rate:            11.777461502791118 tokens/s
+Predicted: Palmiro Togliatti
+F1: 0.3200, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Lesnoye Sanatorium located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 97: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 98/200: Whom is the birth place of Ravil Aryapov named after?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Ravil Aryapov and where was he born?
+Ground Truth: Ravil Aryapov is a Russian professional football coach and former player. He was born in Stavropol, which is now the city of Tolyatti.
+storage_time: 0.02159818820655346
+ Ravil Velimukhamedovich Aryapov was born on February 1, 1948 in Stavropol, now Tolyatti.
+prompt eval count:    198 token(s)
+prompt eval duration: 0.11716484325006604s
+prompt eval rate:     1689.9267263765012 tokens/s
+eval count:           34 token(s)
+eval duration:        3.266401767730713s
+eval rate:            10.409007347440001 tokens/s
+Predicted: Ravil Velimukhamedovich Aryapov was born on February 1, 1948 in Stavropol, now Tolyatti.
+F1: 0.4912, EM: 0.0000
+
+Sub-question 2/2
+Question: Whom is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.023894778918474913
+ the longest-serving secretary of the Italian Communist Party, Palmiro Togliatti
+prompt eval count:    199 token(s)
+prompt eval duration: 0.11898482125252485s
+prompt eval rate:     1672.482236853192 tokens/s
+eval count:           17 token(s)
+eval duration:        1.5852136611938477s
+eval rate:            10.724106419318296 tokens/s
+Predicted: the longest-serving secretary of the Italian Communist Party, Palmiro Togliatti
+F1: 0.7500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Ravil Aryapov and where was he born?...
+Sub-Q 2: ✓ CORRECT - Whom is the city of Tolyatti named after?...
+
+✓ Main question 98: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 99/200: Who is the city that AvtoVAZ's headquarters is located in named after?
+================================================================================
+
+Sub-question 1/2
+Question: In which city is AvtoVAZ's headquarters located?
+Ground Truth: Tolyatti
+storage_time: 0.021612726151943207
+ Tolyatti
+prompt eval count:    201 token(s)
+prompt eval duration: 0.11704986495897174s
+prompt eval rate:     1717.2168466016976 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2968127727508545s
+eval rate:            13.476508988909353 tokens/s
+Predicted: Tolyatti
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is the city of Tolyatti named after?
+Ground Truth: The city of Tolyatti is named after Palmiro Togliatti, the longest-serving secretary of the Italian Communist Party.
+storage_time: 0.023995924275368452
+ the longest-serving secretary of the Italian Communist Party, Palmiro Togliatti
+prompt eval count:    207 token(s)
+prompt eval duration: 0.11917380942031741s
+prompt eval rate:     1736.9588251553323 tokens/s
+eval count:           17 token(s)
+eval duration:        1.5825304985046387s
+eval rate:            10.742289021326037 tokens/s
+Predicted: the longest-serving secretary of the Italian Communist Party, Palmiro Togliatti
+F1: 0.7500, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - In which city is AvtoVAZ's headquarters located?...
+Sub-Q 2: ✓ CORRECT - Who is the city of Tolyatti named after?...
+
+✓ Main question 99: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 100/200: What team drafted the winner of the NBA scoring title this year?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 101/200: Where was the founder of the National Women's Party born?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the founder of the National Women's Party?
+Ground Truth: Alice Paul
+storage_time: 0.02298790868371725
+ Alice Paul
+prompt eval count:    221 token(s)
+prompt eval duration: 0.1187545065768063s
+prompt eval rate:     1860.982007087578 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19769549369812012s
+eval rate:            15.17485271860057 tokens/s
+Predicted: Alice Paul
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Where was Alice Paul born?
+Ground Truth: Mount Laurel Township, New Jersey.
+storage_time: 0.02711030188947916
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    224 token(s)
+prompt eval duration: 0.12417764263227582s
+prompt eval rate:     1803.8673891026074 tokens/s
+eval count:           11 token(s)
+eval duration:        0.989903450012207s
+eval rate:            11.112194830581057 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.7143, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the founder of the National Women's Party?...
+Sub-Q 2: ✓ CORRECT - Where was Alice Paul born?...
+
+✓ Main question 101: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 102/200: What administrative territorial entity is the owner of Ciudad Deportiva located?
+================================================================================
+
+Sub-question 1/2
+Question: Where is Ciudad Deportiva located?
+Ground Truth: Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+storage_time: 0.02000438515096903
+ Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+prompt eval count:    151 token(s)
+prompt eval duration: 0.11513385735452175s
+prompt eval rate:     1311.516902756404 tokens/s
+eval count:           15 token(s)
+eval duration:        1.3852448463439941s
+eval rate:            10.828410616064541 tokens/s
+Predicted: Ciudad Deportiva is located in Nuevo Laredo, Mexico.
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: What administrative territorial entity owns the Ciudad Deportiva sports complex in Nuevo Laredo, Mexico?
+Ground Truth: The Ciudad Deportiva sports complex is owned by the Nuevo Laredo Municipality.
+storage_time: 0.025368852075189352
+ Nuevo Laredo Municipality
+prompt eval count:    266 token(s)
+prompt eval duration: 0.1427491819486022s
+prompt eval rate:     1863.4082267159688 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5936110019683838s
+eval rate:            11.79223426922405 tokens/s
+Predicted: Nuevo Laredo Municipality
+F1: 0.4444, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Where is Ciudad Deportiva located?...
+Sub-Q 2: ✓ CORRECT - What administrative territorial entity owns the Ci...
+
+✓ Main question 102: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 103/200: Who founded the company that distributed the film UHF?
+================================================================================
+
+Sub-question 1/2
+Question: Which company distributed the film UHF?
+Ground Truth: Orion Pictures
+storage_time: 0.02202088525518775
+ Orion Pictures
+prompt eval count:    206 token(s)
+prompt eval duration: 0.11763029219582677s
+prompt eval rate:     1751.2495816728776 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19800209999084473s
+eval rate:            15.151354456032106 tokens/s
+Predicted: Orion Pictures
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who founded Orion Pictures?
+Ground Truth: Morris Mike Medavoy was a co-founder of Orion Pictures.
+storage_time: 0.026296171825379133
+ Morris Mike Medavoy
+prompt eval count:    266 token(s)
+prompt eval duration: 0.13899688515812159s
+prompt eval rate:     1913.711948993683 tokens/s
+eval count:           6 token(s)
+eval duration:        0.49544525146484375s
+eval rate:            12.11031891467377 tokens/s
+Predicted: Morris Mike Medavoy
+F1: 0.5882, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Which company distributed the film UHF?...
+Sub-Q 2: ✓ CORRECT - Who founded Orion Pictures?...
+
+✓ Main question 103: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 104/200: What is the place of birth of the person who submitted the first version of the equal rights amendment to congress in 1923?
+================================================================================
+
+Sub-question 1/2
+Question: Who submitted the first version of the Equal Rights Amendment to Congress in 1923?
+Ground Truth: Alice Paul, the head of the National Women's Party, revised the proposed Equal Rights Amendment in 1923.
+storage_time: 0.02271915227174759
+ Alice Paul
+prompt eval count:    235 token(s)
+prompt eval duration: 0.11843105917796493s
+prompt eval rate:     1984.2767736026774 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19794297218322754s
+eval rate:            15.155880337206543 tokens/s
+Predicted: Alice Paul
+F1: 0.1111, EM: 0.0000
+
+Sub-question 2/2
+Question: What is the place of birth of Alice Paul?
+Ground Truth: Paulsdale, Mount Laurel Township, New Jersey
+storage_time: 0.02297683572396636
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    189 token(s)
+prompt eval duration: 0.11828329879790545s
+prompt eval rate:     1597.8587164948667 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9900436401367188s
+eval rate:            11.110621344409596 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.9412, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who submitted the first version of the Equal Right...
+Sub-Q 2: ✓ CORRECT - What is the place of birth of Alice Paul?...
+
+✓ Main question 104: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 105/200: Since 2004, what is the location of the body to which, if a matter is not specifically reserved, it is devolved?
+================================================================================
+
+Sub-question 1/1
+Question: What is the location of the devolved body responsible for non-reserved matters since 2004?
+Ground Truth: The devolved body is the Scottish Parliament, located in the Holyrood area of Edinburgh since September 2004.
+storage_time: 0.029874925035983324
+ Holyrood area of Edinburgh
+prompt eval count:    356 token(s)
+prompt eval duration: 0.1487405220977962s
+prompt eval rate:     2393.42981306689 tokens/s
+eval count:           7 token(s)
+eval duration:        0.5944173336029053s
+eval rate:            11.776238013739151 tokens/s
+Predicted: Holyrood area of Edinburgh
+F1: 0.4000, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is the location of the devolved body responsi...
+
+✓ Main question 105: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 106/200: When did the person who first brought a postal service into Umayyad lands become caliph?
+================================================================================
+
+Sub-question 1/2
+Question: Who first introduced the postal service in the Umayyad Caliphate?
+Ground Truth: Mu'awiyah introduced the postal service in the Umayyad Caliphate.
+storage_time: 0.029316748026758432
+ Umar bin Abdul-Aziz developed it further by building caravanserais at stages along the Khurasan highway, but the original introduction of postal service in the Umayyad Caliphate was not directly attributed to a single person in the given documents. However, based on the information provided, Umar bin Abdul-Aziz played a significant role in developing and expanding the postal service.
+prompt eval count:    390 token(s)
+prompt eval duration: 0.15696874586865306s
+prompt eval rate:     2484.5710389145925 tokens/s
+eval count:           82 token(s)
+eval duration:        8.024605989456177s
+eval rate:            10.218570246033613 tokens/s
+Predicted: Umar bin Abdul-Aziz developed it further by building caravanserais at stages along the Khurasan highway, but the original introduction of postal service in the Umayyad Caliphate was not directly attributed to a single person in the given documents. However, based on the information provided, Umar bin Abdul-Aziz played a significant role in developing and expanding the postal service.
+F1: 0.2439, EM: 0.0000
+
+Sub-question 2/2
+Question: When did Mu'awiyah become caliph of the Umayyad Caliphate?
+Ground Truth: Mu'awiyah became caliph in 661 CE.
+storage_time: 0.03483887668699026
+661
+prompt eval count:    493 token(s)
+prompt eval duration: 0.16530321864411235s
+prompt eval rate:     2982.3980684937455 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2965397834777832s
+eval rate:            13.488915224421078 tokens/s
+Predicted: 661
+F1: 0.2857, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who first introduced the postal service in the Uma...
+Sub-Q 2: ✓ CORRECT - When did Mu'awiyah become caliph of the Umayyad Ca...
+
+✗ Main question 106: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 107/200: What is the river where Long Spruce Generating Station is located a tributary of?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 108/200: Who is the spouse of the creator of The Nanny Reunion: A Nosh to Remember?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 109/200: Who is the creator of Mickey Mouse's spouse?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 110/200: This is an instance of who was named commander in chief of texas forces by the new national government of texas National Forest?
+================================================================================
+
+Sub-question 1/1
+Question: Who was named commander in chief of Texas forces by the new national government of Texas?
+Ground Truth: Sam Houston was named commander in chief of the Texas forces by the new national government of Texas.
+storage_time: 0.026529138907790184
+ Sam Houston
+prompt eval count:    311 token(s)
+prompt eval duration: 0.14027538802474737s
+prompt eval rate:     2217.0674726284374 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19838857650756836s
+eval rate:            15.121838428461896 tokens/s
+Predicted: Sam Houston
+F1: 0.2222, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who was named commander in chief of Texas forces b...
+
+✓ Main question 110: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 111/200: What was the average per capita GVA in 2013 of the country which created Burma's academic system?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 112/200: During which era was the company that makes Nirbhay founded?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 113/200: What university did the author of The Secret World of Og go to?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The Secret World of Og?
+Ground Truth: Pierre Berton
+storage_time: 0.019445120822638273
+ Pierre Berton
+prompt eval count:    145 token(s)
+prompt eval duration: 0.11460773414000869s
+prompt eval rate:     1265.1851211268438 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2967052459716797s
+eval rate:            13.48139291201409 tokens/s
+Predicted: Pierre Berton
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Which university did Pierre Berton attend?
+Ground Truth: Pierre Berton attended the University of British Columbia.
+storage_time: 0.022955566179007292
+ University of British Columbia
+prompt eval count:    191 token(s)
+prompt eval duration: 0.11825530743226409s
+prompt eval rate:     1615.149494321036 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39565157890319824s
+eval rate:            12.637381642354878 tokens/s
+Predicted: University of British Columbia
+F1: 0.5714, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is the author of The Secret World of Og?...
+Sub-Q 2: ✓ CORRECT - Which university did Pierre Berton attend?...
+
+✓ Main question 113: ALL 2 sub-questions CORRECT
+
+================================================================================
+Main Question 114/200: Who is the child of Caroline LeRoy's spouse?
+================================================================================
+
+Sub-question 1/2
+Question: Who is Caroline LeRoy's spouse?
+Ground Truth: Daniel Webster
+storage_time: 0.023047801107168198
+ Daniel Webster
+prompt eval count:    238 token(s)
+prompt eval duration: 0.11878910614177585s
+prompt eval rate:     2003.5507272522525 tokens/s
+eval count:           3 token(s)
+eval duration:        0.19821381568908691s
+eval rate:            15.135171025140462 tokens/s
+Predicted: Daniel Webster
+F1: 1.0000, EM: 1.0000
+
+Sub-question 2/2
+Question: Who is Daniel Webster's child?
+Ground Truth: Daniel Webster's child is Daniel Fletcher Webster.
+storage_time: 0.024012397974729538
+ Alexis Caswell Angell and Caroline LeRoy Webster
+prompt eval count:    217 token(s)
+prompt eval duration: 0.11969136912375689s
+prompt eval rate:     1812.996221771256 tokens/s
+eval count:           11 token(s)
+eval duration:        0.990025520324707s
+eval rate:            11.110824695096989 tokens/s
+Predicted: Alexis Caswell Angell and Caroline LeRoy Webster
+F1: 0.1739, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - Who is Caroline LeRoy's spouse?...
+Sub-Q 2: ✗ INCORRECT - Who is Daniel Webster's child?...
+
+✗ Main question 114: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 115/200: Where was the person featured on the Chester Arthur coin born?
+================================================================================
+
+Sub-question 1/2
+Question: Who is featured on the Chester Arthur coin?
+Ground Truth: The coin for Chester A. Arthur features suffragette Alice Paul.
+storage_time: 0.024536664132028818
+ Queen Elizabeth II
+prompt eval count:    279 token(s)
+prompt eval duration: 0.1377870412543416s
+prompt eval rate:     2024.8638584596129 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2969520092010498s
+eval rate:            13.470190051119745 tokens/s
+Predicted: Queen Elizabeth II
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Where was suffragette Alice Paul born?
+Ground Truth: Alice Paul was born in Paulsdale, Mount Laurel Township, New Jersey.
+storage_time: 0.024012093897908926
+ Paulsdale, in Mount Laurel Township, New Jersey
+prompt eval count:    221 token(s)
+prompt eval duration: 0.1204361948184669s
+prompt eval rate:     1834.9965335015158 tokens/s
+eval count:           11 token(s)
+eval duration:        0.9897036552429199s
+eval rate:            11.114438086317952 tokens/s
+Predicted: Paulsdale, in Mount Laurel Township, New Jersey
+F1: 0.7619, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is featured on the Chester Arthur coin?...
+Sub-Q 2: ✓ CORRECT - Where was suffragette Alice Paul born?...
+
+✗ Main question 115: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 116/200: The Move Ya Body song's band is named after who?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 117/200: Who is the spouse of the producer of Dolores Claiborne?
+================================================================================
+⊘ SKIPPED (llm_judge=False or contains problematic answers)
+  Note: Documents still included in global corpus for similarity computation
+
+================================================================================
+Main Question 118/200: Where did the author of The National Dream go to university?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of The National Dream?
+Ground Truth: Pierre Berton
+storage_time: 0.022345916833728552
+ Ludwig von Mises
+prompt eval count:    220 token(s)
+prompt eval duration: 0.11898840917274356s
+prompt eval rate:     1848.9195840967254 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3962740898132324s
+eval rate:            12.617529453809471 tokens/s
+Predicted: Ludwig von Mises
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Where did Pierre Berton go to university?
+Ground Truth: Pierre Berton estudió en la Universidad de British Columbia.
+storage_time: 0.0221829479560256
+ University of British Columbia
+prompt eval count:    172 token(s)
+prompt eval duration: 0.11697236960753798s
+prompt eval rate:     1470.4327233609868 tokens/s
+eval count:           5 token(s)
+eval duration:        0.39556336402893066s
+eval rate:            12.64019991405046 tokens/s
+Predicted: University of British Columbia
+F1: 0.3158, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the author of The National Dream?...
+Sub-Q 2: ✓ CORRECT - Where did Pierre Berton go to university?...
+
+✗ Main question 118: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 119/200: What type of animal is Xiao Liwu's mother?
+================================================================================
+
+Sub-question 1/1
+Question: What is Xiao Liwu?
+Ground Truth: Xiao Liwu is a giant panda, the sixth cub born to his mother Bai Yun and the fifth for his father Gao Gao at the San Diego Zoo.
+storage_time: 0.025559225119650364
+ Xiao Liwu is a male giant panda.
+prompt eval count:    229 token(s)
+prompt eval duration: 0.12075829692184925s
+prompt eval rate:     1896.3500300786884 tokens/s
+eval count:           10 token(s)
+eval duration:        0.8896749019622803s
+eval rate:            11.24006081091402 tokens/s
+Predicted: Xiao Liwu is a male giant panda.
+F1: 0.3243, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✓ CORRECT - What is Xiao Liwu?...
+
+✓ Main question 119: ALL 1 sub-questions CORRECT
+
+================================================================================
+Main Question 120/200: What university did the author of 1967: The Last Good Year attend?
+================================================================================
+
+Sub-question 1/2
+Question: Who is the author of the book '1967: The Last Good Year'?
+Ground Truth: Pierre Berton
+storage_time: 0.02299810526892543
+ George Packer
+prompt eval count:    240 token(s)
+prompt eval duration: 0.11861798632889986s
+prompt eval rate:     2023.301924334951 tokens/s
+eval count:           4 token(s)
+eval duration:        0.2970278263092041s
+eval rate:            13.466751750847832 tokens/s
+Predicted: George Packer
+F1: 0.0000, EM: 0.0000
+
+Sub-question 2/2
+Question: Which university did Pierre Berton attend?
+Ground Truth: Pierre Berton attended the University of British Columbia.
+storage_time: 0.024657494854182005
+ University of British Columbia
+prompt eval count:    195 token(s)
+prompt eval duration: 0.12013352708891034s
+prompt eval rate:     1623.193830442365 tokens/s
+eval count:           5 token(s)
+eval duration:        0.3954498767852783s
+eval rate:            12.643827431800931 tokens/s
+Predicted: University of British Columbia
+F1: 0.5714, EM: 0.0000
+
+⏳ Waiting for 2 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Who is the author of the book '1967: The Last Good...
+Sub-Q 2: ✓ CORRECT - Which university did Pierre Berton attend?...
+
+✗ Main question 120: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 121/200: Who was honoured with the highest award a citizen without military experience in India before becoming a president?
+================================================================================
+
+Sub-question 1/1
+Question: Which Indian Presidents received the Bharat Ratna award before becoming President?
+Ground Truth: Sarvepalli Radhakrishnan received the Bharat Ratna in 1954 before becoming President.
+storage_time: 0.028700942173600197
+ C. Rajagopalachari, Sarvepalli Radhakrishnan, and C.V. Raman
+prompt eval count:    350 token(s)
+prompt eval duration: 0.14744292898103595s
+prompt eval rate:     2373.79983169635 tokens/s
+eval count:           25 token(s)
+eval duration:        2.3747611045837402s
+eval rate:            10.527374712237474 tokens/s
+Predicted: C. Rajagopalachari, Sarvepalli Radhakrishnan, and C.V. Raman
+F1: 0.3902, EM: 0.0000
+
+⏳ Waiting for 1 judgment(s) to complete...
+Sub-Q 1: ✗ INCORRECT - Which Indian Presidents received the Bharat Ratna ...
+
+✗ Main question 121: Some sub-questions INCORRECT
+
+================================================================================
+Main Question 122/200: The Directory of Public Worship was approved by a parliament whose modern equivalent has been based where since 2004?
+================================================================================
+
+Sub-question 1/2
+Question: Which parliament approved the Directory of Public Worship?
+Ground Truth: The Scottish Parliament approved the Directory of Public Worship.
+storage_time: 0.03539637383073568
+ Scottish ParliamentDocumentDocument: Presbyterianism: Presbyterian denominations that trace their heritage to the British Isles usually organise their church services inspired by the principles in the Directory of Public Worship, developed by the Westminster Assembly in the 1640s. This directory documented Reformed worship practices and theology adopted and developed over the preceding 
