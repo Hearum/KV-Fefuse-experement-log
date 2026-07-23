@@ -513,3 +513,16 @@ judge. Results below are computed directly from each runs 200-row
 | raw | Linear replacement | 29.00 | 37.21 | 39.00 |
 
 The preprocess Linear and raw Linear runs completed without errors. The
+historical preprocess MHA table reports EM=24.00, while the direct row-level
+artifact metric for this runner uses a different EM aggregation (29.50); F1
+and GLM match. This EM discrepancy must be resolved before claiming an EM
+improvement. The robust conclusion currently is that Linear replacement is
+quality-neutral on F1 and does not reduce GLM Acc in this four-group test.
+
+## Offline raw block-state prototype (2026-07-24)
+
+- Added a block-prefix operator that builds local S/z summaries from raw K/V
+  text blocks and uses one vectorized local cumsum for active boundary blocks.
+- Random-tensor equivalence against the token-scan reference passed with max
+  error below 5e-7; one preprocess pipeline smoke also returned the correct
+  answer with block-state enabled.
