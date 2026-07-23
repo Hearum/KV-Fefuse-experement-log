@@ -14,3 +14,5 @@
 | `qwen3_rate015_online_offline` | Qwen3-32B Rate=0.15 Online/Offline Selector Experiment | `MOTIVATION_EXPERIMENTS/by_date/2026-07-04/qwen3_rate015_online_offline` | `birth_time` |
 
 兼容性说明：原顶层实验路径会尽量保留为符号链接，因此旧命令和旧 README 中的路径仍可解析。
+
+- \: offline/residual 长期计划和汇总，归档于本日期。

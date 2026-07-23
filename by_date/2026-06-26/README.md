@@ -19,3 +19,6 @@
 | `reflect_pipeline_sanity` | reflect pipeline sanity | `MOTIVATION_EXPERIMENTS/by_date/2026-06-26/reflect_pipeline_sanity` | `birth_time` |
 
 兼容性说明：原顶层实验路径会尽量保留为符号链接，因此旧命令和旧 README 中的路径仍可解析。
+
+- \: 早期动机问题扫描，归档于 2026-06-26。
+- \: offline/residual 长期计划和汇总，归档于 2026-07-04。
