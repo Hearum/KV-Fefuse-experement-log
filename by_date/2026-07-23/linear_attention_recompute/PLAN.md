@@ -320,7 +320,7 @@ coefficient 替换为 normalized Linear coefficient：
 - [x] RAG smoke；
 - [x] MuSiQue 10 条；
 - [ ] MuSiQue 50 条；
-- [ ] MuSiQue 200 条；
+- [x] MuSiQue 200 条；
 - [ ] 汇总 EM/F1/GLM Acc。
 
 ### D. 候选方法二：attention-output blend
@@ -377,4 +377,4 @@ V_work = gamma * V_base + (1-gamma) * V_compute
 
 ### H. 当前执行位置
 
-已完成 A 的大部分基础工作、B 的 reference/selected-query adapter，以及 C 的 document-only smoke。当前下一项是 C 的 alpha sweep 和 MuSiQue 10 条结果；随后继续执行 50/200 条，并记录 EM/F1/GLM Acc。
+已完成 preprocess/raw 四组 200 条 MuSiQue replacement 实验；下一步核对 EM aggregation，并扩展到其他数据集或继续 Linear 消融。

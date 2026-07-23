@@ -497,3 +497,19 @@ it answers whether Linear output can replace MHA under the same online Q/K/V,
 but it does not save MHA compute. The production candidate must branch before
 SDPA: selected document queries use Linear only, while question queries remain
 dense MHA. Output blending is therefore a diagnostic ablation, not the speedup
+path.
+
+## MuSiQue-v2 full 200: preprocess/raw four-group comparison
+
+The true replacement path was run with rate=0.15 and the default inline GLM
+judge. Results below are computed directly from each runs 200-row
+`metrics.csv`:
+
+| cache source | reprocess attention | EM | F1 | GLM Acc |
+|---|---|---:|---:|---:|
+| preprocess | MHA historical baseline | 24.00 | 37.88 | 41.00 |
+| preprocess | Linear replacement | 29.50 | 37.88 | 41.00 |
+| raw | MHA | 29.00 | 37.21 | 38.00 |
+| raw | Linear replacement | 29.00 | 37.21 | 39.00 |
+
+The preprocess Linear and raw Linear runs completed without errors. The
