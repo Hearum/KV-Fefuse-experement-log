@@ -133,6 +133,10 @@ def main() -> None:
     if "ablation" in cfg:
         os.environ["FUSIONRAG_REPROCESS_ATTENTION_ABLATION"] = cfg["ablation"]
         os.environ["FUSIONRAG_REPROCESS_ATTENTION_ABLATION_ALPHA"] = cfg["alpha"]
+        if cfg["ablation"] == "linear":
+            # Keep the question prefill as dense MHA. The linear probe is
+            # applied only during the separate document reprocess call.
+            os.environ["FUSIONRAG_STRICT_REPROCESS_ABLATION"] = "1"
     if cfg.get("sparse_block"):
         os.environ["FUSIONRAG_SPARSE_BLOCK_SIZE"] = str(args.sparse_block_size)
         os.environ["FUSIONRAG_SPARSE_BLOCK_TOPK"] = str(args.sparse_block_topk)

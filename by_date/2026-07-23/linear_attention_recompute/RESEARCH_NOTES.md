@@ -466,3 +466,17 @@ candidate KV generation.
 
 This decomposition can explain a poor earlier result: a large quality drop
 could come from the Linear coefficient approximation, from changed recursive
+
+## Phase C smoke result: document-only coefficient probe
+
+- The first end-to-end smoke exposed that setup-v2 uses a strict document
+  reprocess followed by a separate query prefill. Passing ablation kwargs into
+  the latter caused an old `Qwen2ForCausalLM` signature failure; the query call
+  now remains dense MHA and receives no ablation kwargs.
+- `linear` now forces strict mode in the setup-v2 runner, so only selected
+  document reprocess tokens use the normalized Linear attention output.
+- MuSiQue-v2 example 0, `online_draft`, rate 0.15, alpha=1.0 completed:
+  prediction `Maria Bello`, EM=1, F1=1, inline GLM=True.
+- This is only a connectivity/semantic smoke result, not a dataset-level
+  quality claim. The next required result is a fixed-size comparison table
+  with baseline, alpha sweep, EM/F1, and GLM Acc.
