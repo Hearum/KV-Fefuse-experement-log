@@ -94,3 +94,51 @@ def block_summary_selected_attention_matmul(q, k, v, query_positions, *, block_s
             denominator = (qpart * pz.unsqueeze(2)).sum(-1, keepdim=True) + scores.sum(-1, keepdim=True)
             out[bi:bi + 1, :, idx] = (numerator / (denominator + eps)).to(out.dtype)
     return out.to(q.dtype)
+
+
+def block_summary_selected_attention_batched(q, k, v, query_positions, *, block_size=64,
+                                             block_prefix_s, block_prefix_z,
+                                             block_k, block_v, eps=1e-10,
+                                             query_chunk=32):
+    """Batched GQA block path for scattered selected queries.
+
+    ``block_k``/``block_v`` are padded tensors [B,Nb,Hkv,L,D{,v}]. Queries
+    are gathered by block chunks, removing the Python block loop while
+    retaining Hkv state (no repeat_kv materialization).
+    """
+    b, hq, nq, d = q.shape
+    hkv = k.shape[1]
+    if hq % hkv:
+        raise ValueError("Hq must be divisible by Hkv")
+    if query_positions.ndim == 1:
+        query_positions = query_positions.unsqueeze(0).expand(b, -1)
+    if tuple(query_positions.shape) != (b, nq):
+        raise ValueError("query_positions must be [Q] or [B,Q]")
+    nb, max_block = block_k.shape[1], block_k.shape[3]
+    if block_k.shape[:3] != (b, nb, hkv) or block_v.shape[:3] != (b, nb, hkv):
+        raise ValueError("padded block tensors must be [B,Nb,Hkv,L,D]")
+    group = hq // hkv
+    out = torch.empty(b, hkv, group, nq, v.shape[-1], device=q.device, dtype=torch.float32)
+    qf = (torch.nn.functional.elu(q.float()) + 1) * (d ** -0.5)
+    kf, vf = torch.nn.functional.elu(block_k.float()) + 1, block_v.float()
+    for lo in range(0, nq, query_chunk):
+        hi = min(lo + query_chunk, nq)
+        pos = query_positions[:, lo:hi]
+        bid = torch.div(pos, block_size, rounding_mode="floor").clamp_(0, nb - 1)
+        gi = bid[:, None, :, None, None].expand(b, hkv, hi - lo, max_block, d)
+        bk = torch.gather(kf.permute(0, 2, 1, 3, 4), 2, gi)
+        gv = bid[:, None, :, None, None].expand(b, hkv, hi - lo, max_block, vf.shape[-1])
+        bv = torch.gather(vf.permute(0, 2, 1, 3, 4), 2, gv)
+        qq = qf[:, :, lo:hi].reshape(b, hkv, group, hi - lo, d)
+        scores = torch.einsum("bhgqd,bhqld->bhgql", qq, bk)
+        starts = (bid * block_size)[:, None, :, None]
+        local = torch.arange(max_block, device=q.device)[None, None, None, :]
+        valid = (starts + local < k.shape[2]) & (starts + local <= pos[:, None, :, None])
+        scores = scores.masked_fill(~valid[:, :, None], 0.0)
+        ps = torch.gather(block_prefix_s, 1, bid[:, :, None, None, None].expand(b, hi - lo, hkv, d, v.shape[-1]))
+        pz = torch.gather(block_prefix_z, 1, bid[:, :, None, None].expand(b, hi - lo, hkv, d))
+        ps, pz = ps.permute(0, 2, 3, 1, 4), pz.permute(0, 2, 1, 3)
+        num = torch.einsum("bhgqd,bhdqv->bhgqv", qq, ps) + torch.einsum("bhgql,bhqlv->bhgqv", scores, bv)
+        den = torch.einsum("bhgqd,bhqd->bhgq", qq, pz) + scores.sum(-1)
+        out[:, :, :, lo:hi] = num / (den[..., None] + eps)
+    return out.reshape(b, hq, nq, v.shape[-1]).to(q.dtype)

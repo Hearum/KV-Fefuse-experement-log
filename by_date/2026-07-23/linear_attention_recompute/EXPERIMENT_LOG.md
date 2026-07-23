@@ -26,3 +26,11 @@
 - 事实结论：block summary 已使长上下文 Q=1/16 selected path 超过同长度 SDPA；短上下文和 Q=64/256 仍受 Triton launch/output 开销影响。full-prefill native grouped 文件仍保留在 `linear_kenrel/`，没有被修改或删除。
 - 优化 block adapter：预打包 contiguous K/V blocks；连续 selected positions 走零拷贝 q slice，避免重复 `index_select` 和 Triton wrapper 的 `.contiguous()` 拷贝。复测（block=64）：S=4096,Q=1 0.267 ms、Q=16 0.429 ms、Q=64 0.995 ms、Q=256 3.816 ms；S=8192,Q=1 0.253 ms、Q=16 0.390 ms、Q=64 0.962 ms、Q=256 3.773 ms。
 - 新增 block-local matmul backend，对每个当前 block 批量处理多个 query，不构造完整 `[Q,S]` 矩阵。复测：S=8192,Q=64 为 0.809 ms（Triton 0.957 ms），Q=256 为 2.628 ms（Triton 3.739 ms）；correctness max_error=0。该路径显存较高，暂作为 Q 较大时的候选。
+
+## 2026-07-24：分散 selected query 的 batched GQA 优化
+
+- 新增 `block_summary_selected_attention_batched`：输入预打包 padded block K/V `[B,Nb,Hkv,L,D]`，按 query 的 block id gather，在 `Hkv=8, group=Hq/Hkv` 维度上批量计算；不 repeat KV，不逐 block 调 Triton。
+- correctness：B=2、Hq=8、Hkv=2、S=23、Q=11、block=8、非连续 `[B,Q]` positions，和已有 block-local matmul path max error=0。
+- H20、S=8192、B=1、Hq=32、Hkv=8、D=Dv=128、FP16、block=64、warmup=2、iters=3。uniform positions 的 SDPA / 逐 block Triton / local matmul / batched GQA（ms）：Q=64 为 0.637 / 13.923 / 33.365 / 1.524，Q=256 为 0.871 / 28.587 / 73.291 / 5.204。末尾连续 positions：Q=64 为 0.626 / 0.987 / 0.910 / 1.561，Q=256 为 0.877 / 3.780 / 2.873 / 5.664。
+- 结论：batched GQA 对 uniform/random 分散 query 消除了 Python 多 block launch 的主要退化；连续尾部仍由现有 block Triton/local matmul 更优。Q=1 的低延迟路径不应切换到 batched gather。
+- FLA v0.3 检查：`chunk_simple_gla`/`chunk_linear_attn` 可提供 chunk state-scan 和 normalization 参考，但 forward output kernel 没有本需求的 native Hq/Hkv GQA selected-query 接口；本实现保留 Hkv state 并自定义 grouped output。
