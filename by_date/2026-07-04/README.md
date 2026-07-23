@@ -16,3 +16,5 @@
 兼容性说明：原顶层实验路径会尽量保留为符号链接，因此旧命令和旧 README 中的路径仍可解析。
 
 - \: offline/residual 长期计划和汇总，归档于本日期。
+
+- offline_residual_long_term_tasks：offline/residual 长期计划和汇总，归档于 2026-07-04。
