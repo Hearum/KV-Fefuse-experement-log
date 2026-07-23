@@ -332,3 +332,66 @@ All checks passed with float64 maximum error around 1e-15.
 
 The historical MoBA test
 spare_k_q_recompute_exp/scripts/test_working_kv_semantics.py was also tried,
+
+This historical test then failed before execution because the current branch no
+longer exports preserve_cache_past_tokens from ktransformers.util.utils. The
+failure is an interface compatibility issue, not a result for the Linear
+prototype.
+
+## Upstream implementation audit: 2026-07-23
+
+The current qjy environment does not provide fast_transformers, fla, or
+flash_linear_attention, and the FusionRAG repository does not contain a
+Linear Attention implementation. The first implementation must therefore be
+a local reference port, not a direct import.
+
+The most useful reference implementations inspected are:
+
+- Idiap fast-transformers causal linear attention:
+  https://raw.githubusercontent.com/idiap/fast-transformers/master/fast_transformers/attention/causal_linear_attention.py
+- FLA naive recurrent implementation:
+  https://github.com/fla-org/flash-linear-attention/blob/main/fla/ops/linear_attn/naive.py
+- FLA fused recurrent implementation:
+  https://github.com/fla-org/flash-linear-attention/blob/main/fla/ops/linear_attn/fused_recurrent.py
+- FLA normalization helper:
+  https://github.com/fla-org/flash-linear-attention/blob/main/fla/ops/linear_attn/utils.py
+
+### Implementation facts to preserve
+
+1. The feature map is applied before the recurrent state update. The recurrent
+   operator expects feature-mapped q and k; it is not automatically equivalent
+   to using raw Q and K.
+2. The unnormalized state is a K-by-V matrix:
+   S_t = S_{t-1} + outer(phi(k_t), v_t).
+3. The normalized output uses a running key state:
+   z_t = z_{t-1} + phi(k_t), followed by
+   o_t = (S_t^T phi(q_t)) / (phi(q_t)^T z_t + eps).
+4. An initial state is part of the API. For normalized attention it is a pair
+   consisting of the KV state and the cumulative-key z state.
+5. A chunk implementation must include both inter-chunk prefix state and
+   intra-chunk causal attention. Computing one whole block state and using it
+   for every token in that block leaks future tokens inside the block.
+6. FLA computes recurrent state in float32 and casts output back to input dtype
+   in the naive reference. Numerical comparisons should match this policy.
+7. The FLA fused recurrent implementation is a kernel for the same recurrence,
+   not a drop-in replacement for Qwen MHA. The caller still chooses feature
+   maps, scaling, normalization, layout, and initial-state semantics.
+
+### Consequence for FusionRAG
+
+The first candidate operator should expose:
+
+linear_recurrent(q, k, v, initial_kv_state, initial_z_state,
+                 normalize=True, output_final_state=True)
+
+and return token outputs plus final state. It should have an explicit prefix
+state input rather than silently reading the entire cache. This makes the
+following cases testable:
+
+- full explicit prefix versus assembled block states;
+- old cache state versus updated selected-token state;
+- independent snapshot versus causal sequential selected updates;
+- exact FLA-style normalization versus a project-specific variant.
+
+Only after this reference matches a token-loop implementation should we write a
+fused operator. The prior MoBA experience is a reason to keep the reference and

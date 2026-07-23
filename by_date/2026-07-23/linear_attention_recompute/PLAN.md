@@ -232,3 +232,24 @@ alpha = {0, 0.25, 0.5, 0.75, 1}
 
 在这些决策未改变前，按本计划的默认配置推进 Phase 0 和 Phase 1。
 
+
+## 8. Upstream reference implementation gate
+
+在实际接入 Qwen3 前，先复刻并验证一个 FLA/fast-transformers 风格的
+reference operator。当前 qjy 环境没有安装 fast_transformers、fla 或
+flash_linear_attention，FusionRAG 也没有现成 Linear Attention 实现，因此
+不能把第三方 fused kernel 直接当作正确性基线。
+
+reference 必须明确支持：
+
+- feature-mapped q/k，而不是默认把 raw q/k 当作 feature；
+- float32 recurrent state；
+- normalized numerator 和 running z state；
+- initial KV state 与 initial z state；
+- final state 输出；
+- block 内 causal prefix，而不是把完整 block state 给所有 token；
+- GQA/head layout 和 global RoPE 后的 K；
+- independent snapshot 与 causal sequential 两种 selected-token 语义。
+
+reference 与 fast operator 逐 token 对齐后，才允许修改
+models/modeling_qwen3.py 或 ktransformers/util/utils.py 接入实际模型。
