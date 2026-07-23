@@ -268,3 +268,114 @@ models/modeling_qwen3.py 或 ktransformers/util/utils.py 接入实际模型。
 
 第 1 步和第 2 步不写回 cache。只有第 4 步才进入 working-KV/cache
 实验。这样可以区分 coefficient approximation、hidden-state recursion 和
+
+cache writeback 三类误差来源。
+
+## 10. Long-term experiment checklist
+
+所有候选方法的最终判断统一使用 RAG pipeline 结果：
+
+- EM；
+- F1；
+- GLM Acc。
+
+KV gap、hidden gap、attention coefficient error、state error 只作为诊断信息，
+不作为方法好坏的最终指标。不同方法可以通过不同机制工作，因此每个
+候选方向都必须独立完成实现、sanity、消融和 RAG 评估。
+
+### A. 基础设施与统一协议
+
+- [x] 创建独立实验分支；
+- [x] 阅读主仓库和实验子仓库规则；
+- [x] 固定 setup-v2、Qwen3-32B、MuSiQue-v2、rate=0.15 环境；
+- [x] 修复无 ablation 时错误传入额外 kwargs 的接口问题；
+- [x] 完成 baseline online draft 全量复现；
+- [x] 建立统一 EM/F1/GLM judge 评估入口；
+- [ ] 为每个方法生成统一 metadata、commit、参数和结果目录；
+- [ ] 为每个方法建立 smoke、10 条、50 条、200 条四级结果表；
+- [ ] 统一记录运行时间、显存和失败原因，但不以它们替代质量结论。
+
+### B. Linear Attention reference 与算子
+
+- [x] 实现 normalized recurrent reference；
+- [x] 实现 chunked inter-state + intra-chunk causal reference；
+- [x] 通过 explicit prefix、initial state、final state 对照；
+- [x] 通过不同 sequence/chunk size 和 bfloat16 测试；
+- [ ] 实现 Qwen-compatible GQA/head layout adapter；
+- [ ] 明确 global RoPE 后 Q/K 的 feature-map 输入；
+- [ ] 实现 selected document prefix state 构造；
+- [ ] 实现 independent snapshot 与 causal sequential 两种模式；
+- [ ] 实现 reference 与 vectorized/chunk operator 的逐 token 对齐；
+- [ ] 只在上述测试通过后考虑 Triton/fused kernel。
+
+### C. 候选方法一：coefficient-only substitution
+
+固定当前层 Q/K/V，只将 selected document token 的 softmax attention
+coefficient 替换为 normalized Linear coefficient：
+
+- [ ] 不写回 cache 的 attention-output correctness；
+- [ ] 接入 selected document reprocess；
+- [ ] 保持 question full MHA；
+- [ ] alpha/gamma 输出融合消融；
+- [ ] RAG smoke；
+- [ ] MuSiQue 10 条；
+- [ ] MuSiQue 50 条；
+- [ ] MuSiQue 200 条；
+- [ ] 汇总 EM/F1/GLM Acc。
+
+### D. 候选方法二：attention-output blend
+
+在同一组 Q/K/V 下计算 MHA output 和 Linear output，再执行：
+
+y_work = gamma * y_MHA + (1-gamma) * y_linear
+
+- [ ] gamma={0,0.25,0.5,0.75,1}；
+- [ ] 验证 residual/output projection/MLP 时序；
+- [ ] 保持 cache 写回语义不变；
+- [ ] RAG smoke、10 条、50 条、200 条；
+- [ ] 统一 EM/F1/GLM Acc 汇总。
+
+### E. 候选方法三：recursive hidden-state reprocess
+
+让 Linear attention output 进入当前 transformer block，并自然产生下一层
+hidden state 和 Q/K/V：
+
+- [ ] 当前层 hidden state trace；
+- [ ] 下一层 candidate 生成；
+- [ ] layer-wise base/cache 隔离；
+- [ ] independent snapshot 与 causal sequential 消融；
+- [ ] RAG smoke、10 条、50 条、200 条；
+- [ ] 统一 EM/F1/GLM Acc 汇总。
+
+### F. 候选方法四：KV-level blend
+
+只在前面方法有明确结果后测试：
+
+K_work = gamma * K_base + (1-gamma) * K_compute
+V_work = gamma * V_base + (1-gamma) * V_compute
+
+- [ ] K/V 同 gamma；
+- [ ] K-only；
+- [ ] V-only；
+- [ ] independent K/V gamma；
+- [ ] 写回前后时序检查；
+- [ ] RAG smoke、10 条、50 条、200 条；
+- [ ] 统一 EM/F1/GLM Acc 汇总。
+
+### G. 统一消融与结论
+
+- [ ] raw cache 与 preprocess cache 分开；
+- [ ] document-only 与 question-path ablation 分开；
+- [ ] layer 全量、前半层、后半层；
+- [ ] selected token rate 固定为 0.15；
+- [ ] Linear feature map 消融；
+- [ ] chunk size/state reuse 消融；
+- [ ] independent/causal update 消融；
+- [ ] 所有候选方法放入统一结果矩阵；
+- [ ] 以 EM、F1、GLM Acc 为最终结论；
+- [ ] 记录失败方法和失败原因，不只保留成功实验。
+
+### H. 当前执行位置
+
+已完成 A 的大部分基础工作和 B 的 reference 部分。当前下一项是 C：
+coefficient-only substitution 的 RAG pipeline 接入与 smoke test。未完成的
