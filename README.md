@@ -201,3 +201,15 @@
 | `2026-07-14` | `qwen3_musique_fresh_preprocess_qjy000` | Qwen3 MuSiQue Fresh Preprocess KV Rerun on qjy000 | `MOTIVATION_EXPERIMENTS/by_date/2026-07-14/qwen3_musique_fresh_preprocess_qjy000` | `MOTIVATION_EXPERIMENTS/qwen3_musique_fresh_preprocess_qjy000` |
 | `2026-07-14` | `qwen3_rate_sweep_online_qk_draft` | Qwen3 MuSiQue Online QK/Draft Rate Sweep | `MOTIVATION_EXPERIMENTS/by_date/2026-07-14/qwen3_rate_sweep_online_qk_draft` | `MOTIVATION_EXPERIMENTS/qwen3_rate_sweep_online_qk_draft` |
 | `2026-07-14` | `setup_standard_v2_cross_dataset` | Setup-Standard V2 Cross-Dataset Evaluation | `MOTIVATION_EXPERIMENTS/by_date/2026-07-14/setup_standard_v2_cross_dataset` | `MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset` |
+
+## 根目录兼容别名与 canonical 目录
+
+根目录下的实验名称（例如 calibration_query_selector_prediction_16q）全部是相对软链接，不是第二份实验数据。唯一 canonical 实体目录位于 by_date/YYYY-MM-DD/实验名。
+
+- 查找、编辑和新建实验时，以 by_date/YYYY-MM-DD/实验名为准。
+- 根目录软链接只为旧命令和旧文档提供兼容，不得在根目录新建实体实验目录。
+- 软链接必须使用仓库内部相对路径，不得指向 /home、/raid 或其他机器路径。
+- 需要查日期时先看 by_date/README.md 和对应日期 README。
+- 2026-07-15、2026-07-16、2026-07-18 等新日期也必须按相同规则归档。
+
+当前根目录兼容软链接数量：170；它们不构成重复存储。
