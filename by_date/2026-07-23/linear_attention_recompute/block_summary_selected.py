@@ -1,7 +1,8 @@
 """Block-summary selected-query adapter for Qwen3 document reprocess."""
 import torch
 
-from selected_query_kernel import selected_query_attention, triton_block_attention
+from selected_query_kernel import (selected_query_attention, triton_block_attention,
+                                   triton_block_attention_gqa)
 
 
 def build_block_prefix_states(k, v, block_size=64):
@@ -154,6 +155,19 @@ def block_summary_selected_attention_fused(q, k, v, query_positions, *, block_si
     if query_positions.ndim == 1:
         query_positions = query_positions.unsqueeze(0).expand(b, -1)
     return triton_block_attention(
+        q, block_k, block_v, query_positions,
+        block_size=block_size, prefix_s=block_prefix_s, prefix_z=block_prefix_z,
+        seq_len=k.shape[2], eps=eps,
+    )
+
+
+def block_summary_selected_attention_fused_gqa(q, k, v, query_positions, *, block_size=64,
+                                               block_prefix_s, block_prefix_z,
+                                               block_k, block_v, eps=1e-10):
+    """GQA-fused Triton block path; one program handles one KV head and its Q group."""
+    if query_positions.ndim == 1:
+        query_positions = query_positions.unsqueeze(0).expand(q.shape[0], -1)
+    return triton_block_attention_gqa(
         q, block_k, block_v, query_positions,
         block_size=block_size, prefix_s=block_prefix_s, prefix_z=block_prefix_z,
         seq_len=k.shape[2], eps=eps,

@@ -41,3 +41,9 @@
 - correctness：B=2、Hq=8、Hkv=2、S=23、Q=11、block=8、非连续 `[B,Q]` positions，FP16 与 block-local reference max error=9.77e-4。
 - H20、S=8192、B=1、Hq=32、Hkv=8、D=Dv=128、FP16、block=64、warmup=2、iters=3。fused Triton：连续尾部 Q=1/16/64/256 为 0.165/0.179/0.315/1.077 ms；uniform positions 为 0.165/0.170/0.337/1.133 ms。对应 SDPA 分别约 0.58/0.59/0.63/0.87 ms（实际测量有小幅波动）。
 - 结论：fused Triton 消除了原逐 block Triton 的 launch 放大；PyTorch batched 路径不再作为性能结论，只保留用于语义/数值交叉检查。
+
+## 2026-07-24：GQA-aware fused Triton
+
+- 新增 `triton_block_attention_gqa`：grid 从 `(B,Q,Hq)` 改为 `(B,Q,Hkv)`，每个 program 同时产生一个 KV head 对应的 Q-head group 输出；prefix `S/z` 与 block K/V 不再按 4 个 Q heads 重复加载/扫描。
+- correctness：B=2、Hq=8、Hkv=2、非连续 positions，FP16 max error=9.77e-4。
+- H20、S=8192、uniform、FP16、block=64：Q=64 为 0.255 ms，Q=256 为 0.732 ms；非 GQA-fused 版本为 0.339/1.142 ms，分别约提升 1.33x/1.56x。

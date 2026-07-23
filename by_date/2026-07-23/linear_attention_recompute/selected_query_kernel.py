@@ -210,6 +210,83 @@ if triton is not None:
                  num / den, mask=vv < value_dim)
 
 
+if triton is not None:
+    @triton.jit
+    def _block_selected_gqa_kernel(q, block_k, block_v, out, prefix_s, prefix_z, positions,
+                                   hq, hkv, seq_len, block_size, value_dim, scale, eps,
+                                   sposb, sposq,
+                                   sqb, sqh, sqn, sqd, skb, skb_block, skb_head, skb_n, skb_d,
+                                   svb, svb_block, svb_head, svb_n, svv,
+                                   sob, soh, son, sov, spsb, spsn, spsh, spsd, spsv,
+                                   szb, szn, szh, szd,
+                                   GROUP: tl.constexpr, BLOCK_D: tl.constexpr,
+                                   BLOCK_V: tl.constexpr, BLOCK_N: tl.constexpr):
+        bidx = tl.program_id(0)
+        qidx = tl.program_id(1)
+        kvhead = tl.program_id(2)
+        d = tl.arange(0, BLOCK_D)
+        vv = tl.arange(0, BLOCK_V)
+        qpos = tl.load(positions + bidx * sposb + qidx * sposq)
+        block = qpos // block_size
+        ss = tl.load(prefix_s + bidx * spsb + block * spsn + kvhead * spsh
+                     + d[:, None] * spsd + vv[None, :] * spsv,
+                     mask=(d[:, None] < BLOCK_D) & (vv[None, :] < value_dim), other=0.0)
+        zz = tl.load(prefix_z + bidx * szb + block * szn + kvhead * szh + d * szd,
+                     mask=d < BLOCK_D, other=0.0)
+        for start in range(0, BLOCK_N, BLOCK_N):
+            n = start + tl.arange(0, BLOCK_N)
+            absolute_n = block * block_size + n
+            valid = (n < block_size) & (absolute_n < seq_len) & (absolute_n <= qpos)
+            kp = block_k + bidx * skb + block * skb_block + kvhead * skb_head + n[None, :] * skb_n + d[:, None] * skb_d
+            vp = block_v + bidx * svb + block * svb_block + kvhead * svb_head + n[:, None] * svb_n + vv[None, :] * svv
+            kval = tl.load(kp, mask=(d[:, None] < BLOCK_D) & (n[None, :] < block_size), other=0.0).to(tl.float32)
+            kval = tl.where(kval >= 0, kval + 1, tl.exp(kval))
+            kval = tl.where(valid[None, :], kval, 0.0)
+            vval = tl.load(vp, mask=(n[:, None] < block_size) & (vv[None, :] < value_dim), other=0.0).to(tl.float32)
+            vval = tl.where(valid[:, None], vval, 0.0)
+            if (BLOCK_D >= 16 and BLOCK_V >= 16) and BLOCK_N >= 16:
+                ss += tl.dot(kval, vval)
+            else:
+                ss += tl.sum(kval[:, :, None] * vval[None, :, :], axis=1)
+            zz += tl.sum(kval, axis=1)
+        g = tl.arange(0, GROUP)
+        qd = q + bidx * sqb + (kvhead * GROUP + g[:, None]) * sqh + qidx * sqn + d[None, :] * sqd
+        qq = tl.load(qd, mask=d[None, :] < BLOCK_D, other=0.0).to(tl.float32)
+        qq = tl.where(qq >= 0, qq + 1, tl.exp(qq)) * scale
+        num = tl.sum(qq[:, :, None] * ss[None, :, :], axis=1)
+        den = tl.sum(qq * zz[None, :], axis=1) + eps
+        op = out + bidx * sob + (kvhead * GROUP + g[:, None]) * soh + qidx * son + vv[None, :] * sov
+        tl.store(op, num / den[:, None], mask=(g[:, None] < GROUP) & (vv[None, :] < value_dim))
+
+
+def triton_block_attention_gqa(q, block_k, block_v, query_positions, *, block_size,
+                               prefix_s, prefix_z, seq_len, scale=None, eps=1e-10):
+    """GQA-fused block kernel: one program computes all Q heads in one KV group."""
+    if triton is None or not q.is_cuda:
+        raise RuntimeError("fused block kernel requires CUDA Triton")
+    q, block_k, block_v = [x.contiguous() for x in (q, block_k, block_v)]
+    prefix_s, prefix_z = prefix_s.contiguous().float(), prefix_z.contiguous().float()
+    positions = query_positions.contiguous().long()
+    b, hq, nq, d = q.shape
+    _, nb, hkv, max_block, _ = block_k.shape
+    if positions.ndim != 2 or positions.shape != (b, nq) or hq % hkv:
+        raise ValueError("invalid GQA block shape")
+    group = hq // hkv
+    if max_block != block_size or group > 8 or d > 128 or block_v.shape[-1] > 128:
+        raise ValueError("unsupported fused GQA block shape")
+    out = torch.empty(b, hq, nq, block_v.shape[-1], device=q.device, dtype=torch.float32)
+    _block_selected_gqa_kernel[(b, nq, hkv)](
+        q, block_k, block_v, out, prefix_s, prefix_z, positions,
+        hq, hkv, seq_len, block_size, block_v.shape[-1],
+        d ** -0.5 if scale is None else scale, eps, *positions.stride(),
+        *q.stride(), *block_k.stride(), *block_v.stride(), *out.stride(),
+        *prefix_s.stride(), *prefix_z.stride(), GROUP=group,
+        BLOCK_D=triton.next_power_of_2(d), BLOCK_V=triton.next_power_of_2(block_v.shape[-1]),
+        BLOCK_N=block_size,
+    )
+    return out.to(q.dtype)
+
+
 def triton_block_attention(q, block_k, block_v, query_positions, *, block_size,
                            prefix_s, prefix_z, seq_len, scale=None, eps=1e-10):
     """Fused selected-query block kernel; block tensors are [B,Nb,Hkv,L,D]."""
