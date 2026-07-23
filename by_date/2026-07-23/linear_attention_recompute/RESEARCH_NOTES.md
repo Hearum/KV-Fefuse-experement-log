@@ -480,3 +480,11 @@ could come from the Linear coefficient approximation, from changed recursive
 - This is only a connectivity/semantic smoke result, not a dataset-level
   quality claim. The next required result is a fixed-size comparison table
   with baseline, alpha sweep, EM/F1, and GLM Acc.
+
+### MuSiQue-v2 first 10 results
+
+With `online_draft`, rate=0.15, strict document-only linear coefficient
+substitution, alpha=1.0, and the default inline GLM judge: n=10, EM=0.50,
+F1=0.4472, GLM Acc=0.50. This is the first quality result, not merely a
+connectivity check; it should be compared against the same-segment baseline
+and then repeated across alpha/gamma before drawing conclusions.

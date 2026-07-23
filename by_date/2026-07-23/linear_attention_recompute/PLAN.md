@@ -318,7 +318,7 @@ coefficient 替换为 normalized Linear coefficient：
 - [x] 保持 question full MHA；
 - [ ] alpha/gamma 输出融合消融；
 - [x] RAG smoke；
-- [ ] MuSiQue 10 条；
+- [x] MuSiQue 10 条；
 - [ ] MuSiQue 50 条；
 - [ ] MuSiQue 200 条；
 - [ ] 汇总 EM/F1/GLM Acc。
