@@ -313,3 +313,22 @@ For the Linear prototype, use distinct tensors and names:
 Never let V_work_l silently become V_base_{l+1}. The latter must be obtained
 from the original cache snapshot for layer l+1. Also distinguish the
 cache-position mapping problem from the layer-snapshot problem: both can
+
+## Phase-0 execution record: 2026-07-23
+
+Added:
+
+scripts/test_linear_state_semantics.py
+
+The explicit reference test passed:
+
+- block state and normalizer additivity;
+- selected-token rank-one state replacement;
+- causal prefix state for every token;
+- missing-document cache position mapping without overwriting a loaded document;
+- KV blend alpha endpoints and intermediate values.
+
+All checks passed with float64 maximum error around 1e-15.
+
+The historical MoBA test
+spare_k_q_recompute_exp/scripts/test_working_kv_semantics.py was also tried,
