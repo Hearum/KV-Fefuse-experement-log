@@ -80,6 +80,35 @@ i。第一版显式保留两种模式：
 
 两者必须在 toy case 上分别验证，不能混为一个结果。
 
+### 2.6 attention 语义分支登记表
+
+这里需要把“重算后的 K/V 是否立即参与当前层 attention”和“selected token
+之间是否存在 causal 依赖”作为两个独立维度记录。当前实现不是简单的失败
+版本，而是其中一个可单独评估的 proxy 分支；它可能因为保留稳定的旧 K/V
+而得到更好的 RAG 结果，但不能和完整 recompute 结果混称。
+
+每种分支必须在实验 metadata 中记录 `q_source`、`kv_source`、
+`selected_dependency` 和 `self_kv`，最终只用 EM/F1/GLM judge 判断优劣。
+
+| 分支 ID | Q 来源 | selected K/V 来源 | selected 间依赖 | token i 是否使用自己的新 K/V | 状态 |
+|---|---|---|---|---|---|
+| B0 `old_kv_proxy` | 当前 hidden 的 Q_new | 全部 K_old/V_old | 无 | 否 | [x] 当前实现，已完成 200 条诊断结果 |
+| B1 `self_patch` | Q_new | i 使用 K_new_i/V_new_i，其余 selected 仍用 old | 只有 self | 是 | [ ] 待实现，最小 patch 对照 |
+| B2 `causal_patch` | Q_new | selected 用 new，未 selected 用 old | i 只能影响 j>=i | 是 | [ ] 主语义，待实现 |
+| B3 `bidirectional_diag` | Q_new | selected 用 new | selected 之间双向可见 | 是 | [ ] 仅诊断非 causal 实现，不作为正式方案 |
+
+其中 B0 与 B2 的差别必须单独保留：B0 是当前已经跑完的
+`new Q + old K/V linear`，B2 才是“新 K/V 在当前层 attention 前生效”的
+完整 causal linear recompute。B3 只用于诊断未来信息泄漏，不作为正式方案。
+
+`independent_snapshot` 与 `causal_sequential` 不再单独计为新的质量分支，
+而是 B1/B2 内部的构造模式：前者让 selected token 的 candidate 都基于同一
+份 immutable old state，后者允许前面 token 的 working KV 影响后面 token。
+这样本计划只维护上述四个核心语义分支，另加一个正交的构造模式开关，
+避免把 Q/K/V 来源、self 可见性和因果方向组合成无法管理的分支爆炸。任何新增分支必须先登记 ID、语义、预期用途和
+最终评价指标，再写代码和启动实验。所有分支都要完成：toy correctness、
+1/10 条 smoke、50 条筛选，最后才决定是否跑完整 200 条。
+
 ## 3. Linear state 定义
 
 对于 feature map phi：

@@ -526,3 +526,93 @@ quality-neutral on F1 and does not reduce GLM Acc in this four-group test.
 - Random-tensor equivalence against the token-scan reference passed with max
   error below 5e-7; one preprocess pipeline smoke also returned the correct
   answer with block-state enabled.
+
+### Persisted offline S/z cache (2026-07-24)
+
+The block-state path now stores per-example, per-chunk summaries after global
+RoPE alignment as `*_linear_s_bf16.pt` and `*_linear_z_bf16.pt`. The stacked
+shapes are `[layers, 1, kv_heads, head_dim, value_dim]` and
+`[layers, 1, kv_heads, head_dim]`; subsequent loads reuse these files. A
+one-example MuSiQue raw precompute wrote the files successfully: first run
+storage_time was about 37s, cache-hit run about 4.2s, and the precompute-only
+path skipped reprocess/generation. Four 50-example MuSiQue raw shards were then
+launched on qjy000 GPU0, qjy001 GPU2, qjy002 GPU0, and qjy003 GPU2; logs and PIDs
+are recorded under `linear_attention_recompute/logs/`.
+
+### Kernel side investigation
+
+The dense Qwen3 path currently calls PyTorch
+`scaled_dot_product_attention`; the repository also contains Triton kernels
+for sparse/auxiliary attention, but those are not the dense baseline. A
+
+
+
+### Persisted raw summary equivalence check (2026-07-24)
+
+For MuSiQue raw example 1, chunk 0, the persisted BF16 S/z was compared with a fresh recomputation from the raw K/V. The p99 relative quantization error was about 0.35% for both S and z; this is the expected BF16 serialization error, not a causal-prefix mismatch. Using the persisted summary as a complete prefix and scanning a following boundary block, the block-summary output differed from token-scan Linear Attention by max absolute error 1.54e-4.
+
+The preprocess-summary precompute was then launched for the full 200 MuSiQue examples in four shards: qjy000 0-50, qjy001 50-100, qjy002 100-150, qjy003 150-200. Logs are under linear_attention_recompute/logs/.
+
+
+### BF16 summary quantization caveat (2026-07-24)
+
+The persisted summaries are computed with float32 accumulators but serialized as BF16 to reduce cache size. Comparing MuSiQue raw example 1 chunk 0 with fresh float32 recomputation gave approximately 0.35% p99 relative error for both S and z, consistent with BF16 mantissa rounding (about 0.39% typical worst-case relative rounding). This is serialization quantization rather than a causal-prefix or block-boundary error. With the persisted summary used as a prefix, the final block-summary output differed from token-scan Linear Attention by max absolute error 1.54e-4.
+
+This remains an optimization/ablation item: compare float32 summary storage, BF16 storage, and possibly blockwise scaled/quantized storage on the same samples using EM/F1/GLM judge before choosing the production format. Current large-scale preprocess summary generation continues with BF16.
+
+
+### End-to-end implementation audit (2026-07-24)
+
+The operator itself implements a valid normalized causal linear-attention
+variant: `phi(x) = elu(x) + 1`, with numerator `phi(q) @ S` and denominator
+`phi(q) @ z`. The block-summary path was verified against the token-scan
+reference for fixed K/V, up to BF16 summary serialization error.
+
+However, the current end-to-end document-reprocess path has an important
+semantic gap. `selected_query_normalized_linear_attention_blocks_fast` receives
+`raw_k_blocks` and `raw_v_blocks` captured while loading the old cache. During
+the layer forward, Q is recomputed from the current hidden state and the
+selected positions new K/V are written to the HF cache, but the block data and
+its S/z summaries are not patched with those new K/V before the linear
+attention call. Consequently the current result is `new Q + old K/V linear
+attention`, rather than full linear reprocessing with the effective K/V
+(`new K/V` at selected positions and old K/V elsewhere).
+
+This means the current full-data result must not yet be interpreted as evidence
+for the intended method. The next correctness fix should either patch the
+selected positions in each block before forming local prefix states, or add
+delta contributions for each selected position to the block S/z scan. The
+causal rule is that a newly recomputed position i contributes to query j only
+when i <= j; selected positions must therefore be processed in sorted absolute
+position order. A targeted old-vs-patched-K/V test is required before the next
+quality comparison.
+
+
+### Preprocess summary linear full-data result (2026-07-24)
+
+The complete 200-example MuSiQue-v2 experiment finished with 24 workers using
+the preprocess KV cache and persisted BF16 local S/z summaries. There were 24
+segments, 200 batches, and no runtime errors. The result was EM 30.00, F1
+38.30, and inline GLM accuracy 41.00. This is branch B0
+`old_kv_proxy`: the current linear path uses new Q with old K/V block data; it
+is not yet the B2 causal K/V-patched recompute.
+
+
+### Preprocess summary linear rate sweep result (2026-07-24)
+
+The complete MuSiQue-v2 preprocess-cache experiment at rate 0.05 finished on
+200 examples after retrying the 41-50 shard on another GPU. Using persisted BF16
+S/z and the current B0 old-KV proxy, the result was EM 25.50, F1 34.27, and
+inline GLM accuracy 37.50. The preprocess DraftModel MHA baseline at rate 0.05
+was EM 20.00, F1 33.80, GLM 36.00.
+
+
+### Preprocess summary linear rate 0.10 result (2026-07-24)
+
+The complete MuSiQue-v2 preprocess-cache experiment at rate 0.10 finished on
+200 examples. The 75-83 shard was retried on another GPU after an OOM during
+model loading. Using persisted BF16 S/z and current B0 old-KV proxy, the final
+result was EM 27.50, F1 35.96, and inline GLM accuracy 38.50. A same-rate
+preprocess DraftModel MHA baseline has not yet been run; the available MHA
+points are rate 0.05 (20.00/33.80/36.00) and rate 0.15
+(24.00/37.88/41.00).

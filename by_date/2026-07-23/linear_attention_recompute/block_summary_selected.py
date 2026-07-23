@@ -3,6 +3,7 @@ import torch
 
 from selected_query_kernel import (selected_query_attention, triton_block_attention,
                                    triton_block_attention_gqa)
+from tiled_block_selected import tiled_block_attention
 
 
 def build_block_prefix_states(k, v, block_size=64):
@@ -205,3 +206,31 @@ def block_summary_selected_attention_fused_gqa(q, k, v, query_positions, *, bloc
         block_size=block_size, prefix_s=block_prefix_s, prefix_z=block_prefix_z,
         seq_len=k.shape[2], eps=eps,
     )
+
+
+def block_summary_selected_attention_tiled(q, k, v, query_positions, *, block_size=32,
+                                           block_prefix_s, block_prefix_z, eps=1e-10):
+    """Tiled Q GEMM path for selected queries grouped by block."""
+    b, hq, nq, _ = q.shape
+    if query_positions.ndim == 1:
+        query_positions = query_positions.unsqueeze(0).expand(b, -1)
+    out = torch.empty(b, hq, nq, v.shape[-1], device=q.device, dtype=q.dtype)
+    for bi in range(b):
+        groups = {}
+        for qi, pos in enumerate(query_positions[bi].tolist()):
+            groups.setdefault(int(pos) // block_size, []).append(qi)
+        for block, indices in groups.items():
+            start, end = block * block_size, min((block + 1) * block_size, k.shape[2])
+            idx = torch.tensor(indices, device=q.device, dtype=torch.long)
+            qp = q[bi:bi + 1].index_select(2, idx)
+            pp = query_positions[bi:bi + 1].index_select(1, idx)
+            kb = k[bi:bi + 1, :, start:end].contiguous()
+            vb = v[bi:bi + 1, :, start:end].contiguous()
+            part = tiled_block_attention(
+                qp, kb, vb, pp, key_start=start,
+                prefix_s=block_prefix_s[bi:bi + 1, block],
+                prefix_z=block_prefix_z[bi:bi + 1, block],
+                eps=eps, block_size=block_size,
+            )
+            out[bi:bi + 1, :, idx] = part
+    return out
