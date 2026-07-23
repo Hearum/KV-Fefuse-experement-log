@@ -1,7 +1,7 @@
 """Block-summary selected-query adapter for Qwen3 document reprocess."""
 import torch
 
-from selected_query_kernel import selected_query_attention
+from selected_query_kernel import selected_query_attention, triton_block_attention
 
 
 def build_block_prefix_states(k, v, block_size=64):
@@ -142,3 +142,19 @@ def block_summary_selected_attention_batched(q, k, v, query_positions, *, block_
         den = torch.einsum("bhgqd,bhqd->bhgq", qq, pz) + scores.sum(-1)
         out[:, :, :, lo:hi] = num / (den[..., None] + eps)
     return out.reshape(b, hq, nq, v.shape[-1]).to(q.dtype)
+
+
+def block_summary_selected_attention_fused(q, k, v, query_positions, *, block_size=64,
+                                           block_prefix_s, block_prefix_z,
+                                           block_k, block_v, eps=1e-10):
+    """Single-launch Triton grouped block path for arbitrary query positions."""
+    if not q.is_cuda:
+        raise RuntimeError("fused block path requires CUDA")
+    b, _, nq, _ = q.shape
+    if query_positions.ndim == 1:
+        query_positions = query_positions.unsqueeze(0).expand(b, -1)
+    return triton_block_attention(
+        q, block_k, block_v, query_positions,
+        block_size=block_size, prefix_s=block_prefix_s, prefix_z=block_prefix_z,
+        seq_len=k.shape[2], eps=eps,
+    )

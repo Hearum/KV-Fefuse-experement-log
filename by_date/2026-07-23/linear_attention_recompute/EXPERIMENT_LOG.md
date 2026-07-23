@@ -34,3 +34,10 @@
 - H20、S=8192、B=1、Hq=32、Hkv=8、D=Dv=128、FP16、block=64、warmup=2、iters=3。uniform positions 的 SDPA / 逐 block Triton / local matmul / batched GQA（ms）：Q=64 为 0.637 / 13.923 / 33.365 / 1.524，Q=256 为 0.871 / 28.587 / 73.291 / 5.204。末尾连续 positions：Q=64 为 0.626 / 0.987 / 0.910 / 1.561，Q=256 为 0.877 / 3.780 / 2.873 / 5.664。
 - 结论：batched GQA 对 uniform/random 分散 query 消除了 Python 多 block launch 的主要退化；连续尾部仍由现有 block Triton/local matmul 更优。Q=1 的低延迟路径不应切换到 batched gather。
 - FLA v0.3 检查：`chunk_simple_gla`/`chunk_linear_attn` 可提供 chunk state-scan 和 normalization 参考，但 forward output kernel 没有本需求的 native Hq/Hkv GQA selected-query 接口；本实现保留 Hkv state 并自定义 grouped output。
+
+## 2026-07-24：fused Triton block kernel
+
+- 新增 `triton_block_attention`/`block_summary_selected_attention_fused`。kernel 使用单次 `(B,Q,Hq)` launch，按 absolute position 计算 block id，直接读取 block K/V 和 block 前缀 `S/z`，内部按 `kv_head=q_head//(Hq/Hkv)` 做 GQA；不使用 PyTorch gather/einsum，也不 repeat KV。
+- correctness：B=2、Hq=8、Hkv=2、S=23、Q=11、block=8、非连续 `[B,Q]` positions，FP16 与 block-local reference max error=9.77e-4。
+- H20、S=8192、B=1、Hq=32、Hkv=8、D=Dv=128、FP16、block=64、warmup=2、iters=3。fused Triton：连续尾部 Q=1/16/64/256 为 0.165/0.179/0.315/1.077 ms；uniform positions 为 0.165/0.170/0.337/1.133 ms。对应 SDPA 分别约 0.58/0.59/0.63/0.87 ms（实际测量有小幅波动）。
+- 结论：fused Triton 消除了原逐 block Triton 的 launch 放大；PyTorch batched 路径不再作为性能结论，只保留用于语义/数值交叉检查。

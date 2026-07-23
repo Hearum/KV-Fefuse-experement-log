@@ -5,7 +5,8 @@ import torch.nn.functional as F
 
 from block_summary_selected import (build_block_prefix_states, block_summary_selected_attention,
                                     block_summary_selected_attention_matmul,
-                                    block_summary_selected_attention_batched)
+                                    block_summary_selected_attention_batched,
+                                    block_summary_selected_attention_fused)
 
 
 def measure(fn, warmup, iters):
@@ -28,7 +29,7 @@ def main():
     p.add_argument("--query-chunk", type=int, default=32)
     a = p.parse_args()
     print(f"B=1 Hq=32 Hkv=8 D=Dv=128 FP16; selected distribution={a.distribution}")
-    print("length,Q,sdpa_ms,triton_block_ms,matmul_block_ms,batched_gqa_ms,sdpa_MiB,triton_MiB,matmul_MiB,batched_gqa_MiB")
+    print("length,Q,sdpa_ms,triton_block_ms,matmul_block_ms,batched_gqa_ms,fused_triton_ms,sdpa_MiB,triton_MiB,matmul_MiB,batched_gqa_MiB,fused_triton_MiB")
     for s in a.lengths:
         k = torch.randn(1, 8, s, 128, device="cuda", dtype=torch.float16) * .1
         v = torch.randn(1, 8, s, 128, device="cuda", dtype=torch.float16)
@@ -62,11 +63,13 @@ def main():
             linear = lambda: block_summary_selected_attention(q, k, v, qpos, block_size=a.block_size, block_prefix_s=ps, block_prefix_z=pz, block_k=block_k, block_v=block_v, implementation="triton")
             matmul = lambda: block_summary_selected_attention_matmul(q, k, v, qpos, block_size=a.block_size, block_prefix_s=ps, block_prefix_z=pz)
             batched = lambda: block_summary_selected_attention_batched(q, k, v, qpos, block_size=a.block_size, block_prefix_s=ps, block_prefix_z=pz, block_k=block_kt, block_v=block_vt, query_chunk=a.query_chunk)
+            fused = lambda: block_summary_selected_attention_fused(q, k, v, qpos, block_size=a.block_size, block_prefix_s=ps, block_prefix_z=pz, block_k=block_kt, block_v=block_vt)
             sm, sp = measure(sdpa, a.warmup, a.iters)
             lm, lp = measure(linear, a.warmup, a.iters)
             mm, mp = measure(matmul, a.warmup, a.iters)
             bm, bp = measure(batched, a.warmup, a.iters)
-            print(f"{s},{nq},{sm:.3f},{lm:.3f},{mm:.3f},{bm:.3f},{sp:.1f},{lp:.1f},{mp:.1f},{bp:.1f}")
+            fm, fp = measure(fused, a.warmup, a.iters)
+            print(f"{s},{nq},{sm:.3f},{lm:.3f},{mm:.3f},{bm:.3f},{fm:.3f},{sp:.1f},{lp:.1f},{mp:.1f},{bp:.1f},{fp:.1f}")
 
 
 if __name__ == "__main__": main()
