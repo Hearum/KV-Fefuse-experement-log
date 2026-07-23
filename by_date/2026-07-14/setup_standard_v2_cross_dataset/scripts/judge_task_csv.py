@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/"ktransformers"))
 from transformers import AutoTokenizer
 from ktransformers.util.utils import _exact_match_score, compute_f1
-JUDGE_PATH=ROOT/"MOTIVATION_EXPERIMENTS/by_date/2026-07-18/spare_k_q_recompute_exp/scripts/rejudge_sparse_glm.py"
+JUDGE_PATH=Path(__file__).with_name("rejudge_setup_v2_glm_clean.py")
 import importlib.util
 spec=importlib.util.spec_from_file_location("sparse_glm",JUDGE_PATH)
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)

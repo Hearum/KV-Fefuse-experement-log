@@ -23,7 +23,7 @@ API_KEY = os.environ.get('GLM_API_KEY')
 if not API_KEY:
     # Reuse the existing local evaluator config so setup-v2 is judged with the same endpoint/key.
     import importlib.util
-    old = ROOT / 'MOTIVATION_EXPERIMENTS/cross_dataset_offline_generalization/rejudge_glm_clean_20260714/rejudge_cross_dataset_glm_clean.py'
+    old = ROOT / 'MOTIVATION_EXPERIMENTS/by_date/2026-07-08/cross_dataset_offline_generalization/rejudge_glm_clean_20260714/rejudge_cross_dataset_glm_clean.py'
     spec = importlib.util.spec_from_file_location('old_glm_rejudge_config', old)
     mod = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
