@@ -23,6 +23,7 @@ METHODS = {
     "position_adapter_raw_rate0": {"reprocess_method": "FusionRAG", "rate": 0.0, "preprocess": False, "draft": False, "static_bias": True},
     "position_adapter_preprocess_rate0": {"reprocess_method": "FusionRAG", "rate": 0.0, "preprocess": True, "draft": False, "static_bias": True},
     "online_qk": {"reprocess_method": "FusionRAG", "preprocess": True, "draft": False},
+    "online_draft_raw": {"reprocess_method": "DraftModel", "preprocess": False, "draft": True},
     "online_draft": {"reprocess_method": "DraftModel", "preprocess": True, "draft": True},
     "uniform_alpha0p1_draft": {"reprocess_method": "DraftModel", "preprocess": True, "draft": True, "ablation": "uniform", "alpha": "0.1"},
     "offline3b_mean": {
