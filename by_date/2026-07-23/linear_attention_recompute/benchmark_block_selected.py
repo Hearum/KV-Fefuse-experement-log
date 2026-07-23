@@ -28,7 +28,7 @@ def main():
     p.add_argument("--query-chunk", type=int, default=32)
     a = p.parse_args()
     print(f"B=1 Hq=32 Hkv=8 D=Dv=128 FP16; selected distribution={a.distribution}")
-    print("length,Q,sdpa_ms,triton_block_ms,matmul_block_ms,sdpa_MiB,triton_MiB,matmul_MiB")
+    print("length,Q,sdpa_ms,triton_block_ms,matmul_block_ms,batched_gqa_ms,sdpa_MiB,triton_MiB,matmul_MiB,batched_gqa_MiB")
     for s in a.lengths:
         k = torch.randn(1, 8, s, 128, device="cuda", dtype=torch.float16) * .1
         v = torch.randn(1, 8, s, 128, device="cuda", dtype=torch.float16)
