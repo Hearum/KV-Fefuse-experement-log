@@ -407,3 +407,27 @@ V_work = gamma * V_base + (1-gamma) * V_compute
 ### H. 当前执行位置
 
 已完成 preprocess/raw 四组 200 条 MuSiQue replacement 实验；下一步核对 EM aggregation，并扩展到其他数据集或继续 Linear 消融。
+
+### I. Next phase: state organization and grouped-state ablation
+
+- [x] Reject offline global prefix states based on an assumed retrieval order;
+  the true RAG order is only known online.
+- [ ] Keep the existing per-document S_local/z_local cache; do not rerun
+  offline preprocessing.
+- [ ] Build an online reference that combines only complete documents before
+  the currently selected document.
+- [ ] Implement grouped-state computation without repeating 8 KV heads into
+  32 Q heads.
+- [ ] Record grouped-state as a separate operator ablation; never mix it with
+  B0 old-KV proxy results.
+- [ ] Run token-level numerical alignment against the repeat-KV reference.
+- [ ] Repack existing summary cache files with layer/document/block offsets;
+  do not change the stored summary values.
+- [ ] Compare small-file and packed-cache load time, memory, and EM/F1/GLM.
+- [ ] Implement a fused grouped-state kernel only after reference alignment.
+- [ ] Finish MuSiQue 200 examples before expanding to other v2 datasets.
+- [ ] Give every new result an independent directory and metadata.
+
+Prefix states may be constructed dynamically from the actual online retrieval
+order. Offline preprocessing may save local document states, but must not
+assume the future document order.

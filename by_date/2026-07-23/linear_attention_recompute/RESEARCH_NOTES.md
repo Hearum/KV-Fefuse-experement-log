@@ -616,3 +616,25 @@ result was EM 27.50, F1 35.96, and inline GLM accuracy 38.50. A same-rate
 preprocess DraftModel MHA baseline has not yet been run; the available MHA
 points are rate 0.05 (20.00/33.80/36.00) and rate 0.15
 (24.00/37.88/41.00).
+
+### Planning decision: retrieval order and cache/operator optimization (2026-07-24)
+
+The proposed offline global prefix-state cache is rejected as a primary
+optimization because the final RAG document order is not known until online
+retrieval. Offline preprocessing should store only document-local S_local/z_local
+summaries; online code may combine summaries in the actual retrieved order.
+
+Grouped-state computation is a separate ablation, not a replacement label for
+the existing B0 result. The current reference repeats 8 KV heads to 32 Q heads.
+The new ablation must keep the same feature map and state semantics, compute
+directly in grouped GQA layout, and be checked against the repeat-KV reference
+at token level before any end-to-end comparison.
+
+Summary cache repacking is approved without rerunning offline preprocessing.
+The packed format must preserve layer/document/block offsets and summary dtype,
+and must be benchmarked against the existing small-file format for load time,
+memory, and RAG quality.
+
+The next implementation order is: grouped-state reference alignment, packed
+summary cache reader/writer, then fused kernel. The existing B0 results remain
+in their own result directories and must not be merged with grouped-state
