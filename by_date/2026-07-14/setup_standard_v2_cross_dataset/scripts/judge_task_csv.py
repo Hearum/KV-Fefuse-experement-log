@@ -13,6 +13,39 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("sparse_glm",JUDGE_PATH)
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 
+
+class InlineJudge:
+    """Judge one completed sample and append metrics before the next sample runs."""
+    def __init__(self, output: str, model: str):
+        self.output = Path(output)
+        self.output.parent.mkdir(parents=True, exist_ok=True)
+        self.tokenizer = AutoTokenizer.from_pretrained(model, trust_remote_code=True)
+        self.seen: set[tuple[str, str, str]] = set()
+        if self.output.exists():
+            with self.output.open(encoding="utf-8", newline="") as f:
+                for row in csv.DictReader(f):
+                    self.seen.add((row.get("Question", ""), row.get("Real Answer", ""), row.get("Pred Answer", "")))
+        else:
+            with self.output.open("w", encoding="utf-8", newline="") as f:
+                csv.DictWriter(f, fieldnames=["index", "Question", "Real Answer", "Pred Answer", "em", "f1", "glm_correct", "glm_reason", "glm_raw"]).writeheader()
+
+    def __call__(self, *, index: int, question: str, gold: str, prediction: str, em: float) -> None:
+        key = (question, gold, prediction)
+        if key in self.seen:
+            print(f"[inline-glm] skip cached index={index}", flush=True)
+            return
+        pred_clean = mod.clean_pred(prediction)
+        f1 = float(compute_f1(prediction, gold, self.tokenizer))
+        ok, reason, raw = mod.call_glm(mod.make_prompt(question, gold, pred_clean))
+        fields = ["index", "Question", "Real Answer", "Pred Answer", "em", "f1", "glm_correct", "glm_reason", "glm_raw"]
+        with self.output.open("a", encoding="utf-8", newline="") as f:
+            csv.DictWriter(f, fieldnames=fields).writerow({
+                "index": index, "Question": question, "Real Answer": gold, "Pred Answer": prediction,
+                "em": em, "f1": f1, "glm_correct": ok, "glm_reason": reason, "glm_raw": raw,
+            })
+        self.seen.add(key)
+        print(f"[inline-glm] index={index} em={em:.0f} f1={f1:.6f} glm={ok}", flush=True)
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--csv",required=True)

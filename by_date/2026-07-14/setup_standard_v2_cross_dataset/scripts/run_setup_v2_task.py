@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT_CANDIDATES = [Path("/raid/home/hming/FusionRAG-pca-analysis"), Path("/home/hming/FusionRAG-pca-analysis")]
 ROOT = next((p for p in ROOT_CANDIDATES if p.exists()), ROOT_CANDIDATES[0])
-EXP = ROOT / "MOTIVATION_EXPERIMENTS/setup_standard_v2_cross_dataset"
+EXP = Path(__file__).resolve().parents[1]
 DEFAULT_CACHE_ROOT = Path("/mnt/qjhs-sh-lab-03/lpl/hming/fusionrag-kv-cache/Qwen3-32B/setup-v2")
 MODEL = "/mnt/qjhs-sh-lab-01/models/Qwen3-32B"
 DRAFT = "/mnt/qjhs-sh-lab-01/models/Qwen2.5-3B-Instruct"
@@ -239,8 +239,14 @@ def main() -> None:
     if cfg.get("draft"):
         kwargs_main["draft_model_path"] = DRAFT
 
+    inline_judge = None
+    if os.environ.get("SETUP_V2_INLINE_GLM", "1").lower() not in {"0", "false", "no"}:
+        from judge_task_csv import InlineJudge
+        inline_judge = InlineJudge(str(result_dir / "metrics" / "metrics.csv"), MODEL)
+        kwargs_main["sample_callback"] = inline_judge
+
     upc.main(**kwargs_main)
-    if os.environ.get("SETUP_V2_AUTO_GLM", "1").lower() not in {"0", "false", "no"}:
+    if inline_judge is None and os.environ.get("SETUP_V2_AUTO_GLM", "1").lower() not in {"0", "false", "no"}:
         csv_files = sorted(result_csv_dir.glob("*.csv"))
         if csv_files:
             metrics_path = result_dir / "metrics" / "metrics.csv"
