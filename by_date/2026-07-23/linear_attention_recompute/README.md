@@ -46,4 +46,6 @@ FLA 对照：v0.3 的 `chunk_simple_gla` 是可复用的 chunk state-scan，`chu
 
 selected kernel 的推荐 block size 是 32（full-prefill 仍使用 64）。S=8192、uniform、GQA-fused、FP16 下，block 16/32/64/128 的 Q=256 latency 为 0.473/0.516/0.698/1.573 ms；block 32 是延迟和显存的较好折中，block 16 仅快约 8% 但 prefix workspace 从约 395 MiB 增至 524 MiB。benchmark 默认已切换为 `--block-size 32`。
 
+参考 FLA `chunk_fwd_kernel_o` 的 autotune 方式，GQA selected kernel 增加了 `num_warps=2/4/8`、`num_stages=2/3` 的 autotune。Q=256、S=8192、uniform 的结果为 0.536 ms，与未 autotune 的 0.533 ms 基本相同；当前主要瓶颈是 arbitrary selected positions 下的 prefix/output 算法，而非 launch 配置。
+
 selected kernel 的推荐 block size 是 32（full-prefill 仍使用 64）。S=8192、uniform、GQA-fused、FP16 下，block 16/32/64/128 的 Q=256 latency 为 0.473/0.516/0.698/1.573 ms；block 32 是延迟和显存的较好折中，block 16 仅快约 8% 但 prefix workspace 从约 395 MiB 增至 524 MiB。benchmark 默认已切换为 `--block-size 32`。

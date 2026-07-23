@@ -211,6 +211,16 @@ if triton is not None:
 
 
 if triton is not None:
+    @triton.autotune(
+        configs=[
+            triton.Config({}, num_warps=2, num_stages=2),
+            triton.Config({}, num_warps=4, num_stages=2),
+            triton.Config({}, num_warps=4, num_stages=3),
+            triton.Config({}, num_warps=8, num_stages=2),
+            triton.Config({}, num_warps=8, num_stages=3),
+        ],
+        key=['GROUP', 'BLOCK_D', 'BLOCK_V', 'BLOCK_N'],
+    )
     @triton.jit
     def _block_selected_gqa_kernel(q, block_k, block_v, out, prefix_s, prefix_z, positions,
                                    hq, hkv, seq_len, block_size, value_dim, scale, eps,

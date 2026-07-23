@@ -79,3 +79,9 @@
 
 - S=8192、B=1、Hq=32、Hkv=8、D=Dv=128、FP16、uniform、GQA-fused Triton，Q=256：block 16/32/64/128 分别为 0.473/0.516/0.698/1.573 ms；对应峰值显存约 524/395/330/298 MiB。
 - block 16 的延迟略低但显存代价明显；selected benchmark 默认改为 block 32。full-prefill native grouped kernel 的 chunk size 仍保持 64，两者不混用。
+
+## 2026-07-24：参考 FLA 的多 query autotune
+
+- 检查 FLA `chunk_fwd_kernel_o`：它按连续 `BT` query tile 做 `Q_tile @ H` 和局部 `Q_tile @ K_tile`，而 FLA v0.3 没有 native GQA forward output；`chunk_h_parallel` 的 `HQ/NG` 主要用于 state/backward 路径。
+- 当前 GQA selected kernel 接入 FLA 风格 `num_warps=2/4/8`、`num_stages=2/3` autotune。S=8192、Q=256、uniform、block32：autotune 0.536 ms，原配置约 0.533 ms，未带来实质收益。
+- 未通过 correctness 的 arbitrary-position tiled GEMM prototype 未合入；稳定默认仍为 GQA-fused kernel。下一步若继续做多-query GEMM，需要先按 block compact query index，再使用 FLA 风格的固定二维 tile。
