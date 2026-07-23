@@ -394,4 +394,22 @@ following cases testable:
 - exact FLA-style normalization versus a project-specific variant.
 
 Only after this reference matches a token-loop implementation should we write a
-fused operator. The prior MoBA experience is a reason to keep the reference and
+fused operator. The prior MoBA experience is a reason to keep the reference
+and the cache writeback path separate, not a reason to start with a Triton
+kernel.
+## Phase-0.5 execution record: normalized reference
+
+Added:
+
+- linear_attention_reference.py;
+- scripts/test_linear_attention_reference.py.
+
+The normalized recurrent implementation and the chunked implementation both
+match explicit prefix computation for sequence lengths 1, 3, 7, and 16, with
+chunk sizes 1, 2, 4, and 8. Tests included non-empty initial KV/z states,
+final-state comparison, and bfloat16 input. Maximum observed errors were
+consistent with float32 accumulation and all tests passed.
+
+The chunk implementation explicitly separates inter-chunk state from
+intra-chunk causal attention. It does not expose a whole chunk state to tokens
+that occur earlier inside that chunk.
