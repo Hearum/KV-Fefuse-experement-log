@@ -23,7 +23,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--lengths", nargs="+", type=int, default=[1024, 4096, 8192])
     p.add_argument("--queries", nargs="+", type=int, default=[1, 16, 64, 256])
-    p.add_argument("--block-size", type=int, default=64)
+    p.add_argument("--block-size", type=int, default=32)
     p.add_argument("--warmup", type=int, default=3)
     p.add_argument("--iters", type=int, default=10)
     p.add_argument("--distribution", choices=["final", "clustered", "uniform", "random"], default="final")

@@ -43,3 +43,7 @@ FLA 对照：v0.3 的 `chunk_simple_gla` 是可复用的 chunk state-scan，`chu
 进一步加入 `triton_block_attention_gqa`：一个 program 处理 `(B,Q,KV head)`，同时输出该 KV head 对应的 query-head group，prefix `S/z` 和当前 block K/V 只加载/扫描一次。uniform、S=8192、FP16 下 Q=64/256 为 0.255/0.732 ms，相比非 GQA-fused 的 0.339/1.142 ms；这是当前 selected-query 的默认优化方向。
 
 复用 full-prefill 的 FLA state-scan：`build_block_prefix_states_fla` 先对 `phi(K)=ELU(K)+1` 调用 FLA `chunk_fwd_h`，直接生成 `[B,Nb,Hkv,D,Dv]` block prefix state，再用轻量 cumsum 生成 `z`。它和原 float32 builder 的 prefix 对照误差为 `S=1024/4096/8192` 分别约 `0.057/0.057/0.058`（state reduction 顺序不同），但送入 selected output 后最大输出差为 `1.22e-4`。预计算耗时从 2.44/9.56/18.89 ms 降至 0.40/1.77/3.47 ms；该耗时属于 offline/preparation，不计入 selected read latency。
+
+selected kernel 的推荐 block size 是 32（full-prefill 仍使用 64）。S=8192、uniform、GQA-fused、FP16 下，block 16/32/64/128 的 Q=256 latency 为 0.473/0.516/0.698/1.573 ms；block 32 是延迟和显存的较好折中，block 16 仅快约 8% 但 prefix workspace 从约 395 MiB 增至 524 MiB。benchmark 默认已切换为 `--block-size 32`。
+
+selected kernel 的推荐 block size 是 32（full-prefill 仍使用 64）。S=8192、uniform、GQA-fused、FP16 下，block 16/32/64/128 的 Q=256 latency 为 0.473/0.516/0.698/1.573 ms；block 32 是延迟和显存的较好折中，block 16 仅快约 8% 但 prefix workspace 从约 395 MiB 增至 524 MiB。benchmark 默认已切换为 `--block-size 32`。
