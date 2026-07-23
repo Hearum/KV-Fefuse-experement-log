@@ -488,3 +488,12 @@ substitution, alpha=1.0, and the default inline GLM judge: n=10, EM=0.50,
 F1=0.4472, GLM Acc=0.50. This is the first quality result, not merely a
 connectivity check; it should be compared against the same-segment baseline
 and then repeated across alpha/gamma before drawing conclusions.
+
+### Efficiency correction
+
+The current implementation computes standard MHA first and Linear Attention
+second, then blends their outputs. This is intentionally a quality diagnostic:
+it answers whether Linear output can replace MHA under the same online Q/K/V,
+but it does not save MHA compute. The production candidate must branch before
+SDPA: selected document queries use Linear only, while question queries remain
+dense MHA. Output blending is therefore a diagnostic ablation, not the speedup
