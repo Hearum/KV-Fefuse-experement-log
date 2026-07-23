@@ -41,3 +41,5 @@ FLA 对照：v0.3 的 `chunk_simple_gla` 是可复用的 chunk state-scan，`chu
 最终 selected-query 路径已加入 `triton_block_attention`：单次 `(B,Q,Hq)` launch，kernel 内根据 absolute query position 计算 block id，直接读取 `[B,Nb,Hkv,L,D]` block K/V 与 `[B,Nb,Hkv,D,Dv]` prefix state。PyTorch batched gather/einsum 仅保留作语义对照，不作为最终 backend。H20、S=8192、FP16、block=64 的 fused Triton（ms）为：连续尾部 Q=1/16/64/256：0.165/0.179/0.315/1.077；uniform positions：0.165/0.170/0.337/1.133。
 
 进一步加入 `triton_block_attention_gqa`：一个 program 处理 `(B,Q,KV head)`，同时输出该 KV head 对应的 query-head group，prefix `S/z` 和当前 block K/V 只加载/扫描一次。uniform、S=8192、FP16 下 Q=64/256 为 0.255/0.732 ms，相比非 GQA-fused 的 0.339/1.142 ms；这是当前 selected-query 的默认优化方向。
+
+复用 full-prefill 的 FLA state-scan：`build_block_prefix_states_fla` 先对 `phi(K)=ELU(K)+1` 调用 FLA `chunk_fwd_h`，直接生成 `[B,Nb,Hkv,D,Dv]` block prefix state，再用轻量 cumsum 生成 `z`。它和原 float32 builder 的 prefix 对照误差为 `S=1024/4096/8192` 分别约 `0.057/0.057/0.058`（state reduction 顺序不同），但送入 selected output 后最大输出差为 `1.22e-4`。预计算耗时从 2.44/9.56/18.89 ms 降至 0.40/1.77/3.47 ms；该耗时属于 offline/preparation，不计入 selected read latency。

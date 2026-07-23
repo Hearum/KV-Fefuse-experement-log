@@ -68,3 +68,9 @@
 | 8192 | 0.565 / 0.137 | 0.576 / 0.134 | 0.615 / 0.228 | 0.859 / 0.691 |
 
 - GQA-fused 显存峰值为 68.1/68.6/70.1/76.3 MiB（S=1024，Q=1/16/64/256），176.3/176.8/178.5/185.3 MiB（S=4096），320.5/321.1/323.0/330.5 MiB（S=8192）。
+
+## 2026-07-24：复用 full-prefill FLA state scan
+
+- 新增 `build_block_prefix_states_fla`：先对 `phi(K)=ELU(K)+1` 调用 FLA `chunk_fwd_h(states_in_fp32=True)`，得到与 selected kernel 相同布局的 `[B,Nb,Hkv,D,Dv]` prefix state；`z` 使用轻量 float32 cumsum 生成。
+- 预计算耗时（H20，B=1、Hkv=8、D=Dv=128、FP16、block=64，warmup=2、iters=3）：原 Python/einsum builder 与 FLA builder 分别为 S=1024：2.44/0.40 ms，S=4096：9.56/1.77 ms，S=8192：18.89/3.47 ms。
+- FLA state 与原 builder 的矩阵元素最大差约 0.057（不同 Triton reduction 顺序）；直接用于 selected output 时最大输出差为 1.22e-4，满足当前 FP16 kernel 误差量级。该优化属于 offline prefix preparation，selected read latency 仍单独计时。

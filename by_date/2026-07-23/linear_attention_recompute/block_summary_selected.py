@@ -25,6 +25,39 @@ def build_block_prefix_states(k, v, block_size=64):
     return ps, pz
 
 
+def build_block_prefix_states_fla(k, v, block_size=64, fla_root="/tmp/hming-fla-v030"):
+    """Build the same ELU+1 prefix states with FLA's Triton chunk state scan.
+
+    This is an offline/preparation path. It returns the native Hkv layout
+    ``[B,Nb,Hkv,D,Dv]`` and ``[B,Nb,Hkv,D]`` consumed by the fused kernels.
+    """
+    import os
+    import sys
+    if fla_root and fla_root not in sys.path:
+        sys.path.insert(0, fla_root)
+    old_compile = getattr(torch, "compile", None)
+    if old_compile is not None:
+        torch.compile = lambda fn, *a, **kw: fn
+    try:
+        from fla.ops.common.chunk_h import chunk_fwd_h
+    finally:
+        if old_compile is not None:
+            torch.compile = old_compile
+    b, hkv, s, d = k.shape
+    nb = (s + block_size - 1) // block_size
+    phi = torch.nn.functional.elu(k.float()) + 1
+    kh = phi.transpose(1, 2).contiguous()
+    vh = v.float().transpose(1, 2).contiguous()
+    ps, _ = chunk_fwd_h(k=kh, v=vh, chunk_size=block_size,
+                         output_final_state=False, states_in_fp32=True)
+    pz = torch.zeros(b, nb, hkv, d, device=k.device, dtype=torch.float32)
+    if nb > 1:
+        cz = phi.cumsum(dim=2)
+        starts = torch.arange(1, nb, device=k.device) * block_size - 1
+        pz[:, 1:] = cz.index_select(2, starts).permute(0, 2, 1, 3)
+    return ps, pz
+
+
 def block_summary_selected_attention(q, k, v, query_positions, *, block_size=64,
                                      block_prefix_s, block_prefix_z,
                                      block_k=None, block_v=None,
