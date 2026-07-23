@@ -24,3 +24,9 @@
 4. 再切换主项目分支，并执行 git submodule update --init --recursive。
 
 禁止通过 checkout、reset 或分支切换覆盖未提交的实验记录。
+
+## 严格日期归档规则
+
+本仓库只按 by_date/YYYY-MM-DD/实验名保存实验目录。根目录不得创建实验目录或软链接。
+
+删除根目录兼容软链接后，旧命令和旧文档必须改用 by_date 下的 canonical 路径。任何新实验必须先选择创建日期目录，再创建实验目录和 plan.md。

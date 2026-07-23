@@ -2,7 +2,7 @@
 
 实验目录按推断日期整理到 `by_date/YYYY-MM-DD/` 下。
 
-原顶层实验目录名会尽量保留为兼容符号链接，旧命令和旧文档路径仍可继续解析。
+根目录不保存实验实体目录，也不保留兼容软链接；唯一 canonical 路径是 by_date/YYYY-MM-DD/实验名。旧路径已停止使用。
 
 日期推断优先级：目录创建时间（`stat %W`）、目录名中的显式日期、README/EXPERIMENT_LOG/goal/RUN_STATUS 中的有效日期、目录修改时间。
 
@@ -29,7 +29,7 @@
 
 ## 实验明细
 
-| 日期 | 实验 | 简要说明 | 新路径 | 旧兼容路径 |
+| 日期 | 实验 | 简要说明 | 新路径 | 旧路径（已移除） |
 |---|---|---|---|---|
 | `2026-06-26` | `cached_kv_correction_probe` | Cached KV Correction Probe | `MOTIVATION_EXPERIMENTS/by_date/2026-06-26/cached_kv_correction_probe` | `MOTIVATION_EXPERIMENTS/cached_kv_correction_probe` |
 | `2026-06-26` | `kv_before_after_recompute` | 重算前后 KV 差异分析 | `MOTIVATION_EXPERIMENTS/by_date/2026-06-26/kv_before_after_recompute` | `MOTIVATION_EXPERIMENTS/kv_before_after_recompute` |
@@ -212,4 +212,4 @@
 - 需要查日期时先看 by_date/README.md 和对应日期 README。
 - 2026-07-15、2026-07-16、2026-07-18 等新日期也必须按相同规则归档。
 
-当前根目录兼容软链接数量：170；它们不构成重复存储。
+根目录实验软链接已全部移除，实验只按 by_date 目录保存。
