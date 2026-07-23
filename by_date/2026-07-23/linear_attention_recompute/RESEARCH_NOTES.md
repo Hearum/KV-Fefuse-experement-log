@@ -413,3 +413,56 @@ consistent with float32 accumulation and all tests passed.
 The chunk implementation explicitly separates inter-chunk state from
 intra-chunk causal attention. It does not expose a whole chunk state to tokens
 that occur earlier inside that chunk.
+
+## Conceptual refinement: coefficient substitution versus KV recomputation
+
+For a fixed layer and fixed Q/K/V, both MHA and normalized Linear Attention
+produce an attention output that is a weighted sum of V:
+
+MHA:
+  o_i = sum_j softmax(q_i transpose k_j) v_j
+
+Linear:
+  o_i = [phi(q_i) transpose sum_j phi(k_j) v_j]
+        / [phi(q_i) transpose sum_j phi(k_j) + eps]
+
+The Linear expression can also be written as:
+
+  o_i = sum_j w_linear(i,j) v_j
+
+where the weights are induced by the feature map and the running
+normalization, rather than by the exact softmax kernel. Under this fixed-QKV
+view, the primary difference is the attention coefficient calculation.
+
+This gives three distinct experimental levels:
+
+1. coefficient-only substitution:
+   keep the same Q/K/V and compare softmax attention output with normalized
+   Linear output. This isolates the approximation in the attention weights.
+2. attention-output blend:
+   y = gamma * y_MHA + (1-gamma) * y_linear, then run the normal output
+   projection, residual, and MLP. This tests a controlled coefficient
+   replacement without changing the current layer K/V.
+3. recursive Linear reprocess:
+   use y_linear to produce the next hidden state, then project the next layer
+   K/V. This changes future Q/K/V through the hidden-state recurrence and is
+   no longer only a coefficient substitution.
+   
+The KV blend proposal is a fourth, different intervention:
+
+  K_work = blend(K_base, K_compute)
+  V_work = blend(V_base, V_compute)
+
+It changes both the attention coefficients and the values. It must not be
+described as coefficient-only Linear Attention.
+
+### Consequence for the experiment order
+
+The first model-level experiment should freeze current-layer Q/K/V and compare
+MHA output against Linear output. It should report coefficient/output errors
+before any cache writeback. Then test attention-output blending. Only after
+these are understood should we enable recursive hidden-state propagation and
+candidate KV generation.
+
+This decomposition can explain a poor earlier result: a large quality drop
+could come from the Linear coefficient approximation, from changed recursive

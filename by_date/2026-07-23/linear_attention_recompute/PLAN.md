@@ -253,3 +253,18 @@ reference 必须明确支持：
 
 reference 与 fast operator 逐 token 对齐后，才允许修改
 models/modeling_qwen3.py 或 ktransformers/util/utils.py 接入实际模型。
+
+这一步是新的 Phase 0.5 correctness gate，优先级高于完整数据集实验。
+
+## 9. Model-level isolation order
+
+为了先隔离 attention coefficient 的误差，模型实验按以下顺序执行：
+
+1. 固定当前层的 Q/K/V，只比较 softmax MHA output 与 normalized Linear
+   output；
+2. 固定当前层的 Q/K/V，比较 attention-output blend；
+3. 允许 Linear output 进入 residual/MLP，观察 h_{l+1} 的递推误差；
+4. 最后才允许下一层重新投影 candidate K/V，并测试 KV-level blend。
+
+第 1 步和第 2 步不写回 cache。只有第 4 步才进入 working-KV/cache
+实验。这样可以区分 coefficient approximation、hidden-state recursion 和
