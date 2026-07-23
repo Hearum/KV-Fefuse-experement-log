@@ -31,3 +31,5 @@ PYTHONPATH=/tmp/hming-fla-venv/lib/python3.10/site-packages:/mnt/qjhs-sh-lab-01/
 block summary correctness（S=23、block=8、GQA、FP16）max error 为 9.77e-4。Q=64/256 时当前 Python 分组和 32-head output launch overhead 仍使 linear 慢于 SDPA，后续需要 fused multi-query block output。
 
 优化后，block adapter 预打包 contiguous K/V blocks，并对连续 selected query 使用 slice fast path，避免重复 `index_select` 和 contiguous copy。S=4096,Q=1/16 为 0.267/0.429 ms；S=8192,Q=1/16 为 0.253/0.390 ms。
+
+新增 `block_summary_selected_attention_matmul`：对当前 block 内的多个 query 一次构造局部 `[Q, block_size]` 计算，不构造完整 `[Q,S]` 矩阵。S=8192 时，Q=64 为 0.809 ms、Q=256 为 2.628 ms，相比逐 query Triton 的 0.957/3.739 ms 更快；局部 matmul correctness max error=0。由于临时局部矩阵和 PyTorch matmul workspace，显存高于 Triton path，当前仍作为 Q 较大时的候选 backend。

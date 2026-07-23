@@ -60,3 +60,37 @@ def block_summary_selected_attention(q, k, v, query_positions, *, block_size=64,
             )
             out[bi:bi + 1, :, idx] = part
     return out
+
+
+def block_summary_selected_attention_matmul(q, k, v, query_positions, *, block_size=64,
+                                            block_prefix_s, block_prefix_z, eps=1e-10):
+    """Vectorized local-block path; never materializes a full [Q,S] matrix."""
+    b, hq, nq, d = q.shape
+    hkv = k.shape[1]
+    if query_positions.ndim == 1:
+        query_positions = query_positions.unsqueeze(0).expand(b, -1)
+    out = torch.empty(b, hq, nq, v.shape[-1], device=q.device, dtype=q.dtype)
+    group = hq // hkv
+    qf = (torch.nn.functional.elu(q.float()) + 1) * (d ** -0.5)
+    kf = torch.nn.functional.elu(k.float()) + 1
+    for bi in range(b):
+        groups = {}
+        for qi, pos in enumerate(query_positions[bi].tolist()):
+            groups.setdefault(int(pos) // block_size, []).append(qi)
+        for block, indices in groups.items():
+            start, end = block * block_size, min((block + 1) * block_size, k.shape[2])
+            idx = torch.tensor(indices, device=q.device, dtype=torch.long)
+            qpart = qf[bi:bi + 1].index_select(2, idx)
+            pospart = query_positions[bi].index_select(0, idx)
+            kp = kf[bi:bi + 1, :, start:end]
+            vp = v[bi:bi + 1, :, start:end].float()
+            kp = kp[:, torch.arange(hq, device=q.device) // group]
+            scores = torch.matmul(qpart, kp.transpose(-1, -2))
+            causal = torch.arange(start, end, device=q.device)[None, None, :] <= pospart[None, :, None]
+            scores = scores.masked_fill(~causal[:, None], 0.0)
+            ps = block_prefix_s[bi:bi + 1, block][:, torch.arange(hq, device=q.device) // group]
+            pz = block_prefix_z[bi:bi + 1, block][:, torch.arange(hq, device=q.device) // group]
+            numerator = torch.matmul(qpart, ps) + torch.matmul(scores, vp[:, torch.arange(hq, device=q.device) // group])
+            denominator = (qpart * pz.unsqueeze(2)).sum(-1, keepdim=True) + scores.sum(-1, keepdim=True)
+            out[bi:bi + 1, :, idx] = (numerator / (denominator + eps)).to(out.dtype)
+    return out.to(q.dtype)

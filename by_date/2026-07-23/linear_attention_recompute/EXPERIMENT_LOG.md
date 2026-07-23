@@ -25,3 +25,4 @@
 - correctness：S=23、block=8、GQA、FP16，block-summary vs full reference max_error=9.77e-4。
 - 事实结论：block summary 已使长上下文 Q=1/16 selected path 超过同长度 SDPA；短上下文和 Q=64/256 仍受 Triton launch/output 开销影响。full-prefill native grouped 文件仍保留在 `linear_kenrel/`，没有被修改或删除。
 - 优化 block adapter：预打包 contiguous K/V blocks；连续 selected positions 走零拷贝 q slice，避免重复 `index_select` 和 Triton wrapper 的 `.contiguous()` 拷贝。复测（block=64）：S=4096,Q=1 0.267 ms、Q=16 0.429 ms、Q=64 0.995 ms、Q=256 3.816 ms；S=8192,Q=1 0.253 ms、Q=16 0.390 ms、Q=64 0.962 ms、Q=256 3.773 ms。
+- 新增 block-local matmul backend，对每个当前 block 批量处理多个 query，不构造完整 `[Q,S]` 矩阵。复测：S=8192,Q=64 为 0.809 ms（Triton 0.957 ms），Q=256 为 2.628 ms（Triton 3.739 ms）；correctness max_error=0。该路径显存较高，暂作为 Q 较大时的候选。
